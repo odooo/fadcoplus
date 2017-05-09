@@ -1,0 +1,36 @@
+FadcoBundle\Entity\Alerte:
+    type: entity
+    tableName: Alerte
+    id:
+        id_alerte:
+            type: integer
+            nullable: false
+            unique: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        Prestataire:
+            targetEntity: Prestataire
+            joinColumn:
+                name: prestataire_alerte
+                referencedColumnName: id
+        Destinataire:
+            targetEntity: Prestataire
+            joinColumn:
+                name: destinataire_alerte
+                referencedColumnName: id
+    fields:
+        message_alerte:
+            type: text
+            nullable: false
+        etat_alerte:
+            type: string
+            length: 50
+            options:
+                default: 'non lue'
+        lien_alerte:
+            type: text
+            nullable: true
+        date_alerte:
+            type: datetime
+            nullable: true

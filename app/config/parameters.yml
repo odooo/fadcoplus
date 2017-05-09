@@ -1,0 +1,25 @@
+# This file is auto-generated during the composer install
+parameters:
+    adresse_websocket: 127.0.0.1
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: fadcoplus
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: SecretIsSoEasyToHackActiveREMEMBERME
+    upload.piece_dossier_juriste: '%kernel.root_dir%/../web/uploads/pieces-dossier-juriste'
+    jwt_private_key_path: '%kernel.root_dir%/var/jwt/private.pem'
+    jwt_public_key_path: '%kernel.root_dir%/var/jwt/public.pem'
+    jwt_key_pass_phrase: manager-app
+    jwt_token_ttl: 30758400
+    pieces_path: '%kernel.root_dir%/../web/uploads/pieces'
+    smsgo.sender_id: FADCO+
+    smsgo.sender: smsgo.sms_logger
+    mysmsapps_apikey: ulVeXiWOamOIzxhEfQhX7d881
+    oceanicsms_api: 14265
+    oceanicsms_user: CENTREJPR
+    oceanicsms_password: centrejpr2016

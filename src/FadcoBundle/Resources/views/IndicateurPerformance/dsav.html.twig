@@ -1,0 +1,22 @@
+{% extends "GSPBundle:IndicateurPerformance:layout.html.twig" %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import countbox %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import countbox2 %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import countbox3 %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import chartbox %}
+
+{% block title %}Performance de la DSAV{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {{ countbox('Nombre de Dossiers Boucles Transmis par les Juristes', nombreDossierJuristeBoucleTransmis, 'bg-green', 'fa-users') }}
+        {{ countbox('Nombre  Client Ayant commandé et payé pour les plaques et bornes',nbreClientPlaqueEtBorne, 'bg-green', 'fa-users') }}
+        {{ countbox('Clients ont reçu un proformat', 30, 'bg-green', 'fa-users') }}
+        {{ countbox('Paiements effectués', 30, 'bg-green', 'fa-users') }}
+        {{ countbox('Nombre de clients indisponibles pour le retrait', nbrClientIndisponibles, 'bg-maroon', 'fa-users') }}
+        {{ countbox('Nombre de clients ayant pris rendez-vous pour le retrait', nbrClientDisponibles, 'bg-maroon', 'fa-users') }}
+        {{ countbox('Nombre de clients ayant effectivement retiré leurs titres de propriété', nbrClientAyantRetire, 'bg-maroon', 'fa-users') }}
+        {{ countbox('Nombre de clients ayant effectivement retiré leurs titres de propriété', nbrClientAyantRetire, 'bg-maroon', 'fa-users') }}
+        {{ countbox('Nombre de clients ayant visités leurs bornes', nombreClientAyantVisiteBorne, 'bg-green', 'fa-users') }}
+        {{ countbox('Nombre de clients en attente de visités de leurs bornes', nombreClientEnAttenteVisiteBorne, 'bg-green', 'fa-users') }}
+    </div>
+{% endblock %}

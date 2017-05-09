@@ -1,0 +1,252 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="container">
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register','enctype':'multipart/form-data'}}) }}
+<div class="col-sm-offset-3 col-sm-6" id="first-part">
+        <center><img src="{{asset('bundles/GSPBundle/images/avatar.png')}}" data-src="{{asset('bundles/GSPBundle/images/avatar.png')}}" class="img-circle" style="width:150px;Height:150px;" id="img-profile"></center><span>&nbsp;</span><br/>
+    {{ form_widget(form.file,{'id':'user_photo','attr':{'class':'hidden','onchange':"$('#profile').val(this.files[0].name);"} }) }}
+   <div class="input-group" onclick="$('#user_photo').click();">
+        {{form_errors(form.typeprestataire)}} 
+       <label class="input-group-addon"><i class="fa fa-photo"></i></label>
+        <input type="text" class="form-control" placeholder="photo" id='profile' style="cursor: default" disabled/>
+        <span class="input-group-btn"><button class='btn btn-primary' >Photo</button></span>
+    </div>
+    
+    <span>&nbsp;</span>{{ form_errors(form.nom) }}
+    <div class="input-group" >
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.nom,{'attr':{'class':'form-control','placeholder':'nom'} }) }}
+    </div>
+    <span>&nbsp;</span>{{ form_errors(form.prenom) }}
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.prenom,{'attr':{'class':'form-control','placeholder':'prénom'} }) }}
+    </div>
+    <span>&nbsp;</span>{{ form_errors(form.username) }}
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.username,{'attr':{'class':'form-control','placeholder':"Nom d'Utilisateur"} }) }}
+    </div>
+        <span>&nbsp;</span>{{ form_errors(form.plainPassword.first ) }}
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-key"></i></label>
+        {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control','placeholder':'mot de passe'} }) }}
+    </div>
+    
+    <span>&nbsp;</span>{{ form_errors(form.plainPassword.second ) }}
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-key"></i></label>
+        {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control','placeholder':'confirmer le mot de passe'} }) }}
+    </div>
+    
+    <span>&nbsp;</span>{{ form_errors(form.email) }}
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-envelope"></i></label>
+        {{ form_widget(form.email,{'attr':{'class':'form-control','placeholder':'e-mail'} }) }}
+    </div>
+    <span>&nbsp;</span>{{ form_errors(form.ancienneFonction) }}
+     <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user-secret"></i></label>
+        {{ form_widget(form.ancienneFonction,{'attr':{'class':'form-control','placeholder':'Ancienne Fonction'} }) }}
+    </div>
+    <span>&nbsp;</span>{{ form_errors(form.poste) }}
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-desktop"></i></label>
+        {{ form_widget(form.poste,{'attr':{'class':'form-control','placeholder':'poste'} }) }}
+    </div>
+    <span>&nbsp;</span>{{ form_errors(form.datEntre) }}
+    <div class="row" >
+        
+        <div class="col-xs-4">
+            
+            {{ form_widget(form.datEntre.day,{'attr':{'class':'form-control','placeholder':'nom'} }) }}
+        </div>
+        <div class=" col-xs-4">
+            {{ form_widget(form.datEntre.month,{'attr':{'class':'form-control','placeholder':'nom'} }) }}
+        </div>
+        <div class="col-xs-4">
+            {{ form_widget(form.datEntre.year,{'attr':{'class':'form-control','placeholder':'nom'}}) }}
+        </div>
+    </div>
+    <span>&nbsp;</span>
+    <div class="input-group">
+            <label class="input-group-addon"><i class="fa fa-user"></i></label>
+            {{ form_widget(form.personneReference,{'attr':{'class':'form-control','placeholder':'Personne de  Referennce'} }) }}
+     </div>
+    
+    <span>&nbsp;</span>
+        <div>
+            <span class="btn btn-primary btn-sm" id="btn-next" >
+                <span class="visible-xs"><i class="fa fa-arrow-circle-right fa-2x"></i></span>
+                <span class="visible-sm visible-md visible-lg">Suivant <i class="fa fa-arrow-circle-right"></i></span>
+            </span>
+             <button type="button" id="first-reset" class="btn btn-primary btn-sm pull-right" >
+                 <span class="visible-xs"><i class="fa fa-refresh fa-2x"></i></span>
+                <span class="visible-sm visible-md visible-lg" ><i class="fa fa-refresh"></i> Annuler</span>
+            </button>
+        </div>
+    </div>
+    <div class="col-sm-offset-3 col-sm-6" id="second-part">
+       <span>&nbsp;</span>{{ form_errors(form.contactReference) }}
+        <div class="input-group">
+            <label class="input-group-addon"><i class="fa fa-contao"></i></label>
+            {{ form_widget(form.contactReference,{'attr':{'class':'form-control','placeholder':'Contact du reference'} }) }}
+        </div>
+         <span>&nbsp;</span>{{ form_errors(form.appreciationParticuliere) }}
+        <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.appreciationParticuliere,{'attr':{'class':'form-control','placeholder':'appreciation partitculière'} }) }}
+    </div>
+    {{ form_errors(form.ville,{"attr":{'class':'alert-error' } }) }}<span>&nbsp;</span>
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.ville,{'attr':{'class':'form-control','placeholder':'ville du prestataire'} }) }}
+    </div>
+    <span>&nbsp;</span>{{ form_errors(form.quartier) }}
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.quartier,{'attr':{'class':'form-control','placeholder':'quatier du prestataire'} }) }}
+    </div>
+    <span>&nbsp;</span>{{ form_errors(form.maison) }}
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.maison,{'attr':{'class':'form-control','placeholder':'maison du prestataire'} }) }}
+    </div>
+    <span>&nbsp;</span>
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.typeprestataire,{'attr':{'class':'form-control'} }) }}
+    </div>
+    <span>&nbsp;</span>
+    <div class="input-group">
+            <label class="input-group-addon"><i class="fa fa-user"></i></label>
+            {{ form_widget(form.CategoriePrestataire,{'attr':{'class':'form-control'} }) }}
+    </div>    
+    <span>&nbsp;</span>
+     <div class="input-group">
+                <label class="input-group-addon"><i class="fa fa-user"></i></label>
+                {{ form_widget(form.Service,{'attr':{'class':'form-control','placeholder':'service'} }) }}
+     </div>
+    <span>&nbsp;</span>
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.CodeConfidentialite,{'attr':{'class':'form-control','placeholder':'code confidentialite'} }) }}
+    </div>
+    <span>&nbsp;</span>
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.roles[0],{'attr':{'class':'form-control','placeholder':'Role(s)'} }) }}
+    </div>
+    
+    <span>&nbsp;</span>
+    <div class="input-group">
+        <label class="input-group-addon"><i class="fa fa-user"></i></label>
+        {{ form_widget(form.appreciationGenerale,{'attr':{'class':'form-control','placeholder':'Appreciation Generale'} }) }}
+    </div>
+        <span>&nbsp;</span>{{ form_errors(form.contact) }}
+        <div class="input-group">
+            <label class="input-group-addon"><i class="fa fa-contao"></i></label>
+            {{ form_widget(form.contact,{'attr':{'class':'form-control','placeholder':'Contact du prestataire'} }) }}
+        </div>
+  
+    <div>
+        <span>&nbsp;</span>
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-sm-3">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <span class="visible-xs"><i class="fa fa-save fa-2x"></i></span>
+                <span class="visible-sm visible-md visible-lg"><i class="fa fa-save"></i> {{ 'registration.submit'|trans }}</span>
+            </button>
+        </div>
+        <div class="col-xs-4 col-sm-offset-3 col-sm-3">
+            <span class="btn btn-primary btn-sm pull-right" id="btn-back" >
+                <span class="visible-xs"><i class="fa fa-arrow-circle-left fa-2x"></i></span>
+                <span class="visible-sm visible-md visible-lg"><i class="fa fa-arrow-circle-left"></i> Précedant</span>
+            </span>
+        </div>
+        <div class="col-xs-4 col-sm-3">
+            <button type="button" id="second-reset" class="btn btn-primary btn-sm pull-right" >
+                 <span class="visible-xs"><i class="fa fa-refresh fa-2x"></i></span>
+                <span class="visible-sm visible-md visible-lg"><i class="fa fa-refresh"></i> Annuler</span>
+            </button>
+        </div>
+    </div>
+</div>
+       
+{{ form_end(form) }}
+<script>
+    $(function(){
+            $('#fos_user_registration_form_Service').hide();
+            $('#fos_user_registration_form_typeprestataire').on('change', function(event){
+                if(this.value =='Simple') $('#fos_user_registration_form_Service').show();
+                else $('#fos_user_registration_form_Service').hide();
+            });
+        var heightFirst=$('#first-part').css("height");
+        var heightSecond=$('#second-part').css("height");
+        $('#first-part').css({
+            "overflow":"hidden",
+            "height":heightFirst,
+            
+            "transiton":'all 1s',
+            "-webkit-transition":'all 1s ease',
+            "-moz-transition":'all 1s ease',
+            "-o-transition":'all 1s ease'
+            
+        });
+        $('#second-part').css({
+            "overflow":"hidden",
+            "height":"0px",
+            "transiton":'all 1s ease',
+            "-webkit-transition":'all 1s ease',
+            "-moz-transition":'all 1s ease',
+            "-o-transition":'all 1s ease' 
+        });
+        
+        $("#btn-next").click(function(){
+            $('#first-part').css({
+                'height':'0px',
+                "visibility":'hidden'
+            });
+            $('#second-part').css({
+                'height':heightSecond,
+                'visibility':'visible'
+            });
+        });
+        
+        $("#btn-back").click(function(){
+            $('#first-part').css({
+                'height':heightFirst,
+                'visibility':'visible'
+            });
+            $('#second-part').css({
+                'height':'0px',
+                "visibility":'hidden'
+            });
+        });
+        
+        
+        $('#first-reset').click(function(){
+            $("#first-part input").not(':button,:submit,:reset')
+                    .val('').removeAttr("checked");
+            
+        });
+         $('#second-reset').click(function(){
+            $("#second-part input").not(':button,:submit,:reset')
+                    .val('').removeAttr("checked");
+            
+        });
+        $('#user_photo').change(function(){
+            $file=this.files[0];
+            $img=$('#img-profile');
+            var reader = new FileReader();
+            reader.addEventListener('load', function() {
+
+                $img.attr("src",reader.result);
+            }, false);
+            reader.readAsDataURL($file);
+        })
+        $('#user_photo').change();
+        
+    });
+</script>
+</div>

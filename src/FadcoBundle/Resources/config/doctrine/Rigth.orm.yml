@@ -1,0 +1,18 @@
+FadcoBundle\Entity\Rigth:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        express:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }

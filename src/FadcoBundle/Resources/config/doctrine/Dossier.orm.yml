@@ -1,0 +1,33 @@
+FadcoBundle\Entity\Dossier:
+    type: entity
+    repositoryClass: FadcoBundle\Repository\DossierRepository
+    tableName: Dossier
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    oneToOne:
+        Prestataire:
+            targetEntity: Prestataire
+            nullable: true
+            joinColumn:
+                name: Prestataire
+                referencedColumnName: id
+    fields:
+        nomDossier:
+            type: text
+            nullable: true
+        objet:
+            type: text
+            nullable: true
+        datEnregistrement:
+            type: date
+            nullable: true
+        localisationPhysique:
+            type: string
+            nullable: true
+            length: 50
+        observations:
+            type: text
+            nullable: true

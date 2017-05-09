@@ -1,0 +1,67 @@
+
+
+## AUTRES ##
+#
+
+#-----------------------Datatable ajax actions------------------------------
+fadco_datatable_ajax:
+    resource: "@FadcoBundle/Controller/DataTable/DataTable/routing/routing.yml"
+    prefix: /datatable/
+#-----------------------End of Datatable ajax actions------------------------
+
+
+fadco_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: FadcoBundle:Default:index }
+
+fadco_indicateur_performance:
+    resource: "@FadcoBundle/Resources/config/routing/indicateurperformance.yml"
+    prefix:   /indicateurperformance
+
+fadco_home:
+    path:     /dashbord
+    defaults: { _controller: FadcoBundle:Default:dashbord }
+
+
+fadco_alerte:
+    resource: "@FadcoBundle/Resources/config/routing/gestiondesalertes.yml"
+    prefix:   /alerte
+
+fadco_alerte:
+    resource: "@FadcoBundle/Resources/config/routing/gestiondesalertes.yml"
+    prefix:   /alerte
+
+fadco_box_mails:
+    resource: '@FadcoBundle/Resources/config/routing/mailsenvoyes.yml'
+    prefix: /mails
+
+## CONFIGURATION GENERALE 
+#
+
+fadco_rigth:
+    resource: "@FadcoBundle/Resources/config/routing/rigth.yml"
+    prefix:   /admin/rigth
+
+
+fadco_fadco_prestataire:
+    resource: "@FadcoBundle/Resources/config/routing/prestataire.yml"
+    prefix:   /fadcoplus/prestataire
+
+
+fadco_global_crypte_url:
+    resource: "@FadcoBundle/Resources/config/routing/rewriteurl.yml"
+    prefix:   /global/url
+
+#fadco_archive_dossier_piece:
+#    resource: "@FadcoBundle/Resources/config/routing/piece.yml"
+#    prefix:   /archive/dossier/{id}/piece
+
+fadco_archive_dossier:
+    resource: "@FadcoBundle/Resources/config/routing/dossier.yml"
+    prefix:   /archive/dossier
+
+#-----------------------Datatable ajax actions------------------------------
+fadco_datatable_ajax:
+    resource: "@FadcoBundle/Controller/DataTable/DataTable/routing/routing.yml"
+    prefix: /datatable/
+#-----------------------End of Datatable ajax actions------------------------

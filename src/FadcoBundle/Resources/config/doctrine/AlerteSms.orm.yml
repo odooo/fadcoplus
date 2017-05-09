@@ -1,0 +1,21 @@
+FadcoBundle\Entity\AlerteSms:
+    type: entity
+    table: null
+    repositoryClass: FadcoBundle\Entity\AlerteSmsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        destinataire:
+            type: string
+            length: 255
+        message:
+            type: text
+        isSent:
+            type: boolean
+            options:
+                default: false
+    lifecycleCallbacks: {  }

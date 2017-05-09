@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	{% block titre %}
+    {% endblock %}
+   
+   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="{{asset('bundles/FadcoBundle/bootstrap/css/bootstrap.min.css')}}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{asset('bundles/FadcoBundle/dist/css/AdminLTE.min.css')}}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{asset('bundles/FadcoBundle/plugins/iCheck/square/blue.css')}}">
+    
+    </head>
+    <body class="hold-transition login-page">
+      {# <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}" >
+                        {{ message }}
+                   
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+		 </div>
+        #}
+        
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </body>
+</html>

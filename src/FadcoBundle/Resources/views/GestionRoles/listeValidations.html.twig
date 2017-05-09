@@ -1,0 +1,91 @@
+{% extends "GSPBundle:GestionRoles:base.html.twig" %}
+
+{% block title %}Liste des demandes{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h1 class="box-title">Liste des demandes en attente</h1>
+                <div class="box-tools pull-right">
+                    <a href="#new-page" id="awesome-popup" data-toggle="gsp-modal" class="btn btn-box-tool"><i class="fa fa-eye"></i></a>
+                    <button class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>                    
+                </div>
+            </div>
+            <div class="box-body">
+                {% if validations|length %}
+                <table id="liste-validations" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">#</th>
+                            <th>Objet de la demande</th>
+                            <th style="width: 150px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for validation in validations %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>
+                                    <a href="{{ path('gsp_gestion_roles_details_validation', { 'id': validation.id }) }}" class="btn-details-validation" data-title="{{ validation.objet }}">{{ validation.objet }}</a>                                    
+                                </td>
+                                <td>
+                                    <div class="btn-group">            
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Actions 
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" id="vars-prestataires">                                            
+                                            <li>
+                                                <a href="{{ path('gsp_gestion_roles_details_validation', { 'id': validation.id }) }}" class="btn-details-validation" data-title="{{ validation.objet }}">Voir détails</a>
+                                            </li>
+                                            <li><a href="{{ path('gsp_gestion_roles_approuver_validation', { 'id': validation.id }) }}">Approuver</a></li>
+                                            <li><a href="{{ path('gsp_gestion_roles_rejeter_validation', { 'id': validation.id }) }}">Rejeter</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="text-center">
+                    Aucune demandes en attente.
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    {% include "GSPBundle:Default:gsp-modal.html.twig" with { modalId: 'new-page' } %}
+    {% include "GSPBundle:Default:popup.html.twig" with { modalId: 'modal-details-validation', modalSize: 'modal-lg' } %}
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function() {
+            var $detailsModal = $('#modal-details-validation');
+            $('.btn-details-validation').on('click', function(e) {
+                e.preventDefault()
+
+                $detailsModal.modal('show');
+                $detailsModal.find('.modal-body').html('<div class="text-center"><i class="fa fa-2x fa-spinner fa-spin"></i></div>')
+                $detailsModal.find('.modal-title').text($(this).attr('data-title'))
+
+                $.ajax({
+                    url: $(this).attr('href'),
+                    type: 'GET',
+                    success: function(response) {
+                        $('#modal-details-validation').find('.modal-body').html(response)
+                    },
+                    error: function(response) {
+                        console.log(response.responseText)
+                    }
+                })                    
+            })
+        })        
+    </script>
+{% endblock %}

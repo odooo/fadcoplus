@@ -1,0 +1,23 @@
+{% extends "GSPBundle:IndicateurPerformance:layout.html.twig" %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import countbox %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import countbox2 %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import countbox3 %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import chartbox %}
+
+{% block title %}Performance de la DFCA{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {{ countbox3('Chiffre total frais de formalités', (chiffretotalfraisformalites|number_format(0, '.', ' '))~' f CFA', 'bg-green', 'fa-users') }}
+        {{ countbox3('Chiffre total des nouvelle ventes', (chiffretotaldesnouvellesventes|number_format(0, '.', ' '))~' f CFA', 'bg-orange', 'fa-dallar') }}
+        {{ countbox3('Chiffre total des mensualités crédit', (chiffretotaldesmensualitescredit|number_format(0, '.', ' '))~' f CFA', 'bg-blue', 'fa-dallar') }}
+        {{ countbox3('Chiffre total des investissements pisciculture', (chiffretotaldesinvestissementpisciculture|number_format(0, '.', ' '))~' f CFA', 'bg-yellow', 'fa-dallar') }}
+        {{ countbox3('Chiffre total des autres paiements', (chiffretotaldesinvestissementpiscicultureAutre|number_format(0, '.', ' '))~' f CFA', 'bg-green', 'fa-dallar') }}
+        {% for item in charges %}
+            {{ countbox3('Chiffre total des charges: '~item.titre, (item.total|number_format(0, '.', ' '))~' f CFA', 'bg-green', 'fa-dallar') }}
+        {% endfor %}
+        {% for item in chargesAttentes %}
+            {{ countbox3('Chiffre total des charges en attentes: '~item.titre, (item.total|number_format(0, '.', ' '))~' f CFA', 'bg-red', 'fa-dallar') }}
+        {% endfor %}
+    </div>
+{% endblock %}

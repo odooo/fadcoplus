@@ -1,0 +1,33 @@
+box_mails_index:
+    path:     /inbox
+    defaults: { _controller: FadcoBundle:MailBox:inbox }
+box_mails_envoi:
+    path:     /envoi
+    defaults: { _controller: FadcoBundle:MailsEnvoyes:envoimails }
+
+box_mails_compose:
+    path:     /compose
+    defaults: { _controller: FadcoBundle:MailBox:compose }
+
+box_mails_read:
+    path:     /inbox/{id}
+    defaults: { _controller: FadcoBundle:MailBox:read }
+
+box_mail_fetch_message:
+    path:   /fetch-messages/{inbox}/{type}
+    defaults: 
+        _controller: FadcoBundle:MailBox:fetchMessages
+
+box_mails_auth:
+    path: /auth/user
+    defaults: { _controller: "FadcoBundle:MailsEnvoyes:auth" }
+    methods: POST
+
+box_mails_deconnexion:
+    path: /deconnexion
+    defaults: { _controller: "FadcoBundle:MailsEnvoyes:deconnexion" }
+
+box_mails_session_storage:
+    path: /session/storage
+    defaults: { _controller: "FadcoBundle:MailsEnvoyes:sessionStorage" }
+    methods: GET

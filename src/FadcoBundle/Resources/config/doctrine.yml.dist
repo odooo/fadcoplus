@@ -1,0 +1,11 @@
+Entity:
+    fields:
+        isValid:
+            type: boolean
+            option:
+                default: false
+
+        isDeleted:
+            type: boolean
+            option: 
+                default: false

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Repository/ChargesFixesRepository.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Form/Type/ChargeFixe/PayerChargeFixeFormType.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Resources/views/AutresRecettes/chargeFixe/partials/payer-form.html.twig</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Resources/views/IndicateurPerformance/dfca.html.twig</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Resources/views/AutresRecettes/chargeFixe/partials/item.html.twig</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Entity/OperationVente.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Resources/views/AutresRecettes/chargeFixe/create.html.twig</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Entity/DevisFormalites.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Entity/AutresRecettes.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Resources/views/AutresRecettes/chargeFixe/partials/list.html.twig</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Repository/AutresRecettesRepository.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Controller/ChargeFixe/ChargeFixeController.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Resources/views/AutresRecettes/chargeFixe/partials/form.html.twig</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Entity/ModePaiement.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Resources/config/routing/dotation.yml</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Controller/IndicateurPerformance/DFCAPerformanceController.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Resources/config/doctrine/ChargeFixe.orm.yml</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Form/DataTransformer/PayerChargeFixeForm.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Entity/TypePaiement.php</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Resources/views/AutresRecettes/chargeFixe/index.html.twig</file>
+            <file>file:/home/crrs/html/GSP/manager/src/GSPBundle/Entity/ChargeFixe.php</file>
+        </group>
+    </open-files>
+</project-private>

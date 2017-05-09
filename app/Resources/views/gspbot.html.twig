@@ -1,0 +1,34 @@
+<div id="gspbot">
+    <div id="gspbot-overlay"></div>
+    <a id="gspbot-icon"><i class="fa fa-meh-o"></i></a>
+    <span id="gspbot-counter">23</span>
+    <div id="gspbot-alert-box">
+        <div id="gspbot-alert-box-content"></div>
+        <div id="gspbot-alert-box-buttons">
+            <a href="#" class="btn btn-primary btn-sm" id="gspbot-alert-btn-ok">oui</a>
+            <a href="#" class="btn btn-danger btn-sm" id="gspbot-alert-btn-cancel">Non</a>
+        </div>
+        <div id="triangle"></div>
+    </div>
+    <div id="gspbot-zone">
+        <div class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-section home">home</div>
+                <div class="navbar-section menu">
+                    <a href="#" data-toggle="dropdown">
+                        <span class="menu-text">Menu</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu option" id="gspbot-zone-menu"></ul>
+                </div>
+                <div class="navbar-section" id="gspbot-zone-close">
+                <a href="#" class="gspbot-zone-close"><i class="fa fa-minus"></i></a>
+                </div>                        
+            </div>
+        </div>
+        <div id="gspbot-zone-content"></div>
+    </div>
+    <audio id="gspbot-sound-beep">
+        <source src="{{ asset('bundles/gsp/gspbot/notification/beep.mp3') }}"></source>
+    </audio>
+</div>

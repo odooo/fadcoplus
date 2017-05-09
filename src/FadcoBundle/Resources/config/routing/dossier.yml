@@ -1,0 +1,35 @@
+archive_dossier:
+    path:     /
+    defaults: { _controller: "FadcoBundle:Dossier:index" }
+
+archive_dossier_show:
+    path:     /{id}/show
+    defaults: { _controller: "FadcoBundle:Dossier:show" }
+
+archive_dossier_new:
+    path:     /new
+    defaults: { _controller: "FadcoBundle:Dossier:new" }
+
+archive_dossier_create:
+    path:     /create
+    defaults: { _controller: "FadcoBundle:Dossier:create" }
+    methods:  POST
+
+archive_dossier_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FadcoBundle:Dossier:edit" }
+
+archive_dossier_update:
+    path:     /{id}/update
+    defaults: { _controller: "FadcoBundle:Dossier:update" }
+    methods:  [POST, PUT]
+
+archive_dossier_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FadcoBundle:Dossier:delete" }
+    methods:  [GET,POST, DELETE]
+
+archive_dossier_search:
+    path:     /search
+    defaults: { _controller: "FadcoBundle:Dossier:search" }
+    methods:  [POST, GET]

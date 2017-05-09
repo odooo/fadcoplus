@@ -1,0 +1,3 @@
+global_rewrite_url:
+    path: /generate/{url}/{date}/{extension}/data
+    defaults: { _controller: "FadcoBundle:RewriteUrl:dataUrl"}

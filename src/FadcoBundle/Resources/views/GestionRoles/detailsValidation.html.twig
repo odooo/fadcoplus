@@ -1,0 +1,13 @@
+<table class="table table-bordered table-striped">    
+    {% for name, value in entity %}
+    <tr>
+        <td style="width: 150px">{{ name }}</td>
+        <td>{{ value }}</td>
+    </tr>
+    {% endfor %}    
+</table>
+
+<div class="text-center">
+    <a href="{{ path('gsp_gestion_roles_approuver_validation', { 'id': validation.id }) }}" class="btn btn-success">Approuver</a>
+    <a href="{{ path('gsp_gestion_roles_rejeter_validation', { 'id': validation.id }) }}" class="btn btn-warning">Rejeter</a>
+</div>

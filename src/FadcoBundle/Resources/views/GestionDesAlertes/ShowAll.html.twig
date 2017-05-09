@@ -1,0 +1,81 @@
+{% extends "GSPBundle:Default:menu.html.twig" %}
+
+{% block content %}        
+  <div class="box box-primary">
+		<div class="box-header with-border">
+			<h1 class="box-title">Liste des notifications reçues</h1>
+			<div class="box-tools pull-right">
+				<button class="btn btn-box-tool" data-widget="collapse">
+					<i class="fa fa-minus"></i>
+				</button>
+			</div>
+		</div>
+		<div style="padding-left: 25%; padding-right: 25%" class="box-body">
+              {% for entity in alertes %}
+
+           <div class="panel panel-info">
+              <div {% if entity.EtatAlerte=='non lue' %} style=" background-color: #F5F5F5;" {% endif %} class="panel-body  table-responsive">
+                 
+                  <a  class="notification-lien" alerte-lu="{{ path('alertes_lu',{ 'id':entity.IdAlerte})}}" alerte-id="{{entity.IdAlerte}}" href="{{app.request.getBaseURL()~entity.LienAlerte }}">
+                    <div class='row'>
+                        
+                        <div class="col-md-2">
+                           <div class="alerte-image pull-left">
+                                  <!-- User Image -->
+                                 <img style=" width: 90px; height: 90px;" src=" {% if entity.Prestataire %}{% if  entity.Prestataire.photo is empty %} {{ asset('bundles/GSPBundle/images/avatar.png') }} {% else %} {{asset( entity.Prestataire.WebPhoto )}} {% endif %}{% endif %}" class="user-image img-circle" alt="User Image">
+                            </div>
+                         </div>
+                            
+                        <div class="col-md-10">
+                            <div style=" color: #000000">
+                                
+                                <p class="alerte-message" > <b><span class="alerte-username">{% if entity.Prestataire %}{{entity.Prestataire.nom|upper}}  {{entity.Prestataire.prenom }}{% endif %}</span></b>&nbsp;&nbsp;{{entity.MessageAlerte}}</p>
+                            </div>
+                            <p></p>
+                            <small class="alerte-moment"><i class="fa fa-clock-o"></i><span class='datenotification' annee='{{entity.DateAlerte|date('Y')}}' mois='{{entity.DateAlerte|date('m')}}' jour='{{entity.DateAlerte|date('d')}}' heure='{{entity.DateAlerte|date('H')}}' minute='{{entity.DateAlerte|date('i')}}' second='{{entity.DateAlerte|date('s')}}'></span></small>
+        
+                            {% if entity.etatAlerte == 'lu' or entity.etatAlerte == 'lue' %}
+                                <small class="btn btn-primary btn-xs">
+                                      <span>Lu</span>
+                                </small>
+                             {% else %}
+                                  <small class="btn btn-danger btn-xs">
+                                      <span>Non Lu</span>
+                                </small>
+                             {% endif %}
+                            
+                        </div>
+                        
+                  <!-- end message -->
+                    </div>
+                </a>
+                </div>          
+             </div>
+
+              {% endfor %}
+       
+  </div>
+</div>   
+          <!-- /.messages-menu -->
+          
+          <script>
+        $('.notification-lien').click(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        url : $(this).attr('alerte-lu'),
+                        type : 'GET',
+                        dataType : 'html',
+                        success : function(code_html, statut){
+                          
+                        },
+                        error : function(resultat, statut, erreur){
+                                
+                        }
+                      
+
+
+                     });  
+                     $(location).attr('href',$(this).attr('href'));    
+                });   
+    </script>
+  {% endblock %}  

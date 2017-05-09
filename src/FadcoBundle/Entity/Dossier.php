@@ -1,0 +1,230 @@
+<?php
+
+namespace FadcoBundle\Entity;
+
+
+/**
+ * Dossier
+ */
+class Dossier
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $nomDossier;
+
+    /**
+     * @var string
+     */
+    private $objet;
+
+    /**
+     * @var \DateTime
+     */
+    private $datEnregistrement;
+
+    /**
+     * @var string
+     */
+    private $localisationPhysique;
+
+    /**
+     * @var string
+     */
+    private $observations;
+
+    /**
+     * @var string
+     */
+    private $chemin;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nomDossier
+     *
+     * @param string $nomDossier
+     *
+     * @return Dossier
+     */
+    public function setNomDossier($nomDossier)
+    {
+        $this->nomDossier = $nomDossier;
+
+        return $this;
+    }
+
+    /**
+     * Get nomDossier
+     *
+     * @return string
+     */
+    public function getNomDossier()
+    {
+        return $this->nomDossier;
+    }
+
+    /**
+     * Set objet
+     *
+     * @param string $objet
+     *
+     * @return Dossier
+     */
+    public function setObjet($objet)
+    {
+        $this->objet = $objet;
+
+        return $this;
+    }
+
+    /**
+     * Get objet
+     *
+     * @return string
+     */
+    public function getObjet()
+    {
+        return $this->objet;
+    }
+
+    /**
+     * Set datEnregistrement
+     *
+     * @param \DateTime $datEnregistrement
+     *
+     * @return Dossier
+     */
+    public function setDatEnregistrement($datEnregistrement)
+    {
+        $this->datEnregistrement = $datEnregistrement;
+
+        return $this;
+    }
+
+    /**
+     * Get datEnregistrement
+     *
+     * @return \DateTime
+     */
+    public function getDatEnregistrement()
+    {
+        return $this->datEnregistrement;
+    }
+
+    /**
+     * Set localisationPhysique
+     *
+     * @param string $localisationPhysique
+     *
+     * @return Dossier
+     */
+    public function setLocalisationPhysique($localisationPhysique)
+    {
+        $this->localisationPhysique = $localisationPhysique;
+
+        return $this;
+    }
+
+    /**
+     * Get localisationPhysique
+     *
+     * @return string
+     */
+    public function getLocalisationPhysique()
+    {
+        return $this->localisationPhysique;
+    }
+
+    /**
+     * Set observations
+     *
+     * @param string $observations
+     *
+     * @return Dossier
+     */
+    public function setObservations($observations)
+    {
+        $this->observations = $observations;
+
+        return $this;
+    }
+
+    /**
+     * Get observations
+     *
+     * @return string
+     */
+    public function getObservations()
+    {
+        return $this->observations;
+    }
+
+    /**
+     * Set chemin
+     *
+     * @param string $chemin
+     *
+     * @return Dossier
+     */
+    public function setChemin($chemin)
+    {
+        $this->chemin = $chemin;
+
+        return $this;
+    }
+
+    /**
+     * Get chemin
+     *
+     * @return string
+     */
+    public function getChemin()
+    {
+        return $this->chemin;
+    }
+
+    /**
+     * @var \FadcoBundle\Entity\Prestataire
+     */
+    private $Prestataire;
+
+
+    /**
+     * Set prestataire
+     *
+     * @param \FadcoBundle\Entity\Prestataire $prestataire
+     *
+     * @return Dossier
+     */
+    public function setPrestataire(\FadcoBundle\Entity\Prestataire $prestataire = null)
+    {
+        $this->Prestataire = $prestataire;
+
+        return $this;
+    }
+
+    /**
+     * Get prestataire
+     *
+     * @return \FadcoBundle\Entity\Prestataire
+     */
+    public function getPrestataire()
+    {
+        return $this->Prestataire;
+    }
+}

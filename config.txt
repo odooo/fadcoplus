@@ -1,0 +1,5 @@
+crontab -e
+
+et ajouter la ligne suivante 
+
+*/5 * * * * /home/magan/Projects/GlobalService/manager/app/console gsp:sms-sender

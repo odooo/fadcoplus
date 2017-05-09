@@ -1,0 +1,95 @@
+{#<div class="col-lg-6">#}
+<section class="content">
+<div class="panel">
+    <div class="panel-heading">
+        <button type="button" class="close pull-right" data-dismiss="modal" aria-hidden="true"><b><i style="color: whitesmoke;" class="fa fa-close"></i></b>Fermer</button>
+        <center><h2>Modifier votre profile</h2></center>
+    </div>
+
+    <center>
+    <a href="{{ path('grh_prestataire_modifier_profile_photo') }}" class="btn btn-primary btn-modifier-photo" >Modifier photo</a>
+    <a href="{{ path("fos_user_profile_edit") }}" class="btn btn-info">Modifier nom d'utilisateur</a></center>
+</div>
+    </section>
+
+
+
+{#</div>#}
+
+
+<div id="reaffectation4" class="modal static" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <button type="button" class="close pull-right" data-dismiss="modal"><b><i style="color: whitesmoke;" class="fa fa-close"></i></b>Fermer</button>
+                        {#<h2>SUPPRESSION </h2>#}
+                    </div>
+                    <div class="panel-body">
+                        <form  id="form-reaffecter4"  action="" method="post" enctype="multipart/form-data">
+                            <span>&nbsp;</span>
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class="fa fa-edit"></i>Photo</label>
+
+                                <span class="btn btn-success btn-file">
+                                <label id="filespan">Choisir votre photo...</label>
+                                    <input type="file" name="files" class="form-control filename">
+                                 </span>
+                                {#<input type="text" id="nom" name="nom" required="true"#}
+                                {#placeholder="nom de la photo" class="form-control"/>#}
+                            </div>
+
+
+                            <center>
+                                <div class="input-group ">
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <span class="visible-xs"><i class="fa fa-save fa-2x"></i></span>
+                                        Envoyer
+                                    </button>
+                                </div>
+                            </center>
+
+                        </form>
+                        <span  style="display:none;" id="loading-reaffecter"> <center><img  src="{{ asset('bundles/GSPBundle/home-load.gif') }}" ></center></span>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+{#{{ include('GSPBundle:ModeleMessage:popups.html.twig') }}#}
+
+
+<script>
+    $('.btn-modifier-photo').click(function(e) {
+        e.preventDefault();
+//        $('#btn-modifier-photo').val($(this).attr('client'));
+        $('#form-reaffecter4').attr('action',$(this).attr('href'));
+
+        $('#reaffectation4').modal('show');
+    });
+
+    $(document).on('change', '.btn-file :file', function() {
+        var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+        console.log(numFiles);
+        $("#filespan").empty();
+        $("#filespan").append($("<label>")
+                .append(label)
+                .append($("</label>")));
+    });
+
+
+//    $("form[enctype='multipart/form-data'] input[type='file']").each(function(){
+//        $(this).attr("name",$(this).attr("name")+"[]");
+//    });
+</script>

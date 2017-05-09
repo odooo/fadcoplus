@@ -1,0 +1,44 @@
+        
+      <!-- Messages: style can be found in dropdown.less-->
+          
+          <li class="dropdown messages-menu ">
+            
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              {% if total >0 %}<span class="label label-danger">{{total}}</span>{% endif %}</a>
+            <ul class="dropdown-menu">
+              <li>
+                <!-- inner menu: contains the messages -->
+                <ul class="menu">
+               {% set cpt=1%}
+              {% for entity in alertes %}
+                {%  if cpt<=5 %}
+                  <li {% if entity.EtatAlerte=='non lue' %} style=" background-color: #F5F5F5;" {% endif %}><!-- start message -->
+                    <a class="alerte-lien" alerte-lu="{{ path('alertes_lu',{ 'id':entity.IdAlerte})}}" alerte-id="{{entity.IdAlerte}}" href="{{app.request.getBaseURL()~entity.LienAlerte }}">
+                      <div class="alerte-image pull-left">
+                        <!-- User Image -->
+                       <img style=" max-width: 100%; max-height: 100%;" src=" {% if entity.Prestataire  %} {% if entity.Prestataire.photo is empty %}{{ asset('bundles/GSPBundle/images/avatar.png') }} {% else %} {{asset( entity.Prestataire.WebPhoto )}} {% endif %}{% endif %}" class="user-image img-circle" alt="User Image">
+                      </div>
+                      <!-- Message title and timestamp -->
+                      <h4 class="alerte-titre">
+                          <span class="alerte-username">{% if entity.Prestataire %}{{entity.Prestataire.nom|upper}}  {{entity.Prestataire.prenom }}{% endif %}</span>
+                        <small class="alerte-moment"><i class="fa fa-clock-o"></i><span class='datenotification' annee='{{entity.DateAlerte|date('Y')}}' mois='{{entity.DateAlerte|date('m')}}' jour='{{entity.DateAlerte|date('d')}}' heure='{{entity.DateAlerte|date('H')}}' minute='{{entity.DateAlerte|date('i')}}' second='{{entity.DateAlerte|date('s')}}'></span></small>
+                      </h4>
+                      <!-- The message -->
+                      <p class="alerte-message" > {{entity.MessageAlerte}}</p>
+                    </a>
+                  </li>
+                  <!-- end message -->
+                  {% set cpt=cpt+1%}
+                  {% endif %}
+              {% endfor %}
+                </ul>
+                </li>
+              <li class="footer"> {% if totalalertes >3 %}<a href="{{ path('grh_alertes_show_all')}}">Voir toutes les notications</a>{% endif %}</li>
+            </ul>
+         
+            
+          </li>
+       
+          <!-- /.messages-menu -->
+    

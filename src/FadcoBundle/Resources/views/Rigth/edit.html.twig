@@ -1,0 +1,35 @@
+{% extends "GSPBundle:Default:menu.html.twig" %}
+{% block title %}Gestion des Zones{% endblock %}
+{% block contentHeader %}{% endblock %}
+{% block content %}
+	<div class="box box-primary">
+		<div class="box-header with-border">
+			<h1 class="box-title">Modification  Zones</h1>
+			<div class="box-tools pull-right">
+				<button class="btn btn-box-tool" data-widget="collapse">
+					<i class="fa fa-minus"></i>
+				</button>
+			</div>
+		</div>
+		
+		<div class="box-body">
+			<div class="form-group">
+			
+			
+				<div class="col-sm-20">
+				{{ form( edit_form) }}
+				{#{ form_label( form.libelle) }}
+				{{ form_widget( form.libelle,{'attr':{'class':"form-control"}}) }#}
+				</div>
+			</div>
+		</div>
+		<div class="box-footer">
+		
+		<a href="{{ path('admin_direction') }}"><button type="button" class="btn btn-warning">Retour</button></a>
+		
+		
+		
+		</div>
+		
+	</div>
+{% endblock %}

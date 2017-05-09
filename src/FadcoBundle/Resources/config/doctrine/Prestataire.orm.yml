@@ -1,0 +1,78 @@
+FadcoBundle\Entity\Prestataire: 
+    type: entity
+    repositoryClass: FadcoBundle\Repository\PrestataireRepository
+    tableName: Prestataire
+    id: 
+        id: 
+            type: integer
+            nullable: false
+            unique: true
+            generator: 
+                strategy: AUTO
+    manyToOne:      
+        agence: 
+            targetEntity: Agence
+            nullable: true
+            joinColumn: 
+                name: agence_id
+                referencedColumnName: id
+
+
+    manyToMany:
+        rigths:
+            targetEntity: FadcoBundle\Entity\Rigth
+
+
+    fields: 
+        nom: 
+            type: string
+            length: 50
+            nullable: true
+        prenom: 
+            type: string
+            length: 50
+            nullable: true
+        date: 
+            type: date
+            nullable: true
+        type: 
+            type: string
+            length: 50
+            nullable: true
+        ville: 
+            type: string
+            length: 50
+            nullable: true
+        photo: 
+            type: string
+            length: 50
+            nullable: true
+        contact:
+            type: string
+            length: 32
+            nullable: true
+        applauseCount:
+            type: integer
+            nullable: true
+            options:
+                default: 0
+        plainPassword:
+            type: string
+            length: 255
+            nullable: true
+
+        sessionToken:
+            type: string
+            length: 255
+            nullable: true
+        sessionTokenExpireAt:
+            type: datetime
+            nullable: true
+
+    lifecycleCallbacks:
+#        prePersist: [ preUpload ]
+#        preUpdate: [ preUpload ]
+#        postPersist: [ upload ]
+#        postUpdate: [ upload ]
+#        preRemove: [ preRemoveUpload ]
+#        postRemove:  [ removeUpload ]

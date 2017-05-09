@@ -1,0 +1,239 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    adresse_websocket: 127.0.0.1
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     manager
+    database_user:     root
+    database_password: 
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host: box727.bluehost.com
+    mailer_user:       ~
+    mailer_password:   ~
+
+    # Les contacts
+    archiviste_numero : [""]
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            SecretIsSoEasyToHackActiveREMEMBERME
+
+    pieces_path: '%kernel.root_dir%/../web/uploads/pieces'
+
+    upload.piece_dossier_juriste: %kernel.root_dir%/../web/uploads/pieces-dossier-juriste
+
+    jwt_private_key_path: %kernel.root_dir%/var/jwt/private.pem   # ssh private key path
+    jwt_public_key_path:  %kernel.root_dir%/var/jwt/public.pem    # ssh public key path
+    jwt_key_pass_phrase:  'manager-app'                           # ssh key pass phrase
+    jwt_token_ttl:        30758400
+
+    smsgo.sender_id: GSP
+    
+    smsgo.sender: smsgo.sms_logger
+    smsgo.sender: gsp.sms.oceanic_sms_api
+    smsgo.sender: gsp.sms.mysmsapps_api
+
+    mysmsapps_apikey: ulVeXiWOamOIzxhEfQhX7d881
+
+    oceanicsms_api: 14265
+    oceanicsms_user: CENTREJPR
+    oceanicsms_password: centrejpr2016
+
+    adresse_websocket: 127.0.0.1
+
+    sms_variables:
+        nom_client: 
+            auto: true
+            label: Nom du client
+        nom_prestataire: 
+            auto: true
+            label: Nom du prestataire
+        numero_requete: 
+            auto: true
+            label: Numéro de la requete
+        numero_affectation: 
+            auto: true
+            label: Numéro de l'affectation
+        numero_interaction: 
+            auto: true
+            label: Numéro de l'interaction
+        code_bien: 
+            auto: false
+            label: Code du bien
+        prix_bien:
+            auto: false
+            label: Prix du bien
+        zone_bien:
+            auto: false
+            label: Localité du bien
+        date_paiement:
+            auto: false
+            label: Date de paiement
+            
+
+    fiche_variables:
+        structure_gsp:
+            label: Structure bénéficiaire
+            default: Global Service Plus
+        titre_beneficiaire:
+            label: Titre du bénéficiaire
+            default: Directeur Général
+        numero_gsp:
+            label: Numéro GSP
+        email_gsp:
+            label: Adresse e-mail GSP
+        nom_dg_gsp:
+            label: Nom du DG
+        numero_piece_id_dg:
+            label: Numéro pièce d'identité du DG
+        lieu_delivrance_id_dg:
+            label: Préfecture de délivrance de la pièce  d'identité du DG
+        telephone_dg:
+            label: Contact du DG GSP
+
+       # Variables concernant les comparutions
+        comparution_global:
+            label: Comparution Global
+        comparution_client:
+            label: Comparution du client
+
+       # Variables concernant un client
+        nom_client:
+            label: Nom du client
+        maison_client:
+            label: Maison du client
+        nationalite_client:
+            label: Nationalité du client
+        type_piece_id_client:
+            label: Type pièce d'identité du client
+        numero_piece_id_client:
+            label: Numéro pièce d'identité du client
+        expiration_piece_id_client:
+            label: Date d'expiration pièce d'identité du client
+        lieu_delivrance_id_client:
+            label: Préfecture de délivrance de la pièce  d'identité du client
+        telephone_client:
+            label: Contact du client
+
+       # Variables concernant un acheteur
+        nom_acheteur:
+            label: Nom de l'acheteur
+        maison_acheteur:
+            label: Maison de l'acheteur
+        nationalite_acheteur:
+            label: Nationalité de l'acheteur
+        type_piece_id_acheteur:
+            label: Type pièce d'identité de l'acheteur
+        numero_piece_id_acheteur:
+            label: Numéro pièce d'identité de l'acheteur
+        expiration_piece_id_acheteur:
+            label: Date d'expiration pièce d'identité de l'acheteur
+        telephone_acheteur:
+            label: Téléphone de l'acheteur
+
+       # Variables concernant un vendeur
+        nom_vendeur:
+            label: Nom du vendeur
+        maison_vendeur:
+            label: Maison du vendeur
+        nationalite_vendeur:
+            label: Nationalité du vendeur
+        type_piece_id_vendeur:
+            label: Type pièce d'identité du vendeur
+        numero_piece_id_vendeur:
+            label: Numéro pièce d'identité du vendeur
+        expiration_piece_id_vendeur:
+            label: Date d'expiration pièce d'identité du vendeur
+        telephone_vendeur:
+            label: Téléphone du vendeur
+        lieu_delivrance_id_vendeur:
+            label: Préfecture de délivrance de la pièce  d'identité du vendeur
+
+        accompte:
+            label: Accompte payé
+        nombre_versement_client:
+            label: Nombre de versement du client
+        mensualite_client:
+            label: Mensualité à payer par le client
+        date_premier_versement_client:
+            label: Date du premier versement du client
+
+       # Variables concernant un investisseur
+        civilite:
+            label: Civilité
+        nom_investisseur:
+            label: Nom de l'investisseur
+        nationalite_investisseur:
+            label: Nationalité de l'investisseur
+        maison_investisseur:
+            label: Maison de l'investisseur
+        montant_investisseur:
+            label: Somme totale à payer à l'investisseur
+        nombre_paiement_investisseur:
+            label: Nombre de paiement de l'investisseur
+        mensualite_investisseur:
+            label: Mensualité à payer à l'investisseur
+        jour_paiement_periodique:
+            label: Le jour de paiement périodique
+        date_premier_paiement_investisseur:
+            label: Date du premier paiement de l'investisseur
+        numero_piece_id_investisseur:
+            label: Numéro pièce d'identité de l'investisseur
+        expiration_piece_id_investisseur:
+            label: Date d'expiration pièce d'identité de l'investisseur
+        lieu_delivrance_id_investisseur:
+            label: Préfecture de délivrance de la pièce  d'identité de l'investisseur
+        telephone_investisseur:
+            label: Contact de l'investisseur
+
+       # Variables concernant un bien
+        prix_bien:
+            label: Prix du bien
+        description_bien:
+            label: Description du bien
+        localisation_bien:
+            label: Localisation du bien
+
+        date_creation_document:
+            label: Date création du document
+        nombre_page:
+            label: Nombre de page du document
+            default: deux (02)
+        nombre_exemplaire:
+            label: Nombre d'exemplaires
+            default: trois (03)
+        agence:
+            label: agence
+
+        # variables concernant le notaire
+        maitre_notaire:
+            label: Le nom du maître notaire
+        lieu_cabinet_maitre_notaire:
+            label: Cabinet du notaire
+
+        #variables rapport qualite global
+        nombre_agents:
+            label: 'Nombre d''agents'
+        nombre_clients:
+            label: 'Nombre de clients'
+        mois_rapport:
+            label: 'Mois du rapport'
+        periode_rapport:
+            label: 'Période couverte par le rapport'
+        nombre_agences:
+            label: 'Nombre d''agence'
+        taux:
+            label: 'Taux'
+        note:
+            label: 'Note'
+        nombre_plaintes:
+            label: 'Nombre de plaintes'
+        mois_comparaison:
+            label: 'Mois comparatif'
+        nombre_mois:
+            label: 'Nombre de mois'
+numero_point_focal: ["635948845","635948845"]

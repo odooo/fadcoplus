@@ -1,0 +1,8 @@
+services:
+
+    fadco.namer.uploaded_file:
+        class: FadcoBundle\Namer\UploadedFileNamer
+
+    fadco.generator.code:
+        class: FadcoBundle\Generator\CodeGenerator
+        arguments: ['@doctrine.orm.entity_manager']

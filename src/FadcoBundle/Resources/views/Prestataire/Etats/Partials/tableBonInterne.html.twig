@@ -1,0 +1,33 @@
+<div class="table-responsive mailbox-messages">
+    {% if true %}
+
+        <table class="table table-bordered table-hover table-striped" id="bonInt">
+            <thead>
+            <tr>
+                <th>Numero</th>
+                <th>Type de bon</th>
+                <th>Date emission</th>
+                <th> type destinataire</th>
+                <th>Direction</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for bon in bons %}
+                <tr>
+                    <td>{{ bon.numero }}</td>
+                    <td>{{ bon.typeBon }}</td>
+                    <td>{{ bon.dateEmission|date('d/m/Y') }}</td>
+                    <td>{{ bon.typeDestinataire }}</td>
+                    <td>{{ bon.destinataireDir.libelleDir }}</td>
+                    <td><button id="detail" data-id="{{ bon.id }}" onclick="getDetail(this)">detail</button></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- /.table -->
+    {% else %}
+
+    {% endif %}
+</div>

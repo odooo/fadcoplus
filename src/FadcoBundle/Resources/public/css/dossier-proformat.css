@@ -1,0 +1,43 @@
+/*-----------------About table------------------------*/
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.special-select{
+    width: 150px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    border: none;
+}
+
+.injectContent{
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+.special-span {
+    font-weight: bold;
+    border-bottom: 1px dotted red;
+}
+
+.special-input {
+    width: 300px;
+    border: none;
+}
+
+.big-editable {
+    border-bottom: 1px dotted red;
+}
+
+.verification-autorite {
+    position: relative;
+    width: auto;
+}
+
+.verification-autorite .remove {
+    position: absolute;    
+    right: 0;
+    color: #ff0000;
+}

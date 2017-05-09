@@ -1,0 +1,9 @@
+fadco_datable_ajax_user_paginate:
+    path:   /me/pagination/{id}
+    defaults:
+        _controller: FadcoBundle:DataTable/DataTable/Ajax/DataTableAjax:userPaginate
+
+fadco_datable_ajax_delete_frais:
+    path: /me/autres/frais/{id}/delete/vente/{vente}
+    defaults:
+        _controller: FadcoBundle:DataTable/DataTable/Ajax/DataTableAjax:deleteAutresFrais

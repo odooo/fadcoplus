@@ -1,0 +1,52 @@
+.todo-tabs > a {
+	display: inline-block;
+	position: relative;
+	width: 49.525%;
+	margin: 0px;
+	padding: 15px;
+	background-color: #fcfcfc;
+	border-bottom: 2px solid #e7e7e7;
+}
+
+.todo-tabs > a.active {
+	background-color: transparent;
+	border-bottom: 0px;
+}
+
+.todo-tabs .tab-count {
+	position: absolute;
+	right: 10px;
+}
+
+.todo-tabs .tab-count:before {
+	content: "( "
+}
+
+.todo-tabs .tab-count:after {
+	content: " )"
+}
+
+.todo {
+	padding: 15px;
+	border-bottom: 1px solid #e7e7e7;	
+}
+
+.todo .title {
+	position: relative;
+	margin: 0;
+	font-size: 1.5em;
+}
+
+.todo .title .fa {
+	position: absolute;
+	right: 0;
+}
+
+.todo p {
+	margin: 0;
+}
+
+.todo .description {
+	margin-top: 10px;	
+	margin-bottom: 10px;
+}

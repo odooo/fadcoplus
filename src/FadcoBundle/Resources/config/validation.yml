@@ -1,0 +1,20 @@
+
+FadcoBundle\Entity\Prestataire:
+    properties:
+        file:
+            - File:
+                maxSize: 10M
+        #typeprestataire:
+           # - FadcoBundle\Validator\AntiDoublonDG: ~
+
+FadcoBundle\Entity\Piece:
+    properties:
+        file:
+            - File:
+                maxSize: 200M
+
+FadcoBundle\Entity\Dossier:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+            fields: nomDossier
+            message: 'Ce nom de dossier existe déjà '

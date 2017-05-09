@@ -1,0 +1,17 @@
+{% extends "GSPBundle:IndicateurPerformance:layout.html.twig" %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import countbox %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import countbox2 %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import countbox3 %}
+{% from 'GSPBundle:IndicateurPerformance:macros.html.twig' import chartbox %}
+
+{% block title %}Performance de la DAI{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {{ countbox('Biens pris en charge sur solicitation des propriétaires', nbBienProvisoire, 'bg-green', 'fa-home') }}
+        {{ countbox('Biens pris en charge par recherche sur demande du commerciale', nbRequeteBienPriseEnCharge, 'bg-blue', 'fa-home') }}
+        {{ countbox('Biens pris en charge par recherche stratégique', nbBienStrategique, 'bg-orange', 'fa-home') }}
+        {{ countbox('Biens validés', nbreBiensValides, 'bg-yellow', 'fa-home') }}
+        {{ countbox('Nombre de contrats signés', nombreContratSigne, 'bg-green', 'fa-users') }}
+    </div>
+{% endblock %}

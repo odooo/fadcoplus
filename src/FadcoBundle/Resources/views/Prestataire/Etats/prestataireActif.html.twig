@@ -1,0 +1,83 @@
+{% extends "GSPBundle:Default:menu.html.twig" %}
+{% block title %}Etat de tous les prestataires actifs{% endblock %}
+{% block contentHeader %}{% endblock %}
+{% block content %}
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Les prestataires actifs </h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+
+                <div class="table-responsive mailbox-messages">
+                    {% if true %}
+
+                        <table class="table table-bordered table-hover table-striped" id="listprestataire">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Contact</th>
+                            <th>Ville</th>
+                            <th>Poste</th>
+                            <th>Service</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% set prestaCount = 0 %}{# Sets variable #}
+                        {% for prestataire in prestataires %}
+                            {% set prestaCount = prestaCount + 1 %}
+                            <tr>
+                                <td>{{prestaCount }}</td>
+                                <td>{{ prestataire.nom ~ " "~ prestataire.prenom}}</td>
+                                <td>{{ prestataire.contact }}</td>
+                                <td>{{prestataire.ville  }}</td>
+                                <td>{{ prestataire.poste }}</td>
+                                <td>{% if prestataire.Service ==null %} Aucun {% else %} {{ prestataire.Service.libelleSev }}{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                        <!-- /.table -->
+                    {% else %}
+                        {{ dump(prestataires) }}
+                    {% endif %}
+                </div>
+                <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer no-padding">
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascript %}
+    {{parent()}}
+    <script src="{{asset('bundles/GSPBundle/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+    <script src="{{asset('bundles/GSPBundle/plugins/datepicker/locales/bootstrap-datepicker.fr.js')}}"></script>
+
+    <script src="{{asset('bundles/GSPBundle/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('bundles/GSPBundle/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script>
+
+        $(function () {
+
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                language: 'fr'
+            });
+            $('#listprestataire').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": true,
+                "language": { "paginate": { "previous": "Précédent", "next": "Suivant" }, "search": "<i class='fa fa-search'></i> Rechercher: ",
+                    "emptyTable": "Pas de données à afficher", "zeroRecords": "Aucune correspondance trouvée." }
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% if boncj is defined %}
+<div class="table-responsive mailbox-messages">
+    <table>
+        <tr>
+            <td>Prestataire :</td><td>{{boncj.prestataire.nom ~ "" ~ boncj.prestataire.prenom }}</td>
+        </tr>
+        <tr>
+            <td>Editeur :</td> <td>{{ boncj.Editeur.nom ~ "" ~ boncj.Editeur.prenom}}</td>
+        </tr>
+        <tr>
+            <td>Date :</td><td>{{boncj.dateBdcjournalier|date('d/m/Y')  }}</td>
+        </tr>
+        <tr>
+            <td>Date de transmission :</td><td>{{boncj.datetransBdcjournalier|date('d/m/Y')  }}</td>
+        </tr>
+        <tr>
+            <td>Mission:</td>
+            <td>
+                {% for mission in boncj.missionsBdcjournalier %}
+                    <ul>
+                        <li>Designation :{{ mission.designationMissjournaliere  }}</li>
+                        <li>Heure de livraison :{{ mission.heuredelivraisonMissjournaliere|date('d/m/Y') }}</li>
+                        <li> Temps d'execution :{{ mission.tempsdexecutionMissjournaliere }}</li>
+                        <li> Etat :{{ mission.etatdexecutionMissjournaliere }}</li>
+                        <li> Rapport :{{ mission.rapportMissjournaliere }}</li>
+                    </ul>
+                    {% endfor %}
+            </td>
+        </tr>
+    </table>
+</div>
+{% elseif bonI %}
+    <div class="table-responsive mailbox-messages">
+
+    </div>
+{% else %}
+    <div class="table-responsive mailbox-messages">
+
+    </div>
+{% endif %}

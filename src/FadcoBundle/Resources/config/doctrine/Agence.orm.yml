@@ -1,0 +1,18 @@
+FadcoBundle\Entity\Agence:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        libelle:
+            type: string
+            length: 255
+        adresse:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }

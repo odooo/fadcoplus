@@ -1,0 +1,23 @@
+.to-hide {
+    display: none;
+}
+
+.label {
+    border: none;
+}
+
+.table-responsive{
+    overflow: hidden;
+}
+
+.dataTables_paginate{
+    display: none;
+}
+
+.dataTables_filter{
+    display: none;
+}
+
+footer {
+    display: none;
+}

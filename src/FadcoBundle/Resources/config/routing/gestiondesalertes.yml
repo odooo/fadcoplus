@@ -1,0 +1,9 @@
+alertes_lu:
+    path:     /{id}/lu
+    defaults: { _controller: "FadcoBundle:GestionDesAlertes:lu" }
+alertes_raflaichir:
+    path:     /{id}/raflaichir
+    defaults: { _controller: "FadcoBundle:GestionDesAlertes:raflaichir" }
+grh_alertes_show_all:
+    path:     /ShowAll
+    defaults: { _controller: "FadcoBundle:GestionDesAlertes:ShowAll" }

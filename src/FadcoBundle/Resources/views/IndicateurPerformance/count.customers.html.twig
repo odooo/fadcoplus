@@ -1,0 +1,10 @@
+{% set nb = 0 %}
+{#{{ dump(entities) }}#}
+{% for entity in entities %}
+    {% set nb =  nb + 1 %}
+{% endfor %}
+{% if nb > 0 %}
+    <span class='badge label-danger'>
+            {{ nb }}
+    </span>
+{% endif %}

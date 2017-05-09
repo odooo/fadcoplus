@@ -1,0 +1,49 @@
+FadcoBundle\Entity\MailsEnvoyes:
+    type: entity
+    table: null
+    repositoryClass: FadcoBundle\Entity\MailsEnvoyesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        prestataire:
+            targetEntity: FadcoBundle\Entity\Prestataire
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumn:
+                nullable: true
+            joinColumns:
+                expediteur_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    fields:
+        destinataire:
+            type: text
+            nullable: true
+        fichier:
+            type: text
+            nullable: true
+        mailId:
+            type: integer
+        mailFrom:
+            type: text
+        objet:
+            type: string
+            length: 255
+        contenuHTML:
+            type: text
+        flag:
+            type: string
+            length: 100
+        state:
+            type: integer
+        date:
+            type: datetime
+        userEmail:
+            type: string
+    lifecycleCallbacks: {  }

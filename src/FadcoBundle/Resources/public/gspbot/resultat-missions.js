@@ -1,0 +1,4 @@
+!function($, GspBot) {
+    
+
+}(jQuery, GspBot)

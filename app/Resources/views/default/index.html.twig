@@ -1,0 +1,80 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    <body class="hold-transition login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <a href={{ path("fos_user_security_login") }}><b>FADCO+</b></a>
+            </div><!-- /.login-logo -->
+            <div class="login-box-body">
+                <center><img src="{{ asset('bundles/FadcoBundle/dist/img/avatar04.png')}}" alt="Avatar"  class="img-circle" width="150" height="150"/> </center>
+                <p class="login-box-msg"><br/>CONNEXION</p>
+
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+
+                    {% if error %}
+                        <div class="alert alert-danger">  
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">Fermer</button>
+                            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        </div>
+                    {% endif %}
+
+                    <div class="form-group has-feedback">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        <input type="text" class="form-control" placeholder="Identifiant" name="_username" required="required"/>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Mot de Passe " />
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <div class="checkbox icheck">
+                                <label>
+                                    <input type="checkbox" value="on">
+                                    Se Souvenir de Moi
+                                </label>
+                            </div>
+                        </div><!-- /.col -->
+                        <div class="col-xs-4">
+
+                            <input type="submit" id="_submit" class="btn btn-primary btn-block btn-flat" name="_submit" value="Connecter" />
+                        </div><!-- /.col -->
+                    </div>
+                </form>
+
+                <a href={{ path("fos_user_resetting_request") }}> Mot de Passe oublié </a><br>
+
+                <div class="social-auth-links text-center">
+                    <p>- FADCO+ -</p>
+                    {#<a href="#" class="btn btn-block btn-social btn-facebook btn-flat"> Fondation Global Services Plus </a>
+                    <a href="#" class="btn btn-block btn-social btn-google btn-flat"> Centre Jesus Pour reussir</a>#}
+                </div><!-- /.social-auth-links -->
+
+            </div><!-- /.login-box-body -->
+        </div><!-- /.login-box -->
+
+        <!-- jQuery 2.1.4 -->
+        <script src="{{asset('/bundles/FadcoBundle/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="{{asset('/bundles/FadcoBundle/bootstrap/js/bootstrap.min.js')}}"></script>
+        <!-- iCheck -->
+        <script src="{{asset('/bundles/FadcoBundle/plugins/iCheck/icheck.min.js')}}"></script>
+        <script>
+            $(function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue',
+                    increaseArea: '20%' // optional
+                });
+            });
+        </script>
+    </body>
+
+{% endblock fos_user_content %}

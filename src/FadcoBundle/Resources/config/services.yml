@@ -1,0 +1,86 @@
+#services:
+#    fadco.example:
+#        class: FadcoBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+services:
+    fadco:
+        class: FadcoBundle\Services\Fadco
+        arguments: ['@doctrine.orm.entity_manager', '@security.token_storage']
+
+    fadco.menu_counters:
+        class: FadcoBundle\Services\MenuCounters
+        arguments: ['@doctrine.orm.entity_manager', '@security.token_storage']
+
+    sms:
+        class: FadcoBundle\Services\ServiceSms
+        arguments: ['@doctrine.orm.entity_manager']
+
+    fadco.rewriteurl:
+        class: FadcoBundle\Controller\RewriteUrlController
+#        public: false
+#        tags:
+#            - { name: twig.extension }
+
+    fadco.service_data_secure:
+        class: FadcoBundle\Services\Datasecure
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    fadco.mailer:
+        class: FadcoBundle\Services\Mailer
+        arguments: [@mailer,@templating]
+
+    fadco.tinymce_fiche_variables_extension:
+        class: FadcoBundle\Twig\Extension\TinyMceFicheVariableExtension
+        arguments: ['@service_container']
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    fadco.isgrantedrole_extension:
+            class: FadcoBundle\Twig\Extension\IsGrantedRoleExtension
+            arguments: ['@security.role_hierarchy']
+            public: false
+            tags:
+                - { name: twig.extension }
+
+    fadco.isgrantedrole:
+            class: FadcoBundle\Services\IsGrantedRoleService
+            arguments: ['@security.role_hierarchy']
+
+    fadco.sms_renderer:
+        class: FadcoBundle\Services\SmsRenderer
+        arguments: ['@twig']
+
+    fadco.sms.oceanic_sms_api:
+        class: FadcoBundle\Services\OceanicSms
+        calls:
+            - [setContainer, ['@service_container']]
+
+    fadco.currency_adapter.yahoo:
+        class: FadcoBundle\Adapter\Currency\YahooCurrencyAdapter
+        arguments:
+            - '%lexik_currency.currencies.default%'
+            - '%lexik_currency.currencies.managed%'
+            - '%lexik_currency.currency_class%'
+        tags:
+            - { name: lexik_currency.adapter, alias: yahoo_currency_adapter }
+
+    fadco.indicateur_performance:
+        class: FadcoBundle\Services\IndicateurPerformance
+        arguments: ['@doctrine.orm.entity_manager', '@request_stack']
+
+    fadco.chart_creator:
+        class: FadcoBundle\Services\ChartCreator
+
+    fadco.sms_engin:
+        class: FadcoBundle\Service\Services
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    fadco.autorites.sms.sender:
+        class: FadcoBundle\Services\AutoritesSmsSender
+        arguments: ["@doctrine.orm.entity_manager", "@sms" ]
+
+parameters:
+    numero_point_focal: ['97485193*/*/*/']

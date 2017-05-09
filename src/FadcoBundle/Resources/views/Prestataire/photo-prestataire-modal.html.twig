@@ -1,0 +1,69 @@
+{% set modalId = 'pieces-prestataire-modal' %}
+
+{% extends 'GSPBundle:Default:popup.html.twig' %}
+
+{% block title %}Ajouter des pièces jointes{% endblock %}
+
+{% block content %}
+    <form method="post" action="" class="files-form-piece" enctype="multipart/form-data">
+        {#<div class="row">#}
+            {#<div class="col-sm-12">#}
+                {#<div class="form-group">#}
+                    {#<label class="control-label filename" for="filename">Plan du bien</label>#}
+                    {#<input type="hidden" name="filenames[]" value="Plan du bien" class="form-control">#}
+                    {#<input type="file" name="files[]" id="file1" class="form-control">#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+
+
+
+    </form>
+
+    <div id="toutCeQueJeVeux"  class="row" style="display:none">
+        <div class="col-sm-5">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <p>
+                            <label for="filenames[]">Choisisser le nom de la pièce ?</label><br />
+                            <select name="filenames[]" class="form-control">
+
+                            </select>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6" style="margin-left: -10px;">
+            <div class="form-group">
+                <label class="control-label" >Pièce jointe</label>
+                <input type="file" name="files[]" class="form-control filename">
+            </div>
+        </div>
+        <div class="col-sm-1" style="margin-left: -10px;">
+            <label>&nbsp;</label>
+            <button type="button" class="btn btn-primary btn-remove" style="padding: 8px 12px;"><i class="fa fa-remove"></i></button>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}
+
+    <button class="btn btn-primary btn-add-file-piece">Ajouter une pièce</button>
+    <button class="btn btn-success btn-do-transfer-piece">Envoyer</button>
+
+    {{ parent() }}
+
+    {#<script>#}
+    {#!function($) {#}
+
+    {##}
+
+    {#}(jQuery)#}
+
+    {#</script>#}
+{% endblock %}

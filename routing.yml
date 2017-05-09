@@ -1,0 +1,24 @@
+utilisateurs_admin:
+    resource: "@UtilisateursBundle/Resources/config/routing/utilisateurs.yml"
+    prefix:   /admin
+
+utilisateurs_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: UtilisateursBundle:Default:index }
+utilisateurs_home:
+    path:     /dashbord
+    defaults: { _controller: UtilisateursBundle:Default:dashbord }
+utilisateurs_vente:
+    path:     /vente
+    defaults: { _controller: UtilisateursBundle:Default:vente }
+utilisateurs_sav:
+    path:     /sav
+    defaults: { _controller: UtilisateursBundle:Default:sav }
+utilisateurs_archive:
+    path:     /archive
+    defaults: { _controller: UtilisateursBundle:Default:archive }
+utilisateurs_grh:
+    path:     /grh
+    defaults: { _controller: UtilisateursBundle:Default:grh }
+
+

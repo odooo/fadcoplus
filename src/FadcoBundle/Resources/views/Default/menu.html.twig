@@ -1,0 +1,46 @@
+{% extends "::template.html.twig" %}
+
+{% block stylesheet %} 
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/FadcoBundle/plugins/select2/select2.min.css') }}"/>
+{% endblock %}
+{# Le block à gauche #}
+{% block sidebar %}
+    <ul class="sidebar-menu">
+
+            <li class="header">GESTION DES RH</li>
+
+            <li><a href="{{ path('grh_bondecommande_rapportlu') }}"><i class="fa fa-check-circle"></i>RAPPORTS LUS</a>
+            </li>
+            <li ><a href="{{ path('gsp_messages_bot_index') }}"><i class="glyphicon glyphicon-comment"></i>
+                    <span>ALERTE</span></a>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-user"></i> <span>PRESTATAIRES</span> <i
+                            class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ path('grh_prestataire') }}">Liste</a></li>
+
+                    <li><a href="{{ path('grh_prestataire_new',{ 'id': null }) }}">Ajouter</a></li>
+
+                    {% if is_granted("ROLE_SUPER_ADMIN") %}
+
+                        <li><a href="{{ path('rigth') }}">Droits</a></li>
+
+                    {% endif %}
+
+                </ul>
+            </li>
+
+        <li class="header">GESTION DES NOTES</li>
+        <li>
+            <a href="{{ path('gsp_task_index') }}"><i class="fa fa-link"></i> 
+                <span>Mes notes</span>
+            </a>
+        </li>
+
+        {% if 'indicateur-performance' in app.request.uri %}
+            {% include 'FadcoBundle:IndicateurPerformance:menu.html.twig' %}
+        {% endif %}
+    </ul>
+{% endblock %}

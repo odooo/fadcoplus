@@ -1,0 +1,90 @@
+{% extends "::dash.html.twig" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <style type="text/css">
+        .dashboard {
+            margin: 10px;
+        }
+
+        .dashboard:after {
+            display: table;
+            content: "";
+            clear: both;
+        }
+
+        .dashboard .small-box {
+            position: relative;
+            float: left;
+            margin: 10px;
+            width: 180px;
+            height: 120px;
+        }
+
+        .dashboard .small-box .count {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 1.3em;
+        }
+
+        .dashboard .small-box .title {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            line-height: 1.5;
+            vertical-align: middle;
+            text-align: center;
+            font-weight: 400;
+            font-size: 1.2em;
+        }
+
+        .dashboard .small-box a {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;         
+        }        
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    {% 
+        set dashboardMenus = [
+            {title: 'Indicateurs de performances', icon: 'ion-stats-bars', route: 'fadco_indicateur_performance', color: 'bg-green'},
+    ]
+    %}
+
+
+    <div class="dashboard">
+        {% for menu in dashboardMenus %}
+
+            {% if (menu.roles is defined and is_granted(menu.roles)) or menu.roles is not defined %}
+                <div class="small-box {{ menu.color }}">
+                    <div class="inner">
+                        <span class="count">{{ loop.index }}</span>
+                        <h2 class="title">{{ menu.title }}</h2>
+                    </div>
+                    <div class="icon">
+                        <i class="ion {{ menu.icon }}"></i>
+                    </div>
+                    <a {% if menu.target is defined %} target="{{menu.target}}"{% endif %} href="{{ path(menu.route) }}" data-route="{{ menu.route }}" 
+                       class="small-box-footer getAuth">
+                        Cliquer ici <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            {% endif %}
+            
+        {% endfor %}
+    </div>
+
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    {% javascripts '@FadcoBundle/Resources/public/js/mails/mails-box.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+        
+        

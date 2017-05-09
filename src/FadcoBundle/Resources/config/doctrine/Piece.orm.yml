@@ -1,0 +1,46 @@
+FadcoBundle\Entity\Piece:
+    type: entity
+    repositoryClass: FadcoBundle\Repository\PieceRepository
+    tableName: Piece
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToOne:
+        Dossier:
+            targetEntity: Dossier
+            nullable: false
+            joinColumn:
+                name: id
+                referencedColumnName: id
+    fields:
+        libelle:
+            type: text
+        coche:
+            type: string
+            length: 50
+        infosPiece:
+            type: string
+            length: 50
+        nomGenerique:
+            type: text
+        chemin:
+            type: text
+            nullable: true
+        date:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks:
+        prePersist:
+            - preUpload
+        preUpdate:
+            - preUpload
+        postPersist:
+            - upload
+        postUpdate:
+            - upload
+        preRemove:
+            - preRemoveUpload
+        postRemove:
+            - removeUpload

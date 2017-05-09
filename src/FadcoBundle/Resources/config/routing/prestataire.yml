@@ -1,0 +1,106 @@
+grh_prestataire:
+    path:     /
+    defaults: { _controller: "GSPBundle:Prestataire:index" }
+
+grh_prestataire_voir:
+    path:     /{id}/voir
+    defaults: { _controller: "GSPBundle:Prestataire:voir" }
+
+grh_prestataire_active:
+    path:     /{id}/active
+    defaults: { _controller: "GSPBundle:Prestataire:active" }
+
+grh_prestataire_desactive:
+    path:     /{id}/desactive
+    defaults: { _controller: "GSPBundle:Prestataire:desactive" }
+
+grh_prestataire_show:
+    path:      /show
+    defaults: { _controller: "GSPBundle:Prestataire:show" }
+
+grh_prestataire_edit:
+    path:     /edit
+    defaults: { _controller: "GSPBundle:Prestataire:edit" }
+    
+grh_prestataire_change_password:
+    path:   /change/password
+    defaults: { _controller: "GSPBundle:Prestataire:changePassword" }
+    
+grh_prestataire_change:
+    path:   /change
+    defaults: { _controller: "GSPBundle:Prestataire:change" }
+    
+#grh_user_new:
+#    path:     /new
+#    defaults: { _controller: "GSPBundle:Registration:register" }
+
+grh_prestataire_new:
+    path:     /new/{id}
+    defaults: { _controller: "GSPBundle:Prestataire:edit", id = null }
+
+grh_prestataire_update:
+    path:     /update/{id}
+    defaults: { _controller: "GSPBundle:Prestataire:update", id = null }
+    methods: [POST]
+
+grh_prestataire_modifier_profile:
+   path: /aller/modifier/profile
+   defaults: {_controller: "GSPBundle:Prestataire:modifierProfile"}
+
+grh_prestataire_modifier_profile_photo:
+   path: /photo/prestataire/update
+   defaults: {_controller: "GSPBundle:Prestataire:photoPrestataire"}
+
+grh_prestataire_get_prestataire_enabled:
+   path: /prestataire/enabled
+   defaults: {_controller: "GSPBundle:Prestataire:getPrestataireEnabled"}
+
+grh_prestataire_get_bon_interne:
+   path: /prestataire/bon/interne
+   defaults: {_controller: "GSPBundle:Prestataire:getBonInterneByPrestataire"}
+   methods: [GET, POST]
+
+grh_prestataire_detail_bon_interne:
+   path: /prestataire/detail/bon/interne
+   defaults: {_controller: "GSPBundle:Prestataire:getDetailBI"}
+   methods: [GET, POST]
+
+grh_prestataire_get_bon_commande:
+   path: /prestataire/bon/commande
+   defaults: {_controller: "GSPBundle:Prestataire:getBonCommandeByPrestataire"}
+   methods: [GET, POST]
+
+grh_prestataire_detail_bon_commande:
+   path: /prestataire/detail/bon/commande
+   defaults: {_controller: "GSPBundle:Prestataire:getDetailBC"}
+   methods: [GET, POST]
+
+grh_prestataire_get_bon_commande_journalier:
+   path: /prestataire/bon/commande/journalier
+   defaults: {_controller: "GSPBundle:Prestataire:getBonJournalierByPrestataire"}
+   methods: [GET, POST]
+
+grh_prestataire_detail_bon_commande_journalier:
+   path: /prestataire/detail/bon/commande/journalier
+   defaults: {_controller: "GSPBundle:Prestataire:getDetailBCJ"}
+   methods: [GET, POST]
+
+grh_prestataire_get_contre_performance:
+   path: /prestataire/contre/performance
+   defaults: {_controller: "GSPBundle:Prestataire:getContrePerformanceByPrestataire"}
+   methods: [GET, POST]
+
+grh_prestataire_get_rapport_mensuel:
+   path: /prestataire/rapport/mensuel
+   defaults: {_controller: "GSPBundle:Prestataire:getRapportBonMensuelByPrestataire"}
+   methods: [GET, POST]
+
+grh_prestataire_detail_rapport_mensuel:
+   path: /prestataire/detail/rapport/mensuel
+   defaults: {_controller: "GSPBundle:Prestataire:getDetailRapportBM"}
+   methods: [GET, POST]
+
+grh_prestataire_direction_service:
+   path: /prestataire/direction/service
+   defaults: {_controller: "GSPBundle:Prestataire:getDirectionServiceBis"}
+   methods: [GET, POST]

@@ -1,0 +1,352 @@
+<html>
+      <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %}FADCO+{% endblock %}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="icon" href="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" type="image/x-icon" />
+  {% block stylesheet %}
+  <link rel="stylesheet" href="{{ asset('bundles/FadcoBundle/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('bundles/FadcoBundle/font-awesome/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+  <link rel="stylesheet" href="{{ asset('bundles/FadcoBundle/dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('bundles/FadcoBundle/dist/css/skins/skin-blue.min.css') }}">
+
+
+  
+  {% endblock %}
+  <script src="{{asset('bundles/FadcoBundle/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+  <script src="{{ asset('bundles/FadcoBundle/plugins/select2/select2.full.min.js') }}"></script>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+   <div class="wrapper">
+    <header class="main-header">
+
+  
+       
+    <a href="{{path('fadco_home')}}" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:50px;" class="img-circle" alt="edgar" /></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:70px;" class="img-circle" alt="edgar" />FADCO+</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+    
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+            <!-- Notification: style can be found in dropdown.less-->
+	
+                {% block notification %}
+                        {{ render(controller('FadcoBundle:GestionDesAlertes:notifications')) }}
+                {% endblock %}
+		 
+		{% block userProfil %}
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+			  {% block userImg %}
+                              <img src=" {% if app.user.photo is empty %} {{ asset('bundles/FadcoBundle/images/avatar.png') }} {% else %} {{asset( app.user.WebPhoto )}} {% endif %}" class="user-image" alt="User Image">
+                          {% endblock %}
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs">{% block user %}
+				  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					{{app.user.nom|upper}}  {{app.user.username }}
+                {#<a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>#}
+            {% else %}
+			
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}{% endblock%}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+				{#% use  'dash.html.twig' with userImg as userImag2 %#}
+				
+                <img src="{% if app.user.photo is empty %} {{ asset('bundles/FadcoBundle/images/avatar.png') }} {% else %} {{asset( app.user.WebPhoto )}} {% endif %}" class="img-circle" alt="User Image">
+
+                <p>
+                  {% block userrr %}
+				  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.nom|upper ~ ' '~app.user.username}, 'FOSUserBundle') }} 
+                
+				{% else %}
+				{% endif %}{% endblock%}
+            <small>Membre depuis {{ app.user.date|date("j/m/Y") }}</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-5 text-center">
+                    <a href='{{path("grh_prestataire_edit")}}'>Modifier Profile</a>
+                  </div>
+                    <div class="col-xs-5 text-center">
+                        <a href='#' data-url="{{path("grh_prestataire_modifier_profile")}}"  class="btn btn-success btn-profile-modifier">Modifier Profile</a>
+                    </div>
+                </div>
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="{{ path('grh_prestataire_show',{'id':app.user.id}) }}" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          {% endblock %}
+        </ul>
+      </div>
+	
+	</nav>
+  </header>
+
+
+ {% block container %}
+  <div class="content-wrapper">
+    <section class="content-header">
+	{% block header_content %}
+      <h1>
+      <center>
+         FADCO +
+      </center>
+      </h1>
+	{% endblock %}
+    </section>
+
+    <section class="content">
+    {% block content %}
+      
+    {% endblock %}
+    </section>
+	
+  </div>
+{% endblock %}
+
+{% block footer %}
+  <footer class="main-footer">
+      <!-- Modal -->
+<div class="modal fade" id="UserPasswordChange" tabindex="-1" role="dialog" aria-labelledby="UserPasswordChangeModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="UserPasswordChangeModalLabel">Change le mot de passe</h4>
+      </div>
+          <iframe id="chpwd" src="{{path('grh_prestataire_change')}}" target="none" class="modal-body" width="100%" height="400" scrolling="auto" frameborder="0">
+              
+          </iframe>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+          <!-- modal pour afficher une information -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    
+                </div>
+                </div><!-- /.modal-content -->
+        </div>
+        </div>
+         <!-- /.modal-div -->
+        <span class="hide" id="load"> <center><img  src="{{ asset('bundles/FadcoBundle/load.gif') }}" ></center></span>
+    <div class="pull-right hidden-xs">
+      Tous droits réservés.
+    </div>
+    <strong>Copyright &copy; 2017 | Fadco+</strong> 
+  </footer>
+        {% include '::gspbot.html.twig' %}
+{% endblock %}
+
+       {{ include('FadcoBundle:Prestataire:popups.html.twig') }}
+       <span style="display:none;" id="loading-classement"> <center><img src="{{ asset('bundles/FadcoBundle/load.gif') }}">
+    </center></span>
+
+ </div>
+
+{% block javascript %}
+	 <script src="{{asset('bundles/FadcoBundle/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('bundles/FadcoBundle/dist/js/app.min.js')}}"></script>
+    <script src="{{asset('bundles/FadcoBundle/style/jquery.accordDate.js')}}"></script>
+     <script src="{{asset('bundles/FadcoBundle/plugins/moment/moment-with-locales.js')}}"></script>
+
+    <script>
+        $('.btn-profile-modifier').click(function(e) {
+            e.preventDefault();
+
+            $('#detail-affectation .modal-body').html($('#loading-classement').html());
+            $('#detail-affectation').modal('show');
+            $.ajax({
+                url : $('.btn-profile-modifier').attr('data-url'),
+                type : 'GET',
+                dataType : 'html',
+                success : function(code_html, statut){
+                    $('#detail-affectation .modal-body').html(code_html);
+//                    showdetailaffectation(code_html);
+                },
+                error : function(resultat, statut, erreur){
+                    $('#detail-affectation .modal-body').html('Erreur de chargement : '+statut);
+                }
+            });
+
+        });
+    </script>
+
+    <script>
+                        function rafraichir()
+                        { 
+                            $.ajax({
+                                  url : '{{path('alertes_raflaichir',{ 'id':app.user.Id})}}',
+                                  type : 'GET',
+                                  dataType : 'html',
+                                  success : function(code_html, statut){
+                                          $('.messages-menu').html(code_html);
+                                          rafraichir();
+                                  },
+                                  error : function(resultat, statut, erreur){
+                                        rafraichir();
+                                  }
+                               }); 
+                        } 
+        moment.locale('fr'); 
+        $('.datenotification').each(function (index, value) { 
+             
+        var date = moment([parseInt($(this).attr('annee')),parseInt($(this).attr('mois'))-1, parseInt($(this).attr('jour')), parseInt($(this).attr('heure')),parseInt($(this).attr('minute')), parseInt($(this).attr('second')),0]).fromNow();
+          $(this).html('&nbsp;'+date);
+        });
+        
+        
+         $('.alerte-lien').click(function(e){
+                    e.preventDefault();
+
+                    $('#myModal .modal-title').html('NOTIFICATION');
+                    $('#myModal .modal-body').html('<div class="row"> <div class="col-md-4">'+$(this).find('.alerte-image').html()+'</div><div class="col-md-7"><div><b>'+$(this).find('.alerte-username').html()+'  </b>'+$(this).find('.alerte-message').html()+'</div><p></p><b><u style="color:#00BFFF">'+$(this).find('.alerte-moment').html()+'</u></b></div></div>');
+                     $('#myModal .modal-footer').html('<center><a class="btn  btn-primary" href="'+$(this).attr('href')+'">Consulter</a></center>');
+                    $('#myModal').modal('show');
+                    $.ajax({
+                        url : $(this).attr('alerte-lu'),
+                        type : 'GET',
+                        dataType : 'html',
+                        success : function(code_html, statut){
+                                
+                        },
+                        error : function(resultat, statut, erreur){
+                                
+                        }
+                      
+
+
+                     });  
+                });   
+         
+        
+    $('#parentDate').accordDate({
+            "day":"[name*=day]",
+            "month":"[name*=month]",
+            "year":"[name*=year]",
+            "lengthYear":100
+        });
+           $(function(){
+                $('.detail-btn').click(function(e){
+                    e.preventDefault();
+
+                    $('#myModal .modal-title').html($(this).attr('titre'));
+                    $('#myModal .modal-body').html($('#load').html());
+                    $('#myModal').modal('show');
+                    $.ajax({
+                        url : $(this).attr('href'),
+                        type : 'GET',
+                        dataType : 'html',
+                        success : function(code_html, statut){
+                                $('#myModal .modal-body').html(code_html);
+                        },
+                        error : function(resultat, statut, erreur){
+                                $('#myModal .modal-body').html('Erreur de chargement : '+statut);
+                        }
+
+
+
+                     });
+                });
+            $("#dashline li").not(":last-child").removeClass("active");
+            $("#dashline li").last().addClass("Active");
+            //$("#chpwd").slimScroll();
+        });
+        
+        
+        
+    //rafraichir(); 
+        </script>
+ 
+    
+    {# websocket client #}
+    <script type="text/javascript"  src="{{ asset('bundles/lc/multiselect/js/jquery.multi-select.js') }}"></script>
+    <style type="text/css">
+	@import url("{{ asset('bundles/lc/multiselect/css/multi-select.css') }}");
+    </style>
+    
+    {#{ ws_client() }
+    <script type="text/javascript"  src="{{ asset('bundles/goswebsocket/js/vendor/autobahn.min.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('bundles/goswebsocket/js/gos_web_socket_client.js') }}"></script>
+    
+    <script type="text/javascript">
+        var _WS_URI = "ws://{{ gos_web_socket_server_host }}:{{ gos_web_socket_server_port }}";
+        var myWs = WS.connect(_WS_URI);
+        var nmiPath = '{{path('lc_creer_nouveau_message_image')}}';
+        var nmfPath = '{{path('lc_creer_nouveau_message_fichier')}}';
+        var nmicPath = '{{path('lc_creer_nouveau_message_image_contact')}}';
+        var nmfcPath = '{{path('lc_creer_nouveau_message_fichier_contact')}}';
+        var baseP = '{{ app.request.basePath }}';
+        var userId = {{app.user.id}};
+        var lienChat = '{{path('gsp_lc_homepage')}}';
+        //var chat
+        var pathnm = '{{path('lc_users_vefification_nouveaux_messages')}}';
+        var newMsg = '{{path('lc_users_nouveaux_messages')}}';
+        var newMsgD = '{{path('lc_users_nouveaux_messages_discussion')}}';
+        var newMsgC = '{{path('lc_users_nouveaux_messages_contact')}}';
+        var loadingGif = '{{ asset('bundles/lc/images/loading.gif') }}';
+        var emPath = '{{path('lc_creer_nouveau_message')}}';
+        var mlPath = '{{path('lc_marquer_lu')}}';
+        var mlcPath = '{{path('lc_marquer_lu_contact')}}';
+        var userPath = '{{path('lc_users')}}';
+        var discPath = '{{path('lc_user_discussions')}}';
+        var ndPath = '{{path('lc_creer_nouvelle_discussion')}}';
+        var acdPath = '{{path('lc_ajouter_contact_discussion')}}';
+        var uacPath = '{{path('lc_users_ajout_contact')}}';
+        var gdmPath = '{{path('lc_discussion_messages')}}';
+        var gdmcPath = '{{path('lc_discussion_messages_contact')}}';
+        var emcPath = '{{path('lc_creer_nouveau_message_contact')}}';
+        var gsplchome= '{{path('gsp_lc_homepage')}}';
+        var lcregisterPath = '{{path('lc_register')}}';
+        var lcgcuPath = '{{path('lc_gcu')}}';
+        
+    </script>#}
+    {#<script type="text/javascript" src="{{ asset('bundles/lc/js/ws_lc.js')}}" ></script>#}
+{% endblock %}
+
+</body>
+</html>

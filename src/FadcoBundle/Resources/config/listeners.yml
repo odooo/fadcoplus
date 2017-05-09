@@ -1,0 +1,22 @@
+services:
+
+    fadco.listener.generate_code_listener:
+            class: FadcoBundle\Listener\GenerateCodeListener
+            tags:
+                - { name: "doctrine.event_listener", event: "prePersist", method: "prePersist" }
+                - { name: "doctrine.event_listener", event: "preUpdate", method: "preUpdate" }
+
+
+    fadco.response.listener:
+            class: FadcoBundle\Listener\ResponseListener
+            arguments:
+                - '@doctrine.orm.entity_manager'
+                - '@templating'
+            tags:
+                - { name: kernel.event_subscriber }
+
+    fadco.listener.login_success:
+        class: FadcoBundle\Listener\LoginSuccessListener
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onSecurityInteractiveLogin }

@@ -1,0 +1,12 @@
+function mkdir2($dir){
+    $arraydir=explode("/",$dir);
+    $link=$arraydir[0];
+    unset($arraydir[0]);
+    foreach($arraydir as $ld){
+        $link.="/".$ld;
+        if(!is_dir($link)){
+            mkdir($link);
+        }
+    }
+    return $link;
+}

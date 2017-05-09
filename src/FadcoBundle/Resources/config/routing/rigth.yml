@@ -1,0 +1,33 @@
+rigth:
+    path:     /
+    defaults: { _controller: "FadcoBundle:Rigth:index" }
+
+rigth_show:
+    path:     /{id}/show
+    defaults: { _controller: "FadcoBundle:Rigth:show" }
+
+rigth_new:
+    path:     /new
+    defaults: { _controller: "FadcoBundle:Rigth:new" }
+
+rigth_create:
+    path:     /create
+    defaults: { _controller: "FadcoBundle:Rigth:create" }
+    methods:  POST
+
+rigth_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FadcoBundle:Rigth:edit" }
+
+rigth_update:
+    path:     /{id}/update
+    defaults: { _controller: "FadcoBundle:Rigth:update" }
+    methods:  [POST, PUT]
+
+rigth_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FadcoBundle:Rigth:delete" }
+
+rigth_change:
+    path:     /{userId}/change/{option}
+    defaults: { _controller: "FadcoBundle:Prestataire:changeRigth" }

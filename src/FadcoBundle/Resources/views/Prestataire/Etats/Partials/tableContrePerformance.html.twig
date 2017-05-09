@@ -1,0 +1,30 @@
+<div class="table-responsive mailbox-messages">
+    {% if true %}
+
+        <table class="table table-bordered table-hover table-striped" id="bonInt">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th> date </th>
+                <th>Motif</th>
+                <th>pénalité</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set cpCount = 0 %}
+            {% for contreperformance in contreperformances %}
+                {% set cpCount = cpCount + 1 %}
+                <tr>
+                    <td>{{ cpCount}}</td>
+                    <td>{{ contreperformance.dateCp|date('d/m/Y')}}</td>
+                    <td>{{ contreperformance.motif }}</td>
+                    <td>{{ contreperformance.penalite }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <!-- /.table -->
+    {% else %}
+
+    {% endif %}
+</div>
