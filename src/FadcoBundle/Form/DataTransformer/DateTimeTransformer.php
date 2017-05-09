@@ -1,6 +1,6 @@
 <?php
 
-namespace FadcoBundle\Form\DataTransformer;
+namespace GSPBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 

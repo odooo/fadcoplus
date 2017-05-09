@@ -17,7 +17,6 @@ class PrestataireUpdateType extends AbstractType
         
         $builder
             ->add('nom','text',array('label' => 'Nom '))
-            ->add('date',"date",array( 'label'=>'Date de naissance', 'label_attr' =>array( 'class' => 'col-md-2 control-label'),'years' => range( date('Y') - 100, date( 'Y') ),'required' => false))
             ->add('prenom','text',array('label' => 'Prenom '))
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'), array(
@@ -33,15 +32,9 @@ class PrestataireUpdateType extends AbstractType
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Confirmer Password'),
             ))
-            ->add('type', 'choice', array('choices' => array('ADMIN' => 'ADMIN', 'DISTRIBUTEUR' => 'DISTRIBUTEUR'), 'required' => true, 'empty_value' => '-- Sélectionner le type de compte --', 'empty_data' => null))
-            ->add('agence', 'entity', array(
-                'class' => 'FadcoBundle:Agence', 
-                'empty_value' => '-- Sélectionner l\'agence du prestataire --',
-                'choice_label' => 'libelle', 'required' => true))
         ;
     }
        
-
     /**
      * @param OptionsResolverInterface $resolver
      */
@@ -58,6 +51,6 @@ class PrestataireUpdateType extends AbstractType
      */
     public function getName()
     {
-        return 'fadcobundle_prestataire_update';
+        return 'FadcoBundle_prestataire_update';
     }
 }

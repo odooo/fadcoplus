@@ -1,6 +1,6 @@
 <?php
 
-namespace FadcoBundle\Form\FormFieldsType;
+namespace GSPBundle\Form\FormFieldsType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;

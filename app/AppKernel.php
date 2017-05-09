@@ -31,7 +31,7 @@ class AppKernel extends Kernel
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
             // new GSPAppWebserviceBundle\GSPAppWebserviceBundle(),
 
-            new Slik\DompdfBundle\SlikDompdfBundle(),
+            //new Slik\DompdfBundle\SlikDompdfBundle(),
 
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),

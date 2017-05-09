@@ -46,9 +46,6 @@ class MailsEnvoyesController extends BaseController
                 $email = $email . "@fadcoplus.com";
             }
 
-
-
-
             /** On tente la connexion pour voir si les paramètres sont corrects
              * **/
             $server = new Server($this->getParameter('mailer_host'));
@@ -122,11 +119,6 @@ class MailsEnvoyesController extends BaseController
     public function envoimailsAction(Request $request)
     {
         
-        
-        
-        
-        
-        
      if($request->getMethod()=='POST'){ 
          
          
@@ -145,51 +137,36 @@ class MailsEnvoyesController extends BaseController
         $mailsenvoyes->setMailFrom($expediteur);
         $mailsenvoyes->setUserEmail($expediteur);
         
-        
-        
         //upload du fichier 
         
-        
-                             if(isset($_FILES['piece']))
-                               { 
-                                  $dossier = 'C:/Mails/';
-                                 //$dossier='home/Fichiers';
-                                  $fichier=$_FILES['piece']['name'];
-                                   //echo $fichier;
-                                        if(move_uploaded_file($_FILES['piece']['tmp_name'], $dossier.$fichier )) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
-                                         {
-                                         $mailsenvoyes->setFichier($dossier.$fichier);
-                                          }
-                                          
-                                      
-                                }
-        
-        
-        
-                             if(($_FILES['piece']!=null)){   
-                                           //pieces jointes 
-                                        $attachement = "------\n"; 
-                                        $attachement .= "Content-Type: application/pdf; name=\"$dossier.$fichier\"\n"; 
-                                        $attachement .= "Content-Transfer-Encoding: base64\n"; 
-                                        $attachement .= "Content-Disposition: attachment; filename=\"$dossier.$fichier\"\n\n";
+        if(isset($_FILES['piece']))
+        { 
+            $dossier = 'C:/Mails/';
+            //$dossier='home/Fichiers';
+            $fichier=$_FILES['piece']['name'];
+            //echo $fichier;
+            if(move_uploaded_file($_FILES['piece']['tmp_name'], $dossier.$fichier )) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+            {
+                $mailsenvoyes->setFichier($dossier.$fichier);
+            }
+        }
 
-                                        $fichierrecupere   = fopen($dossier.$fichier, "r");   //on ouvre le fichier en lecture seule.
+        if(($_FILES['piece']!=null)){   
+            //pieces jointes 
+            $attachement = "------\n"; 
+            $attachement .= "Content-Type: application/pdf; name=\"$dossier.$fichier\"\n"; 
+            $attachement .= "Content-Transfer-Encoding: base64\n"; 
+            $attachement .= "Content-Disposition: attachment; filename=\"$dossier.$fichier\"\n\n";
 
-                                        $attachement = fread($fichierrecupere , filesize($dossier.$fichier)); //on lit l'ensemble du fichier avec la fonction fread.
+            $fichierrecupere   = fopen($dossier.$fichier, "r");   //on ouvre le fichier en lecture seule.
 
-                                        fclose($fichierrecupere); //on ferme le fichier.
-                                        $attachement = chunk_split(base64_encode($attachement));
-                                         $attachement .= "\n\n\n------\n";
-                                         
-                                         }
-        
-        
-        
-        
-       
-        
-        
-   
+            $attachement = fread($fichierrecupere , filesize($dossier.$fichier)); //on lit l'ensemble du fichier avec la fonction fread.
+
+            fclose($fichierrecupere); //on ferme le fichier.
+            $attachement = chunk_split(base64_encode($attachement));
+            $attachement .= "\n\n\n------\n";
+                
+         }
         
         $headers = "From: \"FADCO+";
         $headers .=  "Reply-to: <";
@@ -200,52 +177,17 @@ class MailsEnvoyesController extends BaseController
         $contenu =$_POST['body'];
         $contenu .="Content-Type: multipart/mixed; charset=\"ISO-8859-1\"";
         
-        
-        
         $em=$this->getDoctrine()->getManager();
         $em->persist($mailsenvoyes);
         $em->flush();
-        
-        
-     
-        
-        
+            
         if( mail($_POST['to'],$_POST['subject'],$contenu,$headers)){
         $em->persist($mailsenvoyes);
         $em->flush();
         
         }
-        
-      
-        
-        
-       /* $message = \Swift_Message::newInstance()
-        ->setSubject('Hello Email')
-        ->setFrom('yatakpohenoc@gmail.com')
-        ->setTo('yatakpo08@yahoo.fr')
-        ->setBody('Dieu merci','text/html');
-        ->setBody(
-            $this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
-                'Emails/registration.html.twig',
-                array('name' => $name)
-            ),
-            'text/html' 
-        ) */
-        /*
-         * If you also want to include a plaintext version of the message
-        ->addPart(
-            $this->renderView(
-                'Emails/registration.txt.twig',
-                array('name' => $name)
-            ),
-            'text/plain'
-        )
-        */
     
-   // $this->get('mailer')->send($message); 
-    
-     return $this->redirect($this->generateUrl('box_mails_compose'));
+        return $this->redirect($this->generateUrl('box_mails_compose'));
      }
     }
 

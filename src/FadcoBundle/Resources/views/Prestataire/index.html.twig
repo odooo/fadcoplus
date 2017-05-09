@@ -1,7 +1,5 @@
-{% extends "GSPBundle:Default:menu.html.twig" %}
+{% extends "FadcoBundle:Default:menu.html.twig" %}
 {% block content %}
-
- {{ include('GSPBundle:RetraitTitrePropriete:popups.html.twig') }}
 
     <h1>Liste des Prestataires </h1>
     <section class="content">
@@ -26,7 +24,6 @@
                             <th>N°</th>
                             <th>Nom</th>
                             <th>Prenom</th>
-                            <th>Poste</th>
                             <th>Agence</th>
                             <th>Droit</th>
                             <th>Actions</th>
@@ -39,7 +36,6 @@
 
                                 <td>{{ entity.nom }}</td>
                                 <td>{{ entity.prenom }}</td>
-                                <td>{{ entity.poste }}</td>
                                 <td>{% if entity.agence %}{{ entity.agence.libelle }}{% endif %}</td>
                                 <td> {{ contro.getRoleExpression(entity)|raw }} </td>
                                 <td>
@@ -86,13 +82,13 @@
             
             <div class="box-body">
                 <div align="right">
-                    <a href="{{ path('GSP_grh') }}"><button type="button" class="btn btn-success">Retour </button></a>
+                    <a href=""><button type="button" class="btn btn-success">Retour </button></a>
                 </div>
             </div>
         </div>
     </section> 
-    <script src="{{asset('bundles/GSPBundle//plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('bundles/GSPBundle/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('bundles/FadcoBundle//plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('bundles/FadcoBundle/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
 
     <script>
      $('.change_rigth').click(function(e) {
