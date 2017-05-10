@@ -52,7 +52,9 @@
 
     {% 
         set dashboardMenus = [
-            {title: 'Indicateurs de performances', icon: 'ion-stats-bars', route: 'fadco_indicateur_performance', color: 'bg-green'},
+            {title: 'Réabonnement direct', icon: 'ion-stats-bars', route: 'fadco_espace_distributeur_reabo', roles: ['ROLE_DISTRIBUTEUR'], color: 'bg-green'},
+            {title: 'Installation et réparation des Antennes', icon: 'ion-stats-bars', route: 'fadco_espace_distributeur_repair', roles: ['ROLE_DISTRIBUTEUR'], color: 'bg-yellow'},
+            {title: 'Espace admin', icon: 'ion-stats-bars', route: 'fadco_espace_distributeur_repair', roles: ['ROLE_ADMIN'], color: 'bg-blue'},
     ]
     %}
 

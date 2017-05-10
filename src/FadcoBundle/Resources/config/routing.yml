@@ -14,9 +14,9 @@ fadco_homepage:
     path:     /hello/{name}
     defaults: { _controller: FadcoBundle:Default:index }
 
-fadco_indicateur_performance:
-    resource: "@FadcoBundle/Resources/config/routing/indicateurperformance.yml"
-    prefix:   /indicateurperformance
+fadco_espace_distributeur:
+    resource: "@FadcoBundle/Resources/config/routing/distributeur.yml"
+    prefix:   /espace_distributeur
 
 fadco_home:
     path:     /dashbord

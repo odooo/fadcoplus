@@ -1,0 +1,23 @@
+.temp-show {
+    position: absolute !important; 
+    visibility: hidden !important; 
+    display: block !important;
+}
+
+.content > h1 {
+    margin-left: 15px;
+}
+
+.container-small {
+    max-width: 600px;
+}
+
+.container-medium {
+    max-width: 800px;
+}
+
+.container-full {    
+    max-width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+}

@@ -176,55 +176,54 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_homepage')), array (  '_controller' => 'FadcoBundle\\Controller\\DefaultController::indexAction',));
         }
 
-        if (0 === strpos($pathinfo, '/indicateurperformance')) {
-            // fadco_indicateur_performance
-            if (rtrim($pathinfo, '/') === '/indicateurperformance') {
+        if (0 === strpos($pathinfo, '/espace_distributeur')) {
+            // fadco_espace_distributeur
+            if (rtrim($pathinfo, '/') === '/espace_distributeur') {
                 if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'fadco_indicateur_performance');
+                    return $this->redirect($pathinfo.'/', 'fadco_espace_distributeur');
                 }
 
-                return array (  '_controller' => 'FadcoBundle:IndicateurPerformance:index',  '_route' => 'fadco_indicateur_performance',);
+                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexAction',  '_route' => 'fadco_espace_distributeur',);
             }
 
-            // fadco_indicateur_performance_nombre_visited_client
-            if ($pathinfo === '/indicateurperformance/nombre-visited-client') {
-                return array (  '_controller' => 'FadcoBundle:IndicateurPerformance:nombreVisitedClient',  '_route' => 'fadco_indicateur_performance_nombre_visited_client',);
+            // fadco_espace_distributeur_reabo
+            if ($pathinfo === '/espace_distributeur/liste-reabonnement') {
+                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexReaboAction',  '_route' => 'fadco_espace_distributeur_reabo',);
             }
 
-            if (0 === strpos($pathinfo, '/indicateurperformance/d')) {
-                // fadco_indicateur_performance_dsc
-                if ($pathinfo === '/indicateurperformance/dsc') {
-                    return array (  '_controller' => 'FadcoBundle\\Controller\\IndicateurPerformance\\DSCPerformanceController::indexAction',  '_route' => 'fadco_indicateur_performance_dsc',);
+            // fadco_espace_distributeur_reabo_new
+            if ($pathinfo === '/espace_distributeur/nouveau-reabonnement') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_fadco_espace_distributeur_reabo_new;
                 }
 
-                // fadco_indicateur_performance_dai
-                if ($pathinfo === '/indicateurperformance/dai') {
-                    return array (  '_controller' => 'FadcoBundle:IndicateurPerformance/DAIPerformance:index',  '_route' => 'fadco_indicateur_performance_dai',);
+                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_new',);
+            }
+            not_fadco_espace_distributeur_reabo_new:
+
+            // fadco_espace_distributeur_reabo_new_confirm
+            if ($pathinfo === '/espace_distributeur/confirm-reabonnement') {
+                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboConfirmAction',  '_route' => 'fadco_espace_distributeur_reabo_new_confirm',);
+            }
+
+            // fadco_espace_distributeur_reabo_renew
+            if (preg_match('#^/espace_distributeur/(?P<id>[^/]++)/renouveller\\-reabonnement$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_espace_distributeur_reabo_renew')), array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::renewReaboAction',));
+            }
+
+            // fadco_espace_distributeur_reabo_ancien_abonne_infos
+            if ($pathinfo === '/espace_distributeur/infos-ancien-abonne') {
+                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::ancienAbonneReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_ancien_abonne_infos',);
+            }
+
+            // fadco_espace_distributeur_repair
+            if (rtrim($pathinfo, '/') === '/espace_distributeur') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'fadco_espace_distributeur_repair');
                 }
 
-                // fadco_indicateur_performance_archives
-                if ($pathinfo === '/indicateurperformance/dossiers') {
-                    return array (  '_controller' => 'FadcoBundle:IndicateurPerformance/ConsultationArchives:index',  '_route' => 'fadco_indicateur_performance_archives',);
-                }
-
-                if (0 === strpos($pathinfo, '/indicateurperformance/ds')) {
-                    // fadco_indicateur_performance_dsav
-                    if ($pathinfo === '/indicateurperformance/dsav') {
-                        return array (  '_controller' => 'FadcoBundle:IndicateurPerformance/DSAVPerformance:index',  '_route' => 'fadco_indicateur_performance_dsav',);
-                    }
-
-                    // fadco_indicateur_performance_dsj
-                    if ($pathinfo === '/indicateurperformance/dsj') {
-                        return array (  '_controller' => 'FadcoBundle:IndicateurPerformance/DSJPerformance:index',  '_route' => 'fadco_indicateur_performance_dsj',);
-                    }
-
-                }
-
-                // fadco_indicateur_performance_dfca
-                if ($pathinfo === '/indicateurperformance/dfca') {
-                    return array (  '_controller' => 'FadcoBundle\\Controller\\IndicateurPerformance\\DFCAPerformanceController::indexAction',  '_route' => 'fadco_indicateur_performance_dfca',);
-                }
-
+                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexRepairAction',  '_route' => 'fadco_espace_distributeur_repair',);
             }
 
         }
