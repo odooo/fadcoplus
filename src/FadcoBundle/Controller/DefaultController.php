@@ -24,7 +24,7 @@ class DefaultController extends Controller
         }
 
         if($this->getUser()->getType() == "admin"){
-            return $this->render('FadcoBundle:Default:dashbord.html.twig');
+            return $this->redirect($this->generateUrl('grh_prestataire'));
         }
 
     }
