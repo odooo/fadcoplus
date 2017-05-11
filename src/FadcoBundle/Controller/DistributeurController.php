@@ -162,6 +162,7 @@ class DistributeurController extends Controller
 
         $session = $request->getSession();
         $reaboSession = $session->get('resultats');
+        $user = $this->getUser();
 
         $reabo = new Reabonnement();
 
@@ -174,7 +175,9 @@ class DistributeurController extends Controller
         $reabo->setNumeroCarte($reaboSession['numeroCarte']);
 
         $reabo->setDate(new \DateTime());
-        $reabo->setDistributeur($this->getUser());
+        $reabo->setDistributeur($user);
+
+        $user->setAccount($user->getAccount() - $reaboSession['montant']);
 
         $em->persist($reabo);
         $em->flush();
@@ -189,6 +192,9 @@ class DistributeurController extends Controller
     	$em = $this->getDoctrine()->getManager();
     	$reabo = $em->getRepository('FadcoBundle:Reabonnement')->find($id);
 
+        $session = $request->getSession();
+        $reaboSession = $session->get('resultats');
+
     	$reaboSession = array(
 			'abonne'=>$reabo->getAbonne(),
 			'numeroCarte'=>$reabo->getNumeroCarte(),
@@ -198,6 +204,8 @@ class DistributeurController extends Controller
 			'options' => $reabo->getOptions(),
 			'montant' => $reabo->getMontant()
 		);
+
+        $session->set('resultats', $reaboSession);
 
         return $this->render('FadcoBundle:Distributeur:confirm-reabo.html.twig', array('resultats' => $reaboSession));
 
