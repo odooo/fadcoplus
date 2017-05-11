@@ -1,7 +1,7 @@
 FadcoBundle\Entity\MailsEnvoyes:
     type: entity
     table: null
-    repositoryClass: FadcoBundle\Entity\MailsEnvoyesRepository
+    repositoryClass: FadcoBundle\Repository\MailsEnvoyesRepository
     id:
         id:
             type: integer

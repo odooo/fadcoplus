@@ -1,0 +1,267 @@
+{% extends "FadcoBundle:Default:menu.html.twig" %}
+{% block title %} Nouveau réabo. direct{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        
+            <div class="box-body" style="background-color:black;">
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="info-box-content" style="background-color:black;">
+                            <span><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:80px; heigth:5px;" alt="edgar"/></span>
+                            
+                                <span style="color:green;" class="info-box-number">90 000 F</span>
+                                <span class="info-box-text" style="color:white;">777777662({{ app.user.username }})</span>
+                                <span class="info-box-text" style="color:white;">7878787812({{ app.user.username }})</span>
+                            
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+
+    <div class="box box-primary">
+		<div class="box-header with-border">
+			<h4 class="box-title">Nouveau réabo. direct</h4>
+		</div>
+		
+		<div class="box-body">
+		    <div class="container modal-content">
+		    	<div class="col-sm-offset-2 col-sm-7" >
+					
+                    <form method="post" action="{{ path('fadco_espace_distributeur_reabo_new') }}" name="fadcobundle_distributeur_new_reabo" class="task-form" id="fadcobundle_distributeur_new_reabo">
+
+                        <span>&nbsp;</span>
+
+                        <div class="input-group">
+                            <label class="input-group-addon"><i class="fa fa-oclock"></i>Date : {{ 'now'|date('d/m/Y H:i:s') }}</label>
+                        </div>
+
+                        <span>&nbsp;</span>
+
+                        <div class="input-group">
+                            <span><b>1 - Identification</b></span>
+                        </div>
+
+                        <span>&nbsp;</span>
+
+                        <div class="form-group" id="choix">
+                            <label class="control-label"><span style="color: red; margin-right: 2px;">*</span>&nbsp;</label>&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="choix" value="ancien">Ancien abonné
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="choix" value="nouveau">Nouvel abonné
+                        </div>
+
+                        <span>&nbsp;</span>
+
+                        <div class="form-group" id="auto" style="display:none">
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class="control-label"></i>Abonné<span style="color: red; margin-right: 2px;">* : </span></label>
+                                <select name="fadcobundle_distributeur_new_reabo[abonnea]" id="fadcobundle_distributeur_new_reabo_abonnea" class="select2 form-control" style="width: 100%;">
+                                    <option value="">--</option>
+                                    {% for abonne in abonnes %}
+                                        <option value="{{ abonne.id }}">{{ abonne.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <span>&nbsp;</span>
+        					
+        			        <div class="input-group">
+                                <label class="input-group-addon"><i class=""></i>Numéro carte : </label>
+                                <input  value="" id="fadcobundle_distributeur_new_reabo_carte" data-url = "{{ path('fadco_espace_distributeur_reabo_ancien_abonne_infos') }}" readonly class="form-control"/>
+                            </div>
+
+                            <span>&nbsp;</span>
+
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class=""></i>Numéro téléphone : </label>
+                                <input value="" id="fadcobundle_distributeur_new_reabo_contact" readonly class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="input-group" id="data" style="display:none">
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class=""></i>Abonné : </label>
+                                <input name="fadcobundle_distributeur_new_reabo[abonned]" class="form-control"/>
+                            </div>
+
+                            <span>&nbsp;</span>
+                            
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class=""></i>Numéro carte : </label>
+                                <input name="fadcobundle_distributeur_new_reabo[numeroCarte]" class="form-control"/>
+                            </div>
+
+                            <span>&nbsp;</span>
+
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class=""></i>Numéro téléphone<span style="color: red; margin-right: 2px;">*</span> : </label>
+                                <input id="contact" name="fadcobundle_distributeur_new_reabo[contact]" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <span>&nbsp;</span>
+
+                        <div id="boutons" style="display:none;">
+                            <div class="input-group">
+                                <span><b>2 - Réabonnement direct</b></span>
+                            </div>
+
+        			        <span>&nbsp;</span>
+
+        			        <div class="input-group">
+                                <label class="input-group-addon"><i class="control-label"></i>Formule : <span style="color: red; margin-right: 2px;">*</span></label>
+                                <select required name="fadcobundle_distributeur_new_reabo[formule]" class="select2 form-control" style="width: 100%;">
+                                    <option value="">--</option>
+                                    <option value="ACCESS">ACCESS</option>
+                                    <option value="ACCESS+">ACCESS+</option>
+                                    <option value="EVASION">EVASION</option>
+                                    <option value="EVASION+">EVASION+</option>
+                                    <option value="TOUT CANAL">TOUT CANAL</option>
+                                </select>
+                            </div>
+
+                            <span>&nbsp;</span>
+
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class="control-label"></i>Durée : <span style="color: red; margin-right: 2px;"></span></label>
+                                <select name="fadcobundle_distributeur_new_reabo[duree]" class="select2 form-control" style="width: 100%;">
+                                    <option value="">--</option>
+                                    <option value="1 mois">1 mois</option>
+                                    <option value="3 mois">3 mois</option>
+                                    <option value="6 mois">6 mois</option>
+                                    <option value="12 mois">12 mois</option>
+                                </select>
+                            </div>
+
+                            <span>&nbsp;</span>
+
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class="control-label"></i>Option : </label>
+                                <select name="fadcobundle_distributeur_new_reabo[options]" class="select2 form-control" style="width: 100%;">
+                                    <option value="">--</option>
+                                    <option value="2ième ECRAN">2ième ECRAN</option>
+                                    <option value="CHARME">CHARME</option>
+                                    <option value="2ième ECRAN et CHARME">2ième ECRAN et CHARME</option>
+                                </select>
+                            </div>
+
+                            <span>&nbsp;</span>
+                        
+
+                            <div class="modal-footer">
+                                <div class="input-group pull-right">
+                                    <a href="{{ path('fadco_espace_distributeur_reabo') }}">
+                                        <button type="button" class="btn btn-default  pull-left">Annuler</button>
+                                    </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="#">
+                                        <button type="submit" class="btn btn-success">Soumettre</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                    
+                </div>
+            </div> <!-- End div container -->
+        </div>
+        </div>
+    </section>
+
+    <script src="{{ asset('bundles/FadcoBundle/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/FadcoBundle/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/plugins/datepicker/locales/bootstrap-datepicker.fr.js') }}"></script>
+
+    <script>
+        //pieces jointes
+        $('#choix').focusout(function () {
+            if (($('input[name=choix]:checked').val()) == 'ancien') {
+                var e = document.getElementById('auto');
+                var f = document.getElementById('data');
+                var g = document.getElementById('boutons');
+                e.style.display = 'block';
+                g.style.display = 'block';
+                f.style.display = 'none';
+                $('#contact').attr('required', false);
+                $('#fadcobundle_distributeur_new_reabo_abonnea').attr('required', true);
+            }
+            if (($('input[name=choix]:checked').val()) == 'nouveau') {
+                var e = document.getElementById('auto');
+                var f = document.getElementById('data');
+                var g = document.getElementById('boutons');
+                e.style.display = 'none';
+                f.style.display = 'block';
+                g.style.display = 'block';
+                $('#contact').attr('required', true);
+                $('#fadcobundle_distributeur_new_reabo_abonnea').attr('required', false);
+            }
+        });
+        $('#choix').on('click', function (e) {
+            if (($('input[name=choix]:checked').val()) == 'ancien') {
+                var e = document.getElementById('auto');
+                var f = document.getElementById('data');
+                var g = document.getElementById('boutons');
+                e.style.display = 'block';
+                g.style.display = 'block';
+                f.style.display = 'none';
+                $('#contact').attr('required', false);
+                $('#fadcobundle_distributeur_new_reabo_abonnea').attr('required', true);
+            }
+            if (($('input[name=choix]:checked').val()) == 'nouveau') {
+                var e = document.getElementById('auto');
+                var f = document.getElementById('data');
+                var g = document.getElementById('boutons');
+                e.style.display = 'none';
+                f.style.display = 'block';
+                g.style.display = 'block';
+                $('#contact').attr('required', true);
+                $('#fadcobundle_distributeur_new_reabo_abonnea').attr('required', false);
+            }
+        });
+
+    </script>
+
+    <script>
+    $( function ()
+    {
+        $('#fadcobundle_distributeur_new_reabo_abonnea').on('change', function(){
+            
+            $element = $(this);
+            var id = $element.val();
+
+                $.ajax({
+                    url: $('#fadcobundle_distributeur_new_reabo_carte').attr('data-url'),
+                    type: 'GET',
+                    data: 'id='+id,
+                    dataType: 'json',
+
+                    success: function(data, status){
+                        $('#fadcobundle_distributeur_new_reabo_carte').val(data.numeroCarte);
+                        $('#fadcobundle_distributeur_new_reabo_contact').val(data.contact);
+                    },
+                    error: function(status){
+                        console.log('erreur'); 
+                    }
+                });
+            
+        });
+
+    });
+    </script>
+
+
+    <script>
+        $(function () {
+            $(".select2").select2();
+        });
+    </script>
+
+{% endblock %}

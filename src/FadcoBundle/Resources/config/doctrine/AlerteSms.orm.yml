@@ -1,7 +1,7 @@
 FadcoBundle\Entity\AlerteSms:
     type: entity
     table: null
-    repositoryClass: FadcoBundle\Entity\AlerteSmsRepository
+    repositoryClass: FadcoBundle\Repository\AlerteSmsRepository
     id:
         id:
             type: integer

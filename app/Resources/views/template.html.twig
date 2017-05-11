@@ -2,17 +2,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}G S P  Manager{% endblock %}</title>
+    <title>{% block title %}FADCO+{% endblock %}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="icon" href="{{ asset('bundles/FadcoBundle/globalsevice.ico') }}" type="image/x-icon"/>
+    <link rel="icon" href="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" type="image/x-icon"/>
     {% block stylesheet %}
         <link rel="stylesheet" href="{{ asset('bundles/FadcoBundle/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-        {#<link rel="stylesheet" href="{{ asset('bundles/FadcoBundle/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">#}
         <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
         <link rel="stylesheet" href="{{asset('bundles/FadcoBundle/plugins/datatables/jquery.dataTables.min.css')}}">
-       {# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">#}
         <link rel="stylesheet"
               href="{{ asset('bundles/FadcoBundle/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('bundles/FadcoBundle/font-awesome/css/font-awesome.min.css') }}">
@@ -50,11 +48,11 @@
         <header class="main-header">
             <a href="{{ path('fadco_home') }}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><img src="{{ asset('bundles/FadcoBundle/globalsevice.png') }}" style="width:50px;"
-                                         class="img-circle" alt="fiacre"/></span>
+            <span class="logo-mini"><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:50px;"
+                                         class="img-circle" alt="edgar"/></span>
                 <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><img src="{{ asset('bundles/FadcoBundle/globalsevice.png') }}" style="width:70px;"
-                                       class="img-circle" alt="fiacre"/>FADCO+</span>
+            <span class="logo-lg"><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:70px;"
+                                       class="img-circle" alt="edgar"/>FADCO+</span>
             </a>
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -118,7 +116,7 @@
                                                 {% else %}
                                                 {% endif %}{% endblock %}
                                             {% if app.user %}
-                                                <small>Membre depuis </small>
+                                                <small>Membre depuis {{ app.user.date|date("j/m/Y") }}</small>
                                             {% endif %}
                                             {# {{ app.user.datEntre|date("j/m/Y") }} #}
                                         </p>
@@ -161,6 +159,15 @@
     {% block menu_gauche %}
         <aside class="main-sidebar">
             <section class="sidebar">
+                {% block pannel %}
+                    <div class="user-panel">
+                        <div class="pull-left text-lime">
+                            <a href=""><i class="text-success"></i>
+                                &nbsp;</a>
+                        </div>
+                    </div>
+                {% endblock %}
+
                 {% block sidebar %}
 
                 {% endblock %}
@@ -474,6 +481,30 @@
     </script>
 
     <script>
+
+
+        $('.btn-profile-modifier').click(function(e) {
+            e.preventDefault();
+
+            $('#detail-affectation .modal-body').html($('#loading-classement').html());
+            $('#detail-affectation').modal('show');
+            $.ajax({
+                url : $('.btn-profile-modifier').attr('data-url'),
+                type : 'GET',
+                dataType : 'html',
+                success : function(code_html, statut){
+                    $('#detail-affectation .modal-body').html(code_html);
+//                    showdetailaffectation(code_html);
+                },
+                error : function(resultat, statut, erreur){
+                    $('#detail-affectation .modal-body').html('Erreur de chargement : '+statut);
+                }
+            });
+
+        });
+    </script>
+
+    <script>
         $(document).ready(function() {
 
             $('.personalise').checkboxpicker({
@@ -558,12 +589,6 @@
         })
 
     </script>
-
-    {# websocket client #}
-    <script type="text/javascript"  src="{{ asset('bundles/lc/multiselect/js/jquery.multi-select.js') }}"></script>
-    <style type="text/css">
-	@import url("{{ asset('bundles/lc/multiselect/css/multi-select.css') }}");
-    </style>
 
     <script>   
         $('.printable').each(function () {

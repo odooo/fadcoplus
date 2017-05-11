@@ -7,6 +7,7 @@
 {# Le block à gauche #}
 {% block sidebar %}
     <ul class="sidebar-menu">
+
         <li class="header">GESTION DES COMPTES</li>
         <li class="treeview">
             <a href="#"><i class="fa fa-user"></i> <span>DISTRIBUTEURS</span> <i
@@ -19,8 +20,14 @@
                 {% endif %}
             </ul>
         </li>
-        {% if 'indicateur-performance' in app.request.uri %}
-            {% include 'FadcoBundle:IndicateurPerformance:menu.html.twig' %}
-        {% endif %}
+
+        <li class="">&nbsp;</li>
+        <li class="">&nbsp;</li>
+        <li class="">&nbsp;</li>
+
+        <li><a href="{{ path('fadco_espace_distributeur_reabo') }}"><i class=""></i>Réabonnement direct</a></li>
+
+        <li><a href=""><i class=""></i> <span>Installation et réparation</span></a></li>
+
     </ul>
 {% endblock %}

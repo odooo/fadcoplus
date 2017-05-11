@@ -1,0 +1,27 @@
+FadcoBundle\Entity\Abonne:
+    type: entity
+    table: null
+    repositoryClass: FadcoBundle\Repository\AbonneRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            nullable: true
+        prenom:
+            type: string
+            length: 255
+            nullable: true
+        numeroCarte:
+            type: string
+            length: 255
+            nullable: true
+        contact:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

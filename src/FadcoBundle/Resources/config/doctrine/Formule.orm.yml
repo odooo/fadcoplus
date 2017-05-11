@@ -1,0 +1,23 @@
+FadcoBundle\Entity\Formule:
+    type: entity
+    table: null
+    repositoryClass: FadcoBundle\Entity\FormuleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        libelle:
+            type: string
+            length: 255
+        options:
+            type: string
+            length: 255
+            nullable: true
+        montant:
+            type: integer
+            option:
+               default: 0
+    lifecycleCallbacks: {  }

@@ -1,0 +1,32 @@
+fadco_espace_distributeur:
+    path:     /
+    defaults: { _controller: FadcoBundle:Distributeur:index }
+
+# reabo. direct
+
+fadco_espace_distributeur_reabo:
+    path:     /liste-reabonnement
+    defaults: { _controller: FadcoBundle:Distributeur:indexReabo }
+
+fadco_espace_distributeur_reabo_new:
+    path:     /nouveau-reabonnement
+    defaults: { _controller: FadcoBundle:Distributeur:newReabo }
+    methods: [GET, POST]
+
+fadco_espace_distributeur_reabo_new_confirm:
+    path:     /confirm-reabonnement
+    defaults: { _controller: FadcoBundle:Distributeur:newReaboConfirm }
+
+fadco_espace_distributeur_reabo_renew:
+    path:     /{id}/renouveller-reabonnement
+    defaults: { _controller: FadcoBundle:Distributeur:renewReabo }
+
+fadco_espace_distributeur_reabo_ancien_abonne_infos:
+    path: /infos-ancien-abonne
+    defaults: {_controller: "FadcoBundle:Distributeur:ancienAbonneReabo"}
+
+# reparation et installation
+
+fadco_espace_distributeur_repair:
+    path:     /
+    defaults: { _controller: FadcoBundle:Distributeur:indexRepair }

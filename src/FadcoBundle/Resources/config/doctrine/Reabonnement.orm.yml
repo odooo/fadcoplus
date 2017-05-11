@@ -1,0 +1,51 @@
+FadcoBundle\Entity\Reabonnement:
+    type: entity
+    table: null
+    repositoryClass: FadcoBundle\Repository\ReabonnementRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        distributeur:
+            targetEntity: Prestataire
+            nullable: false
+            joinColumn:
+                name: distributeur_id
+                referencedColumnName: id
+
+    fields:
+        abonne:
+            type: string
+            length: 255
+            nullable: true
+        numeroCarte:
+            type: string
+            length: 255
+            nullable: true
+        contact:
+            type: string
+            length: 255
+            nullable: true
+        formule:
+            type: string
+            length: 255
+            nullable: true
+        duree:
+            type: string
+            length: 255
+            nullable: true
+        options:
+            type: string
+            length: 255
+            nullable: true
+        montant:
+            type: integer
+            option:
+                default: 0
+        date:
+            type: datetime
+    lifecycleCallbacks: {  }
