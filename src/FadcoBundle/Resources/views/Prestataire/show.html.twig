@@ -1,4 +1,6 @@
 {% extends "FadcoBundle:Default:menu.html.twig" %}
+<<<<<<< HEAD
+=======
 {% block page_quick_actions %}
     <div>
         <a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a>
@@ -6,6 +8,7 @@
         <a href="{{ path('grh_prestataire_new', {'id': entity.id }) }}"><input type="button" class="btn btn-info btn-xs"value="Modifier"/></a>
     </div>
 {% endblock %}
+>>>>>>> aeeafaa001106b04a781728abf58ffdd3b01c5aa
 
 {% block content %}
     <section class="content">
@@ -20,6 +23,155 @@
                 </div>
             </div>
             <div class="box-body">
+<<<<<<< HEAD
+                <div align='center'><img src="{%if entity.photo is not null %}{{path("global_rewrite_url",cryptSrc(entity.WebPhoto))}}{%else%}{{ asset('bundles/GSPBundle/images/avatar.png') }}{% endif %}" class="img-circle" style='width:150px;height:150px;' alt="User Image"></div>
+                <table class="table table-bordered table-striped">
+                    <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+             
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ entity.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Agence</th>
+                <td>{% if entity.agence %}{{ entity.agence.libelle }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+             <tr>
+                <th>Ville</th>
+                <td>{{ entity.ville }}</td>
+            </tr>
+            <tr>
+                <th>Quartier</th>
+                <td>{{ entity.quartier }}</td>
+            </tr>
+            <tr>
+                <th>Maison</th>
+                <td>{{ entity.maison }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ entity.contact }}</td>
+            </tr>
+
+            <tr>
+                <th>Personne de référence</th>
+                <td>{{ entity.personneReference }}</td>
+            </tr>
+
+            <tr>
+                <th>Contact de la personne de référence</th>
+                <td>{{ entity.contactReference }}</td>
+            </tr>
+
+            <tr>
+                <th>Poste</th>
+                <td>{{ entity.poste }}</td>
+            </tr>
+            <tr>
+                <th>Type de Prestataire</th>
+                <td>{{ entity.typeprestataire }}</td>
+            </tr>
+
+
+            <tr>
+                <th>Appréciation particulière</th>
+                <td>{{ entity.appreciationParticuliere }}</td>
+            </tr>
+
+            <tr>
+                <th>Appréciation générale</th>
+                <td>{{ entity.appreciationGenerale }}</td>
+            </tr>
+
+            <tr>
+                <th>Date fin mission</th>
+                <td>{{ entity.dateFinMission|date('d/m/Y') }}</td>
+            </tr>
+
+            <tr>
+                <th>Motif fin mission</th>
+                <td>{{ entity.motiFinMission }}</td>
+            </tr>
+
+            <tr>
+                <th>Ancienne fonction</th>
+                <td>{{ entity.ancienneFonction }}</td>
+            </tr>
+
+            
+            <tr>
+                <th>Service</th>
+                <td>{% if entity.service is not null %}{{ entity.service.LibelleSev }}{% endif %}</td>
+             </tr>
+
+             <tr>
+                <th>Code service</th>
+                <td>{% if entity.service is not null %}{{ entity.service.codeSev }}{% endif %}</td>
+            </tr>
+
+            <tr>
+                <th>Chargé VIP</th>
+                <td>{% if entity.chargeVIP is not null %}{{ entity.chargeVIP.name }}{% endif %}</td>
+            </tr>
+
+            <tr>
+                <th>Morale</th>
+                <td>{% if entity.morale is not null %}{{ entity.morale.nom }}{% endif %}</td>
+            </tr>
+
+            <tr>
+                <th>Physique</th>
+                <td>{% if entity.physique is not null %}{{ entity.physique.nom~' '~entity.physique.prenom }}{% endif %}</td>
+            </tr>
+
+            <tr>
+                <th>Code de Confidentialite</th>
+                <td>{% if entity.codeConfidentialite is not null %}{{ entity.codeConfidentialite.libelle }}{% endif %}</td>
+            </tr>
+
+            <tr>
+                <th>Statut</th>
+                <td>{% if entity.statut is not null %}{{ entity.statut.libelle }}{% endif %}</td>
+            </tr>
+
+            <tr>
+                <th>Rôles</th>
+                <td>{% if entity.roles is not null %} {% for role in entity.roles %} {{ role }} {% if not loop.last %} - {% endif %}{% endfor %} {% endif %} </td>
+            </tr>
+
+            <tr>
+                <th>Rôle accueil</th>
+                <td>{{ entity.roleaccueil }}</td>
+            </tr>
+
+            <tr>
+                <th>Date D'entrée</th>
+                <td>{{ entity.datEntre|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>Dernière connexion</th>
+                <td>{{ entity.lastLogin|date('Y-m-d H:s:i') }}</td>
+             </tr>
+        </tbody>
+    </table>
+
+       <div class="box-footer">
+                <a href="{{ path('grh_prestataire') }}"><button type="button" class="btn btn-warning">Retour à la liste</button></a>
+         </div>
+
+=======
                 <div class="table-responsive mailbox-messages">
                   <div align='center'><img src="{%if entity.photo is not null %}{{ path("global_rewrite_url",cryptSrc(entity.WebPhoto)) }}{% else %}{{ asset('bundles/FadcoBundle/images/avatar.png') }}{% endif %}" class="img-circle" style='width:150px;height:150px;' alt="User Image"></div>
                         <table class="table table-bordered table-striped">
@@ -65,6 +217,7 @@
                     <a href="{{ path('grh_prestataire_new', {'id': null }) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau distributeur"/></a>
                     <a href="{{ path('grh_prestataire_new', {'id': entity.id }) }}"><input type="button" class="btn btn-info btn-xs"value="Modifier"/></a>
                 </div>
+>>>>>>> aeeafaa001106b04a781728abf58ffdd3b01c5aa
         </div>
     </section>
 

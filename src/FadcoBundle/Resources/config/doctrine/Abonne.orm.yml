@@ -24,4 +24,6 @@ FadcoBundle\Entity\Abonne:
         contact:
             type: string
             length: 255
+        date:
+            type: datetime
     lifecycleCallbacks: {  }

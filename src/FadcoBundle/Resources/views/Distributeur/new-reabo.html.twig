@@ -12,7 +12,7 @@
                         <div class="info-box-content" style="background-color:black;">
                             <span><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:80px; heigth:5px;" alt="edgar"/></span>
                             
-                                <span style="color:green;" class="info-box-number">90 000 F</span>
+                                <span style="color:green;" class="info-box-number">{{ app.user.account|number_format(0,'.',' ') }} F</span>
                                 <span class="info-box-text" style="color:white;">777777662({{ app.user.username }})</span>
                                 <span class="info-box-text" style="color:white;">7878787812({{ app.user.username }})</span>
                             
@@ -230,31 +230,31 @@
     </script>
 
     <script>
-    $( function ()
-    {
-        $('#fadcobundle_distributeur_new_reabo_abonnea').on('change', function(){
-            
-            $element = $(this);
-            var id = $element.val();
+        $( function ()
+        {
+            $('#fadcobundle_distributeur_new_reabo_abonnea').on('change', function(){
+                
+                $element = $(this);
+                var id = $element.val();
 
-                $.ajax({
-                    url: $('#fadcobundle_distributeur_new_reabo_carte').attr('data-url'),
-                    type: 'GET',
-                    data: 'id='+id,
-                    dataType: 'json',
+                    $.ajax({
+                        url: $('#fadcobundle_distributeur_new_reabo_carte').attr('data-url'),
+                        type: 'GET',
+                        data: 'id='+id,
+                        dataType: 'json',
 
-                    success: function(data, status){
-                        $('#fadcobundle_distributeur_new_reabo_carte').val(data.numeroCarte);
-                        $('#fadcobundle_distributeur_new_reabo_contact').val(data.contact);
-                    },
-                    error: function(status){
-                        console.log('erreur'); 
-                    }
-                });
-            
+                        success: function(data, status){
+                            $('#fadcobundle_distributeur_new_reabo_carte').val(data.numeroCarte);
+                            $('#fadcobundle_distributeur_new_reabo_contact').val(data.contact);
+                        },
+                        error: function(status){
+                            console.log('erreur'); 
+                        }
+                    });
+                
+            });
+
         });
-
-    });
     </script>
 
 

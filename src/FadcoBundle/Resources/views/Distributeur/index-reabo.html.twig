@@ -21,7 +21,7 @@
                         <div class="info-box-content" style="background-color:black;">
                             <span><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:80px; heigth:5px;" alt="edgar"/></span>
                             
-                                <span style="color:green;" class="info-box-number">90 000 F</span>
+                                <span style="color:green;" class="info-box-number">{{ app.user.account|number_format(0,'.',' ') }} F</span>
                                 <span class="info-box-text" style="color:white;">777777662({{ app.user.username }})</span>
                                 <span class="info-box-text" style="color:white;">7878787812({{ app.user.username }})</span>
                             
@@ -82,7 +82,7 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li>
-                                            <a href="{{ path('fadco_espace_distributeur_reabo_renew', {'id': reabo.id}) }}">Renouvellement</a>
+                                            <a href="{{ path('fadco_espace_distributeur_reabo_renew', {'id': reabo.id}) }}">Renouveler cette offre</a>
                                         </li>                                        
                                     </ul>
                                 </div>

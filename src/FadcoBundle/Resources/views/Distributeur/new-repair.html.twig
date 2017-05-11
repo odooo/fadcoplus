@@ -1,0 +1,180 @@
+{% extends "FadcoBundle:Default:menu.html.twig" %}
+{% block title %} Nouvelle prestation{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        
+            <div class="box-body" style="background-color:black;">
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="info-box-content" style="background-color:black;">
+                            <span><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:80px; heigth:5px;" alt="edgar"/></span>
+                            
+                                <span style="color:green;" class="info-box-number">{{ app.user.account|number_format(0,'.',' ') }} F</span>
+                                <span class="info-box-text" style="color:white;">777777662({{ app.user.username }})</span>
+                                <span class="info-box-text" style="color:white;">7878787812({{ app.user.username }})</span>
+                            
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+
+    <div class="box box-primary">
+		<div class="box-header with-border">
+			<h4 class="box-title">Nouvelle prestataion</h4>
+		</div>
+		
+		<div class="box-body">
+		    <div class="container modal-content">
+		    	<div class="col-sm-offset-2 col-sm-7" >
+					
+                    <form method="post" action="{{ path('fadco_espace_distributeur_repair_new') }}" name="fadcobundle_distributeur_new_repair" id="fadcobundle_distributeur_new_repair">
+
+                        <span>&nbsp;</span>
+
+                        <div class="input-group">
+                            <label class="input-group-addon"><i class="fa fa-oclock"></i>Date : {{ 'now'|date('d/m/Y H:i:s') }}</label>
+                        </div>
+
+                        <span>&nbsp;</span>
+
+                        <div class="input-group">
+                            <label class="input-group-addon"><i class="control-label"></i>Abonné<span style="color: red; margin-right: 2px;">* : </span></label>
+                            <select name="fadcobundle_distributeur_new_repair[abonne]" id="fadcobundle_distributeur_new_repair_abonne" required class="form-control" style="width: 100%;">
+                                <option value="">--</option>
+                                {% for abonne in abonnes %}
+                                    <option value="{{ abonne.id }}">{{ abonne.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <span>&nbsp;</span>
+    					
+                        <div id="contact" style="display:none">
+        			        <div class="input-group">
+                                <label class="input-group-addon"><i class=""></i>N° mobile : </label>
+                                <input  value="" id="fadcobundle_distributeur_new_repair_contact" data-url = "{{ path('fadco_espace_distributeur_reabo_ancien_abonne_infos') }}" readonly class="form-control"/>
+                            </div>
+                            <span>&nbsp;</span>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-group-addon"><i class="control-label"></i>Type de prestation<span style="color: red; margin-right: 2px;">* : </span></label>
+                            <select required name="fadcobundle_distributeur_new_repair[type]" class="form-control" style="width: 100%;">
+                                <option value="">--</option>
+                                <option value="Nouvelle installation">Nouvelle installation</option>
+                                <option value="Réinstallation">Réinstallation</option>
+                                <option value="Réparation">Réparation</option>
+                                <option value="Visite de site">Visite de site</option>
+                            </select>
+                        </div>
+
+                        <span>&nbsp;</span>  
+
+                        <div class="input-group">
+                            <label class="input-group-addon"><i class=""></i>Lieu de la prestation<span style="color: red; margin-right: 2px;">* : </span></label>
+                            <textarea name="fadcobundle_distributeur_new_repair[lieu]" class="form-control"></textarea>
+                        </div>
+
+                        <span>&nbsp;</span> 
+
+                        <div class="input-group">
+                            <label class="input-group-addon"><i class="control-label"></i>Forme de maison<span style="color: red; margin-right: 2px;">* : </span></label>
+                            <select required name="fadcobundle_distributeur_new_repair[forme]" class="form-control" style="width: 100%;">
+                                <option value="">--</option>
+                                <option value="Immeuble">Immeuble</option>
+                                <option value="Villa">Villa</option>
+                                <option value="Ecole de base">Ecole de base</option>
+                            </select>
+                        </div>
+
+                        <span>&nbsp;</span>  
+
+                        <div class="input-group">
+                            <label class="input-group-addon"><i class="control-label"></i>Endroit propice pour l'installation<span style="color: red; margin-right: 2px;">* : </span></label>
+                            <select required name="fadcobundle_distributeur_new_repair[endroit]" class="form-control" style="width: 100%;">
+                                <option value="">--</option>
+                                <option value="Dalle">Dalle</option>
+                                <option value="Mur">Mur</option>
+                                <option value="Charpente">Charpente</option>
+                            </select>
+                        </div>
+
+                        <span>&nbsp;</span>  
+
+                        <div class="input-group">
+                            <label class="input-group-addon"><i class="control-label"></i>Montant de la prestation<span style="color: red; margin-right: 2px;">* : </span></label>
+                            <select required name="fadcobundle_distributeur_new_repair[montant]" class="form-control" style="width: 100%;">
+                                <option value="">--</option>
+                                <option value="2000">2.000</option>
+                                <option value="3000">3.000</option>
+                                <option value="5000">5.000</option>
+                                <option value="7000">7.000</option>
+                            </select>
+                        </div>
+
+                        <span>&nbsp;</span>                                                
+
+                        <div class="modal-footer">
+                            <div class="input-group pull-right">
+                                <a href="{{ path('fadco_espace_distributeur_repair') }}">
+                                    <button type="button" class="btn btn-default  pull-left">Annuler</button>
+                                </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#">
+                                    <button type="submit" class="btn btn-success">Soumettre</button>
+                                </a>
+                            </div>
+                        </div>
+                        
+
+                    </form>
+                    
+                </div>
+            </div> <!-- End div container -->
+        </div>
+        </div>
+    </section>
+
+    <script src="{{ asset('bundles/FadcoBundle/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+
+    <script>
+        $( function ()
+        {
+            $('#fadcobundle_distributeur_new_repair_abonne').on('change', function(){
+                
+                $element = $(this);
+                var id = $element.val();
+
+                if( id == ""){
+                    var e = document.getElementById('contact');
+                    e.style.display = 'none';
+                }else{
+                    var e = document.getElementById('contact');
+                    e.style.display = 'block';
+                }
+
+                $.ajax({
+                    url: $('#fadcobundle_distributeur_new_repair_contact').attr('data-url'),
+                    type: 'GET',
+                    data: 'id='+id,
+                    dataType: 'json',
+
+                    success: function(data, status){
+                        $('#fadcobundle_distributeur_new_repair_contact').val(data.contact);
+                    },
+                    error: function(status){
+                        console.log('erreur'); 
+                    }
+                });
+                
+            });
+
+        });
+    </script>
+
+{% endblock %}
