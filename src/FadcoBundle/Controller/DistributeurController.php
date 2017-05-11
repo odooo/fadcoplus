@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use FadcoBundle\Entity\Reabonnement;
 use FadcoBundle\Entity\Repair;
 use FadcoBundle\Entity\Abonne;
+use FadcoBundle\Entity\Alerte;
 
 class DistributeurController extends Controller
 {
@@ -56,6 +57,20 @@ class DistributeurController extends Controller
             $repair->setDistributeur($this->getUser());
 
             $em->persist($repair);
+
+			$admin = $em->getRepository('FadcoBundle:Prestataire')->findOneBy(array(
+				'type' => 'admin'
+			));
+
+			$Alerte = new Alerte();
+            $Alerte->setPrestataire($this->getUser());
+            $Alerte->setMessageAlerte(" a enregistré l'abonné ".$reabo->getAbonne()." qui a souscrit à une prestation de type ".$reabo->getType());
+            $Alerte->setLienAlerte('/' . strrchr($this->get('router')->generate('fadco_espace_distributeur_repair'), 'distributeur'));
+            $Alerte->setDestinataire($admin);
+            $Alerte->setDateAlerte(new \Datetime());
+            $Alerte->setEtatAlerte('non lue');
+
+            $em->persist($Alerte);
             $em->flush();
 
 			$from = "ayenadedg@gmail.com";
@@ -186,6 +201,21 @@ class DistributeurController extends Controller
         $user->setAccount($user->getAccount() - $reaboSession['montant']);
 
         $em->persist($reabo);
+
+		$admin = $em->getRepository('FadcoBundle:Prestataire')->findOneBy(array(
+			'type' => 'admin'
+		));
+
+		$Alerte = new Alerte();
+		$Alerte->setPrestataire($this->getUser());
+		$Alerte->setMessageAlerte(" a enregistré l'abonné ".$reabo->getAbonne()." qui a souscrit à un réabonnement ".$reabo->getFormule()."/".$reabo->getDuree()."/".$reabo->getOptions());
+		$Alerte->setLienAlerte('/' . strrchr($this->get('router')->generate('fadco_espace_distributeur_reabo'), 'distributeur'));
+		$Alerte->setDestinataire($admin);
+		$Alerte->setDateAlerte(new \Datetime());
+		$Alerte->setEtatAlerte('non lue');
+
+		$em->persist($Alerte);
+
         $em->flush();
 
 		$from = "ayenadedg@gmail.com";

@@ -163,82 +163,85 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_homepage')), array (  '_controller' => 'FadcoBundle\\Controller\\DefaultController::indexAction',));
         }
 
-        if (0 === strpos($pathinfo, '/espace_distributeur')) {
-            // fadco_espace_distributeur
-            if (rtrim($pathinfo, '/') === '/espace_distributeur') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'fadco_espace_distributeur');
-                }
-
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexAction',  '_route' => 'fadco_espace_distributeur',);
-            }
-
-            // fadco_espace_distributeur_reabo
-            if ($pathinfo === '/espace_distributeur/liste-reabonnements') {
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexReaboAction',  '_route' => 'fadco_espace_distributeur_reabo',);
-            }
-
-            // fadco_espace_distributeur_reabo_new
-            if ($pathinfo === '/espace_distributeur/nouveau-reabonnement') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_fadco_espace_distributeur_reabo_new;
-                }
-
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_new',);
-            }
-            not_fadco_espace_distributeur_reabo_new:
-
-            // fadco_espace_distributeur_reabo_new_confirm
-            if ($pathinfo === '/espace_distributeur/confirm-reabonnement') {
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboConfirmAction',  '_route' => 'fadco_espace_distributeur_reabo_new_confirm',);
-            }
-
-            // fadco_espace_distributeur_reabo_renew
-            if (preg_match('#^/espace_distributeur/(?P<id>[^/]++)/renouveller\\-reabonnement$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_espace_distributeur_reabo_renew')), array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::renewReaboAction',));
-            }
-
-            // fadco_espace_distributeur_reabo_ancien_abonne_infos
-            if ($pathinfo === '/espace_distributeur/infos-ancien-abonne') {
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::ancienAbonneReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_ancien_abonne_infos',);
-            }
-
-            // fadco_espace_distributeur_repair
-            if ($pathinfo === '/espace_distributeur/liste-prestations') {
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexRepairAction',  '_route' => 'fadco_espace_distributeur_repair',);
-            }
-
-            if (0 === strpos($pathinfo, '/espace_distributeur/nouve')) {
-                // fadco_espace_distributeur_repair_new
-                if ($pathinfo === '/espace_distributeur/nouvelle-prestation') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_fadco_espace_distributeur_repair_new;
+        if (0 === strpos($pathinfo, '/d')) {
+            if (0 === strpos($pathinfo, '/distributeur')) {
+                // fadco_espace_distributeur
+                if (rtrim($pathinfo, '/') === '/distributeur') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'fadco_espace_distributeur');
                     }
 
-                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newRepairAction',  '_route' => 'fadco_espace_distributeur_repair_new',);
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexAction',  '_route' => 'fadco_espace_distributeur',);
                 }
-                not_fadco_espace_distributeur_repair_new:
 
-                // fadco_espace_distributeur_repair_new_client
-                if ($pathinfo === '/espace_distributeur/nouveau-client') {
+                // fadco_espace_distributeur_reabo
+                if ($pathinfo === '/distributeur/liste-reabonnements') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexReaboAction',  '_route' => 'fadco_espace_distributeur_reabo',);
+                }
+
+                // fadco_espace_distributeur_reabo_new
+                if ($pathinfo === '/distributeur/nouveau-reabonnement') {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_fadco_espace_distributeur_repair_new_client;
+                        goto not_fadco_espace_distributeur_reabo_new;
                     }
 
-                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newClientAction',  '_route' => 'fadco_espace_distributeur_repair_new_client',);
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_new',);
                 }
-                not_fadco_espace_distributeur_repair_new_client:
+                not_fadco_espace_distributeur_reabo_new:
+
+                // fadco_espace_distributeur_reabo_new_confirm
+                if ($pathinfo === '/distributeur/confirm-reabonnement') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboConfirmAction',  '_route' => 'fadco_espace_distributeur_reabo_new_confirm',);
+                }
+
+                // fadco_espace_distributeur_reabo_renew
+                if (preg_match('#^/distributeur/(?P<id>[^/]++)/renouveller\\-reabonnement$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_espace_distributeur_reabo_renew')), array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::renewReaboAction',));
+                }
+
+                // fadco_espace_distributeur_reabo_ancien_abonne_infos
+                if ($pathinfo === '/distributeur/infos-ancien-abonne') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::ancienAbonneReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_ancien_abonne_infos',);
+                }
+
+                // fadco_espace_distributeur_repair
+                if ($pathinfo === '/distributeur/liste-prestations') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexRepairAction',  '_route' => 'fadco_espace_distributeur_repair',);
+                }
+
+                if (0 === strpos($pathinfo, '/distributeur/nouve')) {
+                    // fadco_espace_distributeur_repair_new
+                    if ($pathinfo === '/distributeur/nouvelle-prestation') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_fadco_espace_distributeur_repair_new;
+                        }
+
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newRepairAction',  '_route' => 'fadco_espace_distributeur_repair_new',);
+                    }
+                    not_fadco_espace_distributeur_repair_new:
+
+                    // fadco_espace_distributeur_repair_new_client
+                    if ($pathinfo === '/distributeur/nouveau-client') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_fadco_espace_distributeur_repair_new_client;
+                        }
+
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newClientAction',  '_route' => 'fadco_espace_distributeur_repair_new_client',);
+                    }
+                    not_fadco_espace_distributeur_repair_new_client:
+
+                }
 
             }
 
-        }
+            // fadco_home
+            if ($pathinfo === '/dashbord') {
+                return array (  '_controller' => 'FadcoBundle\\Controller\\DefaultController::dashbordAction',  '_route' => 'fadco_home',);
+            }
 
-        // fadco_home
-        if ($pathinfo === '/dashbord') {
-            return array (  '_controller' => 'FadcoBundle\\Controller\\DefaultController::dashbordAction',  '_route' => 'fadco_home',);
         }
 
         if (0 === strpos($pathinfo, '/alerte')) {
