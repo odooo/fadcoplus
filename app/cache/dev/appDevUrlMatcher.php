@@ -411,6 +411,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'crediter_compte_distributeur')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::creditAccountAction',));
             }
 
+            // main_page_distributeur
+            if ($pathinfo === '/fadcoplus/prestataire/page/principale') {
+                return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::mainPageAction',  '_route' => 'main_page_distributeur',);
+            }
+
             // grh_prestataire_edit
             if ($pathinfo === '/fadcoplus/prestataire/edit') {
                 return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::editAction',  '_route' => 'grh_prestataire_edit',);

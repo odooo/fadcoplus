@@ -278,6 +278,11 @@ class PrestataireController extends BaseController
         ));
     }
 
+    public function mainPageAction()
+    {
+        return $this->render('FadcoBundle:Prestataire:main-page.html.twig');
+    }
+
     public function changeAction(){
         $formFactory = $this->get('fos_user.change_password.form.factory');
         $form = $formFactory->createForm();

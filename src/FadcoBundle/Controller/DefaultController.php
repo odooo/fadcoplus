@@ -24,7 +24,7 @@ class DefaultController extends Controller
         }
 
         if($this->getUser()->getType() == "admin"){
-            return $this->redirect($this->generateUrl('grh_prestataire'));
+            return $this->redirect($this->generateUrl('main_page_distributeur'));
         }
 
     }

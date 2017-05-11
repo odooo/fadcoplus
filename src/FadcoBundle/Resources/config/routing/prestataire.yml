@@ -22,6 +22,10 @@ crediter_compte_distributeur:
     path:      /distributeur-{id}
     defaults: { _controller: "FadcoBundle:Prestataire:creditAccount" }
 
+main_page_distributeur:
+    path:      /page/principale
+    defaults: { _controller: "FadcoBundle:Prestataire:mainPage" }
+
 grh_prestataire_edit:
     path:     /edit
     defaults: { _controller: "FadcoBundle:Prestataire:edit" }

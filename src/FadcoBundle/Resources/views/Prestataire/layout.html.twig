@@ -1,0 +1,140 @@
+{% extends "FadcoBundle:Default:menu.html.twig" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/fadco/daterangepicker/daterangepicker.css') }}">
+    <style type="text/css">
+        .small-box .icon {
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            text-align: center;
+            font-size: 60px;
+        }
+
+        .small-box h3 {
+            z-index: 5;
+        }
+
+        .small-box p {            
+            height: 40px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 0;            
+        }
+
+        .small-box p span {
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translate(0%, -50%);            
+        }
+    </style>
+{% endblock %}
+
+{% set start = 'now' | date('d/m/Y') %}
+{% set end = 'now' | date('d/m/Y') %}
+
+{% if app.request.query.has('from') %}
+    {% set start = app.request.query.get('from') %}
+{% endif %}
+
+{% if app.request.query.has('from') %}
+    {% set end = app.request.query.get('to') %}
+{% endif %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fadco/highcharts/highcharts.js') }}"></script>
+    <script src="{{ asset('bundles/fadco/daterangepicker/daterangepicker.js') }}"></script>
+    <script type="text/javascript">
+        var start = moment("{{ start }}", "DD-MM-YYYY");
+        var end = moment("{{ end }}", "DD-MM-YYYY");
+
+        function cb(start, end) {
+            if (start.isSame(end) && start.isSame(moment().startOf('day'))) {
+                $('#reportrange span').html("Aujourd'hui");
+            } else if (start.isSame(end) && start.isSame(moment().subtract(1, 'days').startOf('day'))) {
+                $('#reportrange span').html("Hier");
+            } else if (start.isSame(moment().subtract(6, 'days')) && end.isSame(moment().startOf('day'))) {
+                $('#reportrange span').html("7 derniers jours");
+            } else {
+                $('#reportrange span').html(start.format('DD MMMM YYYY') + ' - ' + end.format('DD MMMM YYYY'));
+            }
+        }
+        
+        $(function() {
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    "Aujourd'hui": [moment().startOf('day'), moment().startOf('day')],
+                    "Hier": [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').startOf('day')],
+                    "7 Derniers jours": [moment().subtract(6, 'days').startOf('day'), moment().startOf('day')],
+                    "30 Derniers jours": [moment().subtract(29, 'days').startOf('day'), moment().startOf('day')],
+                    "Ce mois": [moment().startOf('month'), moment().endOf('month')],
+                    "Mois passé": [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                "locale": {
+                    "format": "MM/DD/YYYY",
+                    "separator": " - ",
+                    "applyLabel": "Valider",
+                    "cancelLabel": "Annuler",
+                    "fromLabel": "De",
+                    "toLabel": "À",
+                    "customRangeLabel": "Choisir une période",
+                    "weekLabel": "W",
+                    "daysOfWeek": [
+                        "Dim",
+                        "Lun",
+                        "Mar",
+                        "Mer",
+                        "Jeu",
+                        "Ven",
+                        "Sam"
+                    ],
+                    "monthNames": [
+                        "Janvier",
+                        "Février",
+                        "Mars",
+                        "Avril",
+                        "Mai",
+                        "Juin",
+                        "Juillet",
+                        "Août",
+                        "Septembre",
+                        "Octobre",
+                        "Novembre",
+                        "Decembre"
+                    ],
+                    "firstDay": 1
+                }
+            }, cb);
+
+            $('#reportrange').on('apply.daterangepicker', function(event, picker) {
+                alert('lol');
+                var url = "{{ app.request.requestUri | split('?') | first }}" + "?";
+                url += "from=" + picker.startDate.format("DD/MM/YYYY");
+                url += "&to=" + picker.endDate.format("DD/MM/YYYY");
+                location.href = url;
+            });
+
+            cb(start, end);
+            
+        });
+    </script>
+{% endblock %}
+
+{% block page_title %}{{ block('title') }}{% endblock %}
+
+{% block page_quick_actions %}
+    <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; font-size: 0.8em; font-weight: normal;">        
+        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+        <span>{{ start }} - {{ end }}</span> <b class="caret"></b>
+    </div>
+{% endblock %}
