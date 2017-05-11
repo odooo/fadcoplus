@@ -22,20 +22,20 @@ class __TwigTemplate_c19e1f5baedd89b5985ca0cc6edce10bd08cff38ce496d6584ea037e1db
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e3e08195b76ec424691f561b56073f380bc189f3bf618542ae39df587daba335 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e3e08195b76ec424691f561b56073f380bc189f3bf618542ae39df587daba335->enter($__internal_e3e08195b76ec424691f561b56073f380bc189f3bf618542ae39df587daba335_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Default:menu.html.twig"));
+        $__internal_bdedd45324b82d4b0a470c325e62b5227973daac3695c846074d8831c68c6480 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_bdedd45324b82d4b0a470c325e62b5227973daac3695c846074d8831c68c6480->enter($__internal_bdedd45324b82d4b0a470c325e62b5227973daac3695c846074d8831c68c6480_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Default:menu.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_e3e08195b76ec424691f561b56073f380bc189f3bf618542ae39df587daba335->leave($__internal_e3e08195b76ec424691f561b56073f380bc189f3bf618542ae39df587daba335_prof);
+        $__internal_bdedd45324b82d4b0a470c325e62b5227973daac3695c846074d8831c68c6480->leave($__internal_bdedd45324b82d4b0a470c325e62b5227973daac3695c846074d8831c68c6480_prof);
 
     }
 
     // line 3
     public function block_stylesheet($context, array $blocks = array())
     {
-        $__internal_6ad7e625f45058c8fb067481f9ca2dc8bf37034ae437a25512bcf62c1e7e7587 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_6ad7e625f45058c8fb067481f9ca2dc8bf37034ae437a25512bcf62c1e7e7587->enter($__internal_6ad7e625f45058c8fb067481f9ca2dc8bf37034ae437a25512bcf62c1e7e7587_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheet"));
+        $__internal_93eb33ad53526c93bd0094d8838afe8d935e4debd14bc723fe8d7e69c32340eb = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_93eb33ad53526c93bd0094d8838afe8d935e4debd14bc723fe8d7e69c32340eb->enter($__internal_93eb33ad53526c93bd0094d8838afe8d935e4debd14bc723fe8d7e69c32340eb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheet"));
 
         echo " 
     ";
@@ -48,60 +48,71 @@ class __TwigTemplate_c19e1f5baedd89b5985ca0cc6edce10bd08cff38ce496d6584ea037e1db
         echo "\"/>
 ";
         
-        $__internal_6ad7e625f45058c8fb067481f9ca2dc8bf37034ae437a25512bcf62c1e7e7587->leave($__internal_6ad7e625f45058c8fb067481f9ca2dc8bf37034ae437a25512bcf62c1e7e7587_prof);
+        $__internal_93eb33ad53526c93bd0094d8838afe8d935e4debd14bc723fe8d7e69c32340eb->leave($__internal_93eb33ad53526c93bd0094d8838afe8d935e4debd14bc723fe8d7e69c32340eb_prof);
 
     }
 
     // line 8
     public function block_sidebar($context, array $blocks = array())
     {
-        $__internal_bbf6b374bd4e4c792361a1ef98d1c2a0a799d00e3f97fecdf8237460ff982105 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_bbf6b374bd4e4c792361a1ef98d1c2a0a799d00e3f97fecdf8237460ff982105->enter($__internal_bbf6b374bd4e4c792361a1ef98d1c2a0a799d00e3f97fecdf8237460ff982105_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "sidebar"));
+        $__internal_207e190d4bd392b818d0bb77b1bb9cf3b1b23577de5cdee062b9c3eba6d79fb1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_207e190d4bd392b818d0bb77b1bb9cf3b1b23577de5cdee062b9c3eba6d79fb1->enter($__internal_207e190d4bd392b818d0bb77b1bb9cf3b1b23577de5cdee062b9c3eba6d79fb1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "sidebar"));
 
         // line 9
         echo "    <ul class=\"sidebar-menu\">
-
-        <li class=\"header\">GESTION DES COMPTES</li>
-        <li class=\"treeview\">
-            <a href=\"#\"><i class=\"fa fa-user\"></i> <span>DISTRIBUTEURS</span> <i
-                        class=\"fa fa-angle-left pull-right\"></i></a>
-            <ul class=\"treeview-menu\">
-                <li><a href=\"";
-        // line 16
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire");
-        echo "\">Liste</a></li>
-                <li><a href=\"";
-        // line 17
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire_new", array("id" => null));
-        echo "\">Ajouter</a></li>
-                ";
-        // line 18
-        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_SUPER_ADMIN")) {
+        ";
+        // line 10
+        if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "type", array()) == "admin")) {
+            // line 11
+            echo "            <li class=\"header\">GESTION DES COMPTES</li>
+            <li class=\"treeview\">
+                <a href=\"#\"><i class=\"fa fa-user\"></i> <span>DISTRIBUTEURS</span> <i
+                            class=\"fa fa-angle-left pull-right\"></i></a>
+                <ul class=\"treeview-menu\">
+                    <li><a href=\"";
+            // line 16
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire");
+            echo "\">Liste</a></li>
+                    <li><a href=\"";
+            // line 17
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire_new", array("id" => null));
+            echo "\">Ajouter</a></li>
+                    ";
             // line 19
-            echo "                    <li><a href=\"";
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("rigth");
-            echo "\">Droits</a></li>
-                ";
+            echo "                        ";
+            // line 20
+            echo "                    ";
+            // line 21
+            echo "                </ul>
+            </li>
+        ";
         }
-        // line 21
-        echo "            </ul>
-        </li>
-
-        <li class=\"\">&nbsp;</li>
-        <li class=\"\">&nbsp;</li>
-        <li class=\"\">&nbsp;</li>
-
-        <li><a href=\"";
-        // line 28
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fadco_espace_distributeur_reabo");
-        echo "\"><i class=\"\"></i>Réabonnement direct</a></li>
-
-        <li><a href=\"\"><i class=\"\"></i> <span>Installation et réparation</span></a></li>
-
+        // line 24
+        echo "
+        ";
+        // line 25
+        if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "type", array()) == "distributeur")) {
+            // line 26
+            echo "            <li class=\"header\">GESTION DES ABONNEMENTS</li>
+            <li class=\"treeview\">
+                <a href=\"#\"><i class=\"fa fa-user\"></i> <span>ABONNEMENT</span> <i
+                            class=\"fa fa-angle-left pull-right\"></i></a>
+                <ul class=\"treeview-menu\">
+                    <li><a href=\"";
+            // line 31
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fadco_espace_distributeur_reabo");
+            echo "\"><i class=\"\"></i>Réabonnement direct</a></li>
+                    <li><a href=\"\"><i class=\"\"></i> <span>Installation et réparation</span></a></li>
+                </ul>
+            </li>
+        ";
+        }
+        // line 36
+        echo "
     </ul>
 ";
         
-        $__internal_bbf6b374bd4e4c792361a1ef98d1c2a0a799d00e3f97fecdf8237460ff982105->leave($__internal_bbf6b374bd4e4c792361a1ef98d1c2a0a799d00e3f97fecdf8237460ff982105_prof);
+        $__internal_207e190d4bd392b818d0bb77b1bb9cf3b1b23577de5cdee062b9c3eba6d79fb1->leave($__internal_207e190d4bd392b818d0bb77b1bb9cf3b1b23577de5cdee062b9c3eba6d79fb1_prof);
 
     }
 
@@ -117,7 +128,7 @@ class __TwigTemplate_c19e1f5baedd89b5985ca0cc6edce10bd08cff38ce496d6584ea037e1db
 
     public function getDebugInfo()
     {
-        return array (  96 => 28,  87 => 21,  81 => 19,  79 => 18,  75 => 17,  71 => 16,  62 => 9,  56 => 8,  47 => 5,  43 => 4,  35 => 3,  11 => 1,);
+        return array (  111 => 36,  103 => 31,  96 => 26,  94 => 25,  91 => 24,  86 => 21,  84 => 20,  82 => 19,  78 => 17,  74 => 16,  67 => 11,  65 => 10,  62 => 9,  56 => 8,  47 => 5,  43 => 4,  35 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -139,27 +150,32 @@ class __TwigTemplate_c19e1f5baedd89b5985ca0cc6edce10bd08cff38ce496d6584ea037e1db
 {# Le block à gauche #}
 {% block sidebar %}
     <ul class=\"sidebar-menu\">
+        {% if app.user.type == \"admin\" %}
+            <li class=\"header\">GESTION DES COMPTES</li>
+            <li class=\"treeview\">
+                <a href=\"#\"><i class=\"fa fa-user\"></i> <span>DISTRIBUTEURS</span> <i
+                            class=\"fa fa-angle-left pull-right\"></i></a>
+                <ul class=\"treeview-menu\">
+                    <li><a href=\"{{ path('grh_prestataire') }}\">Liste</a></li>
+                    <li><a href=\"{{ path('grh_prestataire_new',{ 'id': null }) }}\">Ajouter</a></li>
+                    {#{% if is_granted(\"ROLE_SUPER_ADMIN\") %}#}
+                        {#<li><a href=\"{{ path('rigth') }}\">Droits</a></li>#}
+                    {#{% endif %}#}
+                </ul>
+            </li>
+        {% endif %}
 
-        <li class=\"header\">GESTION DES COMPTES</li>
-        <li class=\"treeview\">
-            <a href=\"#\"><i class=\"fa fa-user\"></i> <span>DISTRIBUTEURS</span> <i
-                        class=\"fa fa-angle-left pull-right\"></i></a>
-            <ul class=\"treeview-menu\">
-                <li><a href=\"{{ path('grh_prestataire') }}\">Liste</a></li>
-                <li><a href=\"{{ path('grh_prestataire_new',{ 'id': null }) }}\">Ajouter</a></li>
-                {% if is_granted(\"ROLE_SUPER_ADMIN\") %}
-                    <li><a href=\"{{ path('rigth') }}\">Droits</a></li>
-                {% endif %}
-            </ul>
-        </li>
-
-        <li class=\"\">&nbsp;</li>
-        <li class=\"\">&nbsp;</li>
-        <li class=\"\">&nbsp;</li>
-
-        <li><a href=\"{{ path('fadco_espace_distributeur_reabo') }}\"><i class=\"\"></i>Réabonnement direct</a></li>
-
-        <li><a href=\"\"><i class=\"\"></i> <span>Installation et réparation</span></a></li>
+        {% if app.user.type == \"distributeur\" %}
+            <li class=\"header\">GESTION DES ABONNEMENTS</li>
+            <li class=\"treeview\">
+                <a href=\"#\"><i class=\"fa fa-user\"></i> <span>ABONNEMENT</span> <i
+                            class=\"fa fa-angle-left pull-right\"></i></a>
+                <ul class=\"treeview-menu\">
+                    <li><a href=\"{{ path('fadco_espace_distributeur_reabo') }}\"><i class=\"\"></i>Réabonnement direct</a></li>
+                    <li><a href=\"\"><i class=\"\"></i> <span>Installation et réparation</span></a></li>
+                </ul>
+            </li>
+        {% endif %}
 
     </ul>
 {% endblock %}

@@ -33,10 +33,6 @@ grh_prestataire_change_password:
 grh_prestataire_change:
     path:   /change
     defaults: { _controller: "FadcoBundle:Prestataire:change" }
-    
-#grh_user_new:
-#    path:     /new
-#    defaults: { _controller: "FadcoBundle:Registration:register" }
 
 grh_prestataire_new:
     path:     /new/{id}
@@ -58,53 +54,3 @@ grh_prestataire_modifier_profile_photo:
 grh_prestataire_get_prestataire_enabled:
    path: /prestataire/enabled
    defaults: {_controller: "FadcoBundle:Prestataire:getPrestataireEnabled"}
-
-grh_prestataire_get_bon_interne:
-   path: /prestataire/bon/interne
-   defaults: {_controller: "FadcoBundle:Prestataire:getBonInterneByPrestataire"}
-   methods: [GET, POST]
-
-grh_prestataire_detail_bon_interne:
-   path: /prestataire/detail/bon/interne
-   defaults: {_controller: "FadcoBundle:Prestataire:getDetailBI"}
-   methods: [GET, POST]
-
-grh_prestataire_get_bon_commande:
-   path: /prestataire/bon/commande
-   defaults: {_controller: "FadcoBundle:Prestataire:getBonCommandeByPrestataire"}
-   methods: [GET, POST]
-
-grh_prestataire_detail_bon_commande:
-   path: /prestataire/detail/bon/commande
-   defaults: {_controller: "FadcoBundle:Prestataire:getDetailBC"}
-   methods: [GET, POST]
-
-grh_prestataire_get_bon_commande_journalier:
-   path: /prestataire/bon/commande/journalier
-   defaults: {_controller: "FadcoBundle:Prestataire:getBonJournalierByPrestataire"}
-   methods: [GET, POST]
-
-grh_prestataire_detail_bon_commande_journalier:
-   path: /prestataire/detail/bon/commande/journalier
-   defaults: {_controller: "FadcoBundle:Prestataire:getDetailBCJ"}
-   methods: [GET, POST]
-
-grh_prestataire_get_contre_performance:
-   path: /prestataire/contre/performance
-   defaults: {_controller: "FadcoBundle:Prestataire:getContrePerformanceByPrestataire"}
-   methods: [GET, POST]
-
-grh_prestataire_get_rapport_mensuel:
-   path: /prestataire/rapport/mensuel
-   defaults: {_controller: "FadcoBundle:Prestataire:getRapportBonMensuelByPrestataire"}
-   methods: [GET, POST]
-
-grh_prestataire_detail_rapport_mensuel:
-   path: /prestataire/detail/rapport/mensuel
-   defaults: {_controller: "FadcoBundle:Prestataire:getDetailRapportBM"}
-   methods: [GET, POST]
-
-grh_prestataire_direction_service:
-   path: /prestataire/direction/service
-   defaults: {_controller: "FadcoBundle:Prestataire:getDirectionServiceBis"}
-   methods: [GET, POST]

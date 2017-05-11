@@ -7,27 +7,32 @@
 {# Le block à gauche #}
 {% block sidebar %}
     <ul class="sidebar-menu">
+        {% if app.user.type == "admin" %}
+            <li class="header">GESTION DES COMPTES</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-user"></i> <span>DISTRIBUTEURS</span> <i
+                            class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ path('grh_prestataire') }}">Liste</a></li>
+                    <li><a href="{{ path('grh_prestataire_new',{ 'id': null }) }}">Ajouter</a></li>
+                    {#{% if is_granted("ROLE_SUPER_ADMIN") %}#}
+                        {#<li><a href="{{ path('rigth') }}">Droits</a></li>#}
+                    {#{% endif %}#}
+                </ul>
+            </li>
+        {% endif %}
 
-        <li class="header">GESTION DES COMPTES</li>
-        <li class="treeview">
-            <a href="#"><i class="fa fa-user"></i> <span>DISTRIBUTEURS</span> <i
-                        class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-                <li><a href="{{ path('grh_prestataire') }}">Liste</a></li>
-                <li><a href="{{ path('grh_prestataire_new',{ 'id': null }) }}">Ajouter</a></li>
-                {% if is_granted("ROLE_SUPER_ADMIN") %}
-                    <li><a href="{{ path('rigth') }}">Droits</a></li>
-                {% endif %}
-            </ul>
-        </li>
-
-        <li class="">&nbsp;</li>
-        <li class="">&nbsp;</li>
-        <li class="">&nbsp;</li>
-
-        <li><a href="{{ path('fadco_espace_distributeur_reabo') }}"><i class=""></i>Réabonnement direct</a></li>
-
-        <li><a href=""><i class=""></i> <span>Installation et réparation</span></a></li>
+        {% if app.user.type == "distributeur" %}
+            <li class="header">GESTION DES ABONNEMENTS</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-user"></i> <span>ABONNEMENT</span> <i
+                            class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ path('fadco_espace_distributeur_reabo') }}"><i class=""></i>Réabonnement direct</a></li>
+                    <li><a href=""><i class=""></i> <span>Installation et réparation</span></a></li>
+                </ul>
+            </li>
+        {% endif %}
 
     </ul>
 {% endblock %}

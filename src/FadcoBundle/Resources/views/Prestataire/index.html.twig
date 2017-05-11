@@ -2,7 +2,7 @@
 {% block page_quick_actions %}
     <div>
         <a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a>
-        <a href="{{ path('grh_prestataire_new', {'id': id }) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau distributeur"/></a>
+        <a href="{{ path('grh_prestataire_new', {'id': null }) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau distributeur"/></a>
     </div>
 {% endblock %}
 {% block stylesheet %}

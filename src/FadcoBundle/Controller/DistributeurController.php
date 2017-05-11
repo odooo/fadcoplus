@@ -106,6 +106,8 @@ class DistributeurController extends Controller
         $em->persist($reabo);
         $em->flush();
 
+		$session->remove('resultats');
+
         return $this->redirect($this->generateUrl('fadco_espace_distributeur_reabo'));
 
     }

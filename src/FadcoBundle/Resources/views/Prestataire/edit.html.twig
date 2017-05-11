@@ -32,45 +32,53 @@
                         </div>
 
                         <span>&nbsp;</span>{{ form_errors(form.nom) }}
-                        <div class="input-group" >
-                            <label class="input-group-addon"><i class="fa fa-user"></i>Nom</label>
+                        <div class="form-group" >
+                            {{ form_label(form.nom) }}
+                            {#<label class="input-group-addon"><i class="fa fa-user"></i>Nom</label>#}
                             {{ form_widget(form.nom,{'attr':{'class':'form-control','placeholder':'nom'} }) }}
                         </div>
                         <span>&nbsp;</span>{{ form_errors(form.prenom) }}
-                        <div class="input-group">
-                            <label class="input-group-addon"><i class="fa fa-user"></i>Prénom(s)</label>
+                        <div class="form-group">
+                            {{ form_label(form.prenom) }}
+                            {#<label class="input-group-addon"><i class="fa fa-user"></i>Prénom(s)</label>#}
                             {{ form_widget(form.prenom,{'attr':{'class':'form-control','placeholder':'prénom'} }) }}
                         </div>
                         <span>&nbsp;</span>{{ form_errors(form.contact) }}
-                        <div class="input-group">
-                            <label class="input-group-addon"><i class="fa fa-user"></i>Contacts</label>
+                        <div class="form-group">
+                            {{ form_label(form.contact) }}
+                            {#<label class="input-group-addon"><i class="fa fa-user"></i>Contacts</label>#}
                             {{ form_widget(form.contact,{'attr':{'class':'form-control','placeholder':'contact'} }) }}
                         </div>
                         {% if nouveau == 'oui' %}
                             <span>&nbsp;</span>{{ form_errors(form.username) }}
-                            <div class="input-group">
-                                <label class="input-group-addon"><i class="fa fa-user"></i>Nom d'utilisateur (par défaut)</label>
+                            <div class="form-group">
+                                {{ form_label(form.username) }}
+                                {#<label class="input-group-addon"><i class="fa fa-user"></i>Nom d'utilisateur (par défaut)</label>#}
                                 {{ form_widget(form.username,{'attr':{'class':'form-control','placeholder':"Nom d'utilisateur"} }) }}
                             </div>
-                                <span>&nbsp;</span>{{ form_errors(form.plainPassword.first ) }}
-                                <div class="input-group">
-                                    <label class="input-group-addon"><i class="fa fa-key"></i>Mot de passe (par défaut) </label>
-                                    {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control','placeholder':'mot de passe'} }) }}
-                                </div>
-                                <span>&nbsp;</span>{{ form_errors(form.plainPassword.second ) }}
-                                <div class="input-group">
-                                    <label class="input-group-addon"><i class="fa fa-key"></i>Confirmer mot de passe</label>
-                                    {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control','placeholder':'confirmer le mot de passe'} }) }}
-                                </div>
+                            <span>&nbsp;</span>{{ form_errors(form.plainPassword.first) }}
+                            <div class="form-group">
+                                {{ form_label(form.plainPassword.first) }}
+                                {#<label class="input-group-addon"><i class="fa fa-key"></i>Mot de passe (par défaut) </label>#}
+                                {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control','placeholder':'mot de passe'} }) }}
+                            </div>
+                            <span>&nbsp;</span>{{ form_errors(form.plainPassword.second ) }}
+                            <div class="form-group">
+                                {{ form_label(form.plainPassword.second) }}
+                                {#<label class="input-group-addon"><i class="fa fa-key"></i>Confirmer mot de passe</label>#}
+                                {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control','placeholder':'confirmer le mot de passe'} }) }}
+                            </div>
                         {% endif %}
                         <span>&nbsp;</span>{{ form_errors(form.email) }}
-                        <div class="input-group">
-                            <label class="input-group-addon"><i class="fa fa-envelope"></i>Email</label>
+                        <div class="form-group">
+                            {{ form_label(form.email) }}
+                            {#<label class="input-group-addon"><i class="fa fa-envelope"></i>Email</label>#}
                             {{ form_widget(form.email,{'attr':{'class':'form-control','placeholder':'e-mail'} }) }}
                         </div>
                         {{ form_errors(form.ville,{"attr":{'class':'alert-error' } }) }}<span>&nbsp;</span>
-                        <div class="input-group">
-                            <label class="input-group-addon"><i class="fa fa-user"></i>Ville</label>
+                        <div class="form-group">
+                            {{ form_label(form.ville) }}
+                            {#<label class="input-group-addon"><i class="fa fa-user"></i>Ville</label>#}
                             {{ form_widget(form.ville,{'attr':{'class':'form-control','placeholder':'ville du prestataire'} }) }}
                         </div>
                         <div>
