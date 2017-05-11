@@ -1,0 +1,17 @@
+FadcoBundle\Entity\CompteDistributeur:
+    type: entity
+    table: null
+    repositoryClass: FadcoBundle\Entity\CompteDistributeurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        libelle:
+            type: string
+            length: 255
+        solde:
+            type: integer
+    lifecycleCallbacks: {  }
