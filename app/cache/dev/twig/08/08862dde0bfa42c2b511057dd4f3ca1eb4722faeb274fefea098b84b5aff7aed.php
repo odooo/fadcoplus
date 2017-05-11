@@ -22,32 +22,32 @@ class __TwigTemplate_ced02273f6e759d08c90c423fbef0629c20f99ec09d14235368745a3f0e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_014cb54a5f48b443a8df8089289ce0e2f96be03a9855873c2f07bc0cbea0b16d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_014cb54a5f48b443a8df8089289ce0e2f96be03a9855873c2f07bc0cbea0b16d->enter($__internal_014cb54a5f48b443a8df8089289ce0e2f96be03a9855873c2f07bc0cbea0b16d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Distributeur:new-reabo.html.twig"));
+        $__internal_d99cf703508b314b405b6d922b32ce26108df46df244df7fbd69c3e16db36fec = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d99cf703508b314b405b6d922b32ce26108df46df244df7fbd69c3e16db36fec->enter($__internal_d99cf703508b314b405b6d922b32ce26108df46df244df7fbd69c3e16db36fec_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Distributeur:new-reabo.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_014cb54a5f48b443a8df8089289ce0e2f96be03a9855873c2f07bc0cbea0b16d->leave($__internal_014cb54a5f48b443a8df8089289ce0e2f96be03a9855873c2f07bc0cbea0b16d_prof);
+        $__internal_d99cf703508b314b405b6d922b32ce26108df46df244df7fbd69c3e16db36fec->leave($__internal_d99cf703508b314b405b6d922b32ce26108df46df244df7fbd69c3e16db36fec_prof);
 
     }
 
     // line 2
     public function block_title($context, array $blocks = array())
     {
-        $__internal_fa44c4b9fa06c3f1b1f98a2cff3402283dd4daf8c34226238220480bb8894ecc = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_fa44c4b9fa06c3f1b1f98a2cff3402283dd4daf8c34226238220480bb8894ecc->enter($__internal_fa44c4b9fa06c3f1b1f98a2cff3402283dd4daf8c34226238220480bb8894ecc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_d3fd0930e128afe0d41319053fb02254d5f0100c6243fd49cc688702b5b0aa82 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d3fd0930e128afe0d41319053fb02254d5f0100c6243fd49cc688702b5b0aa82->enter($__internal_d3fd0930e128afe0d41319053fb02254d5f0100c6243fd49cc688702b5b0aa82_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo " Nouveau réabo. direct";
         
-        $__internal_fa44c4b9fa06c3f1b1f98a2cff3402283dd4daf8c34226238220480bb8894ecc->leave($__internal_fa44c4b9fa06c3f1b1f98a2cff3402283dd4daf8c34226238220480bb8894ecc_prof);
+        $__internal_d3fd0930e128afe0d41319053fb02254d5f0100c6243fd49cc688702b5b0aa82->leave($__internal_d3fd0930e128afe0d41319053fb02254d5f0100c6243fd49cc688702b5b0aa82_prof);
 
     }
 
     // line 4
     public function block_content($context, array $blocks = array())
     {
-        $__internal_e3646dc11e3431486c65026858cd2abe34b7e4f7db496bbe1c881ba48b276f23 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e3646dc11e3431486c65026858cd2abe34b7e4f7db496bbe1c881ba48b276f23->enter($__internal_e3646dc11e3431486c65026858cd2abe34b7e4f7db496bbe1c881ba48b276f23_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_a8f786a4da2fbee1a6ae169161ec3d35b8d6190f9488f07ed86817e7577894c1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a8f786a4da2fbee1a6ae169161ec3d35b8d6190f9488f07ed86817e7577894c1->enter($__internal_a8f786a4da2fbee1a6ae169161ec3d35b8d6190f9488f07ed86817e7577894c1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 5
         echo "
@@ -153,7 +153,7 @@ class __TwigTemplate_ced02273f6e759d08c90c423fbef0629c20f99ec09d14235368745a3f0e
         \t\t\t\t\t
         \t\t\t        <div class=\"input-group\">
                                 <label class=\"input-group-addon\"><i class=\"\"></i>Numéro carte : </label>
-                                <input  value=\"\" id=\"fadcobundle_distributeur_new_reabo_carte\" data-url = \"";
+                                <input maxlength=\"14\" minlength=\"14\"  value=\"\" id=\"fadcobundle_distributeur_new_reabo_carte\" data-url = \"";
         // line 76
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fadco_espace_distributeur_reabo_ancien_abonne_infos");
         echo "\" readonly class=\"form-control\"/>
@@ -177,7 +177,7 @@ class __TwigTemplate_ced02273f6e759d08c90c423fbef0629c20f99ec09d14235368745a3f0e
                             
                             <div class=\"input-group\">
                                 <label class=\"input-group-addon\"><i class=\"\"></i>Numéro carte : </label>
-                                <input name=\"fadcobundle_distributeur_new_reabo[numeroCarte]\" class=\"form-control\"/>
+                                <input maxlength=\"14\" minlength=\"14\" name=\"fadcobundle_distributeur_new_reabo[numeroCarte]\" class=\"form-control\"/>
                             </div>
 
                             <span>&nbsp;</span>
@@ -367,7 +367,7 @@ class __TwigTemplate_ced02273f6e759d08c90c423fbef0629c20f99ec09d14235368745a3f0e
 
 ";
         
-        $__internal_e3646dc11e3431486c65026858cd2abe34b7e4f7db496bbe1c881ba48b276f23->leave($__internal_e3646dc11e3431486c65026858cd2abe34b7e4f7db496bbe1c881ba48b276f23_prof);
+        $__internal_a8f786a4da2fbee1a6ae169161ec3d35b8d6190f9488f07ed86817e7577894c1->leave($__internal_a8f786a4da2fbee1a6ae169161ec3d35b8d6190f9488f07ed86817e7577894c1_prof);
 
     }
 
@@ -471,7 +471,7 @@ class __TwigTemplate_ced02273f6e759d08c90c423fbef0629c20f99ec09d14235368745a3f0e
         \t\t\t\t\t
         \t\t\t        <div class=\"input-group\">
                                 <label class=\"input-group-addon\"><i class=\"\"></i>Numéro carte : </label>
-                                <input  value=\"\" id=\"fadcobundle_distributeur_new_reabo_carte\" data-url = \"{{ path('fadco_espace_distributeur_reabo_ancien_abonne_infos') }}\" readonly class=\"form-control\"/>
+                                <input maxlength=\"14\" minlength=\"14\"  value=\"\" id=\"fadcobundle_distributeur_new_reabo_carte\" data-url = \"{{ path('fadco_espace_distributeur_reabo_ancien_abonne_infos') }}\" readonly class=\"form-control\"/>
                             </div>
 
                             <span>&nbsp;</span>
@@ -492,7 +492,7 @@ class __TwigTemplate_ced02273f6e759d08c90c423fbef0629c20f99ec09d14235368745a3f0e
                             
                             <div class=\"input-group\">
                                 <label class=\"input-group-addon\"><i class=\"\"></i>Numéro carte : </label>
-                                <input name=\"fadcobundle_distributeur_new_reabo[numeroCarte]\" class=\"form-control\"/>
+                                <input maxlength=\"14\" minlength=\"14\" name=\"fadcobundle_distributeur_new_reabo[numeroCarte]\" class=\"form-control\"/>
                             </div>
 
                             <span>&nbsp;</span>
