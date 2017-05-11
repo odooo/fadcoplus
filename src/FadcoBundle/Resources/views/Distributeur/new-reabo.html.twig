@@ -230,31 +230,31 @@
     </script>
 
     <script>
-    $( function ()
-    {
-        $('#fadcobundle_distributeur_new_reabo_abonnea').on('change', function(){
-            
-            $element = $(this);
-            var id = $element.val();
+        $( function ()
+        {
+            $('#fadcobundle_distributeur_new_reabo_abonnea').on('change', function(){
+                
+                $element = $(this);
+                var id = $element.val();
 
-                $.ajax({
-                    url: $('#fadcobundle_distributeur_new_reabo_carte').attr('data-url'),
-                    type: 'GET',
-                    data: 'id='+id,
-                    dataType: 'json',
+                    $.ajax({
+                        url: $('#fadcobundle_distributeur_new_reabo_carte').attr('data-url'),
+                        type: 'GET',
+                        data: 'id='+id,
+                        dataType: 'json',
 
-                    success: function(data, status){
-                        $('#fadcobundle_distributeur_new_reabo_carte').val(data.numeroCarte);
-                        $('#fadcobundle_distributeur_new_reabo_contact').val(data.contact);
-                    },
-                    error: function(status){
-                        console.log('erreur'); 
-                    }
-                });
-            
+                        success: function(data, status){
+                            $('#fadcobundle_distributeur_new_reabo_carte').val(data.numeroCarte);
+                            $('#fadcobundle_distributeur_new_reabo_contact').val(data.contact);
+                        },
+                        error: function(status){
+                            console.log('erreur'); 
+                        }
+                    });
+                
+            });
+
         });
-
-    });
     </script>
 
 

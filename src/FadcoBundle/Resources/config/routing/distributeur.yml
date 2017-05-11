@@ -5,7 +5,7 @@ fadco_espace_distributeur:
 # reabo. direct
 
 fadco_espace_distributeur_reabo:
-    path:     /liste-reabonnement
+    path:     /liste-reabonnements
     defaults: { _controller: FadcoBundle:Distributeur:indexReabo }
 
 fadco_espace_distributeur_reabo_new:
@@ -28,5 +28,15 @@ fadco_espace_distributeur_reabo_ancien_abonne_infos:
 # reparation et installation
 
 fadco_espace_distributeur_repair:
-    path:     /
+    path:     /liste-prestations
     defaults: { _controller: FadcoBundle:Distributeur:indexRepair }
+
+fadco_espace_distributeur_repair_new:
+    path:     /nouvelle-prestation
+    defaults: { _controller: FadcoBundle:Distributeur:newRepair }
+    methods: [GET, POST]
+
+fadco_espace_distributeur_repair_new_client:
+    path:     /nouveau-client
+    defaults: { _controller: FadcoBundle:Distributeur:newClient }
+    methods: [GET, POST]

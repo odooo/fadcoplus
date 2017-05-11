@@ -1,4 +1,4 @@
-{% extends "GSPBundle:Default:menu.html.twig" %}
+{% extends "FadcoBundle:Default:menu.html.twig" %}
 {% block title %}Gestion des prestataires{% endblock %}
 {% block contentHeader %}{% endblock %}
 {% block content %}
@@ -16,7 +16,7 @@
                 {{ form_start(form)}}
                     <div class="row">
                         <div class="col-sm-offset-3 col-sm-6" id="first-part">
-                            <center><img src="{%if prestataire.photo is not null %}{{path("global_rewrite_url",cryptSrc(prestataire.WebPhoto))}}{%else%}{{ asset('bundles/GSPBundle/images/avatar.png') }}{% endif %}" class="img-circle" style="width:150px;Height:150px;" id="img-profile"></center><span>&nbsp;</span><br/>
+                            <center><img src="{%if prestataire.photo is not null %}{{path("global_rewrite_url",cryptSrc(prestataire.WebPhoto))}}{%else%}{{ asset('bundles/FadcoBundle/images/avatar.png') }}{% endif %}" class="img-circle" style="width:150px;Height:150px;" id="img-profile"></center><span>&nbsp;</span><br/>
                             {{ form_widget(form.file,{'id':'user_photo','attr':{'class':'hidden','onchange':"$('#profile').val(this.files[0].name);"} }) }}
                            <div class="input-group" onclick="$('#user_photo').click();">
                                <label class="input-group-addon"><i class="fa fa-photo"></i></label>

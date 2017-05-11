@@ -1,7 +1,5 @@
-{% extends "GSPBundle:Default:menu.html.twig" %}
+{% extends "FadcoBundle:Default:menu.html.twig" %}
 {% block content %}
-
- {{ include('GSPBundle:RetraitTitrePropriete:popups.html.twig') }}
 
     <h1>Liste des Prestataires </h1>
     <section class="content">
@@ -91,8 +89,8 @@
             </div>
         </div>
     </section> 
-    <script src="{{asset('bundles/GSPBundle//plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('bundles/GSPBundle/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('bundles/FadcoBundle//plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('bundles/FadcoBundle/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
 
     <script>
      $('.change_rigth').click(function(e) {

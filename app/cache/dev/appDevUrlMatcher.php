@@ -187,7 +187,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // fadco_espace_distributeur_reabo
-            if ($pathinfo === '/espace_distributeur/liste-reabonnement') {
+            if ($pathinfo === '/espace_distributeur/liste-reabonnements') {
                 return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexReaboAction',  '_route' => 'fadco_espace_distributeur_reabo',);
             }
 
@@ -218,12 +218,33 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // fadco_espace_distributeur_repair
-            if (rtrim($pathinfo, '/') === '/espace_distributeur') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'fadco_espace_distributeur_repair');
-                }
-
+            if ($pathinfo === '/espace_distributeur/liste-prestations') {
                 return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexRepairAction',  '_route' => 'fadco_espace_distributeur_repair',);
+            }
+
+            if (0 === strpos($pathinfo, '/espace_distributeur/nouve')) {
+                // fadco_espace_distributeur_repair_new
+                if ($pathinfo === '/espace_distributeur/nouvelle-prestation') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fadco_espace_distributeur_repair_new;
+                    }
+
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newRepairAction',  '_route' => 'fadco_espace_distributeur_repair_new',);
+                }
+                not_fadco_espace_distributeur_repair_new:
+
+                // fadco_espace_distributeur_repair_new_client
+                if ($pathinfo === '/espace_distributeur/nouveau-client') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fadco_espace_distributeur_repair_new_client;
+                    }
+
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newClientAction',  '_route' => 'fadco_espace_distributeur_repair_new_client',);
+                }
+                not_fadco_espace_distributeur_repair_new_client:
+
             }
 
         }

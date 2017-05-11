@@ -1,13 +1,44 @@
-{% extends "FadcoBundle:Distributeur:layout.html.twig" %}
+{% extends "FadcoBundle:Default:menu.html.twig" %}
 
-{% block title %}Admin{% endblock %}
-
-{% block content %}
+{% block contentHeader %}{% endblock %}
+{% block title %}FADCO+ : Prestations{% endblock %}
+{% block content%}
+    <h4>Liste des prestations</h4>
 
     <section class="content">
         <div class="box box-primary">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div align="right">
+                        <a href="{{ path('fadco_espace_distributeur_repair_new_client') }}"><button type="button" class="btn btn-default">Enregistrer un nouveau client ou abonné </button></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{ path('fadco_espace_distributeur_repair_new') }}"><button type="button" class="btn btn-success">Effectuer une nouvelle prestation </button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body" style="background-color:black;">
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="info-box-content" style="background-color:black;">
+                            <span><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:80px; heigth:5px;" alt="edgar"/></span>
+                            
+                                <span style="color:green;" class="info-box-number">90 000 F</span>
+                                <span class="info-box-text" style="color:white;">777777662({{ app.user.username }})</span>
+                                <span class="info-box-text" style="color:white;">7878787812({{ app.user.username }})</span>
+                            
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+
+
+        <div class="box box-primary">
             <div class="box-header with-border">
-                <h1 class="box-title">Admin</h1>
 
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse">
@@ -15,56 +46,103 @@
                     </button>
                 </div>
             </div>
+            <div class="box-body table-responsive">
+                <table id="lstdevis" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center;">#</th>
+                            <th style="text-align:center;">Abonné</th>
+                            <th style="text-align:center;">N° mobile</th>
+                            <th style="text-align:center;">Type prestation</th>
+                            <th style="text-align:center;">Lieu prestation</th>
+                            <th style="text-align:center;">Forme maison</th>
+                            <th style="text-align:center;">Endroit propice</th>
+                            <th style="text-align:center;">Montant</th>
+                            <th style="text-align:center;">Date</th>
+                            <th style="text-align:center;">Distributeur</th>
+                            {#<th>Actions</th>#}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set c = 1 %}
+                    {% for repair in repairs %}
+                        <tr>
+                            <td style="text-align:center;">{{ c }}</td>
+                            <td style="text-align:center;">{{ repair.abonne }}</td>
+                            <td style="text-align:center;">{{ repair.contact }}</td>
+                            <td style="text-align:center;">{{ repair.type }}</td>
+                            <td style="text-align:center;">{{ repair.lieu }}</td>
+                            <td style="text-align:center;">{{ repair.forme }}</td>
+                            <td style="text-align:center;">{{ repair.endroit }}</td>
+                            <td style="text-align:center;">{{ repair.montant|number_format(0,'.',' ') }}</td>
+                            <td style="text-align:center;">{{ repair.date|date('d/m/Y') }}</td>
+                            <td style="text-align:center;">{% if repair.distributeur %}{{ repair.distributeur.username }}{% endif %}</td>
+                            {#<td>
+                                <div class="input-group btn">
+                                    <button type="button" class="btn btn-success btn-xs   dropdown-toggle pull-right" data-toggle="dropdown">
+                                        Actions  <span class="fa fa-caret-down"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="{{ path('fadco_espace_distributeur_reabo_renew', {'id': reabo.id}) }}">Renouvellement</a>
+                                        </li>                                        
+                                    </ul>
+                                </div>
+                            </td>#}
+                        </tr>
+                        {% set c = c + 1 %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div> <!-- End div box-body -->
+        </div> <!-- End div box-primary -->
+
+        <div class="box box-primary">
             <div class="box-body">
-                <!-- Info boxes -->
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-aqua"><i class="fa fa-user-plus"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">Nombre d'abonnés <br/> reçus aujourd'hui<br/></span>
-                                <span class="info-box-number"><br/>12<small></small></span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">Nombre total <br/> d'abonnés<br/></span>
-                                <span class="info-box-number"><br/>41,410</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <!-- /.col -->
-
-                    <!-- fix for small devices only -->
-                    <div class="clearfix visible-sm-block"></div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">Sales</span>
-                                <span class="info-box-number">760</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <!-- /.col -->
+                <div align="left">
+                    <a href="{{ path('fadco_espace_distributeur_repair_new_client') }}"><button type="button" class="btn btn-default">Enregistrer un nouveau client ou abonné </button></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ path('fadco_espace_distributeur_repair_new') }}"><button type="button" class="btn btn-success">Effectuer une nouvelle prestation </button></a>
                 </div>
-                <!-- /.row -->
+            </div>
+        </div> <!-- End div box-primary -->
+
+    </section> 
+
+        <div id='popupViewModal' class='modal fade' role='dialog'>
+        <div class='modal-dialog'>
+            <div class='modal-content modal-lg'>
+                <div class='modal-header'>
+                    <button type='button' class='close'
+                            data-dismiss='modal'>&times;</button>
+                </div>
+                <div id='popupViewContentBox'></div>
+                <div class="modal-footer">
+                    <div class="input-group pull-right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <div id="formModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div id = "formContentBox"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{asset('bundles/FadcoBundle//plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('bundles/FadcoBundle/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+
+    <script>
+        $(function () {});
+    </script>
+
 
 {% endblock %}

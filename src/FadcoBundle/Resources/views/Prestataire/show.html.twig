@@ -1,4 +1,4 @@
-{% extends "GSPBundle:Default:menu.html.twig" %}
+{% extends "FadcoBundle:Default:menu.html.twig" %}
 
 {% block content %}
     <section class="content">
@@ -72,10 +72,6 @@
                 <td>{{ entity.typeprestataire }}</td>
             </tr>
 
-            <tr>
-                <th>Catégorie de Prestataire</th>
-                <td> {% if entity.categoriePrestataire is not null %} {{ entity.categoriePrestataire.libelleCategorie }} {% endif %} </td>
-            </tr>
 
             <tr>
                 <th>Appréciation particulière</th>

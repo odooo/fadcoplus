@@ -23,43 +23,43 @@ class __TwigTemplate_ad5efc0cdc5ced4927460d5984271d212f6ace07af966b346b2d23e4815
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b84c3b27140a4835b9a32e85b6645c4702349e05907d20c3026298ef8b28eafa = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b84c3b27140a4835b9a32e85b6645c4702349e05907d20c3026298ef8b28eafa->enter($__internal_b84c3b27140a4835b9a32e85b6645c4702349e05907d20c3026298ef8b28eafa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Distributeur:index-reabo.html.twig"));
+        $__internal_1f731730e84984bca167008a5147eea1ec53b82d531783d6df68008be8b2e5ae = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1f731730e84984bca167008a5147eea1ec53b82d531783d6df68008be8b2e5ae->enter($__internal_1f731730e84984bca167008a5147eea1ec53b82d531783d6df68008be8b2e5ae_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Distributeur:index-reabo.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_b84c3b27140a4835b9a32e85b6645c4702349e05907d20c3026298ef8b28eafa->leave($__internal_b84c3b27140a4835b9a32e85b6645c4702349e05907d20c3026298ef8b28eafa_prof);
+        $__internal_1f731730e84984bca167008a5147eea1ec53b82d531783d6df68008be8b2e5ae->leave($__internal_1f731730e84984bca167008a5147eea1ec53b82d531783d6df68008be8b2e5ae_prof);
 
     }
 
     // line 3
     public function block_contentHeader($context, array $blocks = array())
     {
-        $__internal_15b3e6e77bf8ba5445a9b7f3e75a2b74bcfe7e18786a6b40e9097388cbcda705 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_15b3e6e77bf8ba5445a9b7f3e75a2b74bcfe7e18786a6b40e9097388cbcda705->enter($__internal_15b3e6e77bf8ba5445a9b7f3e75a2b74bcfe7e18786a6b40e9097388cbcda705_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentHeader"));
+        $__internal_12478afc39dc31f348dae6252b0cd37df921ad549dd6122dce5420bf9195f451 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_12478afc39dc31f348dae6252b0cd37df921ad549dd6122dce5420bf9195f451->enter($__internal_12478afc39dc31f348dae6252b0cd37df921ad549dd6122dce5420bf9195f451_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentHeader"));
 
         
-        $__internal_15b3e6e77bf8ba5445a9b7f3e75a2b74bcfe7e18786a6b40e9097388cbcda705->leave($__internal_15b3e6e77bf8ba5445a9b7f3e75a2b74bcfe7e18786a6b40e9097388cbcda705_prof);
+        $__internal_12478afc39dc31f348dae6252b0cd37df921ad549dd6122dce5420bf9195f451->leave($__internal_12478afc39dc31f348dae6252b0cd37df921ad549dd6122dce5420bf9195f451_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_29a65af9aa123450e3929b775ea48786b52885c3b33ec92e17ab6aefe17b4ea0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_29a65af9aa123450e3929b775ea48786b52885c3b33ec92e17ab6aefe17b4ea0->enter($__internal_29a65af9aa123450e3929b775ea48786b52885c3b33ec92e17ab6aefe17b4ea0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_a264a0d4816cf002f9dec63d6e6f6572ef51d71fdceb39cbb7210a65bdcae7d6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a264a0d4816cf002f9dec63d6e6f6572ef51d71fdceb39cbb7210a65bdcae7d6->enter($__internal_a264a0d4816cf002f9dec63d6e6f6572ef51d71fdceb39cbb7210a65bdcae7d6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "FADCO+ : Réabo. direct";
         
-        $__internal_29a65af9aa123450e3929b775ea48786b52885c3b33ec92e17ab6aefe17b4ea0->leave($__internal_29a65af9aa123450e3929b775ea48786b52885c3b33ec92e17ab6aefe17b4ea0_prof);
+        $__internal_a264a0d4816cf002f9dec63d6e6f6572ef51d71fdceb39cbb7210a65bdcae7d6->leave($__internal_a264a0d4816cf002f9dec63d6e6f6572ef51d71fdceb39cbb7210a65bdcae7d6_prof);
 
     }
 
     // line 5
     public function block_content($context, array $blocks = array())
     {
-        $__internal_0a6e7cf98baa4de7de921ffb655fdb866bbc50f9ebb4507d7abf87ce008755cb = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_0a6e7cf98baa4de7de921ffb655fdb866bbc50f9ebb4507d7abf87ce008755cb->enter($__internal_0a6e7cf98baa4de7de921ffb655fdb866bbc50f9ebb4507d7abf87ce008755cb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_461e78319434ff515e46442f8c418724d0a7ae9d913e506cc9ebaa6f8f1c6b43 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_461e78319434ff515e46442f8c418724d0a7ae9d913e506cc9ebaa6f8f1c6b43->enter($__internal_461e78319434ff515e46442f8c418724d0a7ae9d913e506cc9ebaa6f8f1c6b43_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 6
         echo "    <h4>Liste des réabonnements directs</h4>
@@ -195,7 +195,7 @@ class __TwigTemplate_ad5efc0cdc5ced4927460d5984271d212f6ace07af966b346b2d23e4815
                                             <a href=\"";
             // line 85
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fadco_espace_distributeur_reabo_renew", array("id" => $this->getAttribute($context["reabo"], "id", array()))), "html", null, true);
-            echo "\">Renouvellement</a>
+            echo "\">Renouveler cette offre</a>
                                         </li>                                        
                                     </ul>
                                 </div>
@@ -273,7 +273,7 @@ class __TwigTemplate_ad5efc0cdc5ced4927460d5984271d212f6ace07af966b346b2d23e4815
 
 ";
         
-        $__internal_0a6e7cf98baa4de7de921ffb655fdb866bbc50f9ebb4507d7abf87ce008755cb->leave($__internal_0a6e7cf98baa4de7de921ffb655fdb866bbc50f9ebb4507d7abf87ce008755cb_prof);
+        $__internal_461e78319434ff515e46442f8c418724d0a7ae9d913e506cc9ebaa6f8f1c6b43->leave($__internal_461e78319434ff515e46442f8c418724d0a7ae9d913e506cc9ebaa6f8f1c6b43_prof);
 
     }
 
@@ -386,7 +386,7 @@ class __TwigTemplate_ad5efc0cdc5ced4927460d5984271d212f6ace07af966b346b2d23e4815
                                     </button>
                                     <ul class=\"dropdown-menu dropdown-menu-right\">
                                         <li>
-                                            <a href=\"{{ path('fadco_espace_distributeur_reabo_renew', {'id': reabo.id}) }}\">Renouvellement</a>
+                                            <a href=\"{{ path('fadco_espace_distributeur_reabo_renew', {'id': reabo.id}) }}\">Renouveler cette offre</a>
                                         </li>                                        
                                     </ul>
                                 </div>

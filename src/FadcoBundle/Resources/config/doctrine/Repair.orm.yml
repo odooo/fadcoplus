@@ -1,0 +1,45 @@
+FadcoBundle\Entity\Repair:
+    type: entity
+    table: null
+    repositoryClass: FadcoBundle\Entity\RepairRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        distributeur:
+            targetEntity: Prestataire
+            nullable: false
+            joinColumn:
+                name: distributeur_id
+                referencedColumnName: id
+
+    fields:
+        type:
+            type: string
+            length: 255
+        date:
+            type: datetime
+        abonne:
+            type: string
+            length: 255
+        contact:
+            type: string
+            length: 255
+        lieu:
+            type: string
+            length: 255
+        forme:
+            type: string
+            length: 255
+        endroit:
+            type: string
+            length: 255
+        montant:
+            type: integer
+            option:
+                default: 0
+    lifecycleCallbacks: {  }

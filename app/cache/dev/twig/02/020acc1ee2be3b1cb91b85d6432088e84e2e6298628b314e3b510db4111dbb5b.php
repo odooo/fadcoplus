@@ -18,8 +18,8 @@ class __TwigTemplate_c287623e7c09675f12a89ab296e857efd4ae131f90269e0bef20924ef2c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0439f4bb23ad8a9aa05be7e877c8b5c3c86e7427fde710085d24eeba2a5f225c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_0439f4bb23ad8a9aa05be7e877c8b5c3c86e7427fde710085d24eeba2a5f225c->enter($__internal_0439f4bb23ad8a9aa05be7e877c8b5c3c86e7427fde710085d24eeba2a5f225c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "TwigBundle:Exception:exception_full.html.twig"));
+        $__internal_fae0439234592a84b65ee7545e3714e7512cf292967ecec77c319ec171ff377b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_fae0439234592a84b65ee7545e3714e7512cf292967ecec77c319ec171ff377b->enter($__internal_fae0439234592a84b65ee7545e3714e7512cf292967ecec77c319ec171ff377b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "TwigBundle:Exception:exception_full.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -116,15 +116,15 @@ class __TwigTemplate_c287623e7c09675f12a89ab296e857efd4ae131f90269e0bef20924ef2c
 
 ";
         
-        $__internal_0439f4bb23ad8a9aa05be7e877c8b5c3c86e7427fde710085d24eeba2a5f225c->leave($__internal_0439f4bb23ad8a9aa05be7e877c8b5c3c86e7427fde710085d24eeba2a5f225c_prof);
+        $__internal_fae0439234592a84b65ee7545e3714e7512cf292967ecec77c319ec171ff377b->leave($__internal_fae0439234592a84b65ee7545e3714e7512cf292967ecec77c319ec171ff377b_prof);
 
     }
 
     // line 10
     public function block_stylesheet($context, array $blocks = array())
     {
-        $__internal_3a58222f88d33cbda7b1b2e2a23101e910f0d4e7b3f0b7f611e997c93b5a2b2d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_3a58222f88d33cbda7b1b2e2a23101e910f0d4e7b3f0b7f611e997c93b5a2b2d->enter($__internal_3a58222f88d33cbda7b1b2e2a23101e910f0d4e7b3f0b7f611e997c93b5a2b2d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheet"));
+        $__internal_a231533743a78f4cd114868f9560b304ba6d47d03ad04bf02f76f475a7319428 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a231533743a78f4cd114868f9560b304ba6d47d03ad04bf02f76f475a7319428->enter($__internal_a231533743a78f4cd114868f9560b304ba6d47d03ad04bf02f76f475a7319428_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheet"));
 
         // line 11
         echo "        <link rel=\"stylesheet\" href=\"";
@@ -147,15 +147,15 @@ class __TwigTemplate_c287623e7c09675f12a89ab296e857efd4ae131f90269e0bef20924ef2c
 
     ";
         
-        $__internal_3a58222f88d33cbda7b1b2e2a23101e910f0d4e7b3f0b7f611e997c93b5a2b2d->leave($__internal_3a58222f88d33cbda7b1b2e2a23101e910f0d4e7b3f0b7f611e997c93b5a2b2d_prof);
+        $__internal_a231533743a78f4cd114868f9560b304ba6d47d03ad04bf02f76f475a7319428->leave($__internal_a231533743a78f4cd114868f9560b304ba6d47d03ad04bf02f76f475a7319428_prof);
 
     }
 
     // line 36
     public function block_button_menu($context, array $blocks = array())
     {
-        $__internal_86a6b9a8464e3016e11225c5b0f45c70096377914bdde6d87c749b46f8073e5d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_86a6b9a8464e3016e11225c5b0f45c70096377914bdde6d87c749b46f8073e5d->enter($__internal_86a6b9a8464e3016e11225c5b0f45c70096377914bdde6d87c749b46f8073e5d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "button_menu"));
+        $__internal_aa19f7d14fceff9ff5f89a7394eefcaa8f41a6ecde0eaf863817883fc8d8d614 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_aa19f7d14fceff9ff5f89a7394eefcaa8f41a6ecde0eaf863817883fc8d8d614->enter($__internal_aa19f7d14fceff9ff5f89a7394eefcaa8f41a6ecde0eaf863817883fc8d8d614_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "button_menu"));
 
         // line 37
         echo "                    <a href=\"#\" class=\"sidebar-toggle\" data-toggle=\"offcanvas\" role=\"button\">
@@ -163,15 +163,15 @@ class __TwigTemplate_c287623e7c09675f12a89ab296e857efd4ae131f90269e0bef20924ef2c
                     </a>
                 ";
         
-        $__internal_86a6b9a8464e3016e11225c5b0f45c70096377914bdde6d87c749b46f8073e5d->leave($__internal_86a6b9a8464e3016e11225c5b0f45c70096377914bdde6d87c749b46f8073e5d_prof);
+        $__internal_aa19f7d14fceff9ff5f89a7394eefcaa8f41a6ecde0eaf863817883fc8d8d614->leave($__internal_aa19f7d14fceff9ff5f89a7394eefcaa8f41a6ecde0eaf863817883fc8d8d614_prof);
 
     }
 
     // line 60
     public function block_content($context, array $blocks = array())
     {
-        $__internal_43371b45d5ded20a53cfd0d48be94da2d1a9f7ce30ce54602e1a28f39ef10d71 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_43371b45d5ded20a53cfd0d48be94da2d1a9f7ce30ce54602e1a28f39ef10d71->enter($__internal_43371b45d5ded20a53cfd0d48be94da2d1a9f7ce30ce54602e1a28f39ef10d71_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_8ad5eefe52a3f53d42195302416edf8fd1ab4b1c2474aee138937f62c05b72fa = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8ad5eefe52a3f53d42195302416edf8fd1ab4b1c2474aee138937f62c05b72fa->enter($__internal_8ad5eefe52a3f53d42195302416edf8fd1ab4b1c2474aee138937f62c05b72fa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 61
         echo "    <div class=\"box box-primary\" >
@@ -213,7 +213,7 @@ class __TwigTemplate_c287623e7c09675f12a89ab296e857efd4ae131f90269e0bef20924ef2c
 
 \t\t";
         
-        $__internal_43371b45d5ded20a53cfd0d48be94da2d1a9f7ce30ce54602e1a28f39ef10d71->leave($__internal_43371b45d5ded20a53cfd0d48be94da2d1a9f7ce30ce54602e1a28f39ef10d71_prof);
+        $__internal_8ad5eefe52a3f53d42195302416edf8fd1ab4b1c2474aee138937f62c05b72fa->leave($__internal_8ad5eefe52a3f53d42195302416edf8fd1ab4b1c2474aee138937f62c05b72fa_prof);
 
     }
 

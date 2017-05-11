@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 use FadcoBundle\Entity\Reabonnement;
+use FadcoBundle\Entity\Repair;
+use FadcoBundle\Entity\Abonne;
 
 class DistributeurController extends Controller
 {
@@ -18,6 +20,50 @@ class DistributeurController extends Controller
     	$reabos = $em->getRepository('FadcoBundle:Reabonnement')->findBy(
     		array(), array('id' => 'desc'));
         return $this->render('FadcoBundle:Distributeur:index-reabo.html.twig', array('reabos' => $reabos));
+    }
+
+    // liste des installations et réparations
+    public function indexRepairAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repairs = $em->getRepository('FadcoBundle:Repair')->findBy(
+            array(), array('id' => 'desc'));
+        return $this->render('FadcoBundle:Distributeur:index-repair.html.twig', array('repairs' => $repairs));
+    }
+
+    // nouvelle prestation
+    public function newRepairAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $abonnes = $em->getRepository('FadcoBundle:Abonne')->findAll();
+
+        $form = $request->get('fadcobundle_distributeur_new_repair');
+
+        if($request->getMethod() == 'POST'){
+
+            $abonne = $em->getRepository('FadcoBundle:Abonne')->find($form['abonne']);
+
+            $repair = new Repair();
+
+            $repair->setAbonne($abonne->getName());
+            $repair->setContact($abonne->getContact());
+            $repair->setType($form['type']);
+            $repair->setLieu($form['lieu']);
+            $repair->setForme($form['forme']);
+            $repair->setEndroit($form['endroit']);
+            $repair->setMontant($form['montant']);
+            $repair->setDate(new \DateTime());
+            $repair->setDistributeur($this->getUser());
+
+            $em->persist($repair);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('fadco_espace_distributeur_repair'));
+
+        }
+
+        return $this->render('FadcoBundle:Distributeur:new-repair.html.twig', array('abonnes' => $abonnes));
+
     }
 
     // nouveau réabonnement direct
@@ -81,6 +127,33 @@ class DistributeurController extends Controller
     	}
 
         return $this->render('FadcoBundle:Distributeur:new-reabo.html.twig', array('abonnes' => $abonnes));
+    }
+
+    public function newClientAction(Request $request){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $request->get('fadcobundle_distributeur_new_client');
+
+        if($request->getMethod() == 'POST'){
+
+            $abonne = new Abonne();
+
+            $abonne->setNom($form['nom']);
+            $abonne->setPrenom($form['prenom']);
+            $abonne->setNumeroCarte($form['numeroCarte']);
+            $abonne->setContact($form['contact']);
+            $abonne->setDate(new \DateTime());
+
+            $em->persist($abonne);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('fadco_espace_distributeur_repair'));
+
+        }
+
+        return $this->render('FadcoBundle:Distributeur:new-client.html.twig');
+
     }
 
     public function newReaboConfirmAction(Request $request){
