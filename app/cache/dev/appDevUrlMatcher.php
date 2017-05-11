@@ -27,19 +27,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         $context = $this->context;
         $request = $this->request;
 
-        if (0 === strpos($pathinfo, '/js/5e1858b')) {
-            // _assetic_5e1858b
-            if ($pathinfo === '/js/5e1858b.js') {
-                return array (  '_controller' => 'assetic.controller:render',  'name' => '5e1858b',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_5e1858b',);
-            }
-
-            // _assetic_5e1858b_0
-            if ($pathinfo === '/js/5e1858b_mails-box_1.js') {
-                return array (  '_controller' => 'assetic.controller:render',  'name' => '5e1858b',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_5e1858b_0',);
-            }
-
-        }
-
         if (0 === strpos($pathinfo, '/css/df51a00')) {
             // _assetic_df51a00
             if ($pathinfo === '/css/df51a00.css') {

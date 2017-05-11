@@ -24,9 +24,6 @@
         <link rel="stylesheet"
               href="{{ asset('bundles/FadcoBundle/plugins/multiselect2sides/lib/google-code-prettify/prettify.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/fadco/css/style.css') }}">
-        {#<link type="text/css" rel="stylesheet" href="{{ asset('bundles/fadco/BonCommandeInterne/css/style.css') }}">#}
-        <link rel="stylesheet" href="{{ asset('bundles/fadco/gspbot/gspbot.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/fadco/gspbot/notes.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/fadco/css/gsp-modal.css') }}">
         {% stylesheets '../app/Resources/public/css/custom.css' %}
             <link rel="stylesheet" href="{{ asset_url }}">
@@ -249,61 +246,6 @@
 
 </div>
 
-    {# Help widget #}
-    <div id="help-widget">
-        <a id="help-widget-icon" style="width: 50px; height: 50px; display: inline;"><i class="fa fa-question"></i></a>
-        <div id="help-text">
-            <span>Besoin d'aide ?</span>
-            <div class="arrow"></div>
-        </div>
-        <div id="help-widget-content">
-            <div class="main-content">
-                <ul class="nav nav-tabs nav-justified">
-                    <li class="active"><a data-toggle="tab" href="#help-contact">Contact</a></li>
-                    <li><a data-toggle="tab" href="#help-guides">Guides</a></li>
-                </ul>
-                <div class="tab-content" style="padding: 10px;">
-                    <div id="help-contact" class="tab-pane fade in active">
-                        <a href="tel:63917228" class="btn btn-block btn-success">
-                            <span class="fa fa-phone" style="margin-right: 5px;"></span>
-                            Appeler le 63 91 72 28
-                        </a>
-                        <div class="text-center" style="margin: 5px;">Ou bien écrivez-nous</div>
-                        <div>
-                        <form id="aide_form" enctype="multipart/form-data" action="" method="POST" class="form">
-                                <div class="form-group">
-                                    <input type="text" id="aide_nomcomplet" name="aide_nomcomplet" class="form-control" placeholder="Votre nom complet" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="aide_numero" name="aide_numero" class="form-control" placeholder="Votre numéro" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <textarea name="aide_textmessage" class="form-control" rows="3" placeholder="Votre message" required="required"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input id="aide_piecejointe"  type="file" name="aide_piecejointe" class="file-loading">
-                                </div>
-                                <div class="text-center">
-                                    <button class="btn btn-primary" type="submit">
-                                        Envoyer
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div id="help-guides" class="tab-pane fade">
-                        <div>
-                            <input type="text" class="form-control" placeholder="Recherchez un guide">
-                        </div>
-                        <div id="guides-list">
-                            <p>Aucun guide n'est disponible actuellement.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="triangle"></div>
-        </div>
-    </div>
     <div id="my-toast-location" style="margin: 0 auto; position: fixed; top: 40px; right: 20px;"></div>
 
 <span style="display:none;" id="loading-classement"> <center><img src="{{ asset('bundles/FadcoBundle/load.gif') }}">
@@ -336,11 +278,6 @@
     <script src="{{ asset('bundles/fadco/js/live-edit.js') }}"></script>
     <script src="{{ asset('js/cookie.js') }}"></script>
     <script src="{{ asset('bundles/fadco/js/gsp-modal.js') }}"></script>
-    <script src="{{ asset('bundles/fadco/gspbot/gspbot.js') }}"></script>
-    <script src="{{ asset('bundles/fadco/gspbot/base-templates.js') }}"></script>
-    <script src="{{ asset('bundles/fadco/gspbot/test.js') }}"></script>
-    <script src="{{ asset('bundles/fadco/gspbot/missions.js') }}"></script>
-    <script src="{{ asset('bundles/fadco/gspbot/notes.js') }}"></script>
     {% javascripts %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -353,13 +290,6 @@
     <script src="{{ asset('bundles/fadco/plugins/help-widget/js/help-widget.js') }}"></script>
     <script>
         {% if app.user %}
-            $(document).ready(function () {
-                GspBot.initialize({
-                    id: {{ app.user.id }},
-                    name: '{{ app.user.name }}'
-                })
-            })
-
             function rafraichir() {
                 $.ajax({
                     url: '{{path('alertes_raflaichir',{ 'id':app.user.Id})}}',

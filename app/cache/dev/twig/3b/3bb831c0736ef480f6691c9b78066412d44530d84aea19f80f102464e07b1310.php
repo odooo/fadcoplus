@@ -1,6 +1,6 @@
 <?php
 
-/* __string_template__3bb6e599941228e0edb20b77040787e7c90958fba00f3831e47524a2df03eb69 */
+/* __string_template__c9c843f0edac4f7c050b4166ec5afdaba0da97924a2755a9afb6a3d4faa771dc */
 class __TwigTemplate_64e517ed173161613eeda7ad8f0545eaede89f59c0a23b42a34b3601285a3755 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,8 +15,8 @@ class __TwigTemplate_64e517ed173161613eeda7ad8f0545eaede89f59c0a23b42a34b3601285
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a419f2e8707dd15df4af2ff02dd8cd7e91ab6b2ec6d2b4b57a95c1009da5aba9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a419f2e8707dd15df4af2ff02dd8cd7e91ab6b2ec6d2b4b57a95c1009da5aba9->enter($__internal_a419f2e8707dd15df4af2ff02dd8cd7e91ab6b2ec6d2b4b57a95c1009da5aba9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "__string_template__3bb6e599941228e0edb20b77040787e7c90958fba00f3831e47524a2df03eb69"));
+        $__internal_dcd60a5ac52051e1ccbbe55b7ccd601c5490ca4832afad943f8cef07616a968d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_dcd60a5ac52051e1ccbbe55b7ccd601c5490ca4832afad943f8cef07616a968d->enter($__internal_dcd60a5ac52051e1ccbbe55b7ccd601c5490ca4832afad943f8cef07616a968d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "__string_template__c9c843f0edac4f7c050b4166ec5afdaba0da97924a2755a9afb6a3d4faa771dc"));
 
         // line 1
         echo "<script>AjaxifySearch.URL = {count: \"";
@@ -25,13 +25,13 @@ class __TwigTemplate_64e517ed173161613eeda7ad8f0545eaede89f59c0a23b42a34b3601285
         echo twig_escape_filter($this->env, ($context["search_url"] ?? $this->getContext($context, "search_url")), "html", null, true);
         echo "\"}</script>";
         
-        $__internal_a419f2e8707dd15df4af2ff02dd8cd7e91ab6b2ec6d2b4b57a95c1009da5aba9->leave($__internal_a419f2e8707dd15df4af2ff02dd8cd7e91ab6b2ec6d2b4b57a95c1009da5aba9_prof);
+        $__internal_dcd60a5ac52051e1ccbbe55b7ccd601c5490ca4832afad943f8cef07616a968d->leave($__internal_dcd60a5ac52051e1ccbbe55b7ccd601c5490ca4832afad943f8cef07616a968d_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "__string_template__3bb6e599941228e0edb20b77040787e7c90958fba00f3831e47524a2df03eb69";
+        return "__string_template__c9c843f0edac4f7c050b4166ec5afdaba0da97924a2755a9afb6a3d4faa771dc";
     }
 
     public function isTraitable()
@@ -54,6 +54,6 @@ class __TwigTemplate_64e517ed173161613eeda7ad8f0545eaede89f59c0a23b42a34b3601285
 
     public function getSourceContext()
     {
-        return new Twig_Source("<script>AjaxifySearch.URL = {count: \"{{ count_url }}\",search: \"{{ search_url }}\"}</script>", "__string_template__3bb6e599941228e0edb20b77040787e7c90958fba00f3831e47524a2df03eb69", "");
+        return new Twig_Source("<script>AjaxifySearch.URL = {count: \"{{ count_url }}\",search: \"{{ search_url }}\"}</script>", "__string_template__c9c843f0edac4f7c050b4166ec5afdaba0da97924a2755a9afb6a3d4faa771dc", "");
     }
 }
