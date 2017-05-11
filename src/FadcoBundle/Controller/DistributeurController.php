@@ -58,6 +58,12 @@ class DistributeurController extends Controller
             $em->persist($repair);
             $em->flush();
 
+			$from = "ayenadedg@gmail.com";
+			$to = "ayenadedg@gmail.com";
+			$subject = "Réparation ou installation";
+			$body = "L'abonné ".$reabo->getAbonne()." souscrit à une prestation de type ".$reabo->getType();
+			$this->get('fadco.mailer')->sendMessage($from, $to, $subject, $body);
+
             return $this->redirect($this->generateUrl('fadco_espace_distributeur_repair'));
 
         }
@@ -181,6 +187,12 @@ class DistributeurController extends Controller
 
         $em->persist($reabo);
         $em->flush();
+
+		$from = "ayenadedg@gmail.com";
+		$to = "ayenadedg@gmail.com";
+		$subject = "Réabonnement";
+		$body = "L'abonné ".$reabo->getAbonne()." souscrit à un réabonnement ".$reabo->getFormule()."/".$reabo->getDuree()."/".$reabo->getOptions();
+		$this->get('fadco.mailer')->sendMessage($from, $to, $subject, $body);
 
 		$session->remove('resultats');
 
