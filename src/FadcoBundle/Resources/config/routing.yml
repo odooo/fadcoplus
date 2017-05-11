@@ -16,7 +16,7 @@ fadco_homepage:
 
 fadco_espace_distributeur:
     resource: "@FadcoBundle/Resources/config/routing/distributeur.yml"
-    prefix:   /espace_distributeur
+    prefix:   /distributeur
 
 fadco_home:
     path:     /dashbord

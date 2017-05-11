@@ -1,9 +1,5 @@
 {% extends "FadcoBundle:Default:menu.html.twig" %}
-<<<<<<< HEAD
-{% block title %}Gestion des prestataires{% endblock %}
-=======
 {% block title %}Gestion des distributeurs{% endblock %}
->>>>>>> aeeafaa001106b04a781728abf58ffdd3b01c5aa
 {% block contentHeader %}{% endblock %}
 {% block page_quick_actions %}
     <div>
@@ -12,34 +8,10 @@
     </div>
 {% endblock %}
 {% block content %}
-<<<<<<< HEAD
-    
-	<div class="box box-primary">
-		<div class="box-header with-border">
-			<h1 class="box-title"> {% if prestataire is not null %} Modifier les informations du prestataire {% else %} Ajouter un nouveau prestataire {% endif %} </h1>
-			<div class="box-tools pull-right">
-				<button class="btn btn-box-tool" data-widget="collapse">
-					<i class="fa fa-minus"></i>
-				</button>
-			</div>
-		</div>
-            <div class="box box-body">
-                {{ form_start(form)}}
-                    <div class="row">
-                        <div class="col-sm-offset-3 col-sm-6" id="first-part">
-                            <center><img src="{%if prestataire.photo is not null %}{{path("global_rewrite_url",cryptSrc(prestataire.WebPhoto))}}{%else%}{{ asset('bundles/FadcoBundle/images/avatar.png') }}{% endif %}" class="img-circle" style="width:150px;Height:150px;" id="img-profile"></center><span>&nbsp;</span><br/>
-                            {{ form_widget(form.file,{'id':'user_photo','attr':{'class':'hidden','onchange':"$('#profile').val(this.files[0].name);"} }) }}
-                           <div class="input-group" onclick="$('#user_photo').click();">
-                               <label class="input-group-addon"><i class="fa fa-photo"></i></label>
-                                <input type="text" class="form-control" placeholder="photo" id='profile' {% if prestataire.photo is not null %} value="{{ prestataire.photo }}" {% endif %} style="cursor: default" disabled/>
-                                <span class="input-group-btn"><button type="button" class='btn btn-primary' >Photo</button></span>
-                            </div>
-=======
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
                 <h1 class="box-title">{% if nouveau != 'oui' %} Modifier les informations du distributeur {% else %} Nouveau distributeur {% endif %} </h1>
->>>>>>> aeeafaa001106b04a781728abf58ffdd3b01c5aa
 
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse">
@@ -60,45 +32,53 @@
                         </div>
 
                         <span>&nbsp;</span>{{ form_errors(form.nom) }}
-                        <div class="input-group" >
-                            <label class="input-group-addon"><i class="fa fa-user"></i>Nom</label>
+                        <div class="form-group" >
+                            {{ form_label(form.nom) }}
+                            {#<label class="input-group-addon"><i class="fa fa-user"></i>Nom</label>#}
                             {{ form_widget(form.nom,{'attr':{'class':'form-control','placeholder':'nom'} }) }}
                         </div>
                         <span>&nbsp;</span>{{ form_errors(form.prenom) }}
-                        <div class="input-group">
-                            <label class="input-group-addon"><i class="fa fa-user"></i>Prénom(s)</label>
+                        <div class="form-group">
+                            {{ form_label(form.prenom) }}
+                            {#<label class="input-group-addon"><i class="fa fa-user"></i>Prénom(s)</label>#}
                             {{ form_widget(form.prenom,{'attr':{'class':'form-control','placeholder':'prénom'} }) }}
                         </div>
                         <span>&nbsp;</span>{{ form_errors(form.contact) }}
-                        <div class="input-group">
-                            <label class="input-group-addon"><i class="fa fa-user"></i>Contacts</label>
+                        <div class="form-group">
+                            {{ form_label(form.contact) }}
+                            {#<label class="input-group-addon"><i class="fa fa-user"></i>Contacts</label>#}
                             {{ form_widget(form.contact,{'attr':{'class':'form-control','placeholder':'contact'} }) }}
                         </div>
                         {% if nouveau == 'oui' %}
                             <span>&nbsp;</span>{{ form_errors(form.username) }}
-                            <div class="input-group">
-                                <label class="input-group-addon"><i class="fa fa-user"></i>Nom d'utilisateur (par défaut)</label>
+                            <div class="form-group">
+                                {{ form_label(form.username) }}
+                                {#<label class="input-group-addon"><i class="fa fa-user"></i>Nom d'utilisateur (par défaut)</label>#}
                                 {{ form_widget(form.username,{'attr':{'class':'form-control','placeholder':"Nom d'utilisateur"} }) }}
                             </div>
-                                <span>&nbsp;</span>{{ form_errors(form.plainPassword.first ) }}
-                                <div class="input-group">
-                                    <label class="input-group-addon"><i class="fa fa-key"></i>Mot de passe (par défaut) </label>
-                                    {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control','placeholder':'mot de passe'} }) }}
-                                </div>
-                                <span>&nbsp;</span>{{ form_errors(form.plainPassword.second ) }}
-                                <div class="input-group">
-                                    <label class="input-group-addon"><i class="fa fa-key"></i>Confirmer mot de passe</label>
-                                    {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control','placeholder':'confirmer le mot de passe'} }) }}
-                                </div>
+                            <span>&nbsp;</span>{{ form_errors(form.plainPassword.first) }}
+                            <div class="form-group">
+                                {{ form_label(form.plainPassword.first) }}
+                                {#<label class="input-group-addon"><i class="fa fa-key"></i>Mot de passe (par défaut) </label>#}
+                                {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control','placeholder':'mot de passe'} }) }}
+                            </div>
+                            <span>&nbsp;</span>{{ form_errors(form.plainPassword.second ) }}
+                            <div class="form-group">
+                                {{ form_label(form.plainPassword.second) }}
+                                {#<label class="input-group-addon"><i class="fa fa-key"></i>Confirmer mot de passe</label>#}
+                                {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control','placeholder':'confirmer le mot de passe'} }) }}
+                            </div>
                         {% endif %}
                         <span>&nbsp;</span>{{ form_errors(form.email) }}
-                        <div class="input-group">
-                            <label class="input-group-addon"><i class="fa fa-envelope"></i>Email</label>
+                        <div class="form-group">
+                            {{ form_label(form.email) }}
+                            {#<label class="input-group-addon"><i class="fa fa-envelope"></i>Email</label>#}
                             {{ form_widget(form.email,{'attr':{'class':'form-control','placeholder':'e-mail'} }) }}
                         </div>
                         {{ form_errors(form.ville,{"attr":{'class':'alert-error' } }) }}<span>&nbsp;</span>
-                        <div class="input-group">
-                            <label class="input-group-addon"><i class="fa fa-user"></i>Ville</label>
+                        <div class="form-group">
+                            {{ form_label(form.ville) }}
+                            {#<label class="input-group-addon"><i class="fa fa-user"></i>Ville</label>#}
                             {{ form_widget(form.ville,{'attr':{'class':'form-control','placeholder':'ville du prestataire'} }) }}
                         </div>
                         <div>

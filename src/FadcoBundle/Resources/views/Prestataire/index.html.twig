@@ -1,13 +1,9 @@
 {% extends "FadcoBundle:Default:menu.html.twig" %}
-<<<<<<< HEAD
-{% block content %}
 
-    <h1>Liste des Prestataires </h1>
-=======
 {% block page_quick_actions %}
     <div>
         <a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a>
-        <a href="{{ path('grh_prestataire_new', {'id': id }) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau distributeur"/></a>
+        <a href="{{ path('grh_prestataire_new', {'id': null }) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau distributeur"/></a>
     </div>
 {% endblock %}
 {% block stylesheet %}
@@ -18,7 +14,6 @@
 {% endblock %}
 
 {% block content %}
->>>>>>> aeeafaa001106b04a781728abf58ffdd3b01c5aa
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
@@ -71,7 +66,7 @@
                                                 </li>
                                                 {% if entity.enabled == 1 %}
                                                     <li>
-                                                        <a href="{{ path('grh_prestataire_desactive', { 'id': entity.id }) }}">Désactiver le compte</a>
+                                                        <a href="{{ path('grh_prestataire_desactive', { 'id': entity.id }) }}">Suspendre le compte</a>
                                                     </li>
                                                 {% else %}
                                                     <li>
@@ -102,27 +97,10 @@
     </section>
 
     <script src="{{ asset('bundles/GSPBundle/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-
-<<<<<<< HEAD
-        <div class="box box-primary">
-            
-            <div class="box-body">
-                <div align="right">
-                    <a href="{{ path('GSP_grh') }}"><button type="button" class="btn btn-success">Retour </button></a>
-                </div>
-            </div>
-        </div>
-    </section> 
-    <script src="{{asset('bundles/FadcoBundle//plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('bundles/FadcoBundle/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
-=======
 {% endblock %}
 
 {% block javascript %}
     {{ parent() }}
-    <script src="{{ asset('bundles/GSPBundle/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
->>>>>>> aeeafaa001106b04a781728abf58ffdd3b01c5aa
-
     <script src="{{ asset('bundles/GSPBundle/style/jquery.accordDate.js') }}"></script>
     <script src="{{ asset('bundles/GSPBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.js') }}"></script>
     <script src="{{ asset('bundles/GSPBundle/plugins/jQueryfiler/js/jquery.filer.min.js') }}"></script>

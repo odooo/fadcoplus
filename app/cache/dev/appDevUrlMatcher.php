@@ -27,19 +27,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         $context = $this->context;
         $request = $this->request;
 
-        if (0 === strpos($pathinfo, '/js/5e1858b')) {
-            // _assetic_5e1858b
-            if ($pathinfo === '/js/5e1858b.js') {
-                return array (  '_controller' => 'assetic.controller:render',  'name' => '5e1858b',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_5e1858b',);
-            }
-
-            // _assetic_5e1858b_0
-            if ($pathinfo === '/js/5e1858b_mails-box_1.js') {
-                return array (  '_controller' => 'assetic.controller:render',  'name' => '5e1858b',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_5e1858b_0',);
-            }
-
-        }
-
         if (0 === strpos($pathinfo, '/css/df51a00')) {
             // _assetic_df51a00
             if ($pathinfo === '/css/df51a00.css') {
@@ -176,82 +163,85 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_homepage')), array (  '_controller' => 'FadcoBundle\\Controller\\DefaultController::indexAction',));
         }
 
-        if (0 === strpos($pathinfo, '/espace_distributeur')) {
-            // fadco_espace_distributeur
-            if (rtrim($pathinfo, '/') === '/espace_distributeur') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'fadco_espace_distributeur');
-                }
-
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexAction',  '_route' => 'fadco_espace_distributeur',);
-            }
-
-            // fadco_espace_distributeur_reabo
-            if ($pathinfo === '/espace_distributeur/liste-reabonnements') {
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexReaboAction',  '_route' => 'fadco_espace_distributeur_reabo',);
-            }
-
-            // fadco_espace_distributeur_reabo_new
-            if ($pathinfo === '/espace_distributeur/nouveau-reabonnement') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_fadco_espace_distributeur_reabo_new;
-                }
-
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_new',);
-            }
-            not_fadco_espace_distributeur_reabo_new:
-
-            // fadco_espace_distributeur_reabo_new_confirm
-            if ($pathinfo === '/espace_distributeur/confirm-reabonnement') {
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboConfirmAction',  '_route' => 'fadco_espace_distributeur_reabo_new_confirm',);
-            }
-
-            // fadco_espace_distributeur_reabo_renew
-            if (preg_match('#^/espace_distributeur/(?P<id>[^/]++)/renouveller\\-reabonnement$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_espace_distributeur_reabo_renew')), array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::renewReaboAction',));
-            }
-
-            // fadco_espace_distributeur_reabo_ancien_abonne_infos
-            if ($pathinfo === '/espace_distributeur/infos-ancien-abonne') {
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::ancienAbonneReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_ancien_abonne_infos',);
-            }
-
-            // fadco_espace_distributeur_repair
-            if ($pathinfo === '/espace_distributeur/liste-prestations') {
-                return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexRepairAction',  '_route' => 'fadco_espace_distributeur_repair',);
-            }
-
-            if (0 === strpos($pathinfo, '/espace_distributeur/nouve')) {
-                // fadco_espace_distributeur_repair_new
-                if ($pathinfo === '/espace_distributeur/nouvelle-prestation') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_fadco_espace_distributeur_repair_new;
+        if (0 === strpos($pathinfo, '/d')) {
+            if (0 === strpos($pathinfo, '/distributeur')) {
+                // fadco_espace_distributeur
+                if (rtrim($pathinfo, '/') === '/distributeur') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'fadco_espace_distributeur');
                     }
 
-                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newRepairAction',  '_route' => 'fadco_espace_distributeur_repair_new',);
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexAction',  '_route' => 'fadco_espace_distributeur',);
                 }
-                not_fadco_espace_distributeur_repair_new:
 
-                // fadco_espace_distributeur_repair_new_client
-                if ($pathinfo === '/espace_distributeur/nouveau-client') {
+                // fadco_espace_distributeur_reabo
+                if ($pathinfo === '/distributeur/liste-reabonnements') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexReaboAction',  '_route' => 'fadco_espace_distributeur_reabo',);
+                }
+
+                // fadco_espace_distributeur_reabo_new
+                if ($pathinfo === '/distributeur/nouveau-reabonnement') {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_fadco_espace_distributeur_repair_new_client;
+                        goto not_fadco_espace_distributeur_reabo_new;
                     }
 
-                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newClientAction',  '_route' => 'fadco_espace_distributeur_repair_new_client',);
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_new',);
                 }
-                not_fadco_espace_distributeur_repair_new_client:
+                not_fadco_espace_distributeur_reabo_new:
+
+                // fadco_espace_distributeur_reabo_new_confirm
+                if ($pathinfo === '/distributeur/confirm-reabonnement') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboConfirmAction',  '_route' => 'fadco_espace_distributeur_reabo_new_confirm',);
+                }
+
+                // fadco_espace_distributeur_reabo_renew
+                if (preg_match('#^/distributeur/(?P<id>[^/]++)/renouveller\\-reabonnement$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_espace_distributeur_reabo_renew')), array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::renewReaboAction',));
+                }
+
+                // fadco_espace_distributeur_reabo_ancien_abonne_infos
+                if ($pathinfo === '/distributeur/infos-ancien-abonne') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::ancienAbonneReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_ancien_abonne_infos',);
+                }
+
+                // fadco_espace_distributeur_repair
+                if ($pathinfo === '/distributeur/liste-prestations') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexRepairAction',  '_route' => 'fadco_espace_distributeur_repair',);
+                }
+
+                if (0 === strpos($pathinfo, '/distributeur/nouve')) {
+                    // fadco_espace_distributeur_repair_new
+                    if ($pathinfo === '/distributeur/nouvelle-prestation') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_fadco_espace_distributeur_repair_new;
+                        }
+
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newRepairAction',  '_route' => 'fadco_espace_distributeur_repair_new',);
+                    }
+                    not_fadco_espace_distributeur_repair_new:
+
+                    // fadco_espace_distributeur_repair_new_client
+                    if ($pathinfo === '/distributeur/nouveau-client') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                            goto not_fadco_espace_distributeur_repair_new_client;
+                        }
+
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newClientAction',  '_route' => 'fadco_espace_distributeur_repair_new_client',);
+                    }
+                    not_fadco_espace_distributeur_repair_new_client:
+
+                }
 
             }
 
-        }
+            // fadco_home
+            if ($pathinfo === '/dashbord') {
+                return array (  '_controller' => 'FadcoBundle\\Controller\\DefaultController::dashbordAction',  '_route' => 'fadco_home',);
+            }
 
-        // fadco_home
-        if ($pathinfo === '/dashbord') {
-            return array (  '_controller' => 'FadcoBundle\\Controller\\DefaultController::dashbordAction',  '_route' => 'fadco_home',);
         }
 
         if (0 === strpos($pathinfo, '/alerte')) {
@@ -421,6 +411,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'crediter_compte_distributeur')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::creditAccountAction',));
             }
 
+            // main_page_distributeur
+            if ($pathinfo === '/fadcoplus/prestataire/page/principale') {
+                return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::mainPageAction',  '_route' => 'main_page_distributeur',);
+            }
+
             // grh_prestataire_edit
             if ($pathinfo === '/fadcoplus/prestataire/edit') {
                 return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::editAction',  '_route' => 'grh_prestataire_edit',);
@@ -466,125 +461,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::photoPrestataireAction',  '_route' => 'grh_prestataire_modifier_profile_photo',);
                 }
 
-                if (0 === strpos($pathinfo, '/fadcoplus/prestataire/prestataire')) {
-                    // grh_prestataire_get_prestataire_enabled
-                    if ($pathinfo === '/fadcoplus/prestataire/prestataire/enabled') {
-                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getPrestataireEnabledAction',  '_route' => 'grh_prestataire_get_prestataire_enabled',);
-                    }
-
-                    // grh_prestataire_get_bon_interne
-                    if ($pathinfo === '/fadcoplus/prestataire/prestataire/bon/interne') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_grh_prestataire_get_bon_interne;
-                        }
-
-                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getBonInterneByPrestataireAction',  '_route' => 'grh_prestataire_get_bon_interne',);
-                    }
-                    not_grh_prestataire_get_bon_interne:
-
-                    // grh_prestataire_detail_bon_interne
-                    if ($pathinfo === '/fadcoplus/prestataire/prestataire/detail/bon/interne') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_grh_prestataire_detail_bon_interne;
-                        }
-
-                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getDetailBIAction',  '_route' => 'grh_prestataire_detail_bon_interne',);
-                    }
-                    not_grh_prestataire_detail_bon_interne:
-
-                    // grh_prestataire_get_bon_commande
-                    if ($pathinfo === '/fadcoplus/prestataire/prestataire/bon/commande') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_grh_prestataire_get_bon_commande;
-                        }
-
-                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getBonCommandeByPrestataireAction',  '_route' => 'grh_prestataire_get_bon_commande',);
-                    }
-                    not_grh_prestataire_get_bon_commande:
-
-                    // grh_prestataire_detail_bon_commande
-                    if ($pathinfo === '/fadcoplus/prestataire/prestataire/detail/bon/commande') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_grh_prestataire_detail_bon_commande;
-                        }
-
-                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getDetailBCAction',  '_route' => 'grh_prestataire_detail_bon_commande',);
-                    }
-                    not_grh_prestataire_detail_bon_commande:
-
-                    // grh_prestataire_get_bon_commande_journalier
-                    if ($pathinfo === '/fadcoplus/prestataire/prestataire/bon/commande/journalier') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_grh_prestataire_get_bon_commande_journalier;
-                        }
-
-                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getBonJournalierByPrestataireAction',  '_route' => 'grh_prestataire_get_bon_commande_journalier',);
-                    }
-                    not_grh_prestataire_get_bon_commande_journalier:
-
-                    // grh_prestataire_detail_bon_commande_journalier
-                    if ($pathinfo === '/fadcoplus/prestataire/prestataire/detail/bon/commande/journalier') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_grh_prestataire_detail_bon_commande_journalier;
-                        }
-
-                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getDetailBCJAction',  '_route' => 'grh_prestataire_detail_bon_commande_journalier',);
-                    }
-                    not_grh_prestataire_detail_bon_commande_journalier:
-
-                    // grh_prestataire_get_contre_performance
-                    if ($pathinfo === '/fadcoplus/prestataire/prestataire/contre/performance') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_grh_prestataire_get_contre_performance;
-                        }
-
-                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getContrePerformanceByPrestataireAction',  '_route' => 'grh_prestataire_get_contre_performance',);
-                    }
-                    not_grh_prestataire_get_contre_performance:
-
-                    // grh_prestataire_get_rapport_mensuel
-                    if ($pathinfo === '/fadcoplus/prestataire/prestataire/rapport/mensuel') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_grh_prestataire_get_rapport_mensuel;
-                        }
-
-                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getRapportBonMensuelByPrestataireAction',  '_route' => 'grh_prestataire_get_rapport_mensuel',);
-                    }
-                    not_grh_prestataire_get_rapport_mensuel:
-
-                    if (0 === strpos($pathinfo, '/fadcoplus/prestataire/prestataire/d')) {
-                        // grh_prestataire_detail_rapport_mensuel
-                        if ($pathinfo === '/fadcoplus/prestataire/prestataire/detail/rapport/mensuel') {
-                            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                                goto not_grh_prestataire_detail_rapport_mensuel;
-                            }
-
-                            return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getDetailRapportBMAction',  '_route' => 'grh_prestataire_detail_rapport_mensuel',);
-                        }
-                        not_grh_prestataire_detail_rapport_mensuel:
-
-                        // grh_prestataire_direction_service
-                        if ($pathinfo === '/fadcoplus/prestataire/prestataire/direction/service') {
-                            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                                goto not_grh_prestataire_direction_service;
-                            }
-
-                            return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getDirectionServiceBisAction',  '_route' => 'grh_prestataire_direction_service',);
-                        }
-                        not_grh_prestataire_direction_service:
-
-                    }
-
+                // grh_prestataire_get_prestataire_enabled
+                if ($pathinfo === '/fadcoplus/prestataire/prestataire/enabled') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getPrestataireEnabledAction',  '_route' => 'grh_prestataire_get_prestataire_enabled',);
                 }
 
             }

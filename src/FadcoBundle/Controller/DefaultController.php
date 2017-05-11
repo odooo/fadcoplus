@@ -15,14 +15,16 @@ class DefaultController extends Controller
 
 	public function dashbordAction()
     {
+        //var_dump($this->getUser()->getType());
+        //die();
         //return $this->render('FadcoBundle:Default:dashbord.html.twig');
         
-        if($this->container->get('security.context')->isGranted('ROLE_DISTRIBUTEUR')){
+        if($this->getUser()->getType() == "distributeur"){
             return $this->render('FadcoBundle:Distributeur:index.html.twig');
         }
 
-        if($this->container->get('security.context')->isGranted('ROLE_ADMIN')){
-            return $this->render('FadcoBundle:Distributeur/Repair:index.html.twig');
+        if($this->getUser()->getType() == "admin"){
+            return $this->redirect($this->generateUrl('main_page_distributeur'));
         }
 
     }
