@@ -153,7 +153,7 @@ class Prestataire extends BaseUser
      */
     public function upload()
     {
-         if (null === $this->getFile()) {
+        if (null === $this->getFile()) {
             return;
         }
         $this->getFile()->move($this->getUploadRootDir(), $this->photo);
@@ -489,5 +489,34 @@ class Prestataire extends BaseUser
     public function getRigths()
     {
         return $this->rigths;
+    }
+    /**
+     * @var integer
+     */
+    private $account = 0;
+
+
+    /**
+     * Set account
+     *
+     * @param integer $account
+     *
+     * @return Prestataire
+     */
+    public function setAccount($account)
+    {
+        $this->account = $account;
+
+        return $this;
+    }
+
+    /**
+     * Get account
+     *
+     * @return integer
+     */
+    public function getAccount()
+    {
+        return $this->account;
     }
 }

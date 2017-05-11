@@ -1,14 +1,28 @@
 {% extends "FadcoBundle:Default:menu.html.twig" %}
+<<<<<<< HEAD
 {% block content %}
 
     <h1>Liste des Prestataires </h1>
-    <section class="content">
-        <div align="right">
-            <a href="{{ path('grh_prestataire_new', {'id': id }) }}"><button type="button" class="btn btn-success">Ajouter un nouveau prestataire </button></a>
-        </div>
+=======
+{% block page_quick_actions %}
+    <div>
+        <a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a>
+        <a href="{{ path('grh_prestataire_new', {'id': id }) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau distributeur"/></a>
+    </div>
+{% endblock %}
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet"
+          href="{{ asset('bundles/GSPBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/GSPBundle/plugins/jQueryfiler/css/jquery.filer.css') }}">
+{% endblock %}
 
-        <div class="box box-primary">
+{% block content %}
+>>>>>>> aeeafaa001106b04a781728abf58ffdd3b01c5aa
+    <section class="content">
+        <div class="box box-default">
             <div class="box-header with-border">
+                <h1 class="box-title">Liste des distributeurs </h1>
 
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse">
@@ -16,46 +30,42 @@
                     </button>
                 </div>
             </div>
-
-            <div class="box-body table-responsive">
-                    <table id="lstprestataire" class="table table-bordered table-striped">
+            <div class="box-body">
+                <div class="table-responsive mailbox-messages">
+                  <table id="lstprestataire" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>N°</th>
-                            <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>Poste</th>
-                            <th>Agence</th>
-                            <th>Droit</th>
-                            <th>Actions</th>
+                            <th style="text-align: center;">N°</th>
+                            <th style="text-align: center;">Nom</th>
+                            <th style="text-align: center;">Prenom</th>
+                            <th style="text-align: center;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for entity in entities %}
                             <tr>
-                                <td><a href="{{ path('grh_prestataire_voir', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-
-                                <td>{{ entity.nom }}</td>
-                                <td>{{ entity.prenom }}</td>
-                                <td>{{ entity.poste }}</td>
-                                <td>{% if entity.agence %}{{ entity.agence.libelle }}{% endif %}</td>
-                                <td> {{ contro.getRoleExpression(entity)|raw }} </td>
-                                <td>
-                                    <div class="input-group btn">
-                                        <button type="button" class="btn btn-success btn-xs  dropdown-toggle pull-right" data-toggle="dropdown">
-                                            Actions  <span class="fa fa-caret-down"></span>
-                                        </button>
-                                        <ul class="dropdown-menu pull-right">
+                                <td style="text-align: center;"><a href="{{ path('grh_prestataire_voir', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                <td style="text-align: center;">{{ entity.nom }}</td>
+                                <td style="text-align: center;">{{ entity.prenom }}</td>
+                                <td style="text-align: center;">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle"
+                                                data-toggle="dropdown">Action<span class="caret"></span></button>
+                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">   
                                             <li>
                                                 <a href="{{ path('grh_prestataire_voir', { 'id': entity.id }) }}">Afficher</a>
                                             </li>
                                             {% if is_granted('ROLE_SUPER_ADMIN') %}
-                                            <li>
-                                                <a href="{{ path('grh_prestataire_new', { 'id': entity.id }) }}">Modifier</a>
-                                            </li>
+                                                <li>
+                                                    <a href="{{ path('crediter_compte_distributeur', { 'id': entity.id }) }}">Créditer ce compte</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('grh_prestataire_new', { 'id': entity.id }) }}">Modifier</a>
+                                                </li>
                                                 <li>
                                                     <a class="change_rigth" href="{{ path('rigth_change', { 'userId': entity.id,'option':'add' }) }}">Ajouter des roles</a>
                                                 </li>
+                                                <li class="divider"></li>
                                                 <li>
                                                     <a class="change_rigth" href="{{ path('rigth_change', { 'userId': entity.id,'option':'delete' }) }}">Enlever des roles</a>
                                                 </li>
@@ -76,10 +86,24 @@
                         {% endfor %}
                     </tbody>
                 </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table style="width: 10%;" class="table">
+                            <tr>
+                                {#<td><input type="submit" class="btn btn-primary btn-xs" value="Enregistrer"/></td>#}
+                                <td><a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
+    <script src="{{ asset('bundles/GSPBundle/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 
+<<<<<<< HEAD
         <div class="box box-primary">
             
             <div class="box-body">
@@ -91,7 +115,17 @@
     </section> 
     <script src="{{asset('bundles/FadcoBundle//plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('bundles/FadcoBundle/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+=======
+{% endblock %}
 
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/GSPBundle/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+>>>>>>> aeeafaa001106b04a781728abf58ffdd3b01c5aa
+
+    <script src="{{ asset('bundles/GSPBundle/style/jquery.accordDate.js') }}"></script>
+    <script src="{{ asset('bundles/GSPBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.js') }}"></script>
+    <script src="{{ asset('bundles/GSPBundle/plugins/jQueryfiler/js/jquery.filer.min.js') }}"></script>
     <script>
      $('.change_rigth').click(function(e) {
             e.preventDefault();
@@ -120,20 +154,5 @@
         });
         
      </script>
-
-
-    <script>
-        $(function () {
-            $('#lstprestataire').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": false,
-                "autoWidth": true,
-                "language": {"paginate": {"previous": "Précédent", "next": "Suivant"}, "search": "Rechercher: ",
-                    "emptyTable": "Actu La Base Des Communes Est Vide", "zeroRecords": "Aucune correspondance trouvee a votre recherche...Merci!!!."}
-            });
-        });
-    </script>    
 {% endblock %}
+

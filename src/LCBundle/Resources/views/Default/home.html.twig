@@ -1,0 +1,141 @@
+<html>
+      <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %}G S P  Manager{% endblock %}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="icon" href="{{ asset('bundles/GSPBundle/globalsevice.ico') }}" type="image/x-icon" />
+  {% block stylesheet %}
+  <link rel="stylesheet" href="{{ asset('bundles/GSPBundle/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('bundles/GSPBundle/font-awesome/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+  <link rel="stylesheet" href="{{ asset('bundles/GSPBundle/dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('bundles/GSPBundle/dist/css/skins/skin-blue.min.css') }}">
+  {# chat #}
+  <link rel="stylesheet" href="{{ asset('bundles/lc/css/chatBox.css') }}">
+
+  
+  {% endblock %}
+  <script src="{{asset('bundles/GSPBundle/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+  <script src="{{ asset('bundles/GSPBundle/plugins/select2/select2.full.min.js') }}"></script>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+   <div class="wrapper">
+    <header class="main-header">
+       
+    <a href="{{path('GSP_home')}}" class="logo" target='_blank'>
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><img src="{{ asset('bundles/GSPBundle/globalsevice.png') }}" style="width:50px;" class="img-circle" alt="fiacre" /></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><img src="{{ asset('bundles/GSPBundle/globalsevice.png') }}" style="width:70px;" class="img-circle" alt="fiacre" />GSP Manager</span>
+    </a>
+
+    <!-- Header Navbar -->
+  </header>
+
+
+ {% block container %}
+  <div class="content-wrapper">
+    <section class="content-header">
+	{% block header_content %}
+      <h1>
+      <center>
+         G.S.P | Manager
+      </center>
+      </h1>
+	{% endblock %}
+    </section>
+	
+    
+    <section class="content">
+    {% block content %}
+      <h1 style='opacity: 0.2; font-size: 5000%; text-align: center'>
+                <i class="icon ion ion-chatboxes"></i>
+      </h1>
+    {% endblock %}
+    </section>
+	
+  </div>
+{% endblock %}
+
+{% block footer %}
+  <footer class="main-footer">
+    <span class="hide" id="load"> <center><img  src="{{ asset('bundles/GSPBundle/load.gif') }}" ></center></span>
+    <div class="pull-right hidden-xs">
+      Tous droits réservés.
+    </div>
+    <strong>Copyright &copy; 2015 Global Services Plus | GSP Manager</strong> 
+  </footer>
+{% endblock %}
+
+ </div>
+
+{# CHAT VIEW #}
+{% include "LCBundle:Default:openchat.html.twig" %}
+
+{% include "LCBundle:Default:form_nouvelle_discussion.html.twig" %}
+
+{% include "LCBundle:Default:form_ajout_contact_discussion.html.twig" %}
+
+{% include "LCBundle:Default:form_envoi_image.html.twig" %}
+
+{% include "LCBundle:Default:form_envoi_fichier.html.twig" %}
+
+{% include "LCBundle:Default:show_image.html.twig" %}
+
+{% include "LCBundle:Default:tools.html.twig" %}
+
+{% block javascript %}
+    <script src="{{asset('bundles/GSPBundle/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('bundles/GSPBundle/dist/js/app.min.js')}}"></script>
+    
+    {# websocket client #}
+    <script type="text/javascript"  src="{{ asset('bundles/lc/multiselect/js/jquery.multi-select.js') }}"></script>
+    <style type="text/css">
+	@import url("{{ asset('bundles/lc/multiselect/css/multi-select.css') }}");
+    </style>
+    
+    {#{ ws_client() }#}
+    <script type="text/javascript"  src="{{ asset('bundles/goswebsocket/js/vendor/autobahn.min.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('bundles/goswebsocket/js/gos_web_socket_client.js') }}"></script>
+    
+    <script type="text/javascript">
+        var _WS_URI = "ws://{{ gos_web_socket_server_host }}:{{ gos_web_socket_server_port }}";
+        var myWs = WS.connect(_WS_URI);
+        var nmiPath = '{{path('lc_creer_nouveau_message_image')}}';
+        var nmfPath = '{{path('lc_creer_nouveau_message_fichier')}}';
+        var nmicPath = '{{path('lc_creer_nouveau_message_image_contact')}}';
+        var nmfcPath = '{{path('lc_creer_nouveau_message_fichier_contact')}}';
+        var baseP = '{{ app.request.basePath }}';
+        var userId = {{app.user.id}};
+        var lienChat = '{{path('gsp_lc_homepage')}}';
+        //var chat
+        var pathnm = '{{path('lc_users_vefification_nouveaux_messages')}}';
+        var newMsg = '{{path('lc_users_nouveaux_messages')}}';
+        var newMsgD = '{{path('lc_users_nouveaux_messages_discussion')}}';
+        var newMsgC = '{{path('lc_users_nouveaux_messages_contact')}}';
+        var loadingGif = '{{ asset('bundles/lc/images/loading.gif') }}';
+        var emPath = '{{path('lc_creer_nouveau_message')}}';
+        var mlPath = '{{path('lc_marquer_lu')}}';
+        var mlcPath = '{{path('lc_marquer_lu_contact')}}';
+        var userPath = '{{path('lc_users')}}';
+        var discPath = '{{path('lc_user_discussions')}}';
+        var ndPath = '{{path('lc_creer_nouvelle_discussion')}}';
+        var acdPath = '{{path('lc_ajouter_contact_discussion')}}';
+        var uacPath = '{{path('lc_users_ajout_contact')}}';
+        var gdmPath = '{{path('lc_discussion_messages')}}';
+        var gdmcPath = '{{path('lc_discussion_messages_contact')}}';
+        var emcPath = '{{path('lc_creer_nouveau_message_contact')}}';
+        var gsplchome= '{{path('gsp_lc_homepage')}}';
+        var lcregisterPath = '{{path('lc_register')}}';
+        var lcgcuPath = '{{path('lc_gcu')}}';
+        
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/lc/js/ws_lc.js')}}" ></script>
+{% endblock %}
+
+</body>
+</html>

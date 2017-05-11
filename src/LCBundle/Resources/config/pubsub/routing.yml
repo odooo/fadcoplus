@@ -1,0 +1,12 @@
+acme_topic:
+    channel: channel/{userid}
+    handler:
+        callback: 'acme.topic'
+    requirements:
+        userid:
+            pattern: "\d+"
+
+cd_topic:
+    channel: channel/cd
+    handler:
+        callback: 'cd.topic'

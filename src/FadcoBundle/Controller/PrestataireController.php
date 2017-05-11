@@ -13,9 +13,11 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
 use \FOS\UserBundle\Form\Factory\FactoryInterface;
 
+use LCBundle\Entity\LcUser;
 use FadcoBundle\Entity\Prestataire;
 use FOS\UserBundle\Form\Type\ChangePasswordFormType;
 use FadcoBundle\Form\PrestataireUpdateType;
+use FadcoBundle\Form\CreditAccountDistributeurType;
 use FadcoBundle\Entity\TypePrestataire;
 use FadcoBundle\Form\PrestataireType;
 
@@ -138,34 +140,28 @@ class PrestataireController extends BaseController
 
                 $em->persist($prestataire);
                 $em->flush();
-                $lcuser = new LcUser();
-                $lcuser->setIdoriginal($prestataire->getId());
-                $d = new \Datetime();
-                $lcuser->setDerniereconnexion($d);
-                $lcuser->setNom($prestataire->getNom());
-                $lcuser->setPrenom($prestataire->getPrenom());
-                $em->persist($lcuser);
-                $em->flush();
 
-                $msg = "Activation de compte nouveau prestataire en attente";
-                $this->get("gsp.autorites.sms.sender")->sendSmsToDG($msg);
+                //$msg = "Activation de compte nouveau prestataire en attente";
+                //$this->get("gsp.autorites.sms.sender")->sendSmsToDG($msg);
 
                 return $this->redirect($this->generateUrl('grh_prestataire_voir', array('id' => $prestataire->getId())));
             }   else{
-                return new Response('FORM NON VALIDE');
+                //return new Response('FORM NON VALIDE');
+                return $this->render('FadcoBundle:Pages:error.html.twig');
             }
 
         }else{
-
             $nouveau = 'non';
             $prestataire = $em->getRepository('FadcoBundle:Prestataire')->find($id);
             $form = $this->createCreateForm($prestataire);
             $form->handleRequest($request);
             if ($form->isValid()) {
+                $prestataire->upload();
                 $em->flush();
                 return $this->redirect($this->generateUrl('grh_prestataire_voir', array('id' => $id)));
             }else{
-                return new Response('FORM NON VALIDE');
+                //return new Response('FORM NON VALIDE');
+                return $this->render('FadcoBundle:Pages:error.html.twig');
             }
 
         }
@@ -229,9 +225,7 @@ class PrestataireController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
         //$entity = $this->getUser();
-
-        if( is_null($id) or $id == "= null" or $id == "" ){
-
+        if(is_null($id) or $id == "= null" or $id == "" ){
             $prestataire = new Prestataire();
             $nouveau = 'oui';
             $form = $this->createEditForm($prestataire);
@@ -241,7 +235,6 @@ class PrestataireController extends BaseController
                 'form'   => $form->createView(),
             ));
         }else{
-
             $nouveau = 'non';
             $prestataire = $em->getRepository('FadcoBundle:Prestataire')->find($id);
             $form = $this->createCreateForm($prestataire);
@@ -252,6 +245,37 @@ class PrestataireController extends BaseController
             ));
         }
 
+    }
+
+    public function creditAccountAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $prestataire = $em->getRepository('FadcoBundle:Prestataire')->find($id);
+
+        $form = $this->createForm(new CreditAccountDistributeurType(), $prestataire, array(
+            'action' => $this->generateUrl('crediter_compte_distributeur', array(
+            'id' => $id)),
+            'method' => 'POST',
+        ));
+
+        if ($this->getRequest()->getMethod() == 'POST') {
+
+            //var_dump($form['account']);
+            //die();
+            $form->handleRequest($request);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('grh_prestataire_voir', array('id' => $prestataire->getId())));
+        }   
+        //else{
+            //return new Response('FORM NON VALIDE');
+            //return $this->render('FadcoBundle:Pages:error.html.twig');
+        //}
+
+        return $this->render('FadcoBundle:Prestataire:creditAccountDistributeur.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     public function changeAction(){

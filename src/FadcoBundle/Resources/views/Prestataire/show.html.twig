@@ -1,10 +1,21 @@
 {% extends "FadcoBundle:Default:menu.html.twig" %}
+<<<<<<< HEAD
+=======
+{% block page_quick_actions %}
+    <div>
+        <a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a>
+        <a href="{{ path('grh_prestataire_new', {'id': null}) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau distributeur"/></a>
+        <a href="{{ path('grh_prestataire_new', {'id': entity.id }) }}"><input type="button" class="btn btn-info btn-xs"value="Modifier"/></a>
+    </div>
+{% endblock %}
+>>>>>>> aeeafaa001106b04a781728abf58ffdd3b01c5aa
 
 {% block content %}
     <section class="content">
-        <section class="box box-primary">
+        <div class="box box-default">
             <div class="box-header with-border">
-                <h1 class="box-title"> Details des informations du prestataire  </h1>
+                <h1 class="box-title">Details des informations du distributeur </h1>
+
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse">
                         <i class="fa fa-minus"></i>
@@ -12,6 +23,7 @@
                 </div>
             </div>
             <div class="box-body">
+<<<<<<< HEAD
                 <div align='center'><img src="{%if entity.photo is not null %}{{path("global_rewrite_url",cryptSrc(entity.WebPhoto))}}{%else%}{{ asset('bundles/GSPBundle/images/avatar.png') }}{% endif %}" class="img-circle" style='width:150px;height:150px;' alt="User Image"></div>
                 <table class="table table-bordered table-striped">
                     <tbody>
@@ -159,9 +171,58 @@
                 <a href="{{ path('grh_prestataire') }}"><button type="button" class="btn btn-warning">Retour à la liste</button></a>
          </div>
 
+=======
+                <div class="table-responsive mailbox-messages">
+                  <div align='center'><img src="{%if entity.photo is not null %}{{ path("global_rewrite_url",cryptSrc(entity.WebPhoto)) }}{% else %}{{ asset('bundles/FadcoBundle/images/avatar.png') }}{% endif %}" class="img-circle" style='width:150px;height:150px;' alt="User Image"></div>
+                        <table class="table table-bordered table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>N°</th>
+                                    <td>{{ entity.id }}</td>
+                                </tr>
+                                
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ entity.nom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Prenom</th>
+                                    <td>{{ entity.prenom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{ entity.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Ville</th>
+                                    <td>{{ entity.ville }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Contact</th>
+                                    <td>{{ entity.contact }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Rôles</th>
+                                    <td>{% if entity.roles is not null %} {% for role in entity.roles %} {{ role }} {% if not loop.last %} - {% endif %}{% endfor %} {% endif %} </td>
+                                </tr>
+                                <tr>
+                                    <th>Dernière connexion</th>
+                                    <td>{{ entity.lastLogin|date('Y-m-d H:s:i') }}</td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row" style="margin: auto;">
+                    <a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a>
+                    <a href="{{ path('grh_prestataire_new', {'id': null }) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau distributeur"/></a>
+                    <a href="{{ path('grh_prestataire_new', {'id': entity.id }) }}"><input type="button" class="btn btn-info btn-xs"value="Modifier"/></a>
+                </div>
+>>>>>>> aeeafaa001106b04a781728abf58ffdd3b01c5aa
         </div>
-
-        </section>
     </section>
 
+    <script src="{{ asset('bundles/GSPBundle/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+
 {% endblock %}
+
+

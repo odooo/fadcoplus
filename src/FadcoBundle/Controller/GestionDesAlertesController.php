@@ -6,11 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class GestionDesAlertesController extends Controller
 {
-   
-    
     public function notificationsAction()
     {
        $em = $this->getDoctrine()->getManager();
@@ -85,7 +82,6 @@ class GestionDesAlertesController extends Controller
             }
 
         }
-
 
         // tester si le notaire a réceptionné le dossier
         $pos = strpos($url, "dossierexterne");

@@ -22,32 +22,32 @@ class __TwigTemplate_01093e98c5750c5cbdef9c364f863a0fd87b9d651a86100a7fe61447063
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d44632bf02cf6920546d1f26a5c313dc661a20b94f099ac5cd89812dede04bf8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_d44632bf02cf6920546d1f26a5c313dc661a20b94f099ac5cd89812dede04bf8->enter($__internal_d44632bf02cf6920546d1f26a5c313dc661a20b94f099ac5cd89812dede04bf8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Distributeur:new-client.html.twig"));
+        $__internal_8066dbfa6a5d251bc650265a35ae245c9ffeae732be0eb63ad47c3f54974f3fe = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8066dbfa6a5d251bc650265a35ae245c9ffeae732be0eb63ad47c3f54974f3fe->enter($__internal_8066dbfa6a5d251bc650265a35ae245c9ffeae732be0eb63ad47c3f54974f3fe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Distributeur:new-client.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_d44632bf02cf6920546d1f26a5c313dc661a20b94f099ac5cd89812dede04bf8->leave($__internal_d44632bf02cf6920546d1f26a5c313dc661a20b94f099ac5cd89812dede04bf8_prof);
+        $__internal_8066dbfa6a5d251bc650265a35ae245c9ffeae732be0eb63ad47c3f54974f3fe->leave($__internal_8066dbfa6a5d251bc650265a35ae245c9ffeae732be0eb63ad47c3f54974f3fe_prof);
 
     }
 
     // line 2
     public function block_title($context, array $blocks = array())
     {
-        $__internal_58764e19d6512ac56504bb423e7f32172ce70e23a72341ba7d53e53c97ffcd1f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_58764e19d6512ac56504bb423e7f32172ce70e23a72341ba7d53e53c97ffcd1f->enter($__internal_58764e19d6512ac56504bb423e7f32172ce70e23a72341ba7d53e53c97ffcd1f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_d499729952f2cd6494f4f186d4d2660d2fdbfda1d066dac48000f90b001cad91 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d499729952f2cd6494f4f186d4d2660d2fdbfda1d066dac48000f90b001cad91->enter($__internal_d499729952f2cd6494f4f186d4d2660d2fdbfda1d066dac48000f90b001cad91_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo " Nouvel abonné";
         
-        $__internal_58764e19d6512ac56504bb423e7f32172ce70e23a72341ba7d53e53c97ffcd1f->leave($__internal_58764e19d6512ac56504bb423e7f32172ce70e23a72341ba7d53e53c97ffcd1f_prof);
+        $__internal_d499729952f2cd6494f4f186d4d2660d2fdbfda1d066dac48000f90b001cad91->leave($__internal_d499729952f2cd6494f4f186d4d2660d2fdbfda1d066dac48000f90b001cad91_prof);
 
     }
 
     // line 4
     public function block_content($context, array $blocks = array())
     {
-        $__internal_dc6e577a614088cb0685c70d078467dfa9eeb9170097882475cc988e1486db93 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_dc6e577a614088cb0685c70d078467dfa9eeb9170097882475cc988e1486db93->enter($__internal_dc6e577a614088cb0685c70d078467dfa9eeb9170097882475cc988e1486db93_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_4b7a3c6820152543f52d69eeb218be30ce1e7688da99b1d3868add4b4aebbf6d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_4b7a3c6820152543f52d69eeb218be30ce1e7688da99b1d3868add4b4aebbf6d->enter($__internal_4b7a3c6820152543f52d69eeb218be30ce1e7688da99b1d3868add4b4aebbf6d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 5
         echo "
@@ -63,7 +63,10 @@ class __TwigTemplate_01093e98c5750c5cbdef9c364f863a0fd87b9d651a86100a7fe61447063
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/fadcoplus.jpg"), "html", null, true);
         echo "\" style=\"width:80px; heigth:5px;\" alt=\"edgar\"/></span>
                             
-                                <span style=\"color:green;\" class=\"info-box-number\">90 000 F</span>
+                                <span style=\"color:green;\" class=\"info-box-number\">";
+        // line 15
+        echo twig_escape_filter($this->env, twig_number_format_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "account", array()), 0, ".", " "), "html", null, true);
+        echo " F</span>
                                 <span class=\"info-box-text\" style=\"color:white;\">777777662(";
         // line 16
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
@@ -159,7 +162,7 @@ class __TwigTemplate_01093e98c5750c5cbdef9c364f863a0fd87b9d651a86100a7fe61447063
 
 ";
         
-        $__internal_dc6e577a614088cb0685c70d078467dfa9eeb9170097882475cc988e1486db93->leave($__internal_dc6e577a614088cb0685c70d078467dfa9eeb9170097882475cc988e1486db93_prof);
+        $__internal_4b7a3c6820152543f52d69eeb218be30ce1e7688da99b1d3868add4b4aebbf6d->leave($__internal_4b7a3c6820152543f52d69eeb218be30ce1e7688da99b1d3868add4b4aebbf6d_prof);
 
     }
 
@@ -175,7 +178,7 @@ class __TwigTemplate_01093e98c5750c5cbdef9c364f863a0fd87b9d651a86100a7fe61447063
 
     public function getDebugInfo()
     {
-        return array (  141 => 76,  103 => 41,  95 => 36,  73 => 17,  69 => 16,  63 => 13,  53 => 5,  47 => 4,  35 => 2,  11 => 1,);
+        return array (  144 => 76,  106 => 41,  98 => 36,  76 => 17,  72 => 16,  68 => 15,  63 => 13,  53 => 5,  47 => 4,  35 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -202,7 +205,7 @@ class __TwigTemplate_01093e98c5750c5cbdef9c364f863a0fd87b9d651a86100a7fe61447063
                         <div class=\"info-box-content\" style=\"background-color:black;\">
                             <span><img src=\"{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}\" style=\"width:80px; heigth:5px;\" alt=\"edgar\"/></span>
                             
-                                <span style=\"color:green;\" class=\"info-box-number\">90 000 F</span>
+                                <span style=\"color:green;\" class=\"info-box-number\">{{ app.user.account|number_format(0,'.',' ') }} F</span>
                                 <span class=\"info-box-text\" style=\"color:white;\">777777662({{ app.user.username }})</span>
                                 <span class=\"info-box-text\" style=\"color:white;\">7878787812({{ app.user.username }})</span>
                             

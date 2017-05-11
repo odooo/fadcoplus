@@ -31,8 +31,6 @@
         {% stylesheets '../app/Resources/public/css/custom.css' %}
             <link rel="stylesheet" href="{{ asset_url }}">
         {% endstylesheets %}
-        {# chat #}
-        {#<link rel="stylesheet" href="{{ asset('bundles/lc/css/chatBox.css') }}">#}
 
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/fadco/plugins/bootstrap-duallistbox-master/css/bootstrap-duallistbox.min.css') }}">
     {% endblock %}
@@ -120,6 +118,7 @@
                                             {% if app.user %}
                                                 <small>Membre depuis {{ app.user.date|date("j/m/Y") }}</small>
                                             {% endif %}
+                                            {# {{ app.user.datEntre|date("j/m/Y") }} #}
                                         </p>
                                     </li>
                                     <!-- Menu Body -->
@@ -159,9 +158,7 @@
     {% endblock %}
     {% block menu_gauche %}
         <aside class="main-sidebar">
-
             <section class="sidebar">
-
                 {% block pannel %}
                     <div class="user-panel">
                         <div class="pull-left text-lime">
@@ -171,17 +168,12 @@
                     </div>
                 {% endblock %}
 
-
                 {% block sidebar %}
 
                 {% endblock %}
-
             </section>
-
         </aside>
-
     {% endblock %}
-
 
     {% block container %}
         <div class="content-wrapper">
@@ -194,8 +186,6 @@
                     </h1>
                 {% endblock %}
             </section>
-
-
             <section class="content putHtml">
                 {% block content %}{% endblock %}
             </section>
@@ -205,9 +195,6 @@
     {% block footer %}
         <footer class="main-footer">
             <!-- Modal -->
-
-            
-
             <div class="modal fade" id="UserPasswordChange" tabindex="-1" role="dialog"
                  aria-labelledby="UserPasswordChangeModalLabel">
                 <div class="modal-dialog" role="document">
@@ -317,9 +304,7 @@
             <div id="triangle"></div>
         </div>
     </div>
-
     <div id="my-toast-location" style="margin: 0 auto; position: fixed; top: 40px; right: 20px;"></div>
-    
 
 <span style="display:none;" id="loading-classement"> <center><img src="{{ asset('bundles/FadcoBundle/load.gif') }}">
     </center></span>
@@ -367,8 +352,6 @@
     <script src="{{ asset('bundles/fadco/plugins/toastee-master/js/jquery.toastee.0.1.js') }}"></script>
     <script src="{{ asset('bundles/fadco/plugins/help-widget/js/help-widget.js') }}"></script>
     <script>
-        //   $('.select2').select2();
-
         {% if app.user %}
             $(document).ready(function () {
                 GspBot.initialize({
@@ -497,7 +480,6 @@
         });
     </script>
 
-
     <script>
 
 
@@ -523,76 +505,6 @@
     </script>
 
     <script>
-        var modal = (function () {
-            var method = {},
-                    $overlay,
-                    $modal,
-                    $content,
-                    $close;
-
-            // Append the HTML
-            $overlay = $('<div id="overlay"></div>');
-            $modal = $('<div id="modal"></div>');
-            $content = $('<div id="content"></div>');
-            $close = $('<a id="close" href="#">close</a>');
-
-            //console.log($overlay);
-
-            $modal.hide();
-            $overlay.hide();
-
-            $modal.append($content, $close);
-
-            $(function () {
-                $('body').append($overlay, $modal);
-            });
-
-            // Center the modal in the viewport
-            method.center = function () {
-                var top, left;
-
-                top = Math.max($(window).height() - $modal.outerHeight(), 0) / 2;
-                left = Math.max($(window).width() - $modal.outerWidth(), 0) / 2;
-
-                $modal.css({
-                    top: top + $(window).scrollTop(),
-                    left: left + $(window).scrollLeft()
-                });
-            };
-
-            // Open the modal
-            method.open = function (settings) {
-                $content.empty().append(settings.content);
-
-                $modal.css({
-                    width: settings.width || 'auto',
-                    height: settings.height || 'auto'
-                })
-
-                method.center();
-
-                $(window).bind('resize.modal', method.center);
-
-                $modal.show();
-                $overlay.show();
-            };
-
-            // Close the modal
-            method.close = function () {
-                $modal.hide();
-                $overlay.hide();
-                $content.empty();
-                $(window).unbind('resize.modal');
-            };
-
-            $close.click(function (e) {
-                e.preventDefault();
-                method.close();
-            });
-
-            return method;
-        }());
-
         $(document).ready(function() {
 
             $('.personalise').checkboxpicker({
@@ -609,12 +521,8 @@
 
             $('.personalise').change(function() {
                 if ($(this).is(':checked')) {
-                    //$(this).prop('checked',false);
-                    //alert("is checked");
                     $(this).val(1);
                 } else {
-                    //$(this).prop('checked',true);
-                    //alert("not checked");
                     $(this).val(0);
                 }
             });
@@ -678,13 +586,9 @@
 
                 $(this).data('pager-done', 'done')
             });
-
-            
-
         })
 
     </script>
-
 
     <script>   
         $('.printable').each(function () {

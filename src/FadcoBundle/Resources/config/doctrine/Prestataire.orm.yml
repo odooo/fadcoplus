@@ -56,11 +56,15 @@ FadcoBundle\Entity\Prestataire:
             nullable: true
             options:
                 default: 0
+        account:
+            type: integer
+            nullable: true
+            options:
+                default: 0
         plainPassword:
             type: string
             length: 255
             nullable: true
-
         sessionToken:
             type: string
             length: 255
@@ -72,7 +76,7 @@ FadcoBundle\Entity\Prestataire:
     lifecycleCallbacks:
 #        prePersist: [ preUpload ]
 #        preUpdate: [ preUpload ]
-#        postPersist: [ upload ]
-#        postUpdate: [ upload ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
 #        preRemove: [ preRemoveUpload ]
 #        postRemove:  [ removeUpload ]

@@ -1,0 +1,502 @@
+<style>
+    .modal:nth-of-type(even) {
+        z-index: 1042 !important;
+    }
+    .modal-backdrop.in:nth-of-type(even) {
+        z-index: 1041 !important;
+    }
+</style>
+
+<div class="modal fade" id="discussionRoomModal" tabindex="-1" role="dialog" aria-labelledby="discussionRoomModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+                    <div class="modal-header" style="color: #000099">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="discussionRoomModalLabel">Discussion</h4>
+				<div id="discussionRoomEntete" class="pull-right">
+					
+				</div>
+                                
+			</div>
+                    <div class="modal-body" id="main_room" style="overflow-y: scroll; height: 400px; background-image: url('{{asset('bundles/lc/images/chatbg.jpg')}}')">
+                        
+                        <div class="container-fluid" id="discussionRoomMessages">
+					
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div style="text-align: center" hidden="hidden" id="loading">
+				<img src="{{ asset('bundles/lc/images/loading.gif') }}"/>
+			</div>
+			<form id="formDiscussionRoom">
+				<div class="input-group">
+					<input id="textAenvoyer" type="text" class="form-control" placeholder="Taper le message"/>
+					<span class="input-group-btn">
+						<button onclick="demandeEnvoyerMessage();" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
+                                                <a onclick="choisirImage();" data-toggle="modal" href="#modalEnvoyerImage" class="btn btn-primary">
+                                                    <span class="glyphicon glyphicon-picture"></span>
+                                                </a>
+					</span>
+				</div>
+			</form>
+		</div>
+	</div><!-- le contenu -->
+</div><!-- le modal -->
+</div>
+                        
+<div class="modal" id="myModal2" data-backdrop="static">
+	<div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4>Image</h4>
+        </div>
+        <div class="modal-body" style="text-align: center">
+          <img classe="img-responsive" id="imageAvoir" src=""/>
+        </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn">Fermer</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal" id="modalEnvoyerImage" data-backdrop="static">
+	<div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4>Envoyez une image</h4>
+        </div>
+        <div class="modal-body" style="text-align: center">
+                <div id="form_image_div">
+                            <div style="text-align: center">
+                                {# style="max-width: 200px; max-height: 200px" #}
+                                <img class="img-responsive" id="selected_image" src='#'/>
+                            </div>
+                            <form id="form_image" enctype="multipart/form-data">                             
+                                <input hidden="hidden" type="text" name="discid" id="image_id" />
+                                <input name="file" onChange="changer(this);" id="imageAenvoyer" type="file" accept="image/*" class="form-control" placeholder="Sélectionnez une image"/>
+                                <div class="input-group">
+					<input name="legende" id="legende" type="text" class="form-control" placeholder="Taper la légende"/>
+					<span class="input-group-btn">
+                                            <button onclick="demandeEnvoyerImage();" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
+					</span>
+				</div>
+                            </form>
+                        </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn">Fermer</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script type="text/javascript">       
+
+    function changer(input){
+        $('#selected_image')[0].src = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);        
+    }
+    
+    $("#formDiscussionRoom").submit(function(){
+	demandeEnvoyerMessage();
+	return false;
+    });
+    
+    function clickSurContact(contId){
+	idContactCourant = contId;
+               
+	$("#discussionRoomMessages").empty();
+	var entete = $("#contact"+contId).html();
+	$("#discussionRoomEntete").html("Discussion avec: "+entete);
+	$("#discussionRoomModal").modal({
+		keyboard: true
+	});
+	$('#discussionRoomModal').on('hide.bs.modal',
+            function () {
+		idContactCourant = null;
+            }
+	);
+            
+        $("#textAenvoyer").focus();
+        cacherChargementEnvoiMessage();
+        getDiscussionMessagesContact(contId);
+    }
+
+    function clickSurDiscussion(discId){
+            
+		idDiscussionCourant = discId;
+		$("#discussionRoomMessages").empty();
+		var entete = $("#disc"+discId).html();
+		$("#discussionRoomEntete").html(entete);
+                
+		$("#discussionRoomModal").modal({
+			keyboard: true
+		});
+		$('#discussionRoomModal').on('hide.bs.modal',
+			function () {
+                                $('#bouton_image').popover('hide');
+				$("#disc"+idDiscussionCourant+" span").text("");
+                                
+                                var patt = new RegExp("disc"+idDiscussionCourant);
+                                if(patt.test(lesDiscussionNoveauxMsg))
+                                {
+                                    lesDiscussionNoveauxMsg.replace("disc"+idDiscussionCourant,"");
+                                    var v = parseInt($("#nb_dicussion").text());
+                                    if(isNaN(v)) $("#nb_dicussion").text("");
+                                    else{
+                                        v--;
+                                        if(v == 0)$("#nb_dicussion").text("");
+                                        else $("#nb_dicussion").text(v);
+                                    }                                    
+                                }                              
+                                
+                                idDiscussionCourant = null;
+                            }
+		);
+                
+		$("#textAenvoyer").focus();
+		cacherChargementEnvoiMessage();
+		getDiscussionMessages(discId);            
+	}
+
+    function demandeEnvoyerMessage(){
+            
+            
+		message = $("#textAenvoyer").val();
+		if(message.trim() != ""){
+			envoyerMessage();
+		}
+		else $("#textAenvoyer").focus();
+	}
+
+    function envoyerMessage(){
+
+		//stopInterval();
+                
+		montrerChargementEnvoiMessage();
+		
+                if(idDiscussionCourant === null) envoyerMessageContact();
+                else
+                    $.post('{{path('lc_creer_nouveau_message')}}', { 'contenu' : message, 'discid' : idDiscussionCourant },
+			function(data){
+                            
+                            if ( noSession(data.erreur) || noPost(data.erreur) || noParam(data.erreur)) {
+				alert(data.erreur+": Envoi de message.");
+				//stopInterval();
+                            }
+                            else if ( isExeption(data.erreur)) {
+				alert(data.erreur+" : Envoi de message. : "+data.ex);
+				//stopInterval();
+                            }
+                            else{
+				if(isSucces(data.ok)){
+                                    var msg = data.msg;
+                                    if(msg.type === "") $("#discussionRoomMessages").append("<div id='message"+msg.id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; padding: 5px; display: inline-block; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'>"+ msg.contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ msg.date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                                                    else $("#discussionRoomMessages").append("<div id='message"+msg.id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; padding: 5px; display: inline-block; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'><a onclick='clickImage("+msg.id+");' data-toggle='modal' href='#myModal2' class='btn btn-primary'><img style='max-width: 100px; max-height: 100px' src='{{ app.request.basePath }}/bundles/lc/chatimages/"+msg.type+"'/></a><br/>"+ msg.contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ msg.date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                                    scrollChatRoom();
+                                    $("#textAenvoyer").val("");
+                                    $("#textAenvoyer").focus();                                    
+                                    //startInterval();
+				}
+				else{
+                                    alert("Erreur serveur: Impossible d'envoyer le message.");
+                                    //stopInterval();
+                                }
+                            }                               
+                      
+                            cacherChargementEnvoiMessage();
+                            
+
+			}, json)
+                    .fail(function(data){
+			alert("Impossible d'envoyer le message..");
+			cacherChargementEnvoiMessage();
+                    });
+	}
+
+    function envoyerMessageContact(){
+        
+            //stopInterval();
+        $.post('{{path('lc_creer_nouveau_message_contact')}}', { 'contenu' : message, 'contid' : idContactCourant },
+			function(data){
+                            if ( noSession(data.erreur) || noPost(data.erreur) || noParam(data.erreur)) {
+				alert(data.erreur+": Envoi de message: Contact");
+				//stopInterval();
+                            }
+                            else if ( isExeption(data.erreur)) {
+				alert(data.erreur+" : Envoi de message: Contact. : "+data.ex);
+				//stopInterval();
+                            }
+                            else{
+				if(isSucces(data.ok)){
+                                    var msg = data.msg;
+                                    if(msg.type === "") $("#discussionRoomMessages").append("<div id='message"+msg.id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; padding: 5px; display: inline-block; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'>"+ msg.contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ msg.date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                                                    else $("#discussionRoomMessages").append("<div id='message"+msg.id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; padding: 5px; display: inline-block; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'><a onclick='clickImage("+msg.id+");' data-toggle='modal' href='#myModal2' class='btn btn-primary'><img style='max-width: 100px; max-height: 100px' src='{{ app.request.basePath }}/bundles/lc/chatimages/"+msg.type+"'/></a><br/>"+ msg.contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ msg.date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                                    scrollChatRoom();
+                                    $("#textAenvoyer").val("");
+                                    $("#textAenvoyer").focus();
+                                    //startInterval();
+				}
+				else{
+                                    alert("Erreur serveur: Impossible d'envoyer le message.: Contact");
+                                    //stopInterval();
+                                }
+                            }
+
+                            cacherChargementEnvoiMessage();
+
+			}, json)
+                    .fail(function(data){
+			alert("Impossible d'envoyer le message.: Contact");
+			cacherChargementEnvoiMessage();
+                    });
+    }
+            
+    function getDiscussionMessages(discId){
+		
+                //stopInterval();
+                
+		$.post('{{path('lc_discussion_messages')}}', {'discid' : discId },
+			function(data){
+				if ( noSession(data.erreur) || noPost(data.erreur) || noParam(data.erreur) ) {
+					alert(data.erreur+':Récupération les messages de la discussion.');
+				}
+				else if ( isExeption(data.erreur)) {
+						alert(data.erreur+" : Récupération les messages de la discussion. : "+data.ex);
+				}
+				else{
+
+					var cmp = data.length;
+					
+					for (var i = 1; i < cmp; i++) {
+
+						if (data[i].posteur == data[i].demandeur){
+							 if(data[i].type === "") $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; text-align: right; display: inline-block; padding: 5px; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px; background-color: white'>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                                                        else $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; padding: 5px; display: inline-block; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'><a onclick='clickImage("+data[i].id+");' data-toggle='modal' href='#myModal2' class='btn btn-primary'><img style='max-width: 100px; max-height: 100px' src='{{ app.request.basePath }}/bundles/lc/chatimages/"+data[i].type+"'/></a><br/>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                                                        
+                                                }
+						else{
+							if($("#createur"+data[i].discid).text() == ""){
+								if(data[i].type === "") $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: left' ><span style='display: inline-block; float: left; heigth: 0px; width: 0px; border-top: orange 15px solid; border-left: 15px solid transparent'></span><span class='' style='max-width: 90%; display: inline-block; padding: 5px; border: 1px solid orange; border-radius: 5px; border-top-left-radius: 0px; background-color: white'>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span></div>");
+                                                                else $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: left' ><span style='display: inline-block; float: left; heigth: 0px; width: 0px; border-top: orange 15px solid; border-left: 15px solid transparent'></span><span class='' style='max-width: 90%; display: inline-block; padding: 5px; border: 1px solid orange; border-radius: 5px; border-top-left-radius: 0px; background-color: white'><a onclick='clickImage("+data[i].id+");' data-toggle='modal' href='#myModal2' class='btn btn-primary'><img style='max-width: 100px; max-height: 100px' src='{{ app.request.basePath }}/bundles/lc/chatimages/"+data[i].type+"'/></a><br/>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span></div>");
+                                                        }
+							else{
+
+								if(data[i].type === "") $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: left' ><strong style='display: block'><em>"+data[i].nomposteur+"</em>:</strong><span style='display: inline-block; float: left; heigth: 0px; width: 0px; border-top: orange 15px solid; border-left: 15px solid transparent'></span><span class='' style='max-width: 90%; display: inline-block; padding: 5px; border: 1px solid orange; border-radius: 5px; border-top-left-radius: 0px;  background-color: white'>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span></div>");	
+                                                                else $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: left' ><strong style='display: block'><em>"+data[i].nomposteur+"</em>:</strong><span style='display: inline-block; float: left; heigth: 0px; width: 0px; border-top: orange 15px solid; border-left: 15px solid transparent'></span><span class='' style='max-width: 90%; display: inline-block; padding: 5px; border: 1px solid orange; border-radius: 5px; border-top-left-radius: 0px;  background-color: white'><a onclick='clickImage("+data[i].id+");' data-toggle='modal' href='#myModal2' class='btn btn-primary'><img style='max-width: 100px; max-height: 100px' src='{{ app.request.basePath }}/bundles/lc/chatimages/"+data[i].type+"'/></a><br/>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span></div>");
+                                                        }
+						}
+
+					}
+					
+					var elem = document.getElementById('main_room');
+  					elem.scrollTop = elem.scrollHeight;
+
+					$("#disc"+discId+" span").text("");
+                                        
+                                        //startInterval();
+                                        getNouveauxMessages();
+				}
+			}, json)
+		.fail(function(data){
+			alert("Impossible de récupérer les messages de la discussion.");
+		});
+	}
+        
+    function getDiscussionMessagesContact(contId){
+        
+        //stopInterval();
+          
+        $.post('{{path('lc_discussion_messages_contact')}}', {'contid' : contId },
+            function(data){
+                if ( noSession(data.erreur) || noPost(data.erreur) || noParam(data.erreur) ) {
+                    alert(data.erreur+':Récupération les messages de la discussion.: Contact');
+		}
+		else if ( isExeption(data.erreur)) {
+                    alert(data.erreur+" : Récupération les messages de la discussion. : Contact : "+data.ex);
+		}
+		else{
+
+                    var cmp = data.length;
+                    var idd = null;
+                    for (var i = 1; i < cmp; i++) {
+                        idd = data[i].discid;
+			if (data[i].posteur == data[i].demandeur){
+                            if(data[i].type === "") $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; text-align: right; display: inline-block; padding: 5px; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                            else $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; text-align: right; display: inline-block; padding: 5px; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'><a onclick='clickImage("+data[i].id+");' data-toggle='modal' href='#myModal2' class='btn btn-primary'><img style='max-width: 100px; max-height: 100px' src='{{ app.request.basePath }}/bundles/lc/chatimages/"+data[i].type+"'/></a><br/>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                            
+                        }
+			else{
+                            if($("#createur"+data[i].discid).text() == ""){
+				if(data[i].type === "") $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: left' ><span style='display: inline-block; float: left; heigth: 0px; width: 0px; border-top: orange 15px solid; border-left: 15px solid transparent'></span><span class='' style='max-width: 90%; display: inline-block; padding: 5px; border: 1px solid orange; border-radius: 5px; border-top-left-radius: 0px;  background-color: white'>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span></div>");
+                                else $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: left' ><span style='display: inline-block; float: left; heigth: 0px; width: 0px; border-top: orange 15px solid; border-left: 15px solid transparent'></span><span class='' style='max-width: 90%; display: inline-block; padding: 5px; border: 1px solid orange; border-radius: 5px; border-top-left-radius: 0px;  background-color: white'><a onclick='clickImage("+data[i].id+");' data-toggle='modal' href='#myModal2' class='btn btn-primary'><img style='max-width: 100px; max-height: 100px' src='{{ app.request.basePath }}/bundles/lc/chatimages/"+data[i].type+"'/></a><br/>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span></div>");
+                            
+                            }
+                            else{
+                                if(data[i].type === "") $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: left' ><strong style='display: block'><em>"+data[i].nomposteur+"</em>:</strong><span style='display: inline-block; float: left; heigth: 0px; width: 0px; border-top: orange 15px solid; border-left: 15px solid transparent'></span><span class='' style='max-width: 90%; display: inline-block; padding: 5px; border: 1px solid orange; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span></div>");	
+                                else $("#discussionRoomMessages").append("<div id='message"+data[i].id+"' class='row-fluid' style='margin: 12px; text-align: left' ><strong style='display: block'><em>"+data[i].nomposteur+"</em>:</strong><span style='display: inline-block; float: left; heigth: 0px; width: 0px; border-top: orange 15px solid; border-left: 15px solid transparent'></span><span class='' style='max-width: 90%; display: inline-block; padding: 5px; border: 1px solid orange; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'><a onclick='clickImage("+data[i].id+");' data-toggle='modal' href='#myModal2' class='btn btn-primary'><img style='max-width: 100px; max-height: 100px' src='{{ app.request.basePath }}/bundles/lc/chatimages/"+data[i].type+"'/></a><br/>"+ data[i].contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ data[i].date+"</span></span></div>");	
+                                
+                            }
+                        }
+                    }
+	
+                    var elem = document.getElementById('main_room');
+                    elem.scrollTop = elem.scrollHeight;
+                    if($("#disc"+idd+" span").length > 0)$("#disc"+idDiscussionCourant+" span").text("");
+                    
+                    //startInterval();
+                    getNouveauxMessages();
+		}
+            }, json)
+	.fail(function(data){
+            alert("Impossible de récupérer les messages de la discussion: Contact.");
+	});        
+    }
+    
+    function demandeEnvoyerImage(){
+        
+		if( $("#imageAenvoyer").val() !==""){     
+                    envoyerImage();
+		}
+        }
+        
+    function envoyerImage(){
+        
+        $("#modalEnvoyerImage").modal('hide');
+        
+        if(idDiscussionCourant === null) envoyerMessageContactImage();
+        else
+        {
+            //stopInterval();
+
+            montrerChargementEnvoiMessage();
+            
+            $("#image_id").val(idDiscussionCourant);
+
+            var form = $('#form_image');
+            var formdata =  (window.FormData)? new FormData(form[0]) : null;
+            var data = (formdata !== null)? formdata : form.serialize();
+
+            $.ajax({
+                url: "{{path('lc_creer_nouveau_message_image')}}",
+                type: "POST",
+                data: data,
+                processData: false,
+                contentType: false,
+                dataTYpe: json,
+                beforeSend: function(data){
+                    montrerChargementEnvoiMessage();
+                }
+            })
+                    .done(function (data){
+
+                        if ( noSession(data.erreur) || noPost(data.erreur) || noParam(data.erreur)) {
+                                    alert(data.erreur+": Envoi de l'image.");
+                                    //stopInterval();
+                                }
+                                else if ( isExeption(data.erreur)) {
+                                    alert(data.erreur+" : Envoi de l'image: "+data.ex);
+                                    //stopInterval();
+                                }
+                                else{
+                                    if(isSucces(data.ok)){
+                                        var msg = data.msg;
+                                    if(msg.type === "") $("#discussionRoomMessages").append("<div id='message"+msg.id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; padding: 5px; display: inline-block; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'>"+ msg.contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ msg.date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                                                    else $("#discussionRoomMessages").append("<div id='message"+msg.id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; padding: 5px; display: inline-block; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'><a onclick='clickImage("+msg.id+");' data-toggle='modal' href='#myModal2' class='btn btn-primary'><img style='max-width: 100px; max-height: 100px' src='{{ app.request.basePath }}/bundles/lc/chatimages/"+msg.type+"'/></a><br/>"+ msg.contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ msg.date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                                    scrollChatRoom();
+                                        $("#textAenvoyer").val("");
+                                        $("#textAenvoyer").focus();
+                                        //startInterval();
+                                    }
+                                    else{
+                                        alert("Erreur serveur: Impossible d'envoyer l'image.");
+                                        //stopInterval();
+                                    }
+                                }
+                                
+                                cacherChargementEnvoiMessage();
+                                
+
+                    })
+                    .fail(function(data){
+                        alert("Image non envoyée!!!");
+                    })
+                    .always(function (data){
+                        cacherChargementEnvoiMessage();
+                    });
+            }
+    }
+    
+    function choisirImage(){
+    
+        $("#legende").val("");
+        $("#selected_image").attr("src", "");
+    }
+    
+    function envoyerMessageContactImage(){
+        
+        //stopInterval();
+
+            montrerChargementEnvoiMessage();
+            
+            $("#image_id").val(idContactCourant);
+
+            var form = $('#form_image');
+            var formdata =  (window.FormData)? new FormData(form[0]) : null;
+            var data = (formdata !== null)? formdata : form.serialize();
+
+            $.ajax({
+                url: "{{path('lc_creer_nouveau_message_image_contact')}}",
+                type: "POST",
+                data: data,
+                processData: false,
+                contentType: false,
+                dataTYpe: json,
+                beforeSend: function(data){
+                    montrerChargementEnvoiMessage();
+                }
+            })
+                    .done(function (data){
+
+                        if ( noSession(data.erreur) || noPost(data.erreur) || noParam(data.erreur)) {
+                                    alert(data.erreur+": Envoi de l'image : contact.");
+                                    //stopInterval();
+                                }
+                                else if ( isExeption(data.erreur)) {
+                                    alert(data.erreur+" : Envoi de l'image. Contact : "+data.ex);
+                                    //stopInterval();
+                                }
+                                else{
+                                    if(isSucces(data.ok)){
+                                        var msg = data.msg;
+                                    if(msg.type === "") $("#discussionRoomMessages").append("<div id='message"+msg.id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; padding: 5px; display: inline-block; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'>"+ msg.contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ msg.date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                                                    else $("#discussionRoomMessages").append("<div id='message"+msg.id+"' class='row-fluid' style='margin: 12px; text-align: right' ><span class='' style='max-width: 90%; padding: 5px; display: inline-block; border: 1px solid green; border-radius: 5px; border-top-right-radius: 0px;  background-color: white'><a onclick='clickImage("+msg.id+");' data-toggle='modal' href='#myModal2' class='btn btn-primary'><img style='max-width: 100px; max-height: 100px' src='{{ app.request.basePath }}/bundles/lc/chatimages/"+msg.type+"'/></a><br/>"+ msg.contenu +"</br><span style='font-size: 10px; font-weight: bold; color: #aaaaaa'>"+ msg.date+"</span></span><span style='display: inline-block; float: right; heigth: 0px; width: 0px; border-top: green 15px solid; border-right: 15px solid transparent'></span></div>");
+                                    scrollChatRoom();
+                                        $("#textAenvoyer").val("");
+                                        $("#textAenvoyer").focus();
+                                        //startInterval();
+                                    }
+                                    else{
+                                        alert("Erreur serveur: Impossible d'envoyer l'image. Contact");
+                                        //stopInterval();
+                                    }
+                                }
+                                
+                                cacherChargementEnvoiMessage();
+                                
+
+                    })
+                    .fail(function(data){
+                        alert("Image non envoyée!!! : Contact");
+                    })
+                    .always(function (data){
+                        cacherChargementEnvoiMessage();
+                    });        
+    }
+    
+    function clickImage(id){
+        $("#imageAvoir").attr('src',$("#message"+id+" img").attr('src'));
+    }
+</script>

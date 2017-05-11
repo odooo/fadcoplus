@@ -1,0 +1,27 @@
+<div class="modal fade" id="modalEnvoyerFichier" style="z-index: 10000000">
+	<div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4>Envoyez un fichier</h4>
+        </div>
+        <div class="modal-body" style="text-align: center">
+                <div id="form_fichier_div">
+                            <form id="form_fichier" enctype="multipart/form-data">                             
+                                <input hidden="hidden" type="text" name="discid" id="fichier_id" />
+                                <input name="file" id="fichierAenvoyer" type="file" accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" class="form-control" placeholder="Sélectionnez une image"/>
+                                <div class="input-group">
+					<input name="legende" id="legendeFichier" type="text" class="form-control" placeholder="Taper la légende"/>
+					<span class="input-group-btn">
+                                            <button onclick="demandeEnvoyerFichier();" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
+					</span>
+				</div>
+                            </form>
+                        </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn">Fermer</a>
+        </div>
+      </div>
+    </div>
+</div>

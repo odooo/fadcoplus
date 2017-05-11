@@ -126,7 +126,7 @@ $catalogue = new MessageCatalogue('fr', array (
   ),
   'messages' => 
   array (
-    'Symfony2 is great' => 'J\'aime Symfony3',
+    'Symfony2 is great' => 'J\'aime Symfony2',
   ),
   'FOSUserBundle' => 
   array (

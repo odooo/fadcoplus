@@ -393,50 +393,55 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->redirect($pathinfo.'/', 'grh_prestataire');
                 }
 
-                return array (  '_controller' => 'GSPBundle:Prestataire:index',  '_route' => 'grh_prestataire',);
+                return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::indexAction',  '_route' => 'grh_prestataire',);
             }
 
             // grh_prestataire_voir
             if (preg_match('#^/fadcoplus/prestataire/(?P<id>[^/]++)/voir$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grh_prestataire_voir')), array (  '_controller' => 'GSPBundle:Prestataire:voir',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grh_prestataire_voir')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::voirAction',));
             }
 
             // grh_prestataire_active
             if (preg_match('#^/fadcoplus/prestataire/(?P<id>[^/]++)/active$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grh_prestataire_active')), array (  '_controller' => 'GSPBundle:Prestataire:active',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grh_prestataire_active')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::activeAction',));
             }
 
             // grh_prestataire_desactive
             if (preg_match('#^/fadcoplus/prestataire/(?P<id>[^/]++)/desactive$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grh_prestataire_desactive')), array (  '_controller' => 'GSPBundle:Prestataire:desactive',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grh_prestataire_desactive')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::desactiveAction',));
             }
 
             // grh_prestataire_show
             if ($pathinfo === '/fadcoplus/prestataire/show') {
-                return array (  '_controller' => 'GSPBundle:Prestataire:show',  '_route' => 'grh_prestataire_show',);
+                return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::showAction',  '_route' => 'grh_prestataire_show',);
+            }
+
+            // crediter_compte_distributeur
+            if (0 === strpos($pathinfo, '/fadcoplus/prestataire/distributeur') && preg_match('#^/fadcoplus/prestataire/distributeur\\-(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'crediter_compte_distributeur')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::creditAccountAction',));
             }
 
             // grh_prestataire_edit
             if ($pathinfo === '/fadcoplus/prestataire/edit') {
-                return array (  '_controller' => 'GSPBundle:Prestataire:edit',  '_route' => 'grh_prestataire_edit',);
+                return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::editAction',  '_route' => 'grh_prestataire_edit',);
             }
 
             if (0 === strpos($pathinfo, '/fadcoplus/prestataire/change')) {
                 // grh_prestataire_change_password
                 if ($pathinfo === '/fadcoplus/prestataire/change/password') {
-                    return array (  '_controller' => 'GSPBundle:Prestataire:changePassword',  '_route' => 'grh_prestataire_change_password',);
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::changePasswordAction',  '_route' => 'grh_prestataire_change_password',);
                 }
 
                 // grh_prestataire_change
                 if ($pathinfo === '/fadcoplus/prestataire/change') {
-                    return array (  '_controller' => 'GSPBundle:Prestataire:change',  '_route' => 'grh_prestataire_change',);
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::changeAction',  '_route' => 'grh_prestataire_change',);
                 }
 
             }
 
             // grh_prestataire_new
             if (0 === strpos($pathinfo, '/fadcoplus/prestataire/new') && preg_match('#^/fadcoplus/prestataire/new(?:/(?P<id>[^/]++))?$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grh_prestataire_new')), array (  '_controller' => 'GSPBundle:Prestataire:edit',  'id' => '= null',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grh_prestataire_new')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::editAction',  'id' => '= null',));
             }
 
             // grh_prestataire_update
@@ -446,25 +451,25 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     goto not_grh_prestataire_update;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grh_prestataire_update')), array (  '_controller' => 'GSPBundle:Prestataire:update',  'id' => '= null',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grh_prestataire_update')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::updateAction',  'id' => '= null',));
             }
             not_grh_prestataire_update:
 
             // grh_prestataire_modifier_profile
             if ($pathinfo === '/fadcoplus/prestataire/aller/modifier/profile') {
-                return array (  '_controller' => 'GSPBundle:Prestataire:modifierProfile',  '_route' => 'grh_prestataire_modifier_profile',);
+                return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::modifierProfileAction',  '_route' => 'grh_prestataire_modifier_profile',);
             }
 
             if (0 === strpos($pathinfo, '/fadcoplus/prestataire/p')) {
                 // grh_prestataire_modifier_profile_photo
                 if ($pathinfo === '/fadcoplus/prestataire/photo/prestataire/update') {
-                    return array (  '_controller' => 'GSPBundle:Prestataire:photoPrestataire',  '_route' => 'grh_prestataire_modifier_profile_photo',);
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::photoPrestataireAction',  '_route' => 'grh_prestataire_modifier_profile_photo',);
                 }
 
                 if (0 === strpos($pathinfo, '/fadcoplus/prestataire/prestataire')) {
                     // grh_prestataire_get_prestataire_enabled
                     if ($pathinfo === '/fadcoplus/prestataire/prestataire/enabled') {
-                        return array (  '_controller' => 'GSPBundle:Prestataire:getPrestataireEnabled',  '_route' => 'grh_prestataire_get_prestataire_enabled',);
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getPrestataireEnabledAction',  '_route' => 'grh_prestataire_get_prestataire_enabled',);
                     }
 
                     // grh_prestataire_get_bon_interne
@@ -474,7 +479,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                             goto not_grh_prestataire_get_bon_interne;
                         }
 
-                        return array (  '_controller' => 'GSPBundle:Prestataire:getBonInterneByPrestataire',  '_route' => 'grh_prestataire_get_bon_interne',);
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getBonInterneByPrestataireAction',  '_route' => 'grh_prestataire_get_bon_interne',);
                     }
                     not_grh_prestataire_get_bon_interne:
 
@@ -485,7 +490,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                             goto not_grh_prestataire_detail_bon_interne;
                         }
 
-                        return array (  '_controller' => 'GSPBundle:Prestataire:getDetailBI',  '_route' => 'grh_prestataire_detail_bon_interne',);
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getDetailBIAction',  '_route' => 'grh_prestataire_detail_bon_interne',);
                     }
                     not_grh_prestataire_detail_bon_interne:
 
@@ -496,7 +501,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                             goto not_grh_prestataire_get_bon_commande;
                         }
 
-                        return array (  '_controller' => 'GSPBundle:Prestataire:getBonCommandeByPrestataire',  '_route' => 'grh_prestataire_get_bon_commande',);
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getBonCommandeByPrestataireAction',  '_route' => 'grh_prestataire_get_bon_commande',);
                     }
                     not_grh_prestataire_get_bon_commande:
 
@@ -507,7 +512,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                             goto not_grh_prestataire_detail_bon_commande;
                         }
 
-                        return array (  '_controller' => 'GSPBundle:Prestataire:getDetailBC',  '_route' => 'grh_prestataire_detail_bon_commande',);
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getDetailBCAction',  '_route' => 'grh_prestataire_detail_bon_commande',);
                     }
                     not_grh_prestataire_detail_bon_commande:
 
@@ -518,7 +523,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                             goto not_grh_prestataire_get_bon_commande_journalier;
                         }
 
-                        return array (  '_controller' => 'GSPBundle:Prestataire:getBonJournalierByPrestataire',  '_route' => 'grh_prestataire_get_bon_commande_journalier',);
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getBonJournalierByPrestataireAction',  '_route' => 'grh_prestataire_get_bon_commande_journalier',);
                     }
                     not_grh_prestataire_get_bon_commande_journalier:
 
@@ -529,7 +534,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                             goto not_grh_prestataire_detail_bon_commande_journalier;
                         }
 
-                        return array (  '_controller' => 'GSPBundle:Prestataire:getDetailBCJ',  '_route' => 'grh_prestataire_detail_bon_commande_journalier',);
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getDetailBCJAction',  '_route' => 'grh_prestataire_detail_bon_commande_journalier',);
                     }
                     not_grh_prestataire_detail_bon_commande_journalier:
 
@@ -540,7 +545,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                             goto not_grh_prestataire_get_contre_performance;
                         }
 
-                        return array (  '_controller' => 'GSPBundle:Prestataire:getContrePerformanceByPrestataire',  '_route' => 'grh_prestataire_get_contre_performance',);
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getContrePerformanceByPrestataireAction',  '_route' => 'grh_prestataire_get_contre_performance',);
                     }
                     not_grh_prestataire_get_contre_performance:
 
@@ -551,7 +556,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                             goto not_grh_prestataire_get_rapport_mensuel;
                         }
 
-                        return array (  '_controller' => 'GSPBundle:Prestataire:getRapportBonMensuelByPrestataire',  '_route' => 'grh_prestataire_get_rapport_mensuel',);
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getRapportBonMensuelByPrestataireAction',  '_route' => 'grh_prestataire_get_rapport_mensuel',);
                     }
                     not_grh_prestataire_get_rapport_mensuel:
 
@@ -563,7 +568,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                                 goto not_grh_prestataire_detail_rapport_mensuel;
                             }
 
-                            return array (  '_controller' => 'GSPBundle:Prestataire:getDetailRapportBM',  '_route' => 'grh_prestataire_detail_rapport_mensuel',);
+                            return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getDetailRapportBMAction',  '_route' => 'grh_prestataire_detail_rapport_mensuel',);
                         }
                         not_grh_prestataire_detail_rapport_mensuel:
 
@@ -574,7 +579,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                                 goto not_grh_prestataire_direction_service;
                             }
 
-                            return array (  '_controller' => 'GSPBundle:Prestataire:getDirectionServiceBis',  '_route' => 'grh_prestataire_direction_service',);
+                            return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::getDirectionServiceBisAction',  '_route' => 'grh_prestataire_direction_service',);
                         }
                         not_grh_prestataire_direction_service:
 

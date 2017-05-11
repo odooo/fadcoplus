@@ -20,9 +20,9 @@
       <parameter key="KnpSnappyBundle">Knp\Bundle\SnappyBundle\KnpSnappyBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="LexikJWTAuthenticationBundle">Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle</parameter>
-      <parameter key="SlikDompdfBundle">Slik\DompdfBundle\SlikDompdfBundle</parameter>
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="FOSJsRoutingBundle">FOS\JsRoutingBundle\FOSJsRoutingBundle</parameter>
+      <parameter key="LCBundle">LCBundle\LCBundle</parameter>
       <parameter key="GosPubSubRouterBundle">Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle</parameter>
       <parameter key="LexikCurrencyBundle">Lexik\Bundle\CurrencyBundle\LexikCurrencyBundle</parameter>
       <parameter key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</parameter>
@@ -1172,6 +1172,7 @@
             <argument>C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\user-bundle/Resources/translations\FOSUserBundle.fr.yml</argument>
             <argument>C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\user-bundle/Resources/translations\validators.fr.yml</argument>
             <argument>C:\xampp\htdocs\fadcoplus\vendor\knplabs\knp-paginator-bundle/Resources/translations\KnpPaginatorBundle.fr.xliff</argument>
+            <argument>C:\xampp\htdocs\fadcoplus\src\LCBundle/Resources/translations\messages.fr.xlf</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>C:\xampp\htdocs\fadcoplus\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.gl.xlf</argument>
@@ -2524,7 +2525,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>59139d80a99fc2.06955149</argument>
+            <argument>591455e2535933.43151849</argument>
           </service>
         </argument>
       </argument>
@@ -2858,7 +2859,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>59139d80a99fc2.06955149</argument>
+            <argument>591455e2535933.43151849</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3585,6 +3586,7 @@
           <call method="setEntityNamespaces">
             <argument type="collection">
               <argument key="FadcoBundle">FadcoBundle\Entity</argument>
+              <argument key="LCBundle">LCBundle\Entity</argument>
               <argument key="LexikCurrencyBundle">Lexik\Bundle\CurrencyBundle\Entity</argument>
             </argument>
           </call>
@@ -3605,6 +3607,7 @@
                     <service class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
                       <argument type="collection">
                         <argument key="C:\xampp\htdocs\fadcoplus\src\FadcoBundle\Resources\config\doctrine">FadcoBundle\Entity</argument>
+                        <argument key="C:\xampp\htdocs\fadcoplus\src\LCBundle\Resources\config\doctrine">LCBundle\Entity</argument>
                       </argument>
                       <call method="setGlobalBasename">
                         <argument>mapping</argument>
@@ -3612,6 +3615,20 @@
                     </service>
                   </argument>
                   <argument>FadcoBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="C:\xampp\htdocs\fadcoplus\src\FadcoBundle\Resources\config\doctrine">FadcoBundle\Entity</argument>
+                        <argument key="C:\xampp\htdocs\fadcoplus\src\LCBundle\Resources\config\doctrine">LCBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>LCBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">
@@ -4234,7 +4251,6 @@
       <argument>C:\xampp\htdocs\fadcoplus\app/var/jwt/public.pem</argument>
       <argument>manager-app</argument>
     </service>
-    <service id="slik_dompdf" class="Slik\DompdfBundle\Wrapper\DompdfWrapper"/>
     <service id="knp_paginator" class="Knp\Component\Pager\Paginator">
       <argument type="service" id="debug.event_dispatcher"/>
       <call method="setDefaultPaginatorOptions">
@@ -4294,9 +4310,9 @@
         <argument key="KnpSnappyBundle">Knp\Bundle\SnappyBundle\KnpSnappyBundle</argument>
         <argument key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</argument>
         <argument key="LexikJWTAuthenticationBundle">Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle</argument>
-        <argument key="SlikDompdfBundle">Slik\DompdfBundle\SlikDompdfBundle</argument>
         <argument key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</argument>
         <argument key="FOSJsRoutingBundle">FOS\JsRoutingBundle\FOSJsRoutingBundle</argument>
+        <argument key="LCBundle">LCBundle\LCBundle</argument>
         <argument key="GosPubSubRouterBundle">Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle</argument>
         <argument key="LexikCurrencyBundle">Lexik\Bundle\CurrencyBundle\LexikCurrencyBundle</argument>
         <argument key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</argument>
@@ -4327,6 +4343,13 @@
           <service class="Symfony\Component\Serializer\Encoder\JsonEncoder" public="false"/>
         </argument>
       </argument>
+    </service>
+    <service id="lc.chat" class="LCBundle\Service\WsocketService">
+      <tag name="gos_web_socket.topic"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="lc.cd" class="LCBundle\Service\WcdService">
+      <tag name="gos_web_socket.topic"/>
     </service>
     <service id="gos_pubsub_router.debug.command" class="Gos\Bundle\PubSubRouterBundle\Command\DebugRouterCommand">
       <tag name="console.command"/>
@@ -5021,6 +5044,10 @@
         <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
+        <argument>C:\xampp\htdocs\fadcoplus\src\LCBundle/Resources/views</argument>
+        <argument>LC</argument>
+      </call>
+      <call method="addPath">
         <argument>C:\xampp\htdocs\fadcoplus\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
@@ -5192,9 +5219,9 @@
                       <argument key="Knp\Bundle\SnappyBundle">C:\xampp\htdocs\fadcoplus\vendor\knplabs\knp-snappy-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\UserBundle">C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\user-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\JWTAuthenticationBundle">C:\xampp\htdocs\fadcoplus\vendor\lexik\jwt-authentication-bundle\Lexik\Bundle\JWTAuthenticationBundle/Resources/config/serializer</argument>
-                      <argument key="Slik\DompdfBundle">C:\xampp\htdocs\fadcoplus\vendor\slik\dompdf-bundle\Slik\DompdfBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">C:\xampp\htdocs\fadcoplus\vendor\knplabs\knp-paginator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\JsRoutingBundle">C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\jsrouting-bundle/Resources/config/serializer</argument>
+                      <argument key="LCBundle">C:\xampp\htdocs\fadcoplus\src\LCBundle/Resources/config/serializer</argument>
                       <argument key="Gos\Bundle\PubSubRouterBundle">C:\xampp\htdocs\fadcoplus\vendor\gos\pubsub-router-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\CurrencyBundle">C:\xampp\htdocs\fadcoplus\vendor\lexik\currency-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\rest-bundle/Resources/config/serializer</argument>
@@ -5227,9 +5254,9 @@
                       <argument key="Knp\Bundle\SnappyBundle">C:\xampp\htdocs\fadcoplus\vendor\knplabs\knp-snappy-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\UserBundle">C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\user-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\JWTAuthenticationBundle">C:\xampp\htdocs\fadcoplus\vendor\lexik\jwt-authentication-bundle\Lexik\Bundle\JWTAuthenticationBundle/Resources/config/serializer</argument>
-                      <argument key="Slik\DompdfBundle">C:\xampp\htdocs\fadcoplus\vendor\slik\dompdf-bundle\Slik\DompdfBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">C:\xampp\htdocs\fadcoplus\vendor\knplabs\knp-paginator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\JsRoutingBundle">C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\jsrouting-bundle/Resources/config/serializer</argument>
+                      <argument key="LCBundle">C:\xampp\htdocs\fadcoplus\src\LCBundle/Resources/config/serializer</argument>
                       <argument key="Gos\Bundle\PubSubRouterBundle">C:\xampp\htdocs\fadcoplus\vendor\gos\pubsub-router-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\CurrencyBundle">C:\xampp\htdocs\fadcoplus\vendor\lexik\currency-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\rest-bundle/Resources/config/serializer</argument>
@@ -5262,9 +5289,9 @@
                       <argument key="Knp\Bundle\SnappyBundle">C:\xampp\htdocs\fadcoplus\vendor\knplabs\knp-snappy-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\UserBundle">C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\user-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\JWTAuthenticationBundle">C:\xampp\htdocs\fadcoplus\vendor\lexik\jwt-authentication-bundle\Lexik\Bundle\JWTAuthenticationBundle/Resources/config/serializer</argument>
-                      <argument key="Slik\DompdfBundle">C:\xampp\htdocs\fadcoplus\vendor\slik\dompdf-bundle\Slik\DompdfBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">C:\xampp\htdocs\fadcoplus\vendor\knplabs\knp-paginator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\JsRoutingBundle">C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\jsrouting-bundle/Resources/config/serializer</argument>
+                      <argument key="LCBundle">C:\xampp\htdocs\fadcoplus\src\LCBundle/Resources/config/serializer</argument>
                       <argument key="Gos\Bundle\PubSubRouterBundle">C:\xampp\htdocs\fadcoplus\vendor\gos\pubsub-router-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\CurrencyBundle">C:\xampp\htdocs\fadcoplus\vendor\lexik\currency-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">C:\xampp\htdocs\fadcoplus\vendor\friendsofsymfony\rest-bundle/Resources/config/serializer</argument>

@@ -1,0 +1,38 @@
+LCBundle\Entity\LcMessage:
+    type: entity
+    repositoryClass: LCBundle\Entity\LcMessageRepository
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        date:
+            type: datetime
+        contenu:
+            type: text
+        type:
+            type: string
+            length: 255
+        file:
+            type: string
+            length: 255
+            options:
+                default: ''
+
+    manyToOne:
+        discussion:
+            targetEntity: LcDiscussion
+            joinColumn:
+                name: lc_discussion_id
+                referencedColumnName: id
+
+        posteur:
+            targetEntity: LcUser
+            joinColumn:
+                name: lc_user_id
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }

@@ -153,7 +153,7 @@ class Prestataire extends BaseUser
      */
     public function upload()
     {
-         if (null === $this->getFile()) {
+        if (null === $this->getFile()) {
             return;
         }
         $this->getFile()->move($this->getUploadRootDir(), $this->photo);
@@ -259,4 +259,235 @@ class Prestataire extends BaseUser
         return $this->sessionTokenExpireAt;
     }
 
+    /**
+     * @var \DateTime
+     */
+    private $date;
+
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Prestataire
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return Prestataire
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Prestataire
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Prestataire
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Prestataire
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set contact
+     *
+     * @param string $contact
+     *
+     * @return Prestataire
+     */
+    public function setContact($contact)
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return string
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * Set applauseCount
+     *
+     * @param integer $applauseCount
+     *
+     * @return Prestataire
+     */
+    public function setApplauseCount($applauseCount)
+    {
+        $this->applauseCount = $applauseCount;
+
+        return $this;
+    }
+
+    /**
+     * Get applauseCount
+     *
+     * @return integer
+     */
+    public function getApplauseCount()
+    {
+        return $this->applauseCount;
+    }
+
+    /**
+     * Set agence
+     *
+     * @param \FadcoBundle\Entity\Agence $agence
+     *
+     * @return Prestataire
+     */
+    public function setAgence(\FadcoBundle\Entity\Agence $agence = null)
+    {
+        $this->agence = $agence;
+
+        return $this;
+    }
+
+    /**
+     * Get agence
+     *
+     * @return \FadcoBundle\Entity\Agence
+     */
+    public function getAgence()
+    {
+        return $this->agence;
+    }
+
+    /**
+     * Add rigth
+     *
+     * @param \FadcoBundle\Entity\Rigth $rigth
+     *
+     * @return Prestataire
+     */
+    public function addRigth(\FadcoBundle\Entity\Rigth $rigth)
+    {
+        $this->rigths[] = $rigth;
+
+        return $this;
+    }
+
+    /**
+     * Remove rigth
+     *
+     * @param \FadcoBundle\Entity\Rigth $rigth
+     */
+    public function removeRigth(\FadcoBundle\Entity\Rigth $rigth)
+    {
+        $this->rigths->removeElement($rigth);
+    }
+
+    /**
+     * Get rigths
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRigths()
+    {
+        return $this->rigths;
+    }
 }
