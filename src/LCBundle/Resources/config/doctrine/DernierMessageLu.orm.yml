@@ -1,0 +1,31 @@
+LCBundle\Entity\DernierMessageLu:
+    type: entity
+    table: null
+    repositoryClass: LCBundle\Entity\DernierMessageLuRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        message:
+            targetEntity: LcMessage
+            cascade: ["persist"]
+            joinColumn:
+                name: lc_message_id
+                referencedColumnName: id
+        user:
+            targetEntity: LcUser
+            joinColumn:
+                name: lc_user_id
+                referencedColumnName: id
+
+        discussion:
+            targetEntity: LcDiscussion
+            joinColumn:
+                name: lc_discussion_id
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }

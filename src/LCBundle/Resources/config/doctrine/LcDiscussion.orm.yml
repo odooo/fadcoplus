@@ -1,0 +1,43 @@
+LCBundle\Entity\LcDiscussion:
+    type: entity
+    repositoryClass: LCBundle\Entity\LcDiscussionRepository
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        date:
+            type: datetime
+        sujet:
+            type: text
+        titre:
+            type: text
+        adeux:
+            type: text
+            nullable: true;
+
+    manyToOne:
+        createur:
+            targetEntity: LcUser
+            joinColumn:
+                name: lc_user_id
+                referencedColumnName: id
+                nullable: true
+
+    manyToMany:
+        intervenants:
+            targetEntity: LcUser
+            inversedBy: discussions
+            joinTable:
+                name: lc_discussion_users
+                joinColumns:
+                    lc_user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    lc_discussion_id:
+                        referencedColumnName: id
+
+    lifecycleCallbacks: {  }

@@ -18,6 +18,10 @@ grh_prestataire_show:
     path:      /show
     defaults: { _controller: "FadcoBundle:Prestataire:show" }
 
+crediter_compte_distributeur:
+    path:      /distributeur-{id}
+    defaults: { _controller: "FadcoBundle:Prestataire:creditAccount" }
+
 grh_prestataire_edit:
     path:     /edit
     defaults: { _controller: "FadcoBundle:Prestataire:edit" }

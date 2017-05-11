@@ -22,6 +22,7 @@
       <parameter key="LexikJWTAuthenticationBundle">Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle</parameter>
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="FOSJsRoutingBundle">FOS\JsRoutingBundle\FOSJsRoutingBundle</parameter>
+      <parameter key="LCBundle">LCBundle\LCBundle</parameter>
       <parameter key="GosPubSubRouterBundle">Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle</parameter>
       <parameter key="LexikCurrencyBundle">Lexik\Bundle\CurrencyBundle\LexikCurrencyBundle</parameter>
       <parameter key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</parameter>
@@ -457,7 +458,7 @@
     <parameter key="assetic.write_to">/var/www/html/fadcoplus/app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
     <parameter key="assetic.java.bin">/usr/bin/java</parameter>
-    <parameter key="assetic.node.bin">/home/romaric/.nvm/versions/node/v7.5.0/bin/node</parameter>
+    <parameter key="assetic.node.bin">/usr/bin/node</parameter>
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
     <parameter key="assetic.reactjsx.bin">/usr/bin/jsx</parameter>
@@ -1076,6 +1077,7 @@
             <argument>/var/www/html/fadcoplus/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fr.yml</argument>
             <argument>/var/www/html/fadcoplus/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fr.yml</argument>
             <argument>/var/www/html/fadcoplus/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.fr.xliff</argument>
+            <argument>/var/www/html/fadcoplus/src/LCBundle/Resources/translations/messages.fr.xlf</argument>
           </argument>
           <argument key="lb" type="collection">
             <argument>/var/www/html/fadcoplus/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lb.xlf</argument>
@@ -2523,7 +2525,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5911e5767d1533.51270773</argument>
+            <argument>59133de03b3db8.05103056</argument>
           </service>
         </argument>
       </argument>
@@ -2857,7 +2859,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5911e5767d1533.51270773</argument>
+            <argument>59133de03b3db8.05103056</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3584,6 +3586,7 @@
           <call method="setEntityNamespaces">
             <argument type="collection">
               <argument key="FadcoBundle">FadcoBundle\Entity</argument>
+              <argument key="LCBundle">LCBundle\Entity</argument>
               <argument key="LexikCurrencyBundle">Lexik\Bundle\CurrencyBundle\Entity</argument>
             </argument>
           </call>
@@ -3604,6 +3607,7 @@
                     <service class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
                       <argument type="collection">
                         <argument key="/var/www/html/fadcoplus/src/FadcoBundle/Resources/config/doctrine">FadcoBundle\Entity</argument>
+                        <argument key="/var/www/html/fadcoplus/src/LCBundle/Resources/config/doctrine">LCBundle\Entity</argument>
                       </argument>
                       <call method="setGlobalBasename">
                         <argument>mapping</argument>
@@ -3611,6 +3615,20 @@
                     </service>
                   </argument>
                   <argument>FadcoBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="/var/www/html/fadcoplus/src/FadcoBundle/Resources/config/doctrine">FadcoBundle\Entity</argument>
+                        <argument key="/var/www/html/fadcoplus/src/LCBundle/Resources/config/doctrine">LCBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>LCBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">
@@ -4294,6 +4312,7 @@
         <argument key="LexikJWTAuthenticationBundle">Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle</argument>
         <argument key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</argument>
         <argument key="FOSJsRoutingBundle">FOS\JsRoutingBundle\FOSJsRoutingBundle</argument>
+        <argument key="LCBundle">LCBundle\LCBundle</argument>
         <argument key="GosPubSubRouterBundle">Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle</argument>
         <argument key="LexikCurrencyBundle">Lexik\Bundle\CurrencyBundle\LexikCurrencyBundle</argument>
         <argument key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</argument>
@@ -4324,6 +4343,13 @@
           <service class="Symfony\Component\Serializer\Encoder\JsonEncoder" public="false"/>
         </argument>
       </argument>
+    </service>
+    <service id="lc.chat" class="LCBundle\Service\WsocketService">
+      <tag name="gos_web_socket.topic"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="lc.cd" class="LCBundle\Service\WcdService">
+      <tag name="gos_web_socket.topic"/>
     </service>
     <service id="gos_pubsub_router.debug.command" class="Gos\Bundle\PubSubRouterBundle\Command\DebugRouterCommand">
       <tag name="console.command"/>
@@ -5018,6 +5044,10 @@
         <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
+        <argument>/var/www/html/fadcoplus/src/LCBundle/Resources/views</argument>
+        <argument>LC</argument>
+      </call>
+      <call method="addPath">
         <argument>/var/www/html/fadcoplus/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
@@ -5191,6 +5221,7 @@
                       <argument key="Lexik\Bundle\JWTAuthenticationBundle">/var/www/html/fadcoplus/vendor/lexik/jwt-authentication-bundle/Lexik/Bundle/JWTAuthenticationBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/var/www/html/fadcoplus/vendor/knplabs/knp-paginator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\JsRoutingBundle">/var/www/html/fadcoplus/vendor/friendsofsymfony/jsrouting-bundle/Resources/config/serializer</argument>
+                      <argument key="LCBundle">/var/www/html/fadcoplus/src/LCBundle/Resources/config/serializer</argument>
                       <argument key="Gos\Bundle\PubSubRouterBundle">/var/www/html/fadcoplus/vendor/gos/pubsub-router-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\CurrencyBundle">/var/www/html/fadcoplus/vendor/lexik/currency-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/var/www/html/fadcoplus/vendor/friendsofsymfony/rest-bundle/Resources/config/serializer</argument>
@@ -5225,6 +5256,7 @@
                       <argument key="Lexik\Bundle\JWTAuthenticationBundle">/var/www/html/fadcoplus/vendor/lexik/jwt-authentication-bundle/Lexik/Bundle/JWTAuthenticationBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/var/www/html/fadcoplus/vendor/knplabs/knp-paginator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\JsRoutingBundle">/var/www/html/fadcoplus/vendor/friendsofsymfony/jsrouting-bundle/Resources/config/serializer</argument>
+                      <argument key="LCBundle">/var/www/html/fadcoplus/src/LCBundle/Resources/config/serializer</argument>
                       <argument key="Gos\Bundle\PubSubRouterBundle">/var/www/html/fadcoplus/vendor/gos/pubsub-router-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\CurrencyBundle">/var/www/html/fadcoplus/vendor/lexik/currency-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/var/www/html/fadcoplus/vendor/friendsofsymfony/rest-bundle/Resources/config/serializer</argument>
@@ -5259,6 +5291,7 @@
                       <argument key="Lexik\Bundle\JWTAuthenticationBundle">/var/www/html/fadcoplus/vendor/lexik/jwt-authentication-bundle/Lexik/Bundle/JWTAuthenticationBundle/Resources/config/serializer</argument>
                       <argument key="Knp\Bundle\PaginatorBundle">/var/www/html/fadcoplus/vendor/knplabs/knp-paginator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\JsRoutingBundle">/var/www/html/fadcoplus/vendor/friendsofsymfony/jsrouting-bundle/Resources/config/serializer</argument>
+                      <argument key="LCBundle">/var/www/html/fadcoplus/src/LCBundle/Resources/config/serializer</argument>
                       <argument key="Gos\Bundle\PubSubRouterBundle">/var/www/html/fadcoplus/vendor/gos/pubsub-router-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\CurrencyBundle">/var/www/html/fadcoplus/vendor/lexik/currency-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/var/www/html/fadcoplus/vendor/friendsofsymfony/rest-bundle/Resources/config/serializer</argument>
