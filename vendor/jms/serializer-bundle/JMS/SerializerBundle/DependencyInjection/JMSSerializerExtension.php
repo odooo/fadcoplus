@@ -31,22 +31,32 @@ class JMSSerializerExtension extends ConfigurableExtension
     public function loadInternal(array $config, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, new FileLocator(array(
-                        __DIR__.'/../Resources/config/')));
+            __DIR__ . '/../Resources/config/')));
         $loader->load('services.xml');
 
         // Built-in handlers.
         $container->getDefinition('jms_serializer.datetime_handler')
             ->addArgument($config['handlers']['datetime']['default_format'])
             ->addArgument($config['handlers']['datetime']['default_timezone'])
-            ->addArgument($config['handlers']['datetime']['cdata'])
-        ;
+            ->addArgument($config['handlers']['datetime']['cdata']);
+
+        $container->getDefinition('jms_serializer.array_collection_handler')
+            ->replaceArgument(0, $config['handlers']['array_collection']['initialize_excluded']);
+
+        // Built-in subscribers.
+        $container->getDefinition('jms_serializer.doctrine_proxy_subscriber')
+            ->replaceArgument(0, !$config['subscribers']['doctrine_proxy']['initialize_virtual_types'])
+            ->replaceArgument(1, $config['subscribers']['doctrine_proxy']['initialize_excluded']);
+
+        // Built-in object constructor.
+        $container->getDefinition('jms_serializer.doctrine_object_constructor')
+            ->replaceArgument(2, $config['object_constructors']['doctrine']['fallback_strategy']);
 
         // property naming
         $container
             ->getDefinition('jms_serializer.camel_case_naming_strategy')
             ->addArgument($config['property_naming']['separator'])
-            ->addArgument($config['property_naming']['lower_case'])
-        ;
+            ->addArgument($config['property_naming']['lower_case']);
 
         if (!empty($config['property_naming']['id'])) {
             $container->setAlias('jms_serializer.naming_strategy', $config['property_naming']['id']);
@@ -55,8 +65,7 @@ class JMSSerializerExtension extends ConfigurableExtension
         if ($config['property_naming']['enable_cache']) {
             $container
                 ->getDefinition('jms_serializer.cache_naming_strategy')
-                ->addArgument(new Reference((string) $container->getAlias('jms_serializer.naming_strategy')))
-            ;
+                ->addArgument(new Reference((string)$container->getAlias('jms_serializer.naming_strategy')));
             $container->setAlias('jms_serializer.naming_strategy', 'jms_serializer.cache_naming_strategy');
         }
 
@@ -81,8 +90,7 @@ class JMSSerializerExtension extends ConfigurableExtension
         } elseif ('file' === $config['metadata']['cache']) {
             $container
                 ->getDefinition('jms_serializer.metadata.cache.file_cache')
-                ->replaceArgument(0, $config['metadata']['file_cache']['dir'])
-            ;
+                ->replaceArgument(0, $config['metadata']['file_cache']['dir']);
 
             $dir = $container->getParameterBag()->resolveValue($config['metadata']['file_cache']['dir']);
             if (!is_dir($dir) && !@mkdir($dir, 0777, true) && !is_dir($dir)) {
@@ -98,8 +106,7 @@ class JMSSerializerExtension extends ConfigurableExtension
 
         $container
             ->getDefinition('jms_serializer.metadata_factory')
-            ->replaceArgument(2, $config['metadata']['debug'])
-        ;
+            ->replaceArgument(2, $config['metadata']['debug']);
 
         // directories
         $directories = array();
@@ -107,7 +114,7 @@ class JMSSerializerExtension extends ConfigurableExtension
             foreach ($bundles as $name => $class) {
                 $ref = new \ReflectionClass($class);
 
-                $directories[$ref->getNamespaceName()] = dirname($ref->getFileName()).'/Resources/config/serializer';
+                $directories[$ref->getNamespaceName()] = dirname($ref->getFileName()) . '/Resources/config/serializer';
             }
         }
         foreach ($config['metadata']['directories'] as $directory) {
@@ -122,25 +129,24 @@ class JMSSerializerExtension extends ConfigurableExtension
                 }
 
                 $ref = new \ReflectionClass($bundles[$bundleName]);
-                $directory['path'] = dirname($ref->getFileName()).substr($directory['path'], strlen('@'.$bundleName));
+                $directory['path'] = dirname($ref->getFileName()) . substr($directory['path'], strlen('@' . $bundleName));
             }
 
             $directories[rtrim($directory['namespace_prefix'], '\\')] = rtrim($directory['path'], '\\/');
         }
         $container
             ->getDefinition('jms_serializer.metadata.file_locator')
-            ->replaceArgument(0, $directories)
-        ;
+            ->replaceArgument(0, $directories);
 
         $container->setParameter('jms_serializer.xml_deserialization_visitor.doctype_whitelist', $config['visitors']['xml']['doctype_whitelist']);
         $container->setParameter('jms_serializer.xml_serialization_visitor.format_output', $config['visitors']['xml']['format_output']);
         $container->setParameter('jms_serializer.json_serialization_visitor.options', $config['visitors']['json']['options']);
 
-        if ( ! $config['enable_short_alias']) {
+        if (!$config['enable_short_alias']) {
             $container->removeAlias('serializer');
         }
 
-        if ( ! $container->getParameter('kernel.debug')) {
+        if (!$container->getParameter('kernel.debug')) {
             $container->removeDefinition('jms_serializer.stopwatch_subscriber');
         }
 
@@ -169,6 +175,9 @@ class JMSSerializerExtension extends ConfigurableExtension
             }
             if (!empty($config['default_context'][$configKey]['groups'])) {
                 $contextFactory->addMethodCall('setGroups', [$config['default_context'][$configKey]['groups']]);
+            }
+            if (!empty($config['default_context'][$configKey]['enable_max_depth_checks'])) {
+                $contextFactory->addMethodCall('enableMaxDepthChecks');
             }
         }
     }

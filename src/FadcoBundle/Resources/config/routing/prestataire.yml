@@ -23,8 +23,16 @@ crediter_compte_distributeur:
     defaults: { _controller: "FadcoBundle:Prestataire:creditAccount" }
 
 main_page_distributeur:
-    path:      /page/principale
-    defaults: { _controller: "FadcoBundle:Prestataire:mainPage" }
+    path:      /page/principale/type-{type}
+    defaults: { _controller: "FadcoBundle:Prestataire:mainPage", type = "abonne" }
+
+export_excel_prestataire:
+    path:      /page/excel/export-all
+    defaults: { _controller: "FadcoBundle:Prestataire:exportToExcel" }
+
+export_excel_vente:
+    path:      /page/excel/export-ventes/start-{startDate}/end-{endDate}/nom-{nom}/prenom-{prenom}
+    defaults: { _controller: "FadcoBundle:Prestataire:exportToExcelVente" }
 
 grh_prestataire_edit:
     path:     /edit

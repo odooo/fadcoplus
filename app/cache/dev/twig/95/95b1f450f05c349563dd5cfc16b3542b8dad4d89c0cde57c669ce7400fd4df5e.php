@@ -24,20 +24,20 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_75b2e71ae7cc3abed4493e8ebc8d9ca468e7bf03adff5a4491ef4d16a1b1b635 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_75b2e71ae7cc3abed4493e8ebc8d9ca468e7bf03adff5a4491ef4d16a1b1b635->enter($__internal_75b2e71ae7cc3abed4493e8ebc8d9ca468e7bf03adff5a4491ef4d16a1b1b635_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Prestataire:index.html.twig"));
+        $__internal_ee624139b00bfe3b9342555fcdc74a62be1e5dc25f79bf135f962659046d6ae9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ee624139b00bfe3b9342555fcdc74a62be1e5dc25f79bf135f962659046d6ae9->enter($__internal_ee624139b00bfe3b9342555fcdc74a62be1e5dc25f79bf135f962659046d6ae9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Prestataire:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_75b2e71ae7cc3abed4493e8ebc8d9ca468e7bf03adff5a4491ef4d16a1b1b635->leave($__internal_75b2e71ae7cc3abed4493e8ebc8d9ca468e7bf03adff5a4491ef4d16a1b1b635_prof);
+        $__internal_ee624139b00bfe3b9342555fcdc74a62be1e5dc25f79bf135f962659046d6ae9->leave($__internal_ee624139b00bfe3b9342555fcdc74a62be1e5dc25f79bf135f962659046d6ae9_prof);
 
     }
 
     // line 3
     public function block_page_quick_actions($context, array $blocks = array())
     {
-        $__internal_331545a49f093a4f4d0c2747378a2090ab864db09d876477922b7f87cab12bbf = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_331545a49f093a4f4d0c2747378a2090ab864db09d876477922b7f87cab12bbf->enter($__internal_331545a49f093a4f4d0c2747378a2090ab864db09d876477922b7f87cab12bbf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_quick_actions"));
+        $__internal_cd1a35384a1f132bd736e05d7068404929a26b4c852cd5a96a3fef0d9f6d5604 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_cd1a35384a1f132bd736e05d7068404929a26b4c852cd5a96a3fef0d9f6d5604->enter($__internal_cd1a35384a1f132bd736e05d7068404929a26b4c852cd5a96a3fef0d9f6d5604_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_quick_actions"));
 
         // line 4
         echo "    <div>
@@ -49,45 +49,49 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
         // line 6
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire_new", array("id" => null));
         echo "\"><input type=\"button\" class=\"btn btn-info btn-xs\"value=\"Ajouter un nouveau distributeur\"/></a>
+        <a href=\"";
+        // line 7
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("export_excel_prestataire");
+        echo "\"><input type=\"button\" class=\"btn btn-primary btn-xs\"value=\"Exporter en excel\"/></a>
     </div>
 ";
         
-        $__internal_331545a49f093a4f4d0c2747378a2090ab864db09d876477922b7f87cab12bbf->leave($__internal_331545a49f093a4f4d0c2747378a2090ab864db09d876477922b7f87cab12bbf_prof);
+        $__internal_cd1a35384a1f132bd736e05d7068404929a26b4c852cd5a96a3fef0d9f6d5604->leave($__internal_cd1a35384a1f132bd736e05d7068404929a26b4c852cd5a96a3fef0d9f6d5604_prof);
 
     }
 
-    // line 9
+    // line 11
     public function block_stylesheet($context, array $blocks = array())
     {
-        $__internal_83f1a013e787a40cabe3d0fdeffffd305c77a6ee5f2b959b5fc7dd536dc0d9f0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_83f1a013e787a40cabe3d0fdeffffd305c77a6ee5f2b959b5fc7dd536dc0d9f0->enter($__internal_83f1a013e787a40cabe3d0fdeffffd305c77a6ee5f2b959b5fc7dd536dc0d9f0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheet"));
+        $__internal_d3ccd9bb3bae0d3029adc6cc6a94a99b8ebcc26bfc54810f82f5b8c219c5a3b9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d3ccd9bb3bae0d3029adc6cc6a94a99b8ebcc26bfc54810f82f5b8c219c5a3b9->enter($__internal_d3ccd9bb3bae0d3029adc6cc6a94a99b8ebcc26bfc54810f82f5b8c219c5a3b9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheet"));
 
-        // line 10
+        // line 12
         echo "    ";
         $this->displayParentBlock("stylesheet", $context, $blocks);
         echo "
     <link rel=\"stylesheet\"
           href=\"";
-        // line 12
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/GSPBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.css"), "html", null, true);
+        // line 14
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.css"), "html", null, true);
         echo "\">
     <link rel=\"stylesheet\" href=\"";
-        // line 13
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/GSPBundle/plugins/jQueryfiler/css/jquery.filer.css"), "html", null, true);
+        // line 15
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/plugins/jQueryfiler/css/jquery.filer.css"), "html", null, true);
         echo "\">
 ";
         
-        $__internal_83f1a013e787a40cabe3d0fdeffffd305c77a6ee5f2b959b5fc7dd536dc0d9f0->leave($__internal_83f1a013e787a40cabe3d0fdeffffd305c77a6ee5f2b959b5fc7dd536dc0d9f0_prof);
+        $__internal_d3ccd9bb3bae0d3029adc6cc6a94a99b8ebcc26bfc54810f82f5b8c219c5a3b9->leave($__internal_d3ccd9bb3bae0d3029adc6cc6a94a99b8ebcc26bfc54810f82f5b8c219c5a3b9_prof);
 
     }
 
-    // line 16
+    // line 18
     public function block_content($context, array $blocks = array())
     {
-        $__internal_b0631fecc65b9a418f2a7e4ef76419e54f767085bef8825468fe053892a42fc6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b0631fecc65b9a418f2a7e4ef76419e54f767085bef8825468fe053892a42fc6->enter($__internal_b0631fecc65b9a418f2a7e4ef76419e54f767085bef8825468fe053892a42fc6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_f2459974f6ec9e1b274cc55adc958595275f8dbb71ead309faa2d3ad7bd4b5a8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_f2459974f6ec9e1b274cc55adc958595275f8dbb71ead309faa2d3ad7bd4b5a8->enter($__internal_f2459974f6ec9e1b274cc55adc958595275f8dbb71ead309faa2d3ad7bd4b5a8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
-        // line 17
+        // line 19
         echo "    <section class=\"content\">
         <div class=\"box box-default\">
             <div class=\"box-header with-border\">
@@ -112,24 +116,24 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
                     </thead>
                     <tbody>
                         ";
-        // line 40
+        // line 42
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["entities"] ?? $this->getContext($context, "entities")));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 41
+            // line 43
             echo "                            <tr>
                                 <td style=\"text-align: center;\"><a href=\"";
-            // line 42
+            // line 44
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire_voir", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "id", array()), "html", null, true);
             echo "</a></td>
                                 <td style=\"text-align: center;\">";
-            // line 43
+            // line 45
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "nom", array()), "html", null, true);
             echo "</td>
                                 <td style=\"text-align: center;\">";
-            // line 44
+            // line 46
             echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "prenom", array()), "html", null, true);
             echo "</td>
                                 <td style=\"text-align: center;\">
@@ -139,64 +143,64 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
                                         <ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\">   
                                             <li>
                                                 <a href=\"";
-            // line 51
+            // line 53
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire_voir", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
             echo "\">Afficher</a>
                                             </li>
                                             ";
-            // line 53
+            // line 55
             if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_SUPER_ADMIN")) {
-                // line 54
+                // line 56
                 echo "                                                <li>
                                                     <a href=\"";
-                // line 55
+                // line 57
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("crediter_compte_distributeur", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
                 echo "\">Créditer ce compte</a>
                                                 </li>
                                                 <li>
                                                     <a href=\"";
-                // line 58
+                // line 60
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire_new", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
                 echo "\">Modifier</a>
                                                 </li>
                                                 <li>
                                                     <a class=\"change_rigth\" href=\"";
-                // line 61
+                // line 63
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("rigth_change", array("userId" => $this->getAttribute($context["entity"], "id", array()), "option" => "add")), "html", null, true);
                 echo "\">Ajouter des roles</a>
                                                 </li>
                                                 <li class=\"divider\"></li>
                                                 <li>
                                                     <a class=\"change_rigth\" href=\"";
-                // line 65
+                // line 67
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("rigth_change", array("userId" => $this->getAttribute($context["entity"], "id", array()), "option" => "delete")), "html", null, true);
                 echo "\">Enlever des roles</a>
                                                 </li>
                                                 ";
-                // line 67
+                // line 69
                 if (($this->getAttribute($context["entity"], "enabled", array()) == 1)) {
-                    // line 68
+                    // line 70
                     echo "                                                    <li>
                                                         <a href=\"";
-                    // line 69
+                    // line 71
                     echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire_desactive", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
                     echo "\">Suspendre le compte</a>
                                                     </li>
                                                 ";
                 } else {
-                    // line 72
+                    // line 74
                     echo "                                                    <li>
                                                         <a href=\"";
-                    // line 73
+                    // line 75
                     echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire_active", array("id" => $this->getAttribute($context["entity"], "id", array()))), "html", null, true);
                     echo "\">Activer le compte</a>
                                                     </li>
                                                 ";
                 }
-                // line 76
+                // line 78
                 echo "                                            ";
             }
-            // line 77
+            // line 79
             echo "                                        </ul>
                                     </div>
                                 </td>
@@ -206,16 +210,16 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 82
+        // line 84
         echo "                    </tbody>
                 </table>
                 </div>
                 <div class=\"row\">
                     <div class=\"col-md-12\">
-                        <table style=\"width: 10%;\" class=\"table\">
+                        <table style=\"width: 100%;\" class=\"table\">
                             <tr>
                                 ";
-        // line 90
+        // line 92
         echo "                                <td><a href=\"";
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire");
         echo "\"><input type=\"button\" class=\"btn btn-warning btn-xs\"value=\"Retour\"/></a></td>
@@ -226,38 +230,41 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
             </div>
         </div>
     </section>
-
+    ";
+        // line 100
+        echo twig_include($this->env, $context, "FadcoBundle:Prestataire:popups.html.twig");
+        echo "
     <script src=\"";
-        // line 99
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/GSPBundle/plugins/datatables/jquery.dataTables.min.js"), "html", null, true);
+        // line 101
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/plugins/datatables/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
 ";
         
-        $__internal_b0631fecc65b9a418f2a7e4ef76419e54f767085bef8825468fe053892a42fc6->leave($__internal_b0631fecc65b9a418f2a7e4ef76419e54f767085bef8825468fe053892a42fc6_prof);
+        $__internal_f2459974f6ec9e1b274cc55adc958595275f8dbb71ead309faa2d3ad7bd4b5a8->leave($__internal_f2459974f6ec9e1b274cc55adc958595275f8dbb71ead309faa2d3ad7bd4b5a8_prof);
 
     }
 
-    // line 102
+    // line 104
     public function block_javascript($context, array $blocks = array())
     {
-        $__internal_bb69480889fbdcfe874079ae679bdf6359d06236acb0fb3282051791dfdf158b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_bb69480889fbdcfe874079ae679bdf6359d06236acb0fb3282051791dfdf158b->enter($__internal_bb69480889fbdcfe874079ae679bdf6359d06236acb0fb3282051791dfdf158b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascript"));
+        $__internal_dd4d7bb8dd09f9ab098642c619522a89c4e83a1016cc849a419d4e279c63a17a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_dd4d7bb8dd09f9ab098642c619522a89c4e83a1016cc849a419d4e279c63a17a->enter($__internal_dd4d7bb8dd09f9ab098642c619522a89c4e83a1016cc849a419d4e279c63a17a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascript"));
 
-        // line 103
+        // line 105
         echo "    ";
         $this->displayParentBlock("javascript", $context, $blocks);
         echo "
     <script src=\"";
-        // line 104
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/GSPBundle/style/jquery.accordDate.js"), "html", null, true);
-        echo "\"></script>
-    <script src=\"";
-        // line 105
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/GSPBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.js"), "html", null, true);
-        echo "\"></script>
-    <script src=\"";
         // line 106
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/GSPBundle/plugins/jQueryfiler/js/jquery.filer.min.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/style/jquery.accordDate.js"), "html", null, true);
+        echo "\"></script>
+    <script src=\"";
+        // line 107
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.js"), "html", null, true);
+        echo "\"></script>
+    <script src=\"";
+        // line 108
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/plugins/jQueryfiler/js/jquery.filer.min.js"), "html", null, true);
         echo "\"></script>
     <script>
      \$('.change_rigth').click(function(e) {
@@ -289,7 +296,7 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
      </script>
 ";
         
-        $__internal_bb69480889fbdcfe874079ae679bdf6359d06236acb0fb3282051791dfdf158b->leave($__internal_bb69480889fbdcfe874079ae679bdf6359d06236acb0fb3282051791dfdf158b_prof);
+        $__internal_dd4d7bb8dd09f9ab098642c619522a89c4e83a1016cc849a419d4e279c63a17a->leave($__internal_dd4d7bb8dd09f9ab098642c619522a89c4e83a1016cc849a419d4e279c63a17a_prof);
 
     }
 
@@ -305,7 +312,7 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
 
     public function getDebugInfo()
     {
-        return array (  260 => 106,  256 => 105,  252 => 104,  247 => 103,  241 => 102,  232 => 99,  219 => 90,  210 => 82,  200 => 77,  197 => 76,  191 => 73,  188 => 72,  182 => 69,  179 => 68,  177 => 67,  172 => 65,  165 => 61,  159 => 58,  153 => 55,  150 => 54,  148 => 53,  143 => 51,  133 => 44,  129 => 43,  123 => 42,  120 => 41,  116 => 40,  91 => 17,  85 => 16,  76 => 13,  72 => 12,  66 => 10,  60 => 9,  50 => 6,  46 => 5,  43 => 4,  37 => 3,  11 => 1,);
+        return array (  267 => 108,  263 => 107,  259 => 106,  254 => 105,  248 => 104,  239 => 101,  235 => 100,  223 => 92,  214 => 84,  204 => 79,  201 => 78,  195 => 75,  192 => 74,  186 => 71,  183 => 70,  181 => 69,  176 => 67,  169 => 63,  163 => 60,  157 => 57,  154 => 56,  152 => 55,  147 => 53,  137 => 46,  133 => 45,  127 => 44,  124 => 43,  120 => 42,  95 => 19,  89 => 18,  80 => 15,  76 => 14,  70 => 12,  64 => 11,  54 => 7,  50 => 6,  46 => 5,  43 => 4,  37 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -324,13 +331,15 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
     <div>
         <a href=\"{{ path('grh_prestataire') }}\"><input type=\"button\" class=\"btn btn-warning btn-xs\"value=\"Retour\"/></a>
         <a href=\"{{ path('grh_prestataire_new', {'id': null }) }}\"><input type=\"button\" class=\"btn btn-info btn-xs\"value=\"Ajouter un nouveau distributeur\"/></a>
+        <a href=\"{{ path('export_excel_prestataire') }}\"><input type=\"button\" class=\"btn btn-primary btn-xs\"value=\"Exporter en excel\"/></a>
     </div>
 {% endblock %}
+
 {% block stylesheet %}
     {{ parent() }}
     <link rel=\"stylesheet\"
-          href=\"{{ asset('bundles/GSPBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.css') }}\">
-    <link rel=\"stylesheet\" href=\"{{ asset('bundles/GSPBundle/plugins/jQueryfiler/css/jquery.filer.css') }}\">
+          href=\"{{ asset('bundles/FadcoBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.css') }}\">
+    <link rel=\"stylesheet\" href=\"{{ asset('bundles/FadcoBundle/plugins/jQueryfiler/css/jquery.filer.css') }}\">
 {% endblock %}
 
 {% block content %}
@@ -404,7 +413,7 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
                 </div>
                 <div class=\"row\">
                     <div class=\"col-md-12\">
-                        <table style=\"width: 10%;\" class=\"table\">
+                        <table style=\"width: 100%;\" class=\"table\">
                             <tr>
                                 {#<td><input type=\"submit\" class=\"btn btn-primary btn-xs\" value=\"Enregistrer\"/></td>#}
                                 <td><a href=\"{{ path('grh_prestataire') }}\"><input type=\"button\" class=\"btn btn-warning btn-xs\"value=\"Retour\"/></a></td>
@@ -415,15 +424,15 @@ class __TwigTemplate_908f3cf90f433bd38ca667e5f00aed2c0b72e7c9ab9f060d2342c097f96
             </div>
         </div>
     </section>
-
-    <script src=\"{{ asset('bundles/GSPBundle/plugins/datatables/jquery.dataTables.min.js') }}\"></script>
+    {{ include('FadcoBundle:Prestataire:popups.html.twig') }}
+    <script src=\"{{ asset('bundles/FadcoBundle/plugins/datatables/jquery.dataTables.min.js') }}\"></script>
 {% endblock %}
 
 {% block javascript %}
     {{ parent() }}
-    <script src=\"{{ asset('bundles/GSPBundle/style/jquery.accordDate.js') }}\"></script>
-    <script src=\"{{ asset('bundles/GSPBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.js') }}\"></script>
-    <script src=\"{{ asset('bundles/GSPBundle/plugins/jQueryfiler/js/jquery.filer.min.js') }}\"></script>
+    <script src=\"{{ asset('bundles/FadcoBundle/style/jquery.accordDate.js') }}\"></script>
+    <script src=\"{{ asset('bundles/FadcoBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.js') }}\"></script>
+    <script src=\"{{ asset('bundles/FadcoBundle/plugins/jQueryfiler/js/jquery.filer.min.js') }}\"></script>
     <script>
      \$('.change_rigth').click(function(e) {
             e.preventDefault();

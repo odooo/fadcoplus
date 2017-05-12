@@ -64,7 +64,24 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $directories = $container->getDefinition('jms_serializer.metadata.file_locator')->getArgument(0);
 
         $this->assertEquals($ref->getPath(), $directories['JMSSerializerBundleNs1']);
-        $this->assertEquals($ref->getPath().'/Resources/config', $directories['JMSSerializerBundleNs2']);
+        $this->assertEquals($ref->getPath() . '/Resources/config', $directories['JMSSerializerBundleNs2']);
+    }
+
+    /**
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testWrongObjectConstructorFallbackStrategyTriggersException()
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration(true), [
+            'jms_serializer' => [
+                'object_constructors' => [
+                    'doctrine' => [
+                        'fallback_strategy' => "foo",
+                    ],
+                ]
+            ]
+        ]);
     }
 
     public function testContextDefaults()
@@ -97,12 +114,14 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'serialize_null' => true,
                 'attributes' => ['foo' => 'bar'],
                 'groups' => ['Baz'],
+                'enable_max_depth_checks' => false,
             ),
             'deserialization' => array(
                 'version' => "5.5",
                 'serialize_null' => false,
                 'attributes' => ['foo' => 'bar'],
                 'groups' => ['Baz'],
+                'enable_max_depth_checks' => true,
             )
         );
 
@@ -124,6 +143,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             $this->assertSame($values['serialize_null'], $confArray['serialize_null']);
             $this->assertSame($values['attributes'], $confArray['attributes']);
             $this->assertSame($values['groups'], $confArray['groups']);
+            $this->assertSame($values['enable_max_depth_checks'], $confArray['enable_max_depth_checks']);
         }
     }
 

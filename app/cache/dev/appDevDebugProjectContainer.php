@@ -93,6 +93,7 @@ class appDevDebugProjectContainer extends Container
             'fadco.sms.oceanic_sms_api' => 'getFadco_Sms_OceanicSmsApiService',
             'fadco.sms_engin' => 'getFadco_SmsEnginService',
             'fadco.sms_renderer' => 'getFadco_SmsRendererService',
+            'fadco.to_excel' => 'getFadco_ToExcelService',
             'file_locator' => 'getFileLocatorService',
             'filesystem' => 'getFilesystemService',
             'form.csrf_provider' => 'getForm_CsrfProviderService',
@@ -266,6 +267,7 @@ class appDevDebugProjectContainer extends Container
             'monolog.processor.psr_log_message' => 'getMonolog_Processor_PsrLogMessageService',
             'number.to.word' => 'getNumber_To_WordService',
             'ob_highcharts.twig.highcharts_extension' => 'getObHighcharts_Twig_HighchartsExtensionService',
+            'phpexcel' => 'getPhpexcelService',
             'profiler' => 'getProfilerService',
             'profiler_listener' => 'getProfilerListenerService',
             'property_accessor' => 'getPropertyAccessorService',
@@ -398,6 +400,8 @@ class appDevDebugProjectContainer extends Container
             'fos_rest.templating' => 'templating',
             'fos_user.doctrine_registry' => 'doctrine',
             'fos_user.util.username_canonicalizer' => 'fos_user.util.email_canonicalizer',
+            'jms\\serializer\\arraytransformerinterface' => 'jms_serializer',
+            'jms\\serializer\\serializerinterface' => 'jms_serializer',
             'lexik_currency.default_adapter' => 'lexik_currency.doctrine_adapter',
             'lexik_jwt_authentication.encoder' => 'lexik_jwt_authentication.jwt_encoder',
             'mailer' => 'swiftmailer.mailer.default',
@@ -1314,6 +1318,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'fadco.to_excel' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FadcoBundle\Services\ToExcel A FadcoBundle\Services\ToExcel instance.
+     */
+    protected function getFadco_ToExcelService()
+    {
+        return $this->services['fadco.to_excel'] = new \FadcoBundle\Services\ToExcel($this->get('doctrine.orm.default_entity_manager'));
+    }
+
+    /**
      * Gets the 'file_locator' service.
      *
      * This service is shared.
@@ -1921,7 +1938,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosJsRouting_ExtractorService()
     {
-        return $this->services['fos_js_routing.extractor'] = new \FOS\JsRoutingBundle\Extractor\ExposedRoutesExtractor($this->get('router'), array(0 => '^[^_]'), __DIR__, array('FrameworkBundle' => 'Symfony\\Bundle\\FrameworkBundle\\FrameworkBundle', 'SecurityBundle' => 'Symfony\\Bundle\\SecurityBundle\\SecurityBundle', 'TwigBundle' => 'Symfony\\Bundle\\TwigBundle\\TwigBundle', 'MonologBundle' => 'Symfony\\Bundle\\MonologBundle\\MonologBundle', 'SwiftmailerBundle' => 'Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle', 'AsseticBundle' => 'Symfony\\Bundle\\AsseticBundle\\AsseticBundle', 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle', 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle', 'FadcoBundle' => 'FadcoBundle\\FadcoBundle', 'KnpSnappyBundle' => 'Knp\\Bundle\\SnappyBundle\\KnpSnappyBundle', 'FOSUserBundle' => 'FOS\\UserBundle\\FOSUserBundle', 'LexikJWTAuthenticationBundle' => 'Lexik\\Bundle\\JWTAuthenticationBundle\\LexikJWTAuthenticationBundle', 'KnpPaginatorBundle' => 'Knp\\Bundle\\PaginatorBundle\\KnpPaginatorBundle', 'FOSJsRoutingBundle' => 'FOS\\JsRoutingBundle\\FOSJsRoutingBundle', 'LCBundle' => 'LCBundle\\LCBundle', 'GosPubSubRouterBundle' => 'Gos\\Bundle\\PubSubRouterBundle\\GosPubSubRouterBundle', 'LexikCurrencyBundle' => 'Lexik\\Bundle\\CurrencyBundle\\LexikCurrencyBundle', 'FOSRestBundle' => 'FOS\\RestBundle\\FOSRestBundle', 'JMSSerializerBundle' => 'JMS\\SerializerBundle\\JMSSerializerBundle', 'ObHighchartsBundle' => 'Ob\\HighchartsBundle\\ObHighchartsBundle', 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle', 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle', 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle', 'SensioGeneratorBundle' => 'Sensio\\Bundle\\GeneratorBundle\\SensioGeneratorBundle'));
+        return $this->services['fos_js_routing.extractor'] = new \FOS\JsRoutingBundle\Extractor\ExposedRoutesExtractor($this->get('router'), array(0 => '^[^_]'), __DIR__, array('FrameworkBundle' => 'Symfony\\Bundle\\FrameworkBundle\\FrameworkBundle', 'SecurityBundle' => 'Symfony\\Bundle\\SecurityBundle\\SecurityBundle', 'TwigBundle' => 'Symfony\\Bundle\\TwigBundle\\TwigBundle', 'MonologBundle' => 'Symfony\\Bundle\\MonologBundle\\MonologBundle', 'SwiftmailerBundle' => 'Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle', 'AsseticBundle' => 'Symfony\\Bundle\\AsseticBundle\\AsseticBundle', 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle', 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle', 'FadcoBundle' => 'FadcoBundle\\FadcoBundle', 'KnpSnappyBundle' => 'Knp\\Bundle\\SnappyBundle\\KnpSnappyBundle', 'FOSUserBundle' => 'FOS\\UserBundle\\FOSUserBundle', 'LexikJWTAuthenticationBundle' => 'Lexik\\Bundle\\JWTAuthenticationBundle\\LexikJWTAuthenticationBundle', 'KnpPaginatorBundle' => 'Knp\\Bundle\\PaginatorBundle\\KnpPaginatorBundle', 'FOSJsRoutingBundle' => 'FOS\\JsRoutingBundle\\FOSJsRoutingBundle', 'LCBundle' => 'LCBundle\\LCBundle', 'GosPubSubRouterBundle' => 'Gos\\Bundle\\PubSubRouterBundle\\GosPubSubRouterBundle', 'LexikCurrencyBundle' => 'Lexik\\Bundle\\CurrencyBundle\\LexikCurrencyBundle', 'LiuggioExcelBundle' => 'Liuggio\\ExcelBundle\\LiuggioExcelBundle', 'FOSRestBundle' => 'FOS\\RestBundle\\FOSRestBundle', 'JMSSerializerBundle' => 'JMS\\SerializerBundle\\JMSSerializerBundle', 'ObHighchartsBundle' => 'Ob\\HighchartsBundle\\ObHighchartsBundle', 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle', 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle', 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle', 'SensioGeneratorBundle' => 'Sensio\\Bundle\\GeneratorBundle\\SensioGeneratorBundle'));
     }
 
     /**
@@ -2641,7 +2658,7 @@ class appDevDebugProjectContainer extends Container
         $a->setCache(new \Metadata\Cache\FileCache((__DIR__.'/jms_serializer')));
 
         $b = new \JMS\Serializer\EventDispatcher\LazyEventDispatcher($this);
-        $b->setListeners(array('serializer.pre_serialize' => array(0 => array(0 => array(0 => 'jms_serializer.stopwatch_subscriber', 1 => 'onPreSerialize'), 1 => NULL, 2 => NULL), 1 => array(0 => array(0 => 'jms_serializer.doctrine_proxy_subscriber', 1 => 'onPreSerialize'), 1 => NULL, 2 => NULL)), 'serializer.post_serialize' => array(0 => array(0 => array(0 => 'jms_serializer.stopwatch_subscriber', 1 => 'onPostSerialize'), 1 => NULL, 2 => NULL))));
+        $b->setListeners(array('serializer.pre_serialize' => array(0 => array(0 => array(0 => 'jms_serializer.stopwatch_subscriber', 1 => 'onPreSerialize'), 1 => NULL, 2 => NULL), 1 => array(0 => array(0 => 'jms_serializer.doctrine_proxy_subscriber', 1 => 'onPreSerializeTypedProxy'), 1 => NULL, 2 => NULL), 2 => array(0 => array(0 => 'jms_serializer.doctrine_proxy_subscriber', 1 => 'onPreSerialize'), 1 => NULL, 2 => NULL)), 'serializer.post_serialize' => array(0 => array(0 => array(0 => 'jms_serializer.stopwatch_subscriber', 1 => 'onPostSerialize'), 1 => NULL, 2 => NULL))));
 
         $this->services['jms_serializer'] = $instance = new \JMS\Serializer\Serializer($a, $this->get('jms_serializer.handler_registry'), $this->get('jms_serializer.unserialize_object_constructor'), new \PhpCollection\Map(array('json' => $this->get('jms_serializer.json_serialization_visitor'), 'xml' => $this->get('jms_serializer.xml_serialization_visitor'), 'yml' => $this->get('jms_serializer.yaml_serialization_visitor'))), new \PhpCollection\Map(array('json' => $this->get('jms_serializer.json_deserialization_visitor'), 'xml' => $this->get('jms_serializer.xml_deserialization_visitor'))), $b, NULL, $this->get('jms_serializer.expression_evaluator'));
 
@@ -2674,7 +2691,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getJmsSerializer_ArrayCollectionHandlerService()
     {
-        return $this->services['jms_serializer.array_collection_handler'] = new \JMS\Serializer\Handler\ArrayCollectionHandler();
+        return $this->services['jms_serializer.array_collection_handler'] = new \JMS\Serializer\Handler\ArrayCollectionHandler(true);
     }
 
     /**
@@ -2726,7 +2743,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getJmsSerializer_DoctrineProxySubscriberService()
     {
-        return $this->services['jms_serializer.doctrine_proxy_subscriber'] = new \JMS\Serializer\EventDispatcher\Subscriber\DoctrineProxySubscriber();
+        return $this->services['jms_serializer.doctrine_proxy_subscriber'] = new \JMS\Serializer\EventDispatcher\Subscriber\DoctrineProxySubscriber(false, true);
     }
 
     /**
@@ -2811,7 +2828,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getJmsSerializer_MetadataDriverService()
     {
-        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer'), 'Symfony\\Bundle\\SecurityBundle' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer'), 'Symfony\\Bundle\\TwigBundle' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer'), 'Symfony\\Bundle\\MonologBundle' => ($this->targetDirs[3].'/vendor/symfony/monolog-bundle/Resources/config/serializer'), 'Symfony\\Bundle\\SwiftmailerBundle' => ($this->targetDirs[3].'/vendor/symfony/swiftmailer-bundle/Resources/config/serializer'), 'Symfony\\Bundle\\AsseticBundle' => ($this->targetDirs[3].'/vendor/symfony/assetic-bundle/Resources/config/serializer'), 'Doctrine\\Bundle\\DoctrineBundle' => ($this->targetDirs[3].'/vendor/doctrine/doctrine-bundle/Resources/config/serializer'), 'Sensio\\Bundle\\FrameworkExtraBundle' => ($this->targetDirs[3].'/vendor/sensio/framework-extra-bundle/Resources/config/serializer'), 'FadcoBundle' => ($this->targetDirs[3].'/src/FadcoBundle/Resources/config/serializer'), 'Knp\\Bundle\\SnappyBundle' => ($this->targetDirs[3].'/src/Knp/Bundle/SnappyBundle/Resources/config/serializer'), 'FOS\\UserBundle' => ($this->targetDirs[3].'/vendor/friendsofsymfony/user-bundle/Resources/config/serializer'), 'Lexik\\Bundle\\JWTAuthenticationBundle' => ($this->targetDirs[3].'/vendor/lexik/jwt-authentication-bundle/Lexik/Bundle/JWTAuthenticationBundle/Resources/config/serializer'), 'Knp\\Bundle\\PaginatorBundle' => ($this->targetDirs[3].'/vendor/knplabs/knp-paginator-bundle/Resources/config/serializer'), 'FOS\\JsRoutingBundle' => ($this->targetDirs[3].'/vendor/friendsofsymfony/jsrouting-bundle/Resources/config/serializer'), 'LCBundle' => ($this->targetDirs[3].'/src/LCBundle/Resources/config/serializer'), 'Gos\\Bundle\\PubSubRouterBundle' => ($this->targetDirs[3].'/vendor/gos/pubsub-router-bundle/Resources/config/serializer'), 'Lexik\\Bundle\\CurrencyBundle' => ($this->targetDirs[3].'/vendor/lexik/currency-bundle/Resources/config/serializer'), 'FOS\\RestBundle' => ($this->targetDirs[3].'/vendor/friendsofsymfony/rest-bundle/Resources/config/serializer'), 'JMS\\SerializerBundle' => ($this->targetDirs[3].'/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer'), 'Ob\\HighchartsBundle' => ($this->targetDirs[3].'/vendor/ob/highcharts-bundle/Resources/config/serializer'), 'Symfony\\Bundle\\DebugBundle' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer'), 'Symfony\\Bundle\\WebProfilerBundle' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer'), 'Sensio\\Bundle\\DistributionBundle' => ($this->targetDirs[3].'/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer'), 'Sensio\\Bundle\\GeneratorBundle' => ($this->targetDirs[3].'/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer'), '' => ($this->targetDirs[3].'/src/FadcoBundle/Resources/config/serializer')));
+        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer'), 'Symfony\\Bundle\\SecurityBundle' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer'), 'Symfony\\Bundle\\TwigBundle' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer'), 'Symfony\\Bundle\\MonologBundle' => ($this->targetDirs[3].'/vendor/symfony/monolog-bundle/Resources/config/serializer'), 'Symfony\\Bundle\\SwiftmailerBundle' => ($this->targetDirs[3].'/vendor/symfony/swiftmailer-bundle/Resources/config/serializer'), 'Symfony\\Bundle\\AsseticBundle' => ($this->targetDirs[3].'/vendor/symfony/assetic-bundle/Resources/config/serializer'), 'Doctrine\\Bundle\\DoctrineBundle' => ($this->targetDirs[3].'/vendor/doctrine/doctrine-bundle/Resources/config/serializer'), 'Sensio\\Bundle\\FrameworkExtraBundle' => ($this->targetDirs[3].'/vendor/sensio/framework-extra-bundle/Resources/config/serializer'), 'FadcoBundle' => ($this->targetDirs[3].'/src/FadcoBundle/Resources/config/serializer'), 'Knp\\Bundle\\SnappyBundle' => ($this->targetDirs[3].'/src/Knp/Bundle/SnappyBundle/Resources/config/serializer'), 'FOS\\UserBundle' => ($this->targetDirs[3].'/vendor/friendsofsymfony/user-bundle/Resources/config/serializer'), 'Lexik\\Bundle\\JWTAuthenticationBundle' => ($this->targetDirs[3].'/vendor/lexik/jwt-authentication-bundle/Lexik/Bundle/JWTAuthenticationBundle/Resources/config/serializer'), 'Knp\\Bundle\\PaginatorBundle' => ($this->targetDirs[3].'/vendor/knplabs/knp-paginator-bundle/Resources/config/serializer'), 'FOS\\JsRoutingBundle' => ($this->targetDirs[3].'/vendor/friendsofsymfony/jsrouting-bundle/Resources/config/serializer'), 'LCBundle' => ($this->targetDirs[3].'/src/LCBundle/Resources/config/serializer'), 'Gos\\Bundle\\PubSubRouterBundle' => ($this->targetDirs[3].'/vendor/gos/pubsub-router-bundle/Resources/config/serializer'), 'Lexik\\Bundle\\CurrencyBundle' => ($this->targetDirs[3].'/vendor/lexik/currency-bundle/Resources/config/serializer'), 'Liuggio\\ExcelBundle' => ($this->targetDirs[3].'/vendor/liuggio/ExcelBundle/Resources/config/serializer'), 'FOS\\RestBundle' => ($this->targetDirs[3].'/vendor/friendsofsymfony/rest-bundle/Resources/config/serializer'), 'JMS\\SerializerBundle' => ($this->targetDirs[3].'/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer'), 'Ob\\HighchartsBundle' => ($this->targetDirs[3].'/vendor/ob/highcharts-bundle/Resources/config/serializer'), 'Symfony\\Bundle\\DebugBundle' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer'), 'Symfony\\Bundle\\WebProfilerBundle' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer'), 'Sensio\\Bundle\\DistributionBundle' => ($this->targetDirs[3].'/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/config/serializer'), 'Sensio\\Bundle\\GeneratorBundle' => ($this->targetDirs[3].'/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/config/serializer'), '' => ($this->targetDirs[3].'/src/FadcoBundle/Resources/config/serializer')));
 
         return $this->services['jms_serializer.metadata_driver'] = new \JMS\Serializer\Metadata\Driver\DoctrineTypeDriver(new \Metadata\Driver\DriverChain(array(0 => new \JMS\Serializer\Metadata\Driver\YamlDriver($a), 1 => new \JMS\Serializer\Metadata\Driver\XmlDriver($a), 2 => new \JMS\Serializer\Metadata\Driver\PhpDriver($a), 3 => new \JMS\Serializer\Metadata\Driver\AnnotationDriver($this->get('annotation_reader')))), $this->get('doctrine'));
     }
@@ -2839,7 +2856,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getJmsSerializer_ObjectConstructorService()
     {
-        return $this->services['jms_serializer.object_constructor'] = new \JMS\Serializer\Construction\DoctrineObjectConstructor($this->get('doctrine'), $this->get('jms_serializer.unserialize_object_constructor'));
+        return $this->services['jms_serializer.object_constructor'] = new \JMS\Serializer\Construction\DoctrineObjectConstructor($this->get('doctrine'), $this->get('jms_serializer.unserialize_object_constructor'), 'null');
     }
 
     /**
@@ -3643,6 +3660,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'phpexcel' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Liuggio\ExcelBundle\Factory A Liuggio\ExcelBundle\Factory instance.
+     */
+    protected function getPhpexcelService()
+    {
+        return $this->services['phpexcel'] = new \Liuggio\ExcelBundle\Factory();
+    }
+
+    /**
      * Gets the 'profiler' service.
      *
      * This service is shared.
@@ -3956,7 +3986,7 @@ class appDevDebugProjectContainer extends Container
         $q = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $o, array(), $a);
         $q->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($n, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $o, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($o, '/login'), array('csrf_parameter' => '_csrf_token', 'intention' => 'logout', 'logout_path' => 'fos_user_security_logout')), 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $o, 'main', $p, $q, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5914843e527274.20276765', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $n, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $o, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $o, '/login', false), NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($n, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $o, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($o, '/login'), array('csrf_parameter' => '_csrf_token', 'intention' => 'logout', 'logout_path' => 'fos_user_security_logout')), 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $o, 'main', $p, $q, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5915860e520669.36184384', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $n, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $o, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $o, '/login', false), NULL, NULL, $a, false));
     }
 
     /**
@@ -5528,7 +5558,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5914843e527274.20276765')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5915860e520669.36184384')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -5751,6 +5781,7 @@ class appDevDebugProjectContainer extends Container
                 'LCBundle' => 'LCBundle\\LCBundle',
                 'GosPubSubRouterBundle' => 'Gos\\Bundle\\PubSubRouterBundle\\GosPubSubRouterBundle',
                 'LexikCurrencyBundle' => 'Lexik\\Bundle\\CurrencyBundle\\LexikCurrencyBundle',
+                'LiuggioExcelBundle' => 'Liuggio\\ExcelBundle\\LiuggioExcelBundle',
                 'FOSRestBundle' => 'FOS\\RestBundle\\FOSRestBundle',
                 'JMSSerializerBundle' => 'JMS\\SerializerBundle\\JMSSerializerBundle',
                 'ObHighchartsBundle' => 'Ob\\HighchartsBundle\\ObHighchartsBundle',
@@ -5784,6 +5815,258 @@ class appDevDebugProjectContainer extends Container
             'oceanicsms_api' => 14265,
             'oceanicsms_user' => 'CENTREJPR',
             'oceanicsms_password' => 'centrejpr2016',
+            'archiviste_numero' => '96587412/65487512',
+            'sms_variables' => array(
+                'nom_client' => array(
+                    'auto' => true,
+                    'label' => 'Nom du client',
+                ),
+                'nom_prestataire' => array(
+                    'auto' => true,
+                    'label' => 'Nom du prestataire',
+                ),
+                'numero_requete' => array(
+                    'auto' => true,
+                    'label' => 'Numéro de la requete',
+                ),
+                'numero_affectation' => array(
+                    'auto' => true,
+                    'label' => 'Numéro de l\'affectation',
+                ),
+                'numero_interaction' => array(
+                    'auto' => true,
+                    'label' => 'Numéro de l\'interaction',
+                ),
+                'code_bien' => array(
+                    'auto' => false,
+                    'label' => 'Code du bien',
+                ),
+                'prix_bien' => array(
+                    'auto' => false,
+                    'label' => 'Prix du bien',
+                ),
+                'zone_bien' => array(
+                    'auto' => false,
+                    'label' => 'Localité du bien',
+                ),
+                'date_paiement' => array(
+                    'auto' => false,
+                    'label' => 'Date de paiement',
+                ),
+            ),
+            'fiche_variables' => array(
+                'structure_gsp' => array(
+                    'label' => 'Structure bénéficiaire',
+                    'default' => 'Global Service Plus',
+                ),
+                'titre_beneficiaire' => array(
+                    'label' => 'Titre du bénéficiaire',
+                    'default' => 'Directeur Général',
+                ),
+                'numero_gsp' => array(
+                    'label' => 'Numéro GSP',
+                ),
+                'email_gsp' => array(
+                    'label' => 'Adresse e-mail GSP',
+                ),
+                'nom_dg_gsp' => array(
+                    'label' => 'Nom du DG',
+                ),
+                'numero_piece_id_dg' => array(
+                    'label' => 'Numéro pièce d\'identité du DG',
+                ),
+                'lieu_delivrance_id_dg' => array(
+                    'label' => 'Préfecture de délivrance de la pièce  d\'identité du DG',
+                ),
+                'telephone_dg' => array(
+                    'label' => 'Contact du DG GSP',
+                ),
+                'comparution_global' => array(
+                    'label' => 'Comparution Global',
+                ),
+                'comparution_client' => array(
+                    'label' => 'Comparution du client',
+                ),
+                'nom_client' => array(
+                    'label' => 'Nom du client',
+                ),
+                'maison_client' => array(
+                    'label' => 'Maison du client',
+                ),
+                'nationalite_client' => array(
+                    'label' => 'Nationalité du client',
+                ),
+                'type_piece_id_client' => array(
+                    'label' => 'Type pièce d\'identité du client',
+                ),
+                'numero_piece_id_client' => array(
+                    'label' => 'Numéro pièce d\'identité du client',
+                ),
+                'expiration_piece_id_client' => array(
+                    'label' => 'Date d\'expiration pièce d\'identité du client',
+                ),
+                'lieu_delivrance_id_client' => array(
+                    'label' => 'Préfecture de délivrance de la pièce  d\'identité du client',
+                ),
+                'telephone_client' => array(
+                    'label' => 'Contact du client',
+                ),
+                'nom_acheteur' => array(
+                    'label' => 'Nom de l\'acheteur',
+                ),
+                'maison_acheteur' => array(
+                    'label' => 'Maison de l\'acheteur',
+                ),
+                'nationalite_acheteur' => array(
+                    'label' => 'Nationalité de l\'acheteur',
+                ),
+                'type_piece_id_acheteur' => array(
+                    'label' => 'Type pièce d\'identité de l\'acheteur',
+                ),
+                'numero_piece_id_acheteur' => array(
+                    'label' => 'Numéro pièce d\'identité de l\'acheteur',
+                ),
+                'expiration_piece_id_acheteur' => array(
+                    'label' => 'Date d\'expiration pièce d\'identité de l\'acheteur',
+                ),
+                'telephone_acheteur' => array(
+                    'label' => 'Téléphone de l\'acheteur',
+                ),
+                'nom_vendeur' => array(
+                    'label' => 'Nom du vendeur',
+                ),
+                'maison_vendeur' => array(
+                    'label' => 'Maison du vendeur',
+                ),
+                'nationalite_vendeur' => array(
+                    'label' => 'Nationalité du vendeur',
+                ),
+                'type_piece_id_vendeur' => array(
+                    'label' => 'Type pièce d\'identité du vendeur',
+                ),
+                'numero_piece_id_vendeur' => array(
+                    'label' => 'Numéro pièce d\'identité du vendeur',
+                ),
+                'expiration_piece_id_vendeur' => array(
+                    'label' => 'Date d\'expiration pièce d\'identité du vendeur',
+                ),
+                'telephone_vendeur' => array(
+                    'label' => 'Téléphone du vendeur',
+                ),
+                'lieu_delivrance_id_vendeur' => array(
+                    'label' => 'Préfecture de délivrance de la pièce  d\'identité du vendeur',
+                ),
+                'accompte' => array(
+                    'label' => 'Accompte payé',
+                ),
+                'nombre_versement_client' => array(
+                    'label' => 'Nombre de versement du client',
+                ),
+                'mensualite_client' => array(
+                    'label' => 'Mensualité à payer par le client',
+                ),
+                'date_premier_versement_client' => array(
+                    'label' => 'Date du premier versement du client',
+                ),
+                'civilite' => array(
+                    'label' => 'Civilité',
+                ),
+                'nom_investisseur' => array(
+                    'label' => 'Nom de l\'investisseur',
+                ),
+                'nationalite_investisseur' => array(
+                    'label' => 'Nationalité de l\'investisseur',
+                ),
+                'maison_investisseur' => array(
+                    'label' => 'Maison de l\'investisseur',
+                ),
+                'montant_investisseur' => array(
+                    'label' => 'Somme totale à payer à l\'investisseur',
+                ),
+                'nombre_paiement_investisseur' => array(
+                    'label' => 'Nombre de paiement de l\'investisseur',
+                ),
+                'mensualite_investisseur' => array(
+                    'label' => 'Mensualité à payer à l\'investisseur',
+                ),
+                'jour_paiement_periodique' => array(
+                    'label' => 'Le jour de paiement périodique',
+                ),
+                'date_premier_paiement_investisseur' => array(
+                    'label' => 'Date du premier paiement de l\'investisseur',
+                ),
+                'numero_piece_id_investisseur' => array(
+                    'label' => 'Numéro pièce d\'identité de l\'investisseur',
+                ),
+                'expiration_piece_id_investisseur' => array(
+                    'label' => 'Date d\'expiration pièce d\'identité de l\'investisseur',
+                ),
+                'lieu_delivrance_id_investisseur' => array(
+                    'label' => 'Préfecture de délivrance de la pièce  d\'identité de l\'investisseur',
+                ),
+                'telephone_investisseur' => array(
+                    'label' => 'Contact de l\'investisseur',
+                ),
+                'prix_bien' => array(
+                    'label' => 'Prix du bien',
+                ),
+                'description_bien' => array(
+                    'label' => 'Description du bien',
+                ),
+                'localisation_bien' => array(
+                    'label' => 'Localisation du bien',
+                ),
+                'date_creation_document' => array(
+                    'label' => 'Date création du document',
+                ),
+                'nombre_page' => array(
+                    'label' => 'Nombre de page du document',
+                    'default' => 'deux (02)',
+                ),
+                'nombre_exemplaire' => array(
+                    'label' => 'Nombre d\'exemplaires',
+                    'default' => 'trois (03)',
+                ),
+                'agence' => array(
+                    'label' => 'agence',
+                ),
+                'maitre_notaire' => array(
+                    'label' => 'Le nom du maître notaire',
+                ),
+                'lieu_cabinet_maitre_notaire' => array(
+                    'label' => 'Cabinet du notaire',
+                ),
+                'nombre_agents' => array(
+                    'label' => 'Nombre d\'agents',
+                ),
+                'nombre_clients' => array(
+                    'label' => 'Nombre de clients',
+                ),
+                'mois_rapport' => array(
+                    'label' => 'Mois du rapport',
+                ),
+                'periode_rapport' => array(
+                    'label' => 'Période couverte par le rapport',
+                ),
+                'nombre_agences' => array(
+                    'label' => 'Nombre d\'agence',
+                ),
+                'taux' => array(
+                    'label' => 'Taux',
+                ),
+                'note' => array(
+                    'label' => 'Note',
+                ),
+                'nombre_plaintes' => array(
+                    'label' => 'Nombre de plaintes',
+                ),
+                'mois_comparaison' => array(
+                    'label' => 'Mois comparatif',
+                ),
+                'nombre_mois' => array(
+                    'label' => 'Nombre de mois',
+                ),
+            ),
             'locale' => 'fr',
             'controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
             'controller_name_converter.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerNameParser',
@@ -6442,6 +6725,7 @@ class appDevDebugProjectContainer extends Container
                 1 => 'EUR',
                 2 => 'USD',
             ),
+            'phpexcel.class' => 'Liuggio\\ExcelBundle\\Factory',
             'jms_serializer.form_error_handler.class' => 'JMS\\Serializer\\Handler\\FormErrorHandler',
             'fos_rest.format_listener.rules' => NULL,
             'jms_serializer.metadata.file_locator.class' => 'Metadata\\Driver\\FileLocator',
@@ -6465,6 +6749,8 @@ class appDevDebugProjectContainer extends Container
             'jms_serializer.version_exclusion_strategy.class' => 'JMS\\Serializer\\Exclusion\\VersionExclusionStrategy',
             'jms_serializer.serializer.class' => 'JMS\\Serializer\\Serializer',
             'jms_serializer.twig_extension.class' => 'JMS\\Serializer\\Twig\\SerializerExtension',
+            'jms_serializer.twig_runtime_extension.class' => 'JMS\\Serializer\\Twig\\SerializerRuntimeExtension',
+            'jms_serializer.twig_runtime_extension_helper.class' => 'JMS\\Serializer\\Twig\\SerializerRuntimeHelper',
             'jms_serializer.templating.helper.class' => 'JMS\\SerializerBundle\\Templating\\SerializerHelper',
             'jms_serializer.json_serialization_visitor.class' => 'JMS\\Serializer\\JsonSerializationVisitor',
             'jms_serializer.json_serialization_visitor.options' => 0,

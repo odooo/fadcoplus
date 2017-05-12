@@ -10,7 +10,7 @@
         {% if app.user.type == "admin" %}
             <li class="header">GESTION DES COMPTES</li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-user"></i> <span>DISTRIBUTEURS</span> <i
+                <a href="#"><i class="fa fa-user"></i> <span>Distributeurs</span> <i
                             class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ path('grh_prestataire') }}">Liste</a></li>
@@ -18,6 +18,15 @@
                     {#{% if is_granted("ROLE_SUPER_ADMIN") %}#}
                         {#<li><a href="{{ path('rigth') }}">Droits</a></li>#}
                     {#{% endif %}#}
+                </ul>
+            </li>
+            <li class="header">STATISTIQUES</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-pie-chart"></i> <span>Statistiques</span> <i
+                            class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ path('main_page_distributeur',{ 'type': 'abonne' }) }}">Abonnes</a></li>
+                    <li><a href="{{ path('main_page_distributeur',{ 'type': 'vente' }) }}">Ventes</a></li>
                 </ul>
             </li>
         {% endif %}

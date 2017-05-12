@@ -25,6 +25,7 @@
       <parameter key="LCBundle">LCBundle\LCBundle</parameter>
       <parameter key="GosPubSubRouterBundle">Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle</parameter>
       <parameter key="LexikCurrencyBundle">Lexik\Bundle\CurrencyBundle\LexikCurrencyBundle</parameter>
+      <parameter key="LiuggioExcelBundle">Liuggio\ExcelBundle\LiuggioExcelBundle</parameter>
       <parameter key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</parameter>
       <parameter key="JMSSerializerBundle">JMS\SerializerBundle\JMSSerializerBundle</parameter>
       <parameter key="ObHighchartsBundle">Ob\HighchartsBundle\ObHighchartsBundle</parameter>
@@ -58,6 +59,258 @@
     <parameter key="oceanicsms_api">14265</parameter>
     <parameter key="oceanicsms_user">CENTREJPR</parameter>
     <parameter key="oceanicsms_password">centrejpr2016</parameter>
+    <parameter key="archiviste_numero">96587412/65487512</parameter>
+    <parameter key="sms_variables" type="collection">
+      <parameter key="nom_client" type="collection">
+        <parameter key="auto">true</parameter>
+        <parameter key="label">Nom du client</parameter>
+      </parameter>
+      <parameter key="nom_prestataire" type="collection">
+        <parameter key="auto">true</parameter>
+        <parameter key="label">Nom du prestataire</parameter>
+      </parameter>
+      <parameter key="numero_requete" type="collection">
+        <parameter key="auto">true</parameter>
+        <parameter key="label">Numéro de la requete</parameter>
+      </parameter>
+      <parameter key="numero_affectation" type="collection">
+        <parameter key="auto">true</parameter>
+        <parameter key="label">Numéro de l'affectation</parameter>
+      </parameter>
+      <parameter key="numero_interaction" type="collection">
+        <parameter key="auto">true</parameter>
+        <parameter key="label">Numéro de l'interaction</parameter>
+      </parameter>
+      <parameter key="code_bien" type="collection">
+        <parameter key="auto">false</parameter>
+        <parameter key="label">Code du bien</parameter>
+      </parameter>
+      <parameter key="prix_bien" type="collection">
+        <parameter key="auto">false</parameter>
+        <parameter key="label">Prix du bien</parameter>
+      </parameter>
+      <parameter key="zone_bien" type="collection">
+        <parameter key="auto">false</parameter>
+        <parameter key="label">Localité du bien</parameter>
+      </parameter>
+      <parameter key="date_paiement" type="collection">
+        <parameter key="auto">false</parameter>
+        <parameter key="label">Date de paiement</parameter>
+      </parameter>
+    </parameter>
+    <parameter key="fiche_variables" type="collection">
+      <parameter key="structure_gsp" type="collection">
+        <parameter key="label">Structure bénéficiaire</parameter>
+        <parameter key="default">Global Service Plus</parameter>
+      </parameter>
+      <parameter key="titre_beneficiaire" type="collection">
+        <parameter key="label">Titre du bénéficiaire</parameter>
+        <parameter key="default">Directeur Général</parameter>
+      </parameter>
+      <parameter key="numero_gsp" type="collection">
+        <parameter key="label">Numéro GSP</parameter>
+      </parameter>
+      <parameter key="email_gsp" type="collection">
+        <parameter key="label">Adresse e-mail GSP</parameter>
+      </parameter>
+      <parameter key="nom_dg_gsp" type="collection">
+        <parameter key="label">Nom du DG</parameter>
+      </parameter>
+      <parameter key="numero_piece_id_dg" type="collection">
+        <parameter key="label">Numéro pièce d'identité du DG</parameter>
+      </parameter>
+      <parameter key="lieu_delivrance_id_dg" type="collection">
+        <parameter key="label">Préfecture de délivrance de la pièce  d'identité du DG</parameter>
+      </parameter>
+      <parameter key="telephone_dg" type="collection">
+        <parameter key="label">Contact du DG GSP</parameter>
+      </parameter>
+      <parameter key="comparution_global" type="collection">
+        <parameter key="label">Comparution Global</parameter>
+      </parameter>
+      <parameter key="comparution_client" type="collection">
+        <parameter key="label">Comparution du client</parameter>
+      </parameter>
+      <parameter key="nom_client" type="collection">
+        <parameter key="label">Nom du client</parameter>
+      </parameter>
+      <parameter key="maison_client" type="collection">
+        <parameter key="label">Maison du client</parameter>
+      </parameter>
+      <parameter key="nationalite_client" type="collection">
+        <parameter key="label">Nationalité du client</parameter>
+      </parameter>
+      <parameter key="type_piece_id_client" type="collection">
+        <parameter key="label">Type pièce d'identité du client</parameter>
+      </parameter>
+      <parameter key="numero_piece_id_client" type="collection">
+        <parameter key="label">Numéro pièce d'identité du client</parameter>
+      </parameter>
+      <parameter key="expiration_piece_id_client" type="collection">
+        <parameter key="label">Date d'expiration pièce d'identité du client</parameter>
+      </parameter>
+      <parameter key="lieu_delivrance_id_client" type="collection">
+        <parameter key="label">Préfecture de délivrance de la pièce  d'identité du client</parameter>
+      </parameter>
+      <parameter key="telephone_client" type="collection">
+        <parameter key="label">Contact du client</parameter>
+      </parameter>
+      <parameter key="nom_acheteur" type="collection">
+        <parameter key="label">Nom de l'acheteur</parameter>
+      </parameter>
+      <parameter key="maison_acheteur" type="collection">
+        <parameter key="label">Maison de l'acheteur</parameter>
+      </parameter>
+      <parameter key="nationalite_acheteur" type="collection">
+        <parameter key="label">Nationalité de l'acheteur</parameter>
+      </parameter>
+      <parameter key="type_piece_id_acheteur" type="collection">
+        <parameter key="label">Type pièce d'identité de l'acheteur</parameter>
+      </parameter>
+      <parameter key="numero_piece_id_acheteur" type="collection">
+        <parameter key="label">Numéro pièce d'identité de l'acheteur</parameter>
+      </parameter>
+      <parameter key="expiration_piece_id_acheteur" type="collection">
+        <parameter key="label">Date d'expiration pièce d'identité de l'acheteur</parameter>
+      </parameter>
+      <parameter key="telephone_acheteur" type="collection">
+        <parameter key="label">Téléphone de l'acheteur</parameter>
+      </parameter>
+      <parameter key="nom_vendeur" type="collection">
+        <parameter key="label">Nom du vendeur</parameter>
+      </parameter>
+      <parameter key="maison_vendeur" type="collection">
+        <parameter key="label">Maison du vendeur</parameter>
+      </parameter>
+      <parameter key="nationalite_vendeur" type="collection">
+        <parameter key="label">Nationalité du vendeur</parameter>
+      </parameter>
+      <parameter key="type_piece_id_vendeur" type="collection">
+        <parameter key="label">Type pièce d'identité du vendeur</parameter>
+      </parameter>
+      <parameter key="numero_piece_id_vendeur" type="collection">
+        <parameter key="label">Numéro pièce d'identité du vendeur</parameter>
+      </parameter>
+      <parameter key="expiration_piece_id_vendeur" type="collection">
+        <parameter key="label">Date d'expiration pièce d'identité du vendeur</parameter>
+      </parameter>
+      <parameter key="telephone_vendeur" type="collection">
+        <parameter key="label">Téléphone du vendeur</parameter>
+      </parameter>
+      <parameter key="lieu_delivrance_id_vendeur" type="collection">
+        <parameter key="label">Préfecture de délivrance de la pièce  d'identité du vendeur</parameter>
+      </parameter>
+      <parameter key="accompte" type="collection">
+        <parameter key="label">Accompte payé</parameter>
+      </parameter>
+      <parameter key="nombre_versement_client" type="collection">
+        <parameter key="label">Nombre de versement du client</parameter>
+      </parameter>
+      <parameter key="mensualite_client" type="collection">
+        <parameter key="label">Mensualité à payer par le client</parameter>
+      </parameter>
+      <parameter key="date_premier_versement_client" type="collection">
+        <parameter key="label">Date du premier versement du client</parameter>
+      </parameter>
+      <parameter key="civilite" type="collection">
+        <parameter key="label">Civilité</parameter>
+      </parameter>
+      <parameter key="nom_investisseur" type="collection">
+        <parameter key="label">Nom de l'investisseur</parameter>
+      </parameter>
+      <parameter key="nationalite_investisseur" type="collection">
+        <parameter key="label">Nationalité de l'investisseur</parameter>
+      </parameter>
+      <parameter key="maison_investisseur" type="collection">
+        <parameter key="label">Maison de l'investisseur</parameter>
+      </parameter>
+      <parameter key="montant_investisseur" type="collection">
+        <parameter key="label">Somme totale à payer à l'investisseur</parameter>
+      </parameter>
+      <parameter key="nombre_paiement_investisseur" type="collection">
+        <parameter key="label">Nombre de paiement de l'investisseur</parameter>
+      </parameter>
+      <parameter key="mensualite_investisseur" type="collection">
+        <parameter key="label">Mensualité à payer à l'investisseur</parameter>
+      </parameter>
+      <parameter key="jour_paiement_periodique" type="collection">
+        <parameter key="label">Le jour de paiement périodique</parameter>
+      </parameter>
+      <parameter key="date_premier_paiement_investisseur" type="collection">
+        <parameter key="label">Date du premier paiement de l'investisseur</parameter>
+      </parameter>
+      <parameter key="numero_piece_id_investisseur" type="collection">
+        <parameter key="label">Numéro pièce d'identité de l'investisseur</parameter>
+      </parameter>
+      <parameter key="expiration_piece_id_investisseur" type="collection">
+        <parameter key="label">Date d'expiration pièce d'identité de l'investisseur</parameter>
+      </parameter>
+      <parameter key="lieu_delivrance_id_investisseur" type="collection">
+        <parameter key="label">Préfecture de délivrance de la pièce  d'identité de l'investisseur</parameter>
+      </parameter>
+      <parameter key="telephone_investisseur" type="collection">
+        <parameter key="label">Contact de l'investisseur</parameter>
+      </parameter>
+      <parameter key="prix_bien" type="collection">
+        <parameter key="label">Prix du bien</parameter>
+      </parameter>
+      <parameter key="description_bien" type="collection">
+        <parameter key="label">Description du bien</parameter>
+      </parameter>
+      <parameter key="localisation_bien" type="collection">
+        <parameter key="label">Localisation du bien</parameter>
+      </parameter>
+      <parameter key="date_creation_document" type="collection">
+        <parameter key="label">Date création du document</parameter>
+      </parameter>
+      <parameter key="nombre_page" type="collection">
+        <parameter key="label">Nombre de page du document</parameter>
+        <parameter key="default">deux (02)</parameter>
+      </parameter>
+      <parameter key="nombre_exemplaire" type="collection">
+        <parameter key="label">Nombre d'exemplaires</parameter>
+        <parameter key="default">trois (03)</parameter>
+      </parameter>
+      <parameter key="agence" type="collection">
+        <parameter key="label">agence</parameter>
+      </parameter>
+      <parameter key="maitre_notaire" type="collection">
+        <parameter key="label">Le nom du maître notaire</parameter>
+      </parameter>
+      <parameter key="lieu_cabinet_maitre_notaire" type="collection">
+        <parameter key="label">Cabinet du notaire</parameter>
+      </parameter>
+      <parameter key="nombre_agents" type="collection">
+        <parameter key="label">Nombre d'agents</parameter>
+      </parameter>
+      <parameter key="nombre_clients" type="collection">
+        <parameter key="label">Nombre de clients</parameter>
+      </parameter>
+      <parameter key="mois_rapport" type="collection">
+        <parameter key="label">Mois du rapport</parameter>
+      </parameter>
+      <parameter key="periode_rapport" type="collection">
+        <parameter key="label">Période couverte par le rapport</parameter>
+      </parameter>
+      <parameter key="nombre_agences" type="collection">
+        <parameter key="label">Nombre d'agence</parameter>
+      </parameter>
+      <parameter key="taux" type="collection">
+        <parameter key="label">Taux</parameter>
+      </parameter>
+      <parameter key="note" type="collection">
+        <parameter key="label">Note</parameter>
+      </parameter>
+      <parameter key="nombre_plaintes" type="collection">
+        <parameter key="label">Nombre de plaintes</parameter>
+      </parameter>
+      <parameter key="mois_comparaison" type="collection">
+        <parameter key="label">Mois comparatif</parameter>
+      </parameter>
+      <parameter key="nombre_mois" type="collection">
+        <parameter key="label">Nombre de mois</parameter>
+      </parameter>
+    </parameter>
     <parameter key="locale">fr</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
@@ -694,6 +947,7 @@
       <parameter>EUR</parameter>
       <parameter>USD</parameter>
     </parameter>
+    <parameter key="phpexcel.class">Liuggio\ExcelBundle\Factory</parameter>
     <parameter key="jms_serializer.form_error_handler.class">JMS\Serializer\Handler\FormErrorHandler</parameter>
     <parameter key="fos_rest.format_listener.rules">null</parameter>
     <parameter key="jms_serializer.metadata.file_locator.class">Metadata\Driver\FileLocator</parameter>
@@ -717,6 +971,8 @@
     <parameter key="jms_serializer.version_exclusion_strategy.class">JMS\Serializer\Exclusion\VersionExclusionStrategy</parameter>
     <parameter key="jms_serializer.serializer.class">JMS\Serializer\Serializer</parameter>
     <parameter key="jms_serializer.twig_extension.class">JMS\Serializer\Twig\SerializerExtension</parameter>
+    <parameter key="jms_serializer.twig_runtime_extension.class">JMS\Serializer\Twig\SerializerRuntimeExtension</parameter>
+    <parameter key="jms_serializer.twig_runtime_extension_helper.class">JMS\Serializer\Twig\SerializerRuntimeHelper</parameter>
     <parameter key="jms_serializer.templating.helper.class">JMS\SerializerBundle\Templating\SerializerHelper</parameter>
     <parameter key="jms_serializer.json_serialization_visitor.class">JMS\Serializer\JsonSerializationVisitor</parameter>
     <parameter key="jms_serializer.json_serialization_visitor.options">0</parameter>
@@ -2525,7 +2781,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5914843e527274.20276765</argument>
+            <argument>5915860e520669.36184384</argument>
           </service>
         </argument>
       </argument>
@@ -2854,7 +3110,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5914843e527274.20276765</argument>
+            <argument>5915860e520669.36184384</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -4067,6 +4323,9 @@
     <service id="fadco.sms_engin" class="FadcoBundle\Service\Services">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
+    <service id="fadco.to_excel" class="FadcoBundle\Services\ToExcel">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
     <service id="fadco.autorites.sms.sender" class="FadcoBundle\Services\AutoritesSmsSender">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
       <argument type="service" id="sms"/>
@@ -4310,6 +4569,7 @@
         <argument key="LCBundle">LCBundle\LCBundle</argument>
         <argument key="GosPubSubRouterBundle">Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle</argument>
         <argument key="LexikCurrencyBundle">Lexik\Bundle\CurrencyBundle\LexikCurrencyBundle</argument>
+        <argument key="LiuggioExcelBundle">Liuggio\ExcelBundle\LiuggioExcelBundle</argument>
         <argument key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</argument>
         <argument key="JMSSerializerBundle">JMS\SerializerBundle\JMSSerializerBundle</argument>
         <argument key="ObHighchartsBundle">Ob\HighchartsBundle\ObHighchartsBundle</argument>
@@ -4414,6 +4674,7 @@
       </call>
       <factory service="lexik_currency.adapter_factory" method="createOerAdapter"/>
     </service>
+    <service id="phpexcel" class="Liuggio\ExcelBundle\Factory"/>
     <service id="fos_rest.request.param_fetcher" class="FOS\RestBundle\Request\ParamFetcher">
       <argument type="service" id="service_container"/>
       <argument type="service" id="fos_rest.request.param_fetcher.reader"/>
@@ -4563,6 +4824,8 @@
     </service>
     <service id="jms_serializer.doctrine_proxy_subscriber" class="JMS\Serializer\EventDispatcher\Subscriber\DoctrineProxySubscriber">
       <tag name="jms_serializer.event_subscriber"/>
+      <argument>false</argument>
+      <argument>true</argument>
     </service>
     <service id="jms_serializer.stopwatch_subscriber" class="JMS\SerializerBundle\Serializer\StopwatchEventSubscriber">
       <tag name="jms_serializer.event_subscriber"/>
@@ -4579,6 +4842,7 @@
     </service>
     <service id="jms_serializer.array_collection_handler" class="JMS\Serializer\Handler\ArrayCollectionHandler">
       <tag name="jms_serializer.subscribing_handler"/>
+      <argument>true</argument>
     </service>
     <service id="jms_serializer.php_collection_handler" class="JMS\Serializer\Handler\PhpCollectionHandler">
       <tag name="jms_serializer.subscribing_handler"/>
@@ -5219,6 +5483,7 @@
                       <argument key="LCBundle">/var/www/html/fadcoplus/src/LCBundle/Resources/config/serializer</argument>
                       <argument key="Gos\Bundle\PubSubRouterBundle">/var/www/html/fadcoplus/vendor/gos/pubsub-router-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\CurrencyBundle">/var/www/html/fadcoplus/vendor/lexik/currency-bundle/Resources/config/serializer</argument>
+                      <argument key="Liuggio\ExcelBundle">/var/www/html/fadcoplus/vendor/liuggio/ExcelBundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/var/www/html/fadcoplus/vendor/friendsofsymfony/rest-bundle/Resources/config/serializer</argument>
                       <argument key="JMS\SerializerBundle">/var/www/html/fadcoplus/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
                       <argument key="Ob\HighchartsBundle">/var/www/html/fadcoplus/vendor/ob/highcharts-bundle/Resources/config/serializer</argument>
@@ -5254,6 +5519,7 @@
                       <argument key="LCBundle">/var/www/html/fadcoplus/src/LCBundle/Resources/config/serializer</argument>
                       <argument key="Gos\Bundle\PubSubRouterBundle">/var/www/html/fadcoplus/vendor/gos/pubsub-router-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\CurrencyBundle">/var/www/html/fadcoplus/vendor/lexik/currency-bundle/Resources/config/serializer</argument>
+                      <argument key="Liuggio\ExcelBundle">/var/www/html/fadcoplus/vendor/liuggio/ExcelBundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/var/www/html/fadcoplus/vendor/friendsofsymfony/rest-bundle/Resources/config/serializer</argument>
                       <argument key="JMS\SerializerBundle">/var/www/html/fadcoplus/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
                       <argument key="Ob\HighchartsBundle">/var/www/html/fadcoplus/vendor/ob/highcharts-bundle/Resources/config/serializer</argument>
@@ -5289,6 +5555,7 @@
                       <argument key="LCBundle">/var/www/html/fadcoplus/src/LCBundle/Resources/config/serializer</argument>
                       <argument key="Gos\Bundle\PubSubRouterBundle">/var/www/html/fadcoplus/vendor/gos/pubsub-router-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\CurrencyBundle">/var/www/html/fadcoplus/vendor/lexik/currency-bundle/Resources/config/serializer</argument>
+                      <argument key="Liuggio\ExcelBundle">/var/www/html/fadcoplus/vendor/liuggio/ExcelBundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/var/www/html/fadcoplus/vendor/friendsofsymfony/rest-bundle/Resources/config/serializer</argument>
                       <argument key="JMS\SerializerBundle">/var/www/html/fadcoplus/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
                       <argument key="Ob\HighchartsBundle">/var/www/html/fadcoplus/vendor/ob/highcharts-bundle/Resources/config/serializer</argument>
@@ -5327,6 +5594,7 @@
     <service id="jms_serializer.object_constructor" class="JMS\Serializer\Construction\DoctrineObjectConstructor">
       <argument type="service" id="doctrine"/>
       <argument type="service" id="jms_serializer.unserialize_object_constructor"/>
+      <argument type="string">null</argument>
     </service>
     <service id="jms_serializer.deserialization_context_factory" class="JMS\SerializerBundle\ContextFactory\ConfiguredContextFactory"/>
     <service id="jms_serializer.serialization_context_factory" class="JMS\SerializerBundle\ContextFactory\ConfiguredContextFactory"/>
@@ -5379,6 +5647,14 @@
                   <argument type="collection">
                     <argument>jms_serializer.stopwatch_subscriber</argument>
                     <argument>onPreSerialize</argument>
+                  </argument>
+                  <argument>null</argument>
+                  <argument>null</argument>
+                </argument>
+                <argument type="collection">
+                  <argument type="collection">
+                    <argument>jms_serializer.doctrine_proxy_subscriber</argument>
+                    <argument>onPreSerializeTypedProxy</argument>
                   </argument>
                   <argument>null</argument>
                   <argument>null</argument>
@@ -5809,6 +6085,8 @@
     <service id="lexik_currency.default_adapter" alias="lexik_currency.doctrine_adapter"/>
     <service id="fos_rest.router" alias="router"/>
     <service id="fos_rest.templating" alias="templating"/>
+    <service id="jms\serializer\serializerinterface" alias="jms_serializer"/>
+    <service id="jms\serializer\arraytransformerinterface" alias="jms_serializer"/>
     <service id="serializer" alias="jms_serializer"/>
     <service id="sensio.distribution.webconfigurator" alias="sensio_distribution.webconfigurator"/>
     <service id="console.command.gos_bundle_pubsubrouterbundle_command_debugroutercommand" alias="gos_pubsub_router.debug.command"/>

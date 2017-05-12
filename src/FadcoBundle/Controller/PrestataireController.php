@@ -21,6 +21,11 @@ use FadcoBundle\Form\CreditAccountDistributeurType;
 use FadcoBundle\Entity\TypePrestataire;
 use FadcoBundle\Form\PrestataireType;
 
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use Doctrine\DBAL\Connection;
+
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+
 /**
  * Prestataire controller.
  *
@@ -36,19 +41,12 @@ class PrestataireController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FadcoBundle:Prestataire')->findAll();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        $id = null;
+        $entities = $em->getRepository('FadcoBundle:Prestataire')->findBy(array(
+            'type' => 'distributeur'
+        ));
 
         return $this->render('FadcoBundle:Prestataire:index.html.twig', array(
             'entities' => $entities,
-
-            'user' => $user,
-            'contro'=>$this,
-
-            'id' => $id,
-            'user' => $user
-
         ));
     }
     
@@ -260,12 +258,10 @@ class PrestataireController extends BaseController
         ));
 
         if ($this->getRequest()->getMethod() == 'POST') {
-
-            //var_dump($form['account']);
-            //die();
+            $account = $prestataire->getAccount() + (float)$request->get('FadcoBundle_distributeur_acompte')['account'];
             $form->handleRequest($request);
+            $prestataire->setAccount($account);
             $em->flush();
-
             return $this->redirect($this->generateUrl('grh_prestataire_voir', array('id' => $prestataire->getId())));
         }   
         //else{
@@ -278,9 +274,70 @@ class PrestataireController extends BaseController
         ));
     }
 
-    public function mainPageAction()
+    public function exportToExcelAction(Request $request)
     {
-        return $this->render('FadcoBundle:Prestataire:main-page.html.twig');
+        $sql = "SELECT * FROM prestataire WHERE type = 'distributeur'";
+        $filename = "distributeur_excel";
+        $exception = array('nom','prenom', 'contact', 'ville');
+        $this->get('fadco.to_excel')->toExcel($sql, $filename, $exception, false);
+    }
+
+    public function exportToExcelVenteAction(Request $request, $startDate, $endDate, $nom = "", $prenom = "")
+    {
+        $startDate = \DateTime::createFromFormat('d/m/Y', $startDate);
+        $endDate = \DateTime::createFromFormat('d/m/Y', $endDate);
+
+        $sql = "";
+        $exception = array();
+
+        if($startDate && $endDate)
+        {
+            $sql = "SELECT SUM(r.montant) AS Total, r.abonne, d.nom, d.prenom, r.date FROM reabonnement r, distributeur d
+            WHERE d.id = r.distributeur_id AND r.date >= $startDate AND r.date <= $endDate GROUP BY r.date, r.abonne, d.nom, d.prenom";
+
+            $exception = array('nom','prenom', 'abonne', 'Total');
+        }
+
+        if($nom && $prenom)
+        {
+            $sql = "SELECT SUM(r.montant) AS Total, d.nom FROM reabonnement r, distributeur d
+            WHERE d.id = r.distributeur_id AND d.nom LIKE %$nom% AND d.prenom LIKE %$prenom% GROUP BY d.nom";
+
+            $exception = array('nom','Total');
+        }
+
+        $filename = "vente_excel";
+        $this->get('fadco.to_excel')->toExcel($sql, $filename, $exception, false);
+    }
+
+    public function mainPageAction(Request $request, $type)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $from = $request->query->get('from');
+        $to = $request->query->get('to');
+
+        $form = $request->request->get('form_distributeur');
+
+        $nom = "";
+        $prenom = "";
+
+        if($request->getMethod() == "POST")
+        {
+           if(isset($form['distributeur']))
+           {
+               $distributeur = $em->getRepository('FadcoBundle:Prestataire')->find($form['distributeur']);
+               $nom = $distributeur->getNom();
+               $prenom = $distributeur->getPrenom();
+           }
+        }
+        return $this->render('FadcoBundle:Prestataire:main-page.html.twig', array(
+            'from' => $from, 
+            'to' => $to, 
+            'type' => $type,
+            'nom' => $nom,
+            'prenom' => $prenom
+        ));
     }
 
     public function changeAction(){

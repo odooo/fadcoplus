@@ -411,9 +411,25 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'crediter_compte_distributeur')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::creditAccountAction',));
             }
 
-            // main_page_distributeur
-            if ($pathinfo === '/fadcoplus/prestataire/page/principale') {
-                return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::mainPageAction',  '_route' => 'main_page_distributeur',);
+            if (0 === strpos($pathinfo, '/fadcoplus/prestataire/page')) {
+                // main_page_distributeur
+                if (0 === strpos($pathinfo, '/fadcoplus/prestataire/page/principale/type') && preg_match('#^/fadcoplus/prestataire/page/principale/type(?:\\-(?P<type>[^/]++))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'main_page_distributeur')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::mainPageAction',  'type' => '= "abonne"',));
+                }
+
+                if (0 === strpos($pathinfo, '/fadcoplus/prestataire/page/excel/export-')) {
+                    // export_excel_prestataire
+                    if ($pathinfo === '/fadcoplus/prestataire/page/excel/export-all') {
+                        return array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::exportToExcelAction',  '_route' => 'export_excel_prestataire',);
+                    }
+
+                    // export_excel_vente
+                    if (0 === strpos($pathinfo, '/fadcoplus/prestataire/page/excel/export-ventes/start') && preg_match('#^/fadcoplus/prestataire/page/excel/export\\-ventes/start\\-(?P<startDate>[^/]++)/end\\-(?P<endDate>[^/]++)/nom\\-(?P<nom>[^/]++)/prenom\\-(?P<prenom>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'export_excel_vente')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::exportToExcelVenteAction',));
+                    }
+
+                }
+
             }
 
             // grh_prestataire_edit
@@ -543,6 +559,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'FadcoBundle\\Controller\\DossierController::searchAction',  '_route' => 'archive_dossier_search',);
             }
             not_archive_dossier_search:
+
+        }
+
+        if (0 === strpos($pathinfo, '/statistique-')) {
+            // index
+            if ($pathinfo === '/statistique-page') {
+                return array (  '_controller' => 'FadcoBundle\\Controller\\StatistiqueController::indexAction',  '_route' => 'index',);
+            }
+
+            // nbr_abonne_by_formule
+            if ($pathinfo === '/statistique-by-formule') {
+                return array (  '_controller' => 'FadcoBundle\\Controller\\StatistiqueController::nbrAbonneByFormuleAction',  '_route' => 'nbr_abonne_by_formule',);
+            }
 
         }
 
