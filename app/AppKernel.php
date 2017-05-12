@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle(),
 
             new Lexik\Bundle\CurrencyBundle\LexikCurrencyBundle(),
+            new Liuggio\ExcelBundle\LiuggioExcelBundle(),
 
             /**
              * Bundles required by GSP API

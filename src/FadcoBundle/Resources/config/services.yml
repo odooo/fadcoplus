@@ -78,6 +78,10 @@ services:
         class: FadcoBundle\Service\Services
         arguments: ["@doctrine.orm.entity_manager"]
 
+    fadco.to_excel:
+        class: FadcoBundle\Services\ToExcel
+        arguments: ["@doctrine.orm.entity_manager"]
+
     fadco.autorites.sms.sender:
         class: FadcoBundle\Services\AutoritesSmsSender
         arguments: ["@doctrine.orm.entity_manager", "@sms" ]

@@ -18,11 +18,11 @@
 
 namespace JMS\SerializerBundle\Tests\DependencyInjection;
 
+use Doctrine\Common\Annotations\AnnotationReader;
 use JMS\Serializer\SerializationContext;
+use JMS\SerializerBundle\JMSSerializerBundle;
 use JMS\SerializerBundle\Tests\DependencyInjection\Fixture\ObjectUsingExpressionLanguage;
 use JMS\SerializerBundle\Tests\DependencyInjection\Fixture\ObjectUsingExpressionProperties;
-use Doctrine\Common\Annotations\AnnotationReader;
-use JMS\SerializerBundle\JMSSerializerBundle;
 use JMS\SerializerBundle\Tests\DependencyInjection\Fixture\SimpleObject;
 use JMS\SerializerBundle\Tests\DependencyInjection\Fixture\VersionedObject;
 use Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass;
@@ -46,7 +46,7 @@ class JMSSerializerExtensionTest extends \PHPUnit_Framework_TestCase
     private function clearTempDir()
     {
         // clear temporary directory
-        $dir = sys_get_temp_dir().'/serializer';
+        $dir = sys_get_temp_dir() . '/serializer';
         if (is_dir($dir)) {
             foreach (new \RecursiveDirectoryIterator($dir) as $file) {
                 $filename = $file->getFileName();
@@ -144,30 +144,34 @@ class JMSSerializerExtensionTest extends \PHPUnit_Framework_TestCase
                     'version' => 1600,
                     'serialize_null' => true,
                     'attributes' => array('x' => 1720),
-                    'groups' => array('Default', 'Registration')
+                    'groups' => array('Default', 'Registration'),
+                    'enable_max_depth_checks' => true,
                 ),
                 'deserialization' => array(
                     'version' => 1640,
                     'serialize_null' => false,
                     'attributes' => array('x' => 1740),
-                    'groups' => array('Default', 'Profile')
+                    'groups' => array('Default', 'Profile'),
+                    'enable_max_depth_checks' => true,
                 )
             )
         );
 
         $container = $this->getContainerForConfig(array($config));
-        $services  = [
+        $services = [
             'serialization' => 'jms_serializer.configured_serialization_context_factory',
             'deserialization' => 'jms_serializer.configured_deserialization_context_factory',
         ];
         foreach ($services as $configKey => $serviceId) {
-            $def    = $container->getDefinition($serviceId);
+            $def = $container->getDefinition($serviceId);
             $values = $config['default_context'][$configKey];
 
-            $this->assertEquals($values['version'], $this->getDefinitionMethodCall($def, 'setVersion')[0]);
-            $this->assertEquals($values['serialize_null'], $this->getDefinitionMethodCall($def, 'setSerializeNulls')[0]);
-            $this->assertEquals($values['attributes'], $this->getDefinitionMethodCall($def, 'setAttributes')[0]);
-            $this->assertEquals($values['groups'], $this->getDefinitionMethodCall($def, 'setGroups')[0]);
+            $this->assertSame($values['version'], $this->getDefinitionMethodCall($def, 'setVersion')[0]);
+            $this->assertSame($values['serialize_null'], $this->getDefinitionMethodCall($def, 'setSerializeNulls')[0]);
+            $this->assertSame($values['attributes'], $this->getDefinitionMethodCall($def, 'setAttributes')[0]);
+            $this->assertSame($values['groups'], $this->getDefinitionMethodCall($def, 'setGroups')[0]);
+            $this->assertSame($values['groups'], $this->getDefinitionMethodCall($def, 'setGroups')[0]);
+            $this->assertSame(array(), $this->getDefinitionMethodCall($def, 'enableMaxDepthChecks'));
         }
     }
 
@@ -216,8 +220,19 @@ class JMSSerializerExtensionTest extends \PHPUnit_Framework_TestCase
         $container = $this->getContainerForConfig(array(array()));
 
         $simpleObject = new SimpleObject('foo', 'bar');
-        $versionedObject  = new VersionedObject('foo', 'bar');
+        $versionedObject = new VersionedObject('foo', 'bar');
         $serializer = $container->get('serializer');
+
+        $this->assertTrue($container->has('JMS\Serializer\SerializerInterface'), 'Alias should be defined to allow autowiring');
+        $this->assertTrue($container->has('JMS\Serializer\ArrayTransformerInterface'), 'Alias should be defined to allow autowiring');
+
+        $this->assertTrue($container->getDefinition('jms_serializer.array_collection_handler')->getArgument(0));
+
+        // the logic is inverted because arg 0 on doctrine_proxy_subscriber is $skipVirtualTypeInit = false
+        $this->assertFalse($container->getDefinition('jms_serializer.doctrine_proxy_subscriber')->getArgument(0));
+        $this->assertTrue($container->getDefinition('jms_serializer.doctrine_proxy_subscriber')->getArgument(1));
+
+        $this->assertEquals("null", $container->getDefinition('jms_serializer.doctrine_object_constructor')->getArgument(2));
 
         // test that all components have been wired correctly
         $this->assertEquals(json_encode(array('name' => 'bar')), $serializer->serialize($versionedObject, 'json'));
@@ -227,6 +242,36 @@ class JMSSerializerExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(json_encode(array('name' => 'foo')), $serializer->serialize($versionedObject, 'json', SerializationContext::create()->setVersion('0.0.1')));
 
         $this->assertEquals(json_encode(array('name' => 'bar')), $serializer->serialize($versionedObject, 'json', SerializationContext::create()->setVersion('1.1.1')));
+    }
+
+    public function testLoadWithOptions()
+    {
+        $container = $this->getContainerForConfig(array(array(
+            'subscribers' => [
+                'doctrine_proxy' => [
+                    'initialize_virtual_types' => false,
+                    'initialize_excluded' => false,
+                ],
+            ],
+            'object_constructors' => [
+                'doctrine' => [
+                    'fallback_strategy' => "exception",
+                ],
+            ],
+            'handlers' => [
+                'array_collection' => [
+                    'initialize_excluded' => false,
+                ],
+            ],
+        )));
+
+        $this->assertFalse($container->getDefinition('jms_serializer.array_collection_handler')->getArgument(0));
+
+        // the logic is inverted because arg 0 on doctrine_proxy_subscriber is $skipVirtualTypeInit = false
+        $this->assertTrue($container->getDefinition('jms_serializer.doctrine_proxy_subscriber')->getArgument(0));
+        $this->assertFalse($container->getDefinition('jms_serializer.doctrine_proxy_subscriber')->getArgument(1));
+
+        $this->assertEquals("exception", $container->getDefinition('jms_serializer.doctrine_object_constructor')->getArgument(2));
     }
 
     /**
@@ -392,8 +437,7 @@ class JMSSerializerExtensionTest extends \PHPUnit_Framework_TestCase
             $kernel
                 ->expects($this->any())
                 ->method('getBundles')
-                ->will($this->returnValue(array()))
-            ;
+                ->will($this->returnValue(array()));
         }
 
         $bundle = new JMSSerializerBundle($kernel);
@@ -401,7 +445,7 @@ class JMSSerializerExtensionTest extends \PHPUnit_Framework_TestCase
 
         $container = new ContainerBuilder();
         $container->setParameter('kernel.debug', true);
-        $container->setParameter('kernel.cache_dir', sys_get_temp_dir().'/serializer');
+        $container->setParameter('kernel.cache_dir', sys_get_temp_dir() . '/serializer');
         $container->setParameter('kernel.bundles', array());
         $container->set('annotation_reader', new AnnotationReader());
         $container->set('translator', $this->getMockBuilder('Symfony\\Component\\Translation\\TranslatorInterface')->getMock());

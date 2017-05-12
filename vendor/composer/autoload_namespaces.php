@@ -16,6 +16,7 @@ return array(
     'SM' => array($vendorDir . '/winzou/state-machine/src'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src'),
     'PhpCollection' => array($vendorDir . '/phpcollection/phpcollection/src'),
+    'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),
     'Lexik\\Bundle\\JWTAuthenticationBundle' => array($vendorDir . '/lexik/jwt-authentication-bundle'),
     'Knp\\Snappy' => array($vendorDir . '/knplabs/knp-snappy/src'),

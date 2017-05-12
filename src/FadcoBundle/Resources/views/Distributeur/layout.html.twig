@@ -117,7 +117,10 @@
             }, cb);
 
             $('#reportrange').on('apply.daterangepicker', function(event, picker) {
+<<<<<<< HEAD
                 
+=======
+>>>>>>> cc644fd6863050836a017ae1002dcefac599ada7
                 var url = "{{ app.request.requestUri | split('?') | first }}" + "?";
                 url += "from=" + picker.startDate.format("DD/MM/YYYY");
                 url += "&to=" + picker.endDate.format("DD/MM/YYYY");

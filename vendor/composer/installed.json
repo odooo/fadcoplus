@@ -17,7 +17,7 @@
         "require": {
             "php": ">=5.3.2"
         },
-        "time": "2014-09-09T13:34:57+00:00",
+        "time": "2014-09-09 13:34:57",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -76,7 +76,7 @@
         "require-dev": {
             "phpunit/phpunit": "4.*"
         },
-        "time": "2015-11-06T14:35:42+00:00",
+        "time": "2015-11-06 14:35:42",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -145,7 +145,7 @@
         "require-dev": {
             "phpunit/phpunit": "3.7.*"
         },
-        "time": "2014-01-12T16:20:24+00:00",
+        "time": "2014-01-12 16:20:24",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -201,7 +201,7 @@
             "phpunit/phpunit": "~4.0",
             "squizlabs/php_codesniffer": "~2.0"
         },
-        "time": "2015-06-14T21:17:01+00:00",
+        "time": "2015-06-14 21:17:01",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -256,7 +256,7 @@
             "phpspec/prophecy-phpunit": "~1.0",
             "symfony/filesystem": "~2.2"
         },
-        "time": "2015-11-10T17:04:01+00:00",
+        "time": "2015-11-10 17:04:01",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -292,12 +292,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-            "reference": "730a8a5f6633ae913a838d26b1c7156faa6ed697"
+            "reference": "299a47d32ffd9a6a94f96db18966c77474b2d65a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/730a8a5f6633ae913a838d26b1c7156faa6ed697",
-            "reference": "730a8a5f6633ae913a838d26b1c7156faa6ed697",
+            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/299a47d32ffd9a6a94f96db18966c77474b2d65a",
+            "reference": "299a47d32ffd9a6a94f96db18966c77474b2d65a",
             "shasum": ""
         },
         "require": {
@@ -324,7 +324,7 @@
             "symfony/validator": "^2.7 || ^3.0",
             "symfony/yaml": "^2.7 || ^3.0"
         },
-        "time": "2017-04-21T12:31:59+00:00",
+        "time": "2017-05-10 18:12:22",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -389,7 +389,7 @@
             "symfony/doctrine-bridge": "~2.2",
             "twig/twig": "~1.11"
         },
-        "time": "2015-03-17T06:36:52+00:00",
+        "time": "2015-03-17 06:36:52",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -456,7 +456,7 @@
             "symfony/yaml": "@stable",
             "willdurand/propel-eventdispatcher-bundle": ">=1.2"
         },
-        "time": "2014-12-12T10:26:46+00:00",
+        "time": "2014-12-12 10:26:46",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -516,7 +516,7 @@
             "h4cc/wkhtmltopdf-i386": "Provides wkhtmltopdf-i386 binary for Linux-compatible machines, use version `~0.12` as dependency",
             "wemersonjanuario/wkhtmltopdf-windows": "Provides wkhtmltopdf executable for Windows, use version `~0.12` as dependency"
         },
-        "time": "2015-11-17T13:16:27+00:00",
+        "time": "2015-11-17 13:16:27",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -594,7 +594,7 @@
         "suggest": {
             "symfony/security-acl": "For using this bundle to cache ACLs"
         },
-        "time": "2016-01-26T17:28:51+00:00",
+        "time": "2016-01-26 17:28:51",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -667,7 +667,7 @@
         "require-dev": {
             "phpspec/phpspec": "~2.0"
         },
-        "time": "2016-04-06T14:06:23+00:00",
+        "time": "2016-04-06 14:06:23",
         "type": "symfony-bundle",
         "installation-source": "dist",
         "autoload": {
@@ -714,7 +714,7 @@
             "symfony/framework-bundle": "~2.3|~3.0",
             "symfony/validator": "~2.3|~3.0"
         },
-        "time": "2017-02-16T10:25:45+00:00",
+        "time": "2017-02-16 10:25:45",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -781,7 +781,7 @@
             "phpunit/phpunit": "^4.5|^5.0",
             "satooshi/php-coveralls": "^1.0"
         },
-        "time": "2016-01-24T11:10:26+00:00",
+        "time": "2016-01-24 11:10:26",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -890,7 +890,7 @@
             "monolog/monolog": "~1.11",
             "ocramius/proxy-manager": "~0.4|~1.0"
         },
-        "time": "2015-11-23T11:58:08+00:00",
+        "time": "2015-11-23 11:58:08",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -959,7 +959,7 @@
             "php": ">=5.4.0",
             "symfony/symfony": ">=2.1"
         },
-        "time": "2016-03-29T12:05:00+00:00",
+        "time": "2016-03-29 12:05:00",
         "type": "symfony-bundle",
         "installation-source": "dist",
         "autoload": {
@@ -1021,7 +1021,7 @@
             "phpunit/phpunit": "~4.6",
             "squizlabs/php_codesniffer": "~2.4"
         },
-        "time": "2016-04-13T20:09:55+00:00",
+        "time": "2016-04-13 20:09:55",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1071,7 +1071,7 @@
             "symfony/framework-bundle": "2.*",
             "symfony/symfony": "2.*"
         },
-        "time": "2015-10-30T15:48:22+00:00",
+        "time": "2015-10-30 15:48:22",
         "type": "symfony-bundle",
         "installation-source": "source",
         "autoload": {
@@ -1125,7 +1125,7 @@
         "require-dev": {
             "phpunit/phpunit": "~3.7"
         },
-        "time": "2014-01-20T22:35:06+00:00",
+        "time": "2014-01-20 22:35:06",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1171,7 +1171,7 @@
         "require-dev": {
             "symfony/expression-language": "~2.4|3.*"
         },
-        "time": "2015-10-28T15:08:39+00:00",
+        "time": "2015-10-28 15:08:39",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -1226,7 +1226,7 @@
             "php": ">=5.3.2",
             "symfony/event-dispatcher": ">=2.1"
         },
-        "time": "2014-08-11T04:32:36+00:00",
+        "time": "2014-08-11 04:32:36",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1276,7 +1276,7 @@
         "suggest": {
             "guzzle/http": "To convert Guzzle request objects to PHP streams"
         },
-        "time": "2014-05-01T21:36:02+00:00",
+        "time": "2014-05-01 21:36:02",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1328,7 +1328,7 @@
         "require": {
             "php": ">=5.3.2"
         },
-        "time": "2014-02-05T18:29:46+00:00",
+        "time": "2014-02-05 18:29:46",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1381,7 +1381,7 @@
         "suggest": {
             "ext-curl": "*"
         },
-        "time": "2014-08-11T04:32:36+00:00",
+        "time": "2014-08-11 04:32:36",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1434,7 +1434,7 @@
         "require": {
             "php": ">=5.4.0"
         },
-        "time": "2012-11-02T14:49:47+00:00",
+        "time": "2012-11-02 14:49:47",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1486,7 +1486,7 @@
             "symfony/http-foundation": "^2.2|^3.0",
             "symfony/routing": "^2.2|^3.0"
         },
-        "time": "2016-03-03T13:33:11+00:00",
+        "time": "2016-03-03 13:33:11",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1534,7 +1534,7 @@
             "php": ">=5.3",
             "react/event-loop": "~0.4.0"
         },
-        "time": "2016-05-06T15:19:39+00:00",
+        "time": "2016-05-06 15:19:39",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1587,7 +1587,7 @@
             "cboden/ratchet": "~0.3.0",
             "php": ">=5.3"
         },
-        "time": "2015-05-27T11:46:21+00:00",
+        "time": "2015-05-27 11:46:21",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1636,7 +1636,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2015-08-04T11:43:11+00:00",
+        "time": "2015-08-04 11:43:11",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1688,7 +1688,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2016-10-10T12:19:37+00:00",
+        "time": "2016-10-10 12:19:37",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1749,7 +1749,7 @@
         "suggest": {
             "gesdinet/jwt-refresh-token-bundle": "Implements a refresh token system over Json Web Tokens in Symfony"
         },
-        "time": "2016-10-11T17:25:28+00:00",
+        "time": "2016-10-11 17:25:28",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -1820,7 +1820,7 @@
         "suggest": {
             "symfony/translation": "Allow the time_diff output to be translated"
         },
-        "time": "2016-10-25T17:34:14+00:00",
+        "time": "2016-10-25 17:34:14",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1871,7 +1871,7 @@
         "require-dev": {
             "phpunit/phpunit": "4.7.*"
         },
-        "time": "2015-07-25T16:39:46+00:00",
+        "time": "2015-07-25 16:39:46",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1920,7 +1920,7 @@
         "require": {
             "phpoption/phpoption": ">=0.9,<2.0-dev"
         },
-        "time": "2012-11-18T18:08:43+00:00",
+        "time": "2012-11-18 18:08:43",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1957,7 +1957,7 @@
         "require": {
             "phpoption/phpoption": "1.*"
         },
-        "time": "2015-05-17T12:39:23+00:00",
+        "time": "2015-05-17 12:39:23",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2015,7 +2015,7 @@
             "predis/predis": "~1.0",
             "satooshi/php-coveralls": "~0.6"
         },
-        "time": "2016-10-29T11:16:17+00:00",
+        "time": "2016-10-29 11:16:17",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2079,7 +2079,7 @@
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2016-11-14T01:06:16+00:00",
+        "time": "2016-11-14 01:06:16",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2134,7 +2134,7 @@
             "php": ">=5.3.3",
             "symfony/polyfill-util": "~1.0"
         },
-        "time": "2016-11-14T01:06:16+00:00",
+        "time": "2016-11-14 01:06:16",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2217,7 +2217,7 @@
             "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
             "twig/twig": "Assetic provides the integration with the Twig templating engine"
         },
-        "time": "2016-11-11T18:43:20+00:00",
+        "time": "2016-11-11 18:43:20",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2280,7 +2280,7 @@
         "suggest": {
             "twig/twig": "Access the state machine in your twig templates (~1.0)"
         },
-        "time": "2016-11-03T13:24:00+00:00",
+        "time": "2016-11-03 13:24:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2327,7 +2327,7 @@
             "php": ">=5.3.2",
             "symfony/framework-bundle": "~2.7"
         },
-        "time": "2015-10-08T13:05:22+00:00",
+        "time": "2015-10-08 13:05:22",
         "type": "symfony-bundle",
         "installation-source": "dist",
         "autoload": {
@@ -2379,7 +2379,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2016-03-31T14:24:17+00:00",
+        "time": "2016-03-31 14:24:17",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2455,7 +2455,7 @@
             "symfony/form": "Needed to be able to use the AuthorizeFormType",
             "willdurand/propel-typehintable-behavior": "The Typehintable behavior is useful to add type hints on generated methods, to be compliant with interfaces"
         },
-        "time": "2016-12-30T09:09:18+00:00",
+        "time": "2016-12-30 09:09:18",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -2533,7 +2533,7 @@
             "kriswallsmith/spork": "to be able to dump assets in parallel",
             "symfony/twig-bundle": "to use the Twig integration"
         },
-        "time": "2016-11-22T11:42:57+00:00",
+        "time": "2016-11-22 11:42:57",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -2587,7 +2587,7 @@
             "doctrine/cache": "~1.0",
             "symfony/cache": "~3.1"
         },
-        "time": "2016-12-05T10:18:33+00:00",
+        "time": "2016-12-05 10:18:33",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2654,7 +2654,7 @@
             "ruflin/Elastica": "to allow usage pagination with ElasticSearch Client",
             "solarium/solarium": "to allow usage pagination with Solarium Client"
         },
-        "time": "2016-12-06T18:10:24+00:00",
+        "time": "2016-12-06 18:10:24",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2716,7 +2716,7 @@
             "ext-iconv": "For using the IconvTranscoder",
             "ext-mbstring": "For using the MbTranscoder"
         },
-        "time": "2015-01-23T14:32:33+00:00",
+        "time": "2015-01-23 14:32:33",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2780,7 +2780,7 @@
             "ext-mbstring": "*",
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2015-12-03T13:23:36+00:00",
+        "time": "2015-12-03 13:23:36",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2832,7 +2832,7 @@
             "symfony/debug": "~2.7",
             "symfony/phpunit-bridge": "~3.2@dev"
         },
-        "time": "2016-11-23T18:41:40+00:00",
+        "time": "2016-11-23 18:41:40",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2895,7 +2895,7 @@
             "doctrine/coding-standard": "~0.1@dev",
             "phpunit/phpunit": "^5.7"
         },
-        "time": "2017-01-03T10:49:41+00:00",
+        "time": "2017-01-03 10:49:41",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2965,7 +2965,7 @@
             "doctrine/cache": "1.*",
             "phpunit/phpunit": "^5.7"
         },
-        "time": "2017-02-24T16:22:25+00:00",
+        "time": "2017-02-24 16:22:25",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3038,7 +3038,7 @@
         "require-dev": {
             "phpunit/phpunit": "^5.4.6"
         },
-        "time": "2017-01-13T14:02:13+00:00",
+        "time": "2017-01-13 14:02:13",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3113,7 +3113,7 @@
         "suggest": {
             "symfony/console": "For helpful console commands such as SQL execution and import of files."
         },
-        "time": "2017-02-08T12:53:47+00:00",
+        "time": "2017-02-08 12:53:47",
         "bin": [
             "bin/doctrine-dbal"
         ],
@@ -3192,7 +3192,7 @@
         "suggest": {
             "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
         },
-        "time": "2016-12-18T15:42:34+00:00",
+        "time": "2016-12-18 15:42:34",
         "bin": [
             "bin/doctrine",
             "bin/doctrine.php"
@@ -3262,7 +3262,7 @@
         "suggest": {
             "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
         },
-        "time": "2017-03-13T16:27:32+00:00",
+        "time": "2017-03-13 16:27:32",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3327,7 +3327,7 @@
             "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
             "symfony/web-profiler-bundle": "To use the data collector."
         },
-        "time": "2017-01-16T12:01:26+00:00",
+        "time": "2017-01-16 12:01:26",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -3419,7 +3419,7 @@
             "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
             "sentry/sentry": "Allow sending log messages to a Sentry server"
         },
-        "time": "2017-03-13T07:08:03+00:00",
+        "time": "2017-03-13 07:08:03",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3479,7 +3479,7 @@
             "symfony/console": "~2.3|~3.0",
             "symfony/yaml": "~2.3|~3.0"
         },
-        "time": "2017-01-02T19:04:26+00:00",
+        "time": "2017-01-02 19:04:26",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -3546,7 +3546,7 @@
             "symfony/validator": "If you want to use the configurator",
             "symfony/yaml": "If you want to use  the configurator"
         },
-        "time": "2017-01-04T13:34:44+00:00",
+        "time": "2017-01-04 13:34:44",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -3603,7 +3603,7 @@
             "react/event-loop": "^0.4",
             "react/promise": "^2.0"
         },
-        "time": "2017-01-25T14:44:14+00:00",
+        "time": "2017-01-25 14:44:14",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3642,7 +3642,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.8"
         },
-        "time": "2017-03-25T12:08:31+00:00",
+        "time": "2017-03-25 12:08:31",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3696,7 +3696,7 @@
             "phpunit/phpunit": "~4.8",
             "react/socket-client": "^0.5.1"
         },
-        "time": "2017-01-26T09:23:38+00:00",
+        "time": "2017-01-26 09:23:38",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3744,7 +3744,7 @@
         "suggest": {
             "psr/log": "Allows logging"
         },
-        "time": "2017-03-21T21:47:36+00:00",
+        "time": "2017-03-21 21:47:36",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -3773,78 +3773,6 @@
         ],
         "description": "Symfony SwiftmailerBundle",
         "homepage": "http://symfony.com"
-    },
-    {
-        "name": "sensio/framework-extra-bundle",
-        "version": "v3.0.25",
-        "version_normalized": "3.0.25.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-            "reference": "472b339cf0c82f3a033b29f85d9d9cada3cd1a9c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/472b339cf0c82f3a033b29f85d9d9cada3cd1a9c",
-            "reference": "472b339cf0c82f3a033b29f85d9d9cada3cd1a9c",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/common": "~2.2",
-            "symfony/dependency-injection": "~2.3|~3.0",
-            "symfony/framework-bundle": "~2.3|~3.0"
-        },
-        "require-dev": {
-            "doctrine/doctrine-bundle": "~1.5",
-            "doctrine/orm": "~2.4,>=2.4.5",
-            "symfony/asset": "~2.7|~3.0",
-            "symfony/browser-kit": "~2.3|~3.0",
-            "symfony/dom-crawler": "~2.3|~3.0",
-            "symfony/expression-language": "~2.4|~3.0",
-            "symfony/finder": "~2.3|~3.0",
-            "symfony/phpunit-bridge": "~3.2",
-            "symfony/psr-http-message-bridge": "^0.3",
-            "symfony/security-bundle": "~2.4|~3.0",
-            "symfony/templating": "~2.3|~3.0",
-            "symfony/translation": "~2.3|~3.0",
-            "symfony/twig-bundle": "~2.3|~3.0",
-            "symfony/yaml": "~2.3|~3.0",
-            "twig/twig": "~1.12|~2.0",
-            "zendframework/zend-diactoros": "^1.3"
-        },
-        "suggest": {
-            "symfony/expression-language": "",
-            "symfony/psr-http-message-bridge": "To use the PSR-7 converters",
-            "symfony/security-bundle": ""
-        },
-        "time": "2017-03-21T23:34:44+00:00",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Sensio\\Bundle\\FrameworkExtraBundle\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "This bundle provides a way to configure your controllers with annotations",
-        "keywords": [
-            "annotations",
-            "controllers"
-        ]
     },
     {
         "name": "beberlei/DoctrineExtensions",
@@ -3876,7 +3804,7 @@
             "nesbot/carbon": "Alternative to DateTime",
             "zf1/zend-date": "Alternative to DateTime"
         },
-        "time": "2017-03-27T05:57:42+00:00",
+        "time": "2017-03-27 05:57:42",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3935,7 +3863,7 @@
             "phpunit/phpunit": "~4.8",
             "symfony/expression-language": "~2.4|~3.0"
         },
-        "time": "2017-03-21T09:45:46+00:00",
+        "time": "2017-03-21 09:45:46",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -4012,7 +3940,7 @@
             "ocramius/proxy-manager": "~1.0",
             "symfony/proxy-manager-bridge": "~2.3"
         },
-        "time": "2017-04-04T15:17:16+00:00",
+        "time": "2017-04-04 15:17:16",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -4072,7 +4000,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2017-02-07T15:11:30+00:00",
+        "time": "2017-02-07 15:11:30",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -4107,161 +4035,6 @@
         ]
     },
     {
-        "name": "jms/serializer",
-        "version": "1.6.2",
-        "version_normalized": "1.6.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/schmittjoh/serializer.git",
-            "reference": "b8683d206e7297f54034f67a877f966c14dc12ea"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/b8683d206e7297f54034f67a877f966c14dc12ea",
-            "reference": "b8683d206e7297f54034f67a877f966c14dc12ea",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/annotations": "^1.0",
-            "doctrine/instantiator": "^1.0.3",
-            "jms/metadata": "~1.1",
-            "jms/parser-lib": "1.*",
-            "php": ">=5.5.0",
-            "phpcollection/phpcollection": "~0.1",
-            "phpoption/phpoption": "^1.1"
-        },
-        "conflict": {
-            "jms/serializer-bundle": "<1.2.1",
-            "twig/twig": "<1.12"
-        },
-        "require-dev": {
-            "doctrine/orm": "~2.1",
-            "doctrine/phpcr-odm": "^1.3|^2.0",
-            "ext-pdo_sqlite": "*",
-            "jackalope/jackalope-doctrine-dbal": "^1.1.5",
-            "phpunit/phpunit": "^4.8|^5.0",
-            "propel/propel1": "~1.7",
-            "symfony/expression-language": "^2.6|^3.0",
-            "symfony/filesystem": "^2.1",
-            "symfony/form": "~2.1|^3.0",
-            "symfony/translation": "^2.1|^3.0",
-            "symfony/validator": "^2.2|^3.0",
-            "symfony/yaml": "^2.1|^3.0",
-            "twig/twig": "~1.12|~2.0"
-        },
-        "suggest": {
-            "doctrine/cache": "Required if you like to use cache functionality.",
-            "doctrine/collections": "Required if you like to use doctrine collection types as ArrayCollection.",
-            "symfony/yaml": "Required if you'd like to serialize data to YAML format."
-        },
-        "time": "2017-04-17T15:27:46+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.6-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "JMS\\Serializer": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache2"
-        ],
-        "authors": [
-            {
-                "name": "Johannes M. Schmitt",
-                "email": "schmittjoh@gmail.com"
-            }
-        ],
-        "description": "Library for (de-)serializing data of any complexity; supports XML, JSON, and YAML.",
-        "homepage": "http://jmsyst.com/libs/serializer",
-        "keywords": [
-            "deserialization",
-            "jaxb",
-            "json",
-            "serialization",
-            "xml"
-        ]
-    },
-    {
-        "name": "jms/serializer-bundle",
-        "version": "1.4.0",
-        "version_normalized": "1.4.0.0",
-        "target-dir": "JMS/SerializerBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-            "reference": "fdd73dbc8642940084deda2a96fa5db62d0f2384"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/fdd73dbc8642940084deda2a96fa5db62d0f2384",
-            "reference": "fdd73dbc8642940084deda2a96fa5db62d0f2384",
-            "shasum": ""
-        },
-        "require": {
-            "jms/serializer": "^1.6",
-            "php": ">=5.4.0",
-            "phpoption/phpoption": "^1.1.0",
-            "symfony/framework-bundle": "~2.3|~3.0"
-        },
-        "require-dev": {
-            "doctrine/doctrine-bundle": "*",
-            "doctrine/orm": "*",
-            "phpunit/phpunit": "^4.2|^5.0",
-            "symfony/browser-kit": "*",
-            "symfony/class-loader": "*",
-            "symfony/css-selector": "*",
-            "symfony/expression-language": "~2.6|~3.0",
-            "symfony/finder": "*",
-            "symfony/form": "*",
-            "symfony/process": "*",
-            "symfony/stopwatch": "*",
-            "symfony/twig-bundle": "*",
-            "symfony/validator": "*",
-            "symfony/yaml": "*"
-        },
-        "suggest": {
-            "jms/di-extra-bundle": "Required to get lazy loading (de)serialization visitors, ~1.3"
-        },
-        "time": "2017-04-10T12:31:39+00:00",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "JMS\\SerializerBundle": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache2"
-        ],
-        "authors": [
-            {
-                "name": "Johannes M. Schmitt",
-                "email": "schmittjoh@gmail.com"
-            }
-        ],
-        "description": "Allows you to easily serialize, and deserialize data of any complexity",
-        "homepage": "http://jmsyst.com/bundles/JMSSerializerBundle",
-        "keywords": [
-            "deserialization",
-            "jaxb",
-            "json",
-            "serialization",
-            "xml"
-        ]
-    },
-    {
         "name": "sensiolabs/security-checker",
         "version": "v3.0.7",
         "version_normalized": "3.0.7.0",
@@ -4279,7 +4052,7 @@
         "require": {
             "symfony/console": "~2.0|~3.0"
         },
-        "time": "2017-03-29T09:29:53+00:00",
+        "time": "2017-03-29 09:29:53",
         "bin": [
             "security-checker"
         ],
@@ -4334,7 +4107,7 @@
             "zendframework/zend-json-server": "For implementing JSON-RPC servers",
             "zendframework/zend-xml2json": "For converting XML documents to JSON"
         },
-        "time": "2016-04-01T02:34:00+00:00",
+        "time": "2016-04-01 02:34:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -4379,7 +4152,7 @@
             "symfony/symfony": "~2.3|~3.0",
             "zendframework/zend-json": "~2.3|~3.0"
         },
-        "time": "2016-07-26T23:46:28+00:00",
+        "time": "2016-07-26 23:46:28",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -4436,7 +4209,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.5"
         },
-        "time": "2017-05-04T12:15:48+00:00",
+        "time": "2017-05-04 12:15:48",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -4532,7 +4305,7 @@
             "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ^2.7|^3.0",
             "symfony/validator": "Add support for validation capabilities in the ParamFetcher, requires ^2.7|^3.0"
         },
-        "time": "2017-04-06T12:55:03+00:00",
+        "time": "2017-04-06 12:55:03",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -4596,7 +4369,7 @@
         "suggest": {
             "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
         },
-        "time": "2017-04-12T14:07:15+00:00",
+        "time": "2017-04-12 14:07:15",
         "type": "symfony-bridge",
         "extra": {
             "branch-alias": {
@@ -4633,62 +4406,6 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "swiftmailer/swiftmailer",
-        "version": "v5.4.7",
-        "version_normalized": "5.4.7.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
-            "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "mockery/mockery": "~0.9.1",
-            "symfony/phpunit-bridge": "~3.2"
-        },
-        "time": "2017-04-20T17:32:18+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/swift_required.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Chris Corbyn"
-            },
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Swiftmailer, free feature-rich PHP mailer",
-        "homepage": "http://swiftmailer.org",
-        "keywords": [
-            "email",
-            "mail",
-            "mailer"
-        ]
-    },
-    {
         "name": "phpseclib/phpseclib",
         "version": "2.0.5",
         "version_normalized": "2.0.5.0",
@@ -4718,7 +4435,7 @@
             "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
             "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
         },
-        "time": "2017-05-08T05:58:35+00:00",
+        "time": "2017-05-08 05:58:35",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -4808,7 +4525,7 @@
             "ext-libev": "*",
             "ext-libevent": ">=0.1.0"
         },
-        "time": "2017-04-27T10:56:23+00:00",
+        "time": "2017-04-27 10:56:23",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -4827,21 +4544,304 @@
         ]
     },
     {
+        "name": "sensio/framework-extra-bundle",
+        "version": "v3.0.26",
+        "version_normalized": "3.0.26.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
+            "reference": "6d6cbe971554f0a2cc84965850481eb04a2a0059"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/6d6cbe971554f0a2cc84965850481eb04a2a0059",
+            "reference": "6d6cbe971554f0a2cc84965850481eb04a2a0059",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/common": "~2.2",
+            "symfony/dependency-injection": "~2.3|~3.0",
+            "symfony/framework-bundle": "~2.3|~3.0"
+        },
+        "require-dev": {
+            "doctrine/doctrine-bundle": "~1.5",
+            "doctrine/orm": "~2.4,>=2.4.5",
+            "symfony/asset": "~2.7|~3.0",
+            "symfony/browser-kit": "~2.3|~3.0",
+            "symfony/dom-crawler": "~2.3|~3.0",
+            "symfony/expression-language": "~2.4|~3.0",
+            "symfony/finder": "~2.3|~3.0",
+            "symfony/phpunit-bridge": "~3.2",
+            "symfony/psr-http-message-bridge": "^0.3",
+            "symfony/security-bundle": "~2.4|~3.0",
+            "symfony/templating": "~2.3|~3.0",
+            "symfony/translation": "~2.3|~3.0",
+            "symfony/twig-bundle": "~2.3|~3.0",
+            "symfony/yaml": "~2.3|~3.0",
+            "twig/twig": "~1.12|~2.0",
+            "zendframework/zend-diactoros": "^1.3"
+        },
+        "suggest": {
+            "symfony/expression-language": "",
+            "symfony/psr-http-message-bridge": "To use the PSR-7 converters",
+            "symfony/security-bundle": ""
+        },
+        "time": "2017-05-11 17:01:57",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Sensio\\Bundle\\FrameworkExtraBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "This bundle provides a way to configure your controllers with annotations",
+        "keywords": [
+            "annotations",
+            "controllers"
+        ]
+    },
+    {
+        "name": "jms/serializer",
+        "version": "1.7.0",
+        "version_normalized": "1.7.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/schmittjoh/serializer.git",
+            "reference": "b5abc84a55d7c7203561b3fd9049acd6859a5b62"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/b5abc84a55d7c7203561b3fd9049acd6859a5b62",
+            "reference": "b5abc84a55d7c7203561b3fd9049acd6859a5b62",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/annotations": "^1.0",
+            "doctrine/instantiator": "^1.0.3",
+            "jms/metadata": "~1.1",
+            "jms/parser-lib": "1.*",
+            "php": ">=5.5.0",
+            "phpcollection/phpcollection": "~0.1",
+            "phpoption/phpoption": "^1.1"
+        },
+        "conflict": {
+            "jms/serializer-bundle": "<1.2.1",
+            "twig/twig": "<1.12"
+        },
+        "require-dev": {
+            "doctrine/orm": "~2.1",
+            "doctrine/phpcr-odm": "^1.3|^2.0",
+            "ext-pdo_sqlite": "*",
+            "jackalope/jackalope-doctrine-dbal": "^1.1.5",
+            "phpunit/phpunit": "^4.8|^5.0",
+            "propel/propel1": "~1.7",
+            "symfony/expression-language": "^2.6|^3.0",
+            "symfony/filesystem": "^2.1",
+            "symfony/form": "~2.1|^3.0",
+            "symfony/translation": "^2.1|^3.0",
+            "symfony/validator": "^2.2|^3.0",
+            "symfony/yaml": "^2.1|^3.0",
+            "twig/twig": "~1.12|~2.0"
+        },
+        "suggest": {
+            "doctrine/cache": "Required if you like to use cache functionality.",
+            "doctrine/collections": "Required if you like to use doctrine collection types as ArrayCollection.",
+            "symfony/yaml": "Required if you'd like to serialize data to YAML format."
+        },
+        "time": "2017-05-10 09:43:46",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.7-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "JMS\\Serializer": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache2"
+        ],
+        "authors": [
+            {
+                "name": "Johannes M. Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Library for (de-)serializing data of any complexity; supports XML, JSON, and YAML.",
+        "homepage": "http://jmsyst.com/libs/serializer",
+        "keywords": [
+            "deserialization",
+            "jaxb",
+            "json",
+            "serialization",
+            "xml"
+        ]
+    },
+    {
+        "name": "jms/serializer-bundle",
+        "version": "1.5.0",
+        "version_normalized": "1.5.0.0",
+        "target-dir": "JMS/SerializerBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
+            "reference": "85ee039a2b7f89d77c403e33cee7b43a875c31e5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/85ee039a2b7f89d77c403e33cee7b43a875c31e5",
+            "reference": "85ee039a2b7f89d77c403e33cee7b43a875c31e5",
+            "shasum": ""
+        },
+        "require": {
+            "jms/serializer": "^1.7",
+            "php": ">=5.4.0",
+            "phpoption/phpoption": "^1.1.0",
+            "symfony/framework-bundle": "~2.3|~3.0"
+        },
+        "require-dev": {
+            "doctrine/doctrine-bundle": "*",
+            "doctrine/orm": "*",
+            "phpunit/phpunit": "^4.2|^5.0",
+            "symfony/browser-kit": "*",
+            "symfony/class-loader": "*",
+            "symfony/css-selector": "*",
+            "symfony/expression-language": "~2.6|~3.0",
+            "symfony/finder": "*",
+            "symfony/form": "*",
+            "symfony/process": "*",
+            "symfony/stopwatch": "*",
+            "symfony/twig-bundle": "*",
+            "symfony/validator": "*",
+            "symfony/yaml": "*"
+        },
+        "suggest": {
+            "jms/di-extra-bundle": "Required to get lazy loading (de)serialization visitors, ~1.3"
+        },
+        "time": "2017-05-10 10:17:17",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "JMS\\SerializerBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Johannes M. Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Allows you to easily serialize, and deserialize data of any complexity",
+        "homepage": "http://jmsyst.com/bundles/JMSSerializerBundle",
+        "keywords": [
+            "deserialization",
+            "jaxb",
+            "json",
+            "serialization",
+            "xml"
+        ]
+    },
+    {
+        "name": "swiftmailer/swiftmailer",
+        "version": "v5.4.8",
+        "version_normalized": "5.4.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/swiftmailer/swiftmailer.git",
+            "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/9a06dc570a0367850280eefd3f1dc2da45aef517",
+            "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9.1",
+            "symfony/phpunit-bridge": "~3.2"
+        },
+        "time": "2017-05-01 15:54:03",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/swift_required.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Chris Corbyn"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Swiftmailer, free feature-rich PHP mailer",
+        "homepage": "http://swiftmailer.org",
+        "keywords": [
+            "email",
+            "mail",
+            "mailer"
+        ]
+    },
+    {
         "name": "kartik-v/bootstrap-fileinput",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-            "reference": "d7ce80dff962d23520ee96530a1c473547bf1c61"
+            "reference": "7326810724e07e9ad71afbe8b27dc8e7d20e441b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/d7ce80dff962d23520ee96530a1c473547bf1c61",
-            "reference": "d7ce80dff962d23520ee96530a1c473547bf1c61",
+            "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/7326810724e07e9ad71afbe8b27dc8e7d20e441b",
+            "reference": "7326810724e07e9ad71afbe8b27dc8e7d20e441b",
             "shasum": ""
         },
-        "time": "2017-05-05T09:32:08+00:00",
+        "time": "2017-05-11 16:23:45",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -4879,6 +4879,133 @@
             "preview",
             "progress",
             "upload"
+        ]
+    },
+    {
+        "name": "phpoffice/phpexcel",
+        "version": "1.8.1",
+        "version_normalized": "1.8.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPOffice/PHPExcel.git",
+            "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+            "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+            "shasum": ""
+        },
+        "require": {
+            "ext-xml": "*",
+            "ext-xmlwriter": "*",
+            "php": ">=5.2.0"
+        },
+        "time": "2015-05-01 07:00:55",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "PHPExcel": "Classes/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL"
+        ],
+        "authors": [
+            {
+                "name": "Maarten Balliauw",
+                "homepage": "http://blog.maartenballiauw.be"
+            },
+            {
+                "name": "Mark Baker"
+            },
+            {
+                "name": "Franck Lefevre",
+                "homepage": "http://blog.rootslabs.net"
+            },
+            {
+                "name": "Erik Tilt"
+            }
+        ],
+        "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+        "homepage": "http://phpexcel.codeplex.com",
+        "keywords": [
+            "OpenXML",
+            "excel",
+            "php",
+            "spreadsheet",
+            "xls",
+            "xlsx"
+        ]
+    },
+    {
+        "name": "liuggio/ExcelBundle",
+        "version": "v2.1.0",
+        "version_normalized": "2.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/liuggio/ExcelBundle.git",
+            "reference": "b4fe94b64449490a1b5fbbce827c2501be335126"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/liuggio/ExcelBundle/zipball/b4fe94b64449490a1b5fbbce827c2501be335126",
+            "reference": "b4fe94b64449490a1b5fbbce827c2501be335126",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "phpoffice/phpexcel": "~1.8.1",
+            "symfony/framework-bundle": "~2.6|~3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.6",
+            "sensio/framework-extra-bundle": "~2.3|~3.0",
+            "symfony/browser-kit": "~2.6|~3.0",
+            "symfony/class-loader": "~2.6|~3.0",
+            "symfony/finder": "~2.6|~3.0",
+            "symfony/form": "~2.6|~3.0",
+            "symfony/validator": "~2.6|~3.0"
+        },
+        "time": "2016-06-20 17:11:22",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "exclude-from-classmap": [
+                "/Tests/"
+            ],
+            "psr-4": {
+                "Liuggio\\ExcelBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "ExcelBundle Contributors",
+                "homepage": "https://github.com/liuggio/ExcelBundle#contributors"
+            },
+            {
+                "name": "Giulio De Donato",
+                "email": "liuggio@gmail.com"
+            }
+        ],
+        "description": "This is a Symfony2 Bundle helps you to read and write Excel files (including pdf, xlsx, odt), thanks to the PHPExcel library",
+        "homepage": "http://www.welcometothebundle.com",
+        "keywords": [
+            "Symfony2",
+            "bundle",
+            "excel",
+            "xls"
         ]
     }
 ]

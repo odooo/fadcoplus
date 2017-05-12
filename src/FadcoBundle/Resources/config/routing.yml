@@ -65,3 +65,11 @@ fadco_datatable_ajax:
     resource: "@FadcoBundle/Controller/DataTable/DataTable/routing/routing.yml"
     prefix: /datatable/
 #-----------------------End of Datatable ajax actions------------------------
+
+index:
+    path:     /statistique-page
+    defaults: { _controller: FadcoBundle:Statistique:index }
+
+nbr_abonne_by_formule:
+    path:     /statistique-by-formule
+    defaults: { _controller: FadcoBundle:Statistique:nbrAbonneByFormule }

@@ -12,72 +12,23 @@
             </div>
             <div class="box-body">
                 <form action="{{ path('rigth_change', { 'userId': user,'option': option }) }}" class="form-horizontal"  method="POST">
-                   
-                      <input type="hidden" name="user" value="{{user}}" />
-                      <input type="hidden" name="option" value="{{option}}" />
+                    <input type="hidden" name="user" value="{{user}}"/>
+                    <input type="hidden" name="option" value="{{option}}"/>
 
-                        {% for entity in roles %}
-            
-            {% if loop.index%4 == 0 %} <div class="form-group"> {% endif %}
-            
-           
-    <label class="control-label col-sm-2" for="email">{{entity}}</label>
-    <div class="col-sm-1">
-      <input type="checkbox"  name="roles[]" value="{{entity}}" />
-    </div>  
-           
-
-             {% if loop.index%4 == 0 %} </div>{% endif %}
-
-                        {% endfor %}
-
-<div class="form-group">
-         <button type="submit" class="btn btn-primary" >Valider</button>
-         </div>                 
+                    {% for entity in roles %}
+                        <div class="form-group" style="display: block; margin-left: auto;">
+                            <div class="form-group" style="display: block;">
+                                <label class="control-label" for="email">{{entity}}</label>
+                                <input type="checkbox"  name="roles[]" value="{{entity}}" /> 
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div style="display: block; margin-left: auto;">
+                        <button type="submit" class="btn btn-primary" >Valider</button> 
+                    </div>             
                 </form>
 
-
-               </div>
-</div>
-
-
-</section>
-
-
-<div class="modal modal-danger fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="delModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Confirmation de suppression</h4>
-                  </div>
-                  <div class="modal-body">
-                    Etes-vous sur de vouloir supprimer cette direction ?
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Non</button>
-                    <button type="button" class="btn btn-outline pull-right" id="delModalBtn">Oui</button>
-                  </div>
-                </div>
-              </div>
             </div>
-
- <script src="{{asset('bundles/GSPBundle//plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('bundles/GSPBundle/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
-    <script>
-        $(function () {
-            $('#lstProfils').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": false,
-                "autoWidth": true,
-                "language": {"paginate": {"previous": "Précédent", "next": "Suivant"}, "search": "Rechercher: ",
-                    "emptyTable": "Actuellement La Base Des Directions Est Vide", "zeroRecords": "Aucune correspondance trouvée à votre recherche...Merci!!!."}
-            });
-        });
-    </script>
-            
-
-            {% endblock %}
+    </div>
+    </section>
+{% endblock %}

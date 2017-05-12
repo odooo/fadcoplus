@@ -14,9 +14,9 @@ class ConfiguredContextFactoryTest extends \PHPUnit_Framework_TestCase
      * testCreateSerializationContext
      *
      * @param string $version
-     * @param bool   $serializeNulls
-     * @param array  $attributes
-     * @param array  $groups
+     * @param bool $serializeNulls
+     * @param array $attributes
+     * @param array $groups
      * @param string $expectedInterface
      * @param string $expectedContextClass
      * @param string $factoryMethod
@@ -32,7 +32,8 @@ class ConfiguredContextFactoryTest extends \PHPUnit_Framework_TestCase
         $expectedInterface,
         $expectedContextClass,
         $factoryMethod
-    ) {
+    )
+    {
         $object = new ConfiguredContextFactory();
 
         $object->setVersion($version);
@@ -54,6 +55,19 @@ class ConfiguredContextFactoryTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function testMaxDepthExclusionStrategy()
+    {
+        $object = new ConfiguredContextFactory();
+
+        $object->enableMaxDepthChecks();
+
+        $context = $object->createDeserializationContext();
+        $this->assertInstanceOf('JMS\Serializer\Exclusion\DepthExclusionStrategy', $context->getExclusionStrategy());
+
+        $context = $object->createDeserializationContext();
+        $this->assertInstanceOf('JMS\Serializer\Exclusion\DepthExclusionStrategy', $context->getExclusionStrategy());
+    }
+
     public function contextConfigDataProvider()
     {
         return [
@@ -63,7 +77,7 @@ class ConfiguredContextFactoryTest extends \PHPUnit_Framework_TestCase
                 [
                     'x' => mt_rand(0, PHP_INT_MAX),
                 ],
-                [ 'Default', 'Registration' ],
+                ['Default', 'Registration'],
                 'JMS\Serializer\ContextFactory\SerializationContextFactoryInterface',
                 'JMS\Serializer\SerializationContext',
                 'createSerializationContext'
@@ -74,7 +88,7 @@ class ConfiguredContextFactoryTest extends \PHPUnit_Framework_TestCase
                 [
                     'x' => mt_rand(0, PHP_INT_MAX),
                 ],
-                [ 'Default', 'Registration' ],
+                ['Default', 'Registration'],
                 'JMS\Serializer\ContextFactory\DeserializationContextFactoryInterface',
                 'JMS\Serializer\DeserializationContext',
                 'createDeserializationContext'
