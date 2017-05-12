@@ -15,8 +15,8 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5c6e18f27739cd5647bc44e0149fc31549bad0119f17857264649d589e94187f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_5c6e18f27739cd5647bc44e0149fc31549bad0119f17857264649d589e94187f->enter($__internal_5c6e18f27739cd5647bc44e0149fc31549bad0119f17857264649d589e94187f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Statistique:count.html.twig"));
+        $__internal_9e4b351a0440ce663774824c7be512388b8c8a1c6d8ae9995be45b44ac2b5569 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_9e4b351a0440ce663774824c7be512388b8c8a1c6d8ae9995be45b44ac2b5569->enter($__internal_9e4b351a0440ce663774824c7be512388b8c8a1c6d8ae9995be45b44ac2b5569_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Statistique:count.html.twig"));
 
         // line 1
         if ((array_key_exists("type", $context) && (($context["type"] ?? $this->getContext($context, "type")) == "vente"))) {
@@ -71,64 +71,81 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
         ";
             // line 22
             echo "    </div>
-    <div style=\"display: inline-block;\" class=\"pull-right\">
+    ";
+            // line 23
+            if (((array_key_exists("nom", $context) && (null === ($context["nom"] ?? $this->getContext($context, "nom")))) && twig_test_empty(($context["nom"] ?? $this->getContext($context, "nom"))))) {
+                // line 24
+                echo "        ";
+                $context["nom"] = null;
+                // line 25
+                echo "    ";
+            }
+            // line 26
+            echo "    ";
+            if (((array_key_exists("prenom", $context) && (null === ($context["prenom"] ?? $this->getContext($context, "prenom")))) && twig_test_empty(($context["prenom"] ?? $this->getContext($context, "prenom"))))) {
+                // line 27
+                echo "        ";
+                $context["nom"] = null;
+                // line 28
+                echo "    ";
+            }
+            // line 29
+            echo "    <div style=\"display: inline-block;\" class=\"pull-right\">
         <a href=\"";
-            // line 24
+            // line 30
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire");
             echo "\"><input type=\"button\" class=\"btn btn-warning btn-xs\"value=\"Retour\"/></a>
-        <a href=\"";
-            // line 25
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("export_excel_vente", array("startDate" => ($context["start"] ?? $this->getContext($context, "start")), "endDate" => ($context["end"] ?? $this->getContext($context, "end")), "nom" => ($context["nom"] ?? $this->getContext($context, "nom")), "prenom" => ($context["prenom"] ?? $this->getContext($context, "prenom")))), "html", null, true);
-            echo "\"><input type=\"button\" class=\"btn btn-primary btn-xs\"value=\"Exporter en excel\"/></a>
-    </div>
+        ";
+            // line 32
+            echo "    </div>
     <div class=\"table-responsive mailbox-messages\">
         <table id=\"vente\" class=\"table table-bordered table-striped\">
             <thead>
                 <tr>
                     <th style=\"text-align: center;\">Nom</th>
                     ";
-            // line 32
+            // line 38
             if ((($context["byDate"] ?? $this->getContext($context, "byDate")) == true)) {
-                // line 33
+                // line 39
                 echo "                    <th style=\"text-align: center;\">Prenom</th>
                     <th style=\"text-align: center;\">Abonne</th>
                     <th style=\"text-align: center;\">Date</th>
                     ";
             }
-            // line 37
+            // line 43
             echo "                    <th style=\"text-align: center;\">Total</th>
                 </tr>
             </thead>
             <tbody>
                 ";
-            // line 41
+            // line 47
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["entities"] ?? $this->getContext($context, "entities")));
             foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-                // line 42
+                // line 48
                 echo "                    <tr>
                         <td style=\"text-align: center;\">";
-                // line 43
+                // line 49
                 echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "nom", array()), "html", null, true);
                 echo "</td>
                         ";
-                // line 44
+                // line 50
                 if ((($context["byDate"] ?? $this->getContext($context, "byDate")) == true)) {
-                    // line 45
+                    // line 51
                     echo "                        <td style=\"text-align: center;\">";
                     echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "prenom", array()), "html", null, true);
                     echo "</td>
                         <td style=\"text-align: center;\">";
-                    // line 46
+                    // line 52
                     echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "abonne", array()), "html", null, true);
                     echo "</td>
                         <td style=\"text-align: center;\">";
-                    // line 47
+                    // line 53
                     echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entity"], "date", array()), "d/m/Y"), "html", null, true);
                     echo "</td>
                         ";
                 }
-                // line 49
+                // line 55
                 echo "                        <td style=\"text-align: center;\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "Total", array()), "html", null, true);
                 echo "</td>
@@ -138,39 +155,39 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 52
+            // line 58
             echo "            </tbody>
         </table>
     </div>
 ";
         } else {
-            // line 56
+            // line 62
             echo "    ";
             $context["nb"] = 0;
-            // line 57
+            // line 63
             echo "    ";
-            // line 58
+            // line 64
             echo "    <div class=\"row\">
     ";
-            // line 59
+            // line 65
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["entities"] ?? $this->getContext($context, "entities")));
             foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-                // line 60
+                // line 66
                 echo "        ";
                 $context["nb"] = (($context["nb"] ?? $this->getContext($context, "nb")) + 1);
-                // line 61
+                // line 67
                 echo "            <div class=\"col-lg-3 col-xs-6\">
             <!-- small box -->
             <div class=\"small-box bg-green\">
                 <div class=\"inner\">
                 <h3>";
-                // line 65
+                // line 71
                 echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "value", array()), "html", null, true);
                 echo "</h3>
 
                 <p>";
-                // line 67
+                // line 73
                 echo twig_escape_filter($this->env, $this->getAttribute($context["entity"], "label", array()), "html", null, true);
                 echo "</p>
                 </div>
@@ -178,46 +195,46 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
                 <i class=\"ion ion-bag\"></i>
                 </div>
                 ";
-                // line 73
+                // line 79
                 echo "            </div>
             </div>
             <!-- ./col -->
         ";
-                // line 76
+                // line 82
                 if (((($context["nb"] ?? $this->getContext($context, "nb")) % 4) == 0)) {
-                    // line 77
+                    // line 83
                     echo "        </div>
             ";
-                    // line 78
+                    // line 84
                     if ((($context["nb"] ?? $this->getContext($context, "nb")) < twig_length_filter($this->env, ($context["entities"] ?? $this->getContext($context, "entities"))))) {
-                        // line 79
+                        // line 85
                         echo "                <div class=\"row\">
             ";
                     }
-                    // line 81
+                    // line 87
                     echo "        ";
                 } else {
-                    // line 82
+                    // line 88
                     echo "            ";
                     if ((($context["nb"] ?? $this->getContext($context, "nb")) == twig_length_filter($this->env, ($context["entities"] ?? $this->getContext($context, "entities"))))) {
-                        // line 83
+                        // line 89
                         echo "                </div>
             ";
                     }
-                    // line 85
+                    // line 91
                     echo "        ";
                 }
-                // line 86
+                // line 92
                 echo "    ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 87
+            // line 93
             echo "    ";
         }
         
-        $__internal_5c6e18f27739cd5647bc44e0149fc31549bad0119f17857264649d589e94187f->leave($__internal_5c6e18f27739cd5647bc44e0149fc31549bad0119f17857264649d589e94187f_prof);
+        $__internal_9e4b351a0440ce663774824c7be512388b8c8a1c6d8ae9995be45b44ac2b5569->leave($__internal_9e4b351a0440ce663774824c7be512388b8c8a1c6d8ae9995be45b44ac2b5569_prof);
 
     }
 
@@ -233,7 +250,7 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
 
     public function getDebugInfo()
     {
-        return array (  217 => 87,  211 => 86,  208 => 85,  204 => 83,  201 => 82,  198 => 81,  194 => 79,  192 => 78,  189 => 77,  187 => 76,  182 => 73,  174 => 67,  169 => 65,  163 => 61,  160 => 60,  156 => 59,  153 => 58,  151 => 57,  148 => 56,  142 => 52,  132 => 49,  127 => 47,  123 => 46,  118 => 45,  116 => 44,  112 => 43,  109 => 42,  105 => 41,  99 => 37,  93 => 33,  91 => 32,  81 => 25,  77 => 24,  73 => 22,  68 => 15,  62 => 14,  54 => 12,  46 => 10,  43 => 9,  39 => 8,  33 => 5,  30 => 4,  27 => 3,  24 => 2,  22 => 1,);
+        return array (  234 => 93,  228 => 92,  225 => 91,  221 => 89,  218 => 88,  215 => 87,  211 => 85,  209 => 84,  206 => 83,  204 => 82,  199 => 79,  191 => 73,  186 => 71,  180 => 67,  177 => 66,  173 => 65,  170 => 64,  168 => 63,  165 => 62,  159 => 58,  149 => 55,  144 => 53,  140 => 52,  135 => 51,  133 => 50,  129 => 49,  126 => 48,  122 => 47,  116 => 43,  110 => 39,  108 => 38,  100 => 32,  96 => 30,  93 => 29,  90 => 28,  87 => 27,  84 => 26,  81 => 25,  78 => 24,  76 => 23,  73 => 22,  68 => 15,  62 => 14,  54 => 12,  46 => 10,  43 => 9,  39 => 8,  33 => 5,  30 => 4,  27 => 3,  24 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -268,9 +285,15 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
             <span>{{ start }} - {{ end }}</span> <b class=\"caret\"></b>
         </div>#}
     </div>
+    {% if nom is defined and nom is null and nom is empty %}
+        {% set nom = null %}
+    {% endif %}
+    {% if prenom is defined and prenom is null and prenom is empty %}
+        {% set nom = null %}
+    {% endif %}
     <div style=\"display: inline-block;\" class=\"pull-right\">
         <a href=\"{{ path('grh_prestataire') }}\"><input type=\"button\" class=\"btn btn-warning btn-xs\"value=\"Retour\"/></a>
-        <a href=\"{{ path('export_excel_vente', {'startDate': start, 'endDate': end,'nom': nom, 'prenom': prenom }) }}\"><input type=\"button\" class=\"btn btn-primary btn-xs\"value=\"Exporter en excel\"/></a>
+        {#<a href=\"{{ path('export_excel_vente', {'startDate': start, 'endDate': end,'nom': \"test\", 'prenom': \"test\" }) }}\"><input type=\"button\" class=\"btn btn-primary btn-xs\"value=\"Exporter en excel\"/></a>#}
     </div>
     <div class=\"table-responsive mailbox-messages\">
         <table id=\"vente\" class=\"table table-bordered table-striped\">

@@ -424,8 +424,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     }
 
                     // export_excel_vente
-                    if (0 === strpos($pathinfo, '/fadcoplus/prestataire/page/excel/export-ventes/start') && preg_match('#^/fadcoplus/prestataire/page/excel/export\\-ventes/start\\-(?P<startDate>[^/]++)/end\\-(?P<endDate>[^/]++)/nom\\-(?P<nom>[^/]++)/prenom\\-(?P<prenom>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'export_excel_vente')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::exportToExcelVenteAction',));
+                    if (0 === strpos($pathinfo, '/fadcoplus/prestataire/page/excel/export-ventes/start') && preg_match('#^/fadcoplus/prestataire/page/excel/export\\-ventes/start\\-(?P<startDate>[^/]++)/end\\-(?P<endDate>[^/]++)/nom\\-(?P<nom>[^/]++)/prenom(?:\\-(?P<prenom>[^/]++))?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'export_excel_vente')), array (  '_controller' => 'FadcoBundle\\Controller\\PrestataireController::exportToExcelVenteAction',  'nom' => '= ""',  'prenom' => '= ""',));
                     }
 
                 }

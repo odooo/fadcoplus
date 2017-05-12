@@ -20,9 +20,15 @@
             <span>{{ start }} - {{ end }}</span> <b class="caret"></b>
         </div>#}
     </div>
+    {% if nom is defined and nom is null and nom is empty %}
+        {% set nom = null %}
+    {% endif %}
+    {% if prenom is defined and prenom is null and prenom is empty %}
+        {% set nom = null %}
+    {% endif %}
     <div style="display: inline-block;" class="pull-right">
         <a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a>
-        <a href="{{ path('export_excel_vente', {'startDate': start, 'endDate': end,'nom': nom, 'prenom': prenom }) }}"><input type="button" class="btn btn-primary btn-xs"value="Exporter en excel"/></a>
+        {#<a href="{{ path('export_excel_vente', {'startDate': start, 'endDate': end,'nom': "test", 'prenom': "test" }) }}"><input type="button" class="btn btn-primary btn-xs"value="Exporter en excel"/></a>#}
     </div>
     <div class="table-responsive mailbox-messages">
         <table id="vente" class="table table-bordered table-striped">
