@@ -32,7 +32,7 @@ export_excel_prestataire:
 
 export_excel_vente:
     path:      /page/excel/export-ventes/start-{startDate}/end-{endDate}/nom-{nom}/prenom-{prenom}
-    defaults: { _controller: "FadcoBundle:Prestataire:exportToExcelVente", nom = "", prenom = "" }
+    defaults: { _controller: "FadcoBundle:Prestataire:exportToExcelVente", nom = null, prenom = null }
 
 grh_prestataire_edit:
     path:     /edit

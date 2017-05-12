@@ -1,6 +1,6 @@
 {% if type is defined and type == "vente" %}
-    {% set start = startDate | date('d/m/Y') %}
-    {% set end = endDate | date('d/m/Y') %}
+    {% set startDate = startDate | date('Y-m-d') %}
+    {% set endDate = endDate | date('Y-m-d') %}
     <div style="display: inline-block;">
         <form name="form_distributeur" method="post" action="{{ path('main_page_distributeur',{ 'type': type }) }}">
             <select name="form_distributeur[distributeur]" class="select2 form-control">
@@ -21,14 +21,14 @@
         </div>#}
     </div>
     {% if nom is defined and nom is null and nom is empty %}
-        {% set nom = null %}
+        {% set nom = 'nom' %}
     {% endif %}
     {% if prenom is defined and prenom is null and prenom is empty %}
-        {% set nom = null %}
+        {% set nom = 'prenom' %}
     {% endif %}
     <div style="display: inline-block;" class="pull-right">
         <a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a>
-        {#<a href="{{ path('export_excel_vente', {'startDate': start, 'endDate': end,'nom': "test", 'prenom': "test" }) }}"><input type="button" class="btn btn-primary btn-xs"value="Exporter en excel"/></a>#}
+        <a href="{{ path('export_excel_vente', {'startDate': startDate, 'endDate': endDate,'nom': nom, 'prenom': prenom }) }}"><input type="button" class="btn btn-primary btn-xs"value="Exporter en excel"/></a>
     </div>
     <div class="table-responsive mailbox-messages">
         <table id="vente" class="table table-bordered table-striped">

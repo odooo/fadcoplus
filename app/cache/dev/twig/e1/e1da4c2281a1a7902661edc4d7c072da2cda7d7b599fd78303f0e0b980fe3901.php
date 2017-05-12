@@ -15,17 +15,17 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9e4b351a0440ce663774824c7be512388b8c8a1c6d8ae9995be45b44ac2b5569 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9e4b351a0440ce663774824c7be512388b8c8a1c6d8ae9995be45b44ac2b5569->enter($__internal_9e4b351a0440ce663774824c7be512388b8c8a1c6d8ae9995be45b44ac2b5569_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Statistique:count.html.twig"));
+        $__internal_be166575b4c80c9ba742cdf0da639a463425d9d6fb86bb47fc5e10cd1ccb5a91 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_be166575b4c80c9ba742cdf0da639a463425d9d6fb86bb47fc5e10cd1ccb5a91->enter($__internal_be166575b4c80c9ba742cdf0da639a463425d9d6fb86bb47fc5e10cd1ccb5a91_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Statistique:count.html.twig"));
 
         // line 1
         if ((array_key_exists("type", $context) && (($context["type"] ?? $this->getContext($context, "type")) == "vente"))) {
             // line 2
             echo "    ";
-            $context["start"] = twig_date_format_filter($this->env, ($context["startDate"] ?? $this->getContext($context, "startDate")), "d/m/Y");
+            $context["startDate"] = twig_date_format_filter($this->env, ($context["startDate"] ?? $this->getContext($context, "startDate")), "Y-m-d");
             // line 3
             echo "    ";
-            $context["end"] = twig_date_format_filter($this->env, ($context["endDate"] ?? $this->getContext($context, "endDate")), "d/m/Y");
+            $context["endDate"] = twig_date_format_filter($this->env, ($context["endDate"] ?? $this->getContext($context, "endDate")), "Y-m-d");
             // line 4
             echo "    <div style=\"display: inline-block;\">
         <form name=\"form_distributeur\" method=\"post\" action=\"";
@@ -76,7 +76,7 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
             if (((array_key_exists("nom", $context) && (null === ($context["nom"] ?? $this->getContext($context, "nom")))) && twig_test_empty(($context["nom"] ?? $this->getContext($context, "nom"))))) {
                 // line 24
                 echo "        ";
-                $context["nom"] = null;
+                $context["nom"] = "nom";
                 // line 25
                 echo "    ";
             }
@@ -85,7 +85,7 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
             if (((array_key_exists("prenom", $context) && (null === ($context["prenom"] ?? $this->getContext($context, "prenom")))) && twig_test_empty(($context["prenom"] ?? $this->getContext($context, "prenom"))))) {
                 // line 27
                 echo "        ";
-                $context["nom"] = null;
+                $context["nom"] = "prenom";
                 // line 28
                 echo "    ";
             }
@@ -95,9 +95,11 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
             // line 30
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("grh_prestataire");
             echo "\"><input type=\"button\" class=\"btn btn-warning btn-xs\"value=\"Retour\"/></a>
-        ";
-            // line 32
-            echo "    </div>
+        <a href=\"";
+            // line 31
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("export_excel_vente", array("startDate" => ($context["startDate"] ?? $this->getContext($context, "startDate")), "endDate" => ($context["endDate"] ?? $this->getContext($context, "endDate")), "nom" => ($context["nom"] ?? $this->getContext($context, "nom")), "prenom" => ($context["prenom"] ?? $this->getContext($context, "prenom")))), "html", null, true);
+            echo "\"><input type=\"button\" class=\"btn btn-primary btn-xs\"value=\"Exporter en excel\"/></a>
+    </div>
     <div class=\"table-responsive mailbox-messages\">
         <table id=\"vente\" class=\"table table-bordered table-striped\">
             <thead>
@@ -234,7 +236,7 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
             echo "    ";
         }
         
-        $__internal_9e4b351a0440ce663774824c7be512388b8c8a1c6d8ae9995be45b44ac2b5569->leave($__internal_9e4b351a0440ce663774824c7be512388b8c8a1c6d8ae9995be45b44ac2b5569_prof);
+        $__internal_be166575b4c80c9ba742cdf0da639a463425d9d6fb86bb47fc5e10cd1ccb5a91->leave($__internal_be166575b4c80c9ba742cdf0da639a463425d9d6fb86bb47fc5e10cd1ccb5a91_prof);
 
     }
 
@@ -250,7 +252,7 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
 
     public function getDebugInfo()
     {
-        return array (  234 => 93,  228 => 92,  225 => 91,  221 => 89,  218 => 88,  215 => 87,  211 => 85,  209 => 84,  206 => 83,  204 => 82,  199 => 79,  191 => 73,  186 => 71,  180 => 67,  177 => 66,  173 => 65,  170 => 64,  168 => 63,  165 => 62,  159 => 58,  149 => 55,  144 => 53,  140 => 52,  135 => 51,  133 => 50,  129 => 49,  126 => 48,  122 => 47,  116 => 43,  110 => 39,  108 => 38,  100 => 32,  96 => 30,  93 => 29,  90 => 28,  87 => 27,  84 => 26,  81 => 25,  78 => 24,  76 => 23,  73 => 22,  68 => 15,  62 => 14,  54 => 12,  46 => 10,  43 => 9,  39 => 8,  33 => 5,  30 => 4,  27 => 3,  24 => 2,  22 => 1,);
+        return array (  236 => 93,  230 => 92,  227 => 91,  223 => 89,  220 => 88,  217 => 87,  213 => 85,  211 => 84,  208 => 83,  206 => 82,  201 => 79,  193 => 73,  188 => 71,  182 => 67,  179 => 66,  175 => 65,  172 => 64,  170 => 63,  167 => 62,  161 => 58,  151 => 55,  146 => 53,  142 => 52,  137 => 51,  135 => 50,  131 => 49,  128 => 48,  124 => 47,  118 => 43,  112 => 39,  110 => 38,  100 => 31,  96 => 30,  93 => 29,  90 => 28,  87 => 27,  84 => 26,  81 => 25,  78 => 24,  76 => 23,  73 => 22,  68 => 15,  62 => 14,  54 => 12,  46 => 10,  43 => 9,  39 => 8,  33 => 5,  30 => 4,  27 => 3,  24 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -264,8 +266,8 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
     public function getSourceContext()
     {
         return new Twig_Source("{% if type is defined and type == \"vente\" %}
-    {% set start = startDate | date('d/m/Y') %}
-    {% set end = endDate | date('d/m/Y') %}
+    {% set startDate = startDate | date('Y-m-d') %}
+    {% set endDate = endDate | date('Y-m-d') %}
     <div style=\"display: inline-block;\">
         <form name=\"form_distributeur\" method=\"post\" action=\"{{ path('main_page_distributeur',{ 'type': type }) }}\">
             <select name=\"form_distributeur[distributeur]\" class=\"select2 form-control\">
@@ -286,14 +288,14 @@ class __TwigTemplate_b91e8102f2b3cdfd9350f6aca68928173e84af4dc737aa9616ef6c133e1
         </div>#}
     </div>
     {% if nom is defined and nom is null and nom is empty %}
-        {% set nom = null %}
+        {% set nom = 'nom' %}
     {% endif %}
     {% if prenom is defined and prenom is null and prenom is empty %}
-        {% set nom = null %}
+        {% set nom = 'prenom' %}
     {% endif %}
     <div style=\"display: inline-block;\" class=\"pull-right\">
         <a href=\"{{ path('grh_prestataire') }}\"><input type=\"button\" class=\"btn btn-warning btn-xs\"value=\"Retour\"/></a>
-        {#<a href=\"{{ path('export_excel_vente', {'startDate': start, 'endDate': end,'nom': \"test\", 'prenom': \"test\" }) }}\"><input type=\"button\" class=\"btn btn-primary btn-xs\"value=\"Exporter en excel\"/></a>#}
+        <a href=\"{{ path('export_excel_vente', {'startDate': startDate, 'endDate': endDate,'nom': nom, 'prenom': prenom }) }}\"><input type=\"button\" class=\"btn btn-primary btn-xs\"value=\"Exporter en excel\"/></a>
     </div>
     <div class=\"table-responsive mailbox-messages\">
         <table id=\"vente\" class=\"table table-bordered table-striped\">

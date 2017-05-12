@@ -46,7 +46,7 @@ class StatistiqueController extends Controller
         )); 
     }
 
-    public function venteTotalByDistributeurAndPeriodAction(Request $request, $startDate, $endDate, $type, $nom = "", $prenom = "")
+    public function venteTotalByDistributeurAndPeriodAction(Request $request, $startDate, $endDate, $type, $nom = null, $prenom = null)
     {
         $em = $this->getDoctrine()->getManager();
 

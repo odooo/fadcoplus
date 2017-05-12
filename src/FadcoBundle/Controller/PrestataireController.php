@@ -26,6 +26,8 @@ use Doctrine\DBAL\Connection;
 
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 /**
  * Prestataire controller.
  *
@@ -281,29 +283,33 @@ class PrestataireController extends BaseController
         $exception = array('nom','prenom', 'contact', 'ville');
         $this->get('fadco.to_excel')->toExcel($sql, $filename, $exception, false);
     }
+    
 
-    public function exportToExcelVenteAction(Request $request, $startDate, $endDate, $nom = "", $prenom = "")
+    public function exportToExcelVenteAction(Request $request, \DateTime $startDate, \DateTime $endDate, $nom, $prenom)
     {
-        $startDate = \DateTime::createFromFormat('d/m/Y', $startDate);
-        $endDate = \DateTime::createFromFormat('d/m/Y', $endDate);
+        $startDate = $startDate->format('Y-m-d');
+        $endDate = $endDate->format('Y-m-d');
 
         $sql = "";
         $exception = array();
 
         if($startDate && $endDate)
         {
-            $sql = "SELECT SUM(r.montant) AS Total, r.abonne, d.nom, d.prenom, r.date FROM reabonnement r, distributeur d
-            WHERE d.id = r.distributeur_id AND r.date >= $startDate AND r.date <= $endDate GROUP BY r.date, r.abonne, d.nom, d.prenom";
+            $sql = "SELECT SUM(r.montant) AS Total, r.abonne, d.nom, d.prenom, r.date FROM reabonnement r, prestataire d
+            WHERE d.id = r.distributeur_id AND r.date >= '".$startDate."' AND r.date <= '".$endDate."' GROUP BY r.date, r.abonne, d.nom, d.prenom";
 
             $exception = array('nom','prenom', 'abonne', 'Total');
         }
 
-        if($nom && $prenom)
+        if($nom != "nom" && $prenom != 'prenom')
         {
-            $sql = "SELECT SUM(r.montant) AS Total, d.nom FROM reabonnement r, distributeur d
-            WHERE d.id = r.distributeur_id AND d.nom LIKE %$nom% AND d.prenom LIKE %$prenom% GROUP BY d.nom";
+            if($sql == "")
+            {
+                $sql = "SELECT SUM(r.montant) AS Total, d.nom FROM reabonnement r, prestataire d
+                WHERE d.id = r.distributeur_id AND d.nom LIKE '%".$nom."%' AND d.prenom LIKE '%".$prenom."%' GROUP BY d.nom";
 
-            $exception = array('nom','Total');
+                $exception = array('nom','Total');
+            }
         }
 
         $filename = "vente_excel";
@@ -319,8 +325,8 @@ class PrestataireController extends BaseController
 
         $form = $request->request->get('form_distributeur');
 
-        $nom = "";
-        $prenom = "";
+        $nom = null;
+        $prenom = null;
 
         if($request->getMethod() == "POST")
         {
