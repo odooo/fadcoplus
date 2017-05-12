@@ -1,54 +1,14 @@
 {% extends "FadcoBundle:Distributeur:layout.html.twig" %}
+{% from 'FadcoBundle:Distributeur:macros.html.twig' import countbox %}
+{% from 'FadcoBundle:Distributeur:macros.html.twig' import countbox2 %}
+{% from 'FadcoBundle:Distributeur:macros.html.twig' import countbox3 %}
+{% from 'FadcoBundle:Distributeur:macros.html.twig' import chartbox %}
 
-{% block title %}Distributeur{% endblock %}
+{% block title %}FADCO+ : distributeur{% endblock %}
 
 {% block content %}
-
-    <section class="content">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h1 class="box-title">Tableau de bord</h1>
-
-                <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="box-body">
-                <!-- Info boxes -->
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-aqua"><i class="fa fa-user-plus"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">Nombre de réabonnement <br/> direct aujourd'hui</span>
-                                <span class="info-box-number"><br/>12<small></small></span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">Nombre d'installation <br/> et réparation aujourd'hui<br/></span>
-                                <span class="info-box-number"><br/>41,410</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <!-- /.col -->
-
-                </div>
-                <!-- /.row -->
-            </div>
-        </div>
-    </section>
-
+    <div class="row">
+        {{ countbox('Nombre de réabonnement direct', nbrereabonnementdirect, 'bg-green', 'fa-home') }}
+        {{ countbox('Nombre d\'installation ou réparation', nbreprestation, 'bg-blue', 'fa-home') }}
+    </div>
 {% endblock %}

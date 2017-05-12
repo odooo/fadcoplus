@@ -20,17 +20,18 @@ use FadcoBundle\Form\PrestataireUpdateType;
 use FadcoBundle\Form\CreditAccountDistributeurType;
 use FadcoBundle\Entity\TypePrestataire;
 use FadcoBundle\Form\PrestataireType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Prestataire controller.
- *
+ * 
  */
 class PrestataireController extends BaseController
 {
 
     /**
      * Lists all prestataire entities.
-     *
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction()
     {
@@ -52,7 +53,10 @@ class PrestataireController extends BaseController
         ));
     }
     
-
+    /**
+     * Lists all prestataire entities.
+     * @Security("has_role('ROLE_USER')")
+     */
     public function showAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -73,6 +77,10 @@ class PrestataireController extends BaseController
         ));
     }
 	
+    /**
+     * Lists all prestataire entities.
+     * @Security("has_role('ROLE_ADMIN')")
+     */
 	public function voirAction($id)
     {
                 $em = $this->getDoctrine()->getManager();
@@ -90,6 +98,10 @@ class PrestataireController extends BaseController
         ));
     }
     
+    /**
+     * Lists all prestataire entities.
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function activeAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -107,6 +119,10 @@ class PrestataireController extends BaseController
        return $this->redirect($this->generateUrl('grh_prestataire'));
     }
 
+    /**
+     * Lists all prestataire entities.
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function desactiveAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -124,6 +140,10 @@ class PrestataireController extends BaseController
        return $this->redirect($this->generateUrl('grh_prestataire'));
     }
 
+    /**
+     * Lists all prestataire entities.
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function updateAction(Request $request, $id)
     {
         //$user = $this->getUser();
@@ -221,6 +241,10 @@ class PrestataireController extends BaseController
         return $form;
     }
     
+    /**
+     * Lists all prestataire entities.
+     * @Security("has_role('ROLE_USER')")
+     */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -247,6 +271,10 @@ class PrestataireController extends BaseController
 
     }
 
+    /**
+     * Lists all prestataire entities.
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function creditAccountAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -391,7 +419,10 @@ class PrestataireController extends BaseController
       return $t;
     }
 
-
+    /**
+     * Lists all prestataire entities.
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function changeRigthAction(Request  $request,$option,$userId){
 
         $em = $this->getDoctrine()->getManager();
@@ -479,6 +510,11 @@ class PrestataireController extends BaseController
         return $this->redirect($this->generateUrl('grh_prestataire'));
 
     }
+
+    /**
+     * Lists all prestataire entities.
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function getPrestataireEnabledAction(){
         $em = $this->getDoctrine()->getManager();
         $prestataireEnabled = $em->getRepository('FadcoBundle:Prestataire')->findBy(array("enabled"=>1));

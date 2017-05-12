@@ -13,8 +13,9 @@
                             <span><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:80px; heigth:5px;" alt="edgar"/></span>
                             
                                 <span style="color:green;" class="info-box-number">{{ app.user.account|number_format(0,'.',' ') }} F</span>
-                                <span class="info-box-text" style="color:white;">777777662({{ app.user.username }})</span>
-                                <span class="info-box-text" style="color:white;">7878787812({{ app.user.username }})</span>
+                                <span class="info-box-text" style="color:white;">({{ app.user.name }})</span>
+                                {#<span class="info-box-text" style="color:white;">777777662({{ app.user.username }})</span>
+                                <span class="info-box-text" style="color:white;">7878787812({{ app.user.username }})</span>#}
                             
                             <!-- /.info-box-content -->
                         </div>
@@ -59,14 +60,14 @@
                         
                         <div class="input-group">
                             <label class="input-group-addon"><i class=""></i>N° carte<span style="color: red; margin-right: 2px;">* : </span></label>
-                            <input name="fadcobundle_distributeur_new_client[numeroCarte]" class="form-control"/>
+                            <input maxlength="14" minlength="14" name="fadcobundle_distributeur_new_client[numeroCarte]" class="form-control"/>
                         </div>
 
                         <span>&nbsp;</span>
                         
                         <div class="input-group">
                             <label class="input-group-addon"><i class=""></i>N° mobile<span style="color: red; margin-right: 2px;">* : </span></label>
-                            <input name="fadcobundle_distributeur_new_client[contact]" required class="form-control"/>
+                            <input maxlength="8" minlength="8" name="fadcobundle_distributeur_new_client[contact]" required class="form-control"/>
                         </div>
 
                         <span>&nbsp;</span>                                                

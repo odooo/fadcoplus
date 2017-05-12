@@ -1,7 +1,7 @@
 FadcoBundle\Entity\Repair:
     type: entity
     table: null
-    repositoryClass: FadcoBundle\Entity\RepairRepository
+    repositoryClass: FadcoBundle\Repository\RepairRepository
     id:
         id:
             type: integer

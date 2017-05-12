@@ -1,5 +1,5 @@
 {% extends "FadcoBundle:Default:menu.html.twig" %}
-{% block title %} Confirmer le réabo. direct{% endblock %}
+{% block title %} {% if client is defined %}Nouvel abonné{% else %} Confirmer le réabo. direct{% endif %}{% endblock %}
 
 {% block content %}
 
@@ -33,13 +33,16 @@
                     
                             <span>&nbsp;</span>
 
-                            <h3 class="box-title">Confirmation du réabonnement direct</h3>
+                            <h3 class="box-title" style="color:yellow;">AVERTISSEMENT !</h3>
 
                             <div class="modal-body">
                                 <span style="">
-                                   <h2><strong>{{ resultats.montant|number_format(0,'.',' ') }} F</strong></h2><br/> 
-                                   Réabonnement direct pour {{ resultats.numeroCarte }}.<br/>
-                                   {{ resultats.formule }}{% if resultats.duree %} / {{ resultats.duree }}{% endif %}{% if resultats.options %} / {{ resultats.options }}{% else %} / --{% endif %}
+                                    {% if numberCard is defined %}
+                                        Le numéro de la carte <b>{{ numberCard }}</b> entré est incorrect, il ne doit pas contenir de lettre. Merci d'entrer un numéro de carte correct.
+                                    {% else %}
+                                        Le contact <b>{{  contact }}</b> entré est incorrect, il doit contenir uniquement des chiffres. Merci d'entrer un numéro de téléphone correct.
+                                    {% endif %}
+
                                 </span>
                                 
                               </div>
@@ -49,11 +52,20 @@
 
                             <div class="modal-footer">
                                 <div class="input-group pull-right">
-                                    <a href="{{ path('fadco_espace_distributeur_reabo_new') }}">
-                                        <button type="button" class="btn btn-default  pull-left">Retour</button>
-                                    </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="{{ path('fadco_espace_distributeur_reabo_new_confirm') }}">
-                                        <button type="bouton" class="btn btn-success">Confirmer</button>
+                                    {% if client is defined %}
+                                        <a href="{{ path('fadco_espace_distributeur_repair_new_client') }}">
+                                            <button type="button" class="btn btn-warning  pull-left">Reprendre</button>
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('fadco_espace_distributeur_reabo_new') }}">
+                                            <button type="button" class="btn btn-warning  pull-left">Reprendre</button>
+                                        </a>
+                                    {% endif %}
+                                        
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    
+                                    <a href="{{ path('fadco_espace_distributeur_reabo') }}">
+                                        <button type="bouton" class="btn btn-default">Annuler</button>
                                     </a>
                                 </div>
                             </div>

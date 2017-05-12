@@ -1,16 +1,16 @@
 {% extends "FadcoBundle:Default:menu.html.twig" %}
-
+{% block title %}Liste des distributeurs{% endblock %}
 {% block page_quick_actions %}
     <div>
-        <a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a>
+        {#<a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a> #}
         <a href="{{ path('grh_prestataire_new', {'id': null }) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau distributeur"/></a>
     </div>
 {% endblock %}
 {% block stylesheet %}
     {{ parent() }}
     <link rel="stylesheet"
-          href="{{ asset('bundles/GSPBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/GSPBundle/plugins/jQueryfiler/css/jquery.filer.css') }}">
+          href="{{ asset('bundles/FadcoBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/FadcoBundle/plugins/jQueryfiler/css/jquery.filer.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -50,7 +50,7 @@
                                             <li>
                                                 <a href="{{ path('grh_prestataire_voir', { 'id': entity.id }) }}">Afficher</a>
                                             </li>
-                                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                            {% if is_granted('ROLE_ADMIN') %}
                                                 <li>
                                                     <a href="{{ path('crediter_compte_distributeur', { 'id': entity.id }) }}">Créditer ce compte</a>
                                                 </li>
@@ -60,7 +60,6 @@
                                                 <li>
                                                     <a class="change_rigth" href="{{ path('rigth_change', { 'userId': entity.id,'option':'add' }) }}">Ajouter des roles</a>
                                                 </li>
-                                                <li class="divider"></li>
                                                 <li>
                                                     <a class="change_rigth" href="{{ path('rigth_change', { 'userId': entity.id,'option':'delete' }) }}">Enlever des roles</a>
                                                 </li>
@@ -86,8 +85,8 @@
                     <div class="col-md-12">
                         <table style="width: 10%;" class="table">
                             <tr>
-                                {#<td><input type="submit" class="btn btn-primary btn-xs" value="Enregistrer"/></td>#}
-                                <td><a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a></td>
+                                {#<td><input type="submit" class="btn btn-primary btn-xs" value="Enregistrer"/></td>
+                                <td><a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a></td>#}
                             </tr>
                         </table>
                     </div>
@@ -96,14 +95,14 @@
         </div>
     </section>
 
-    <script src="{{ asset('bundles/GSPBundle/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 {% endblock %}
 
 {% block javascript %}
     {{ parent() }}
-    <script src="{{ asset('bundles/GSPBundle/style/jquery.accordDate.js') }}"></script>
-    <script src="{{ asset('bundles/GSPBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.js') }}"></script>
-    <script src="{{ asset('bundles/GSPBundle/plugins/jQueryfiler/js/jquery.filer.min.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/style/jquery.accordDate.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/plugins/jQueryfiler/js/jquery.filer.min.js') }}"></script>
     <script>
      $('.change_rigth').click(function(e) {
             e.preventDefault();

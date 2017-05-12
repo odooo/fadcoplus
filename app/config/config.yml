@@ -34,7 +34,7 @@ framework:
     http_method_override: true
     serializer:
         enabled: false
-    
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
@@ -163,7 +163,7 @@ doctrine:
                  substring_index: DoctrineExtensions\Query\Mysql\SubstringIndex
                  uuid_short: DoctrineExtensions\Query\Mysql\UuidShort
 
-        
+
 # Swiftmailer Configuration
 swiftmailer:
     transport:  "%mailer_transport%"
