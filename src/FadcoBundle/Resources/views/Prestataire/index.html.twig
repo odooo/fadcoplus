@@ -33,17 +33,17 @@
                     <thead>
                         <tr>
                             <th style="text-align: center;">N°</th>
-                            <th style="text-align: center;">Nom</th>
-                            <th style="text-align: center;">Prenom</th>
+                            <th style="text-align: center;">Distributeur</th>
+                            <th style="text-align: center;">Compte</th>
                             <th style="text-align: center;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for entity in entities %}
                             <tr>
-                                <td style="text-align: center;"><a href="{{ path('grh_prestataire_voir', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                                <td style="text-align: center;">{{ entity.nom }}</td>
-                                <td style="text-align: center;">{{ entity.prenom }}</td>
+                                <td style="text-align: center;"><a href="{{ path('grh_prestataire_voir', { 'id': entity.id }) }}">{{ loop.index }}</a></td>
+                                <td style="text-align: center;">{{ entity.name }}</td>
+                                <td style="text-align: center;">{{ entity.account|number_format(0,'.',' ') }} f</td>
                                 <td style="text-align: center;">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-success btn-xs dropdown-toggle"
@@ -96,11 +96,9 @@
             </div>
         </div>
     </section>
-<<<<<<< HEAD
 
-=======
     {{ include('FadcoBundle:Prestataire:popups.html.twig') }}
->>>>>>> cc644fd6863050836a017ae1002dcefac599ada7
+
     <script src="{{ asset('bundles/FadcoBundle/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 {% endblock %}
 

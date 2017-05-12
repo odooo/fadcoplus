@@ -25,9 +25,9 @@ class ToExcel {
 
         $count = 0;
 
-        $file_ending = "xls";
+        $file_ending = "xlsx";
         //header info for browser
-        header("Content-Type: application/xls");    
+        header("Content-Type: application/xlsx");    
         header("Content-Disposition: attachment; filename=$filename.xls");  
         header("Pragma: no-cache"); 
         header("Expires: 0");

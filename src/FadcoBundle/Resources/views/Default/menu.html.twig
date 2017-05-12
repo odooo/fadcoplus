@@ -14,38 +14,14 @@
             <li class="">&nbsp;</li>
             <li class="">&nbsp;</li>
             <li class="header">GESTION DES COMPTES</li>
-<<<<<<< HEAD
             <li><a href="{{ path('grh_prestataire') }}">Liste des distributeurs</a></li>
             <li><a href="{{ path('grh_prestataire_new',{ 'id': null }) }}">Ajouter un distributeur</a></li>
             {#{% if is_granted("ROLE_SUPER_ADMIN") %}#}
                 {#<li><a href="{{ path('rigth') }}">Droits</a></li>#}
             {#{% endif %}#}
-        
-=======
-            <li class="treeview">
-                <a href="#"><i class="fa fa-user"></i> <span>Distributeurs</span> <i
-                            class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ path('grh_prestataire') }}">Liste</a></li>
-                    <li><a href="{{ path('grh_prestataire_new',{ 'id': null }) }}">Ajouter</a></li>
-                    {#{% if is_granted("ROLE_SUPER_ADMIN") %}#}
-                        {#<li><a href="{{ path('rigth') }}">Droits</a></li>#}
-                    {#{% endif %}#}
-                </ul>
-            </li>
-            <li class="header">STATISTIQUES</li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-pie-chart"></i> <span>Statistiques</span> <i
-                            class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ path('main_page_distributeur',{ 'type': 'abonne' }) }}">Abonnes</a></li>
-                    <li><a href="{{ path('main_page_distributeur',{ 'type': 'vente' }) }}">Ventes</a></li>
-                </ul>
-            </li>
->>>>>>> cc644fd6863050836a017ae1002dcefac599ada7
+
         {% endif %}
 
-        <li class="">&nbsp;</li>
         <li class="">&nbsp;</li>
         <li class="">&nbsp;</li>
 
@@ -63,6 +39,16 @@
                     <li><a href=""><i class=""></i> <span>Prestations</span></a></li>
                 </ul>
             </li>#}
+
+        {% endif %}
+
+        {% if app.user.type == "admin" %}
+
+            <li class="">&nbsp;</li>
+            
+            <li class="header">STATISTIQUES</li>
+            <li><a href="{{ path('main_page_distributeur',{ 'type': 'abonne' }) }}">Par formule d'abonnés</a></li>
+            <li><a href="{{ path('main_page_distributeur',{ 'type': 'vente' }) }}">Par ventes/distributeur</a></li>
 
         {% endif %}
 

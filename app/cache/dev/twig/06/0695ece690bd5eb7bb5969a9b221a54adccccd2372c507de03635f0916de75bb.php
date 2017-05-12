@@ -24,8 +24,8 @@ class __TwigTemplate_6f1ffd01768c31d7b34437881eb7d2f2a91e40cc3cb9d58a588c4558c7a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6db9bbd6feefc52cbd625907ed3bc0caf7c2bfe090c0730f4c113e10748f100f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_6db9bbd6feefc52cbd625907ed3bc0caf7c2bfe090c0730f4c113e10748f100f->enter($__internal_6db9bbd6feefc52cbd625907ed3bc0caf7c2bfe090c0730f4c113e10748f100f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Distributeur:layout.html.twig"));
+        $__internal_a88ba974568b767af8a0d31ec32a0225595ffbe2db03f4228dcf115fa5dc9922 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a88ba974568b767af8a0d31ec32a0225595ffbe2db03f4228dcf115fa5dc9922->enter($__internal_a88ba974568b767af8a0d31ec32a0225595ffbe2db03f4228dcf115fa5dc9922_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Distributeur:layout.html.twig"));
 
         // line 37
         $context["start"] = twig_date_format_filter($this->env, "now", "d/m/Y");
@@ -44,15 +44,15 @@ class __TwigTemplate_6f1ffd01768c31d7b34437881eb7d2f2a91e40cc3cb9d58a588c4558c7a
         // line 1
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_6db9bbd6feefc52cbd625907ed3bc0caf7c2bfe090c0730f4c113e10748f100f->leave($__internal_6db9bbd6feefc52cbd625907ed3bc0caf7c2bfe090c0730f4c113e10748f100f_prof);
+        $__internal_a88ba974568b767af8a0d31ec32a0225595ffbe2db03f4228dcf115fa5dc9922->leave($__internal_a88ba974568b767af8a0d31ec32a0225595ffbe2db03f4228dcf115fa5dc9922_prof);
 
     }
 
     // line 3
     public function block_stylesheet($context, array $blocks = array())
     {
-        $__internal_19ecce620729bbb34937abd83fbdc7840c74a62a304d793fd04ba86ded13cd45 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_19ecce620729bbb34937abd83fbdc7840c74a62a304d793fd04ba86ded13cd45->enter($__internal_19ecce620729bbb34937abd83fbdc7840c74a62a304d793fd04ba86ded13cd45_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheet"));
+        $__internal_4d0d795a4b6fd2c41fd89190070d2923f560f4c6e292d0e49c2432e8c4dadc6f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_4d0d795a4b6fd2c41fd89190070d2923f560f4c6e292d0e49c2432e8c4dadc6f->enter($__internal_4d0d795a4b6fd2c41fd89190070d2923f560f4c6e292d0e49c2432e8c4dadc6f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheet"));
 
         // line 4
         echo "    ";
@@ -93,15 +93,15 @@ class __TwigTemplate_6f1ffd01768c31d7b34437881eb7d2f2a91e40cc3cb9d58a588c4558c7a
     </style>
 ";
         
-        $__internal_19ecce620729bbb34937abd83fbdc7840c74a62a304d793fd04ba86ded13cd45->leave($__internal_19ecce620729bbb34937abd83fbdc7840c74a62a304d793fd04ba86ded13cd45_prof);
+        $__internal_4d0d795a4b6fd2c41fd89190070d2923f560f4c6e292d0e49c2432e8c4dadc6f->leave($__internal_4d0d795a4b6fd2c41fd89190070d2923f560f4c6e292d0e49c2432e8c4dadc6f_prof);
 
     }
 
     // line 48
     public function block_javascript($context, array $blocks = array())
     {
-        $__internal_148f7a2b18f9f606e5d8a58612098801c6dc6735f127e68da38623f46eaee94c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_148f7a2b18f9f606e5d8a58612098801c6dc6735f127e68da38623f46eaee94c->enter($__internal_148f7a2b18f9f606e5d8a58612098801c6dc6735f127e68da38623f46eaee94c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascript"));
+        $__internal_1ac68592f0deb8c2f569aa63afd082fcff02728304c9a334b4946500535557f3 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1ac68592f0deb8c2f569aa63afd082fcff02728304c9a334b4946500535557f3->enter($__internal_1ac68592f0deb8c2f569aa63afd082fcff02728304c9a334b4946500535557f3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascript"));
 
         // line 49
         echo "    ";
@@ -189,12 +189,8 @@ class __TwigTemplate_6f1ffd01768c31d7b34437881eb7d2f2a91e40cc3cb9d58a588c4558c7a
             }, cb);
 
             \$('#reportrange').on('apply.daterangepicker', function(event, picker) {
-<<<<<<< HEAD
-                
-=======
->>>>>>> cc644fd6863050836a017ae1002dcefac599ada7
                 var url = \"";
-        // line 124
+        // line 120
         echo twig_escape_filter($this->env, twig_first($this->env, twig_split_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "requestUri", array()), "?")), "html", null, true);
         echo "\" + \"?\";
                 url += \"from=\" + picker.startDate.format(\"DD/MM/YYYY\");
@@ -208,33 +204,33 @@ class __TwigTemplate_6f1ffd01768c31d7b34437881eb7d2f2a91e40cc3cb9d58a588c4558c7a
     </script>
 ";
         
-        $__internal_148f7a2b18f9f606e5d8a58612098801c6dc6735f127e68da38623f46eaee94c->leave($__internal_148f7a2b18f9f606e5d8a58612098801c6dc6735f127e68da38623f46eaee94c_prof);
+        $__internal_1ac68592f0deb8c2f569aa63afd082fcff02728304c9a334b4946500535557f3->leave($__internal_1ac68592f0deb8c2f569aa63afd082fcff02728304c9a334b4946500535557f3_prof);
 
     }
 
-    // line 136
+    // line 132
     public function block_page_title($context, array $blocks = array())
     {
-        $__internal_099470e807f305d6d7c11a135592ac052ff457ac268e94f0954fec920e8ba86e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_099470e807f305d6d7c11a135592ac052ff457ac268e94f0954fec920e8ba86e->enter($__internal_099470e807f305d6d7c11a135592ac052ff457ac268e94f0954fec920e8ba86e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
+        $__internal_1d9da33f88ba4aecd23967e4130b91ca4d470e88e8e33b45e69ca32293c86312 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1d9da33f88ba4aecd23967e4130b91ca4d470e88e8e33b45e69ca32293c86312->enter($__internal_1d9da33f88ba4aecd23967e4130b91ca4d470e88e8e33b45e69ca32293c86312_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_title"));
 
         $this->displayBlock("title", $context, $blocks);
         
-        $__internal_099470e807f305d6d7c11a135592ac052ff457ac268e94f0954fec920e8ba86e->leave($__internal_099470e807f305d6d7c11a135592ac052ff457ac268e94f0954fec920e8ba86e_prof);
+        $__internal_1d9da33f88ba4aecd23967e4130b91ca4d470e88e8e33b45e69ca32293c86312->leave($__internal_1d9da33f88ba4aecd23967e4130b91ca4d470e88e8e33b45e69ca32293c86312_prof);
 
     }
 
-    // line 138
+    // line 134
     public function block_page_quick_actions($context, array $blocks = array())
     {
-        $__internal_d2b1c48cad4efa91ee817e401e89d16d8ebfa10c94b3bfc6234b495eec8f3c44 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_d2b1c48cad4efa91ee817e401e89d16d8ebfa10c94b3bfc6234b495eec8f3c44->enter($__internal_d2b1c48cad4efa91ee817e401e89d16d8ebfa10c94b3bfc6234b495eec8f3c44_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_quick_actions"));
+        $__internal_1c4e81adff5e29a9b7c5bd9626e2885c155844b83ce802621882d879560e315a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1c4e81adff5e29a9b7c5bd9626e2885c155844b83ce802621882d879560e315a->enter($__internal_1c4e81adff5e29a9b7c5bd9626e2885c155844b83ce802621882d879560e315a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_quick_actions"));
 
-        // line 139
+        // line 135
         echo "    <div id=\"reportrange\" style=\"background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; font-size: 0.8em; font-weight: normal;\">        
         <i class=\"glyphicon glyphicon-calendar fa fa-calendar\"></i>&nbsp;
         <span>";
-        // line 141
+        // line 137
         echo twig_escape_filter($this->env, (isset($context["start"]) ? $context["start"] : $this->getContext($context, "start")), "html", null, true);
         echo " - ";
         echo twig_escape_filter($this->env, (isset($context["end"]) ? $context["end"] : $this->getContext($context, "end")), "html", null, true);
@@ -242,7 +238,7 @@ class __TwigTemplate_6f1ffd01768c31d7b34437881eb7d2f2a91e40cc3cb9d58a588c4558c7a
     </div>
 ";
         
-        $__internal_d2b1c48cad4efa91ee817e401e89d16d8ebfa10c94b3bfc6234b495eec8f3c44->leave($__internal_d2b1c48cad4efa91ee817e401e89d16d8ebfa10c94b3bfc6234b495eec8f3c44_prof);
+        $__internal_1c4e81adff5e29a9b7c5bd9626e2885c155844b83ce802621882d879560e315a->leave($__internal_1c4e81adff5e29a9b7c5bd9626e2885c155844b83ce802621882d879560e315a_prof);
 
     }
 
@@ -258,7 +254,7 @@ class __TwigTemplate_6f1ffd01768c31d7b34437881eb7d2f2a91e40cc3cb9d58a588c4558c7a
 
     public function getDebugInfo()
     {
-        return array (  238 => 141,  234 => 139,  228 => 138,  216 => 136,  198 => 124,  125 => 54,  121 => 53,  116 => 51,  112 => 50,  107 => 49,  101 => 48,  63 => 5,  58 => 4,  52 => 3,  45 => 1,  42 => 45,  40 => 44,  37 => 41,  35 => 40,  33 => 38,  31 => 37,  11 => 1,);
+        return array (  234 => 137,  230 => 135,  224 => 134,  212 => 132,  194 => 120,  125 => 54,  121 => 53,  116 => 51,  112 => 50,  107 => 49,  101 => 48,  63 => 5,  58 => 4,  52 => 3,  45 => 1,  42 => 45,  40 => 44,  37 => 41,  35 => 40,  33 => 38,  31 => 37,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -390,10 +386,6 @@ class __TwigTemplate_6f1ffd01768c31d7b34437881eb7d2f2a91e40cc3cb9d58a588c4558c7a
             }, cb);
 
             \$('#reportrange').on('apply.daterangepicker', function(event, picker) {
-<<<<<<< HEAD
-                
-=======
->>>>>>> cc644fd6863050836a017ae1002dcefac599ada7
                 var url = \"{{ app.request.requestUri | split('?') | first }}\" + \"?\";
                 url += \"from=\" + picker.startDate.format(\"DD/MM/YYYY\");
                 url += \"&to=\" + picker.endDate.format(\"DD/MM/YYYY\");

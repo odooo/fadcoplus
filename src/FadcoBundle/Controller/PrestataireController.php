@@ -365,13 +365,69 @@ class PrestataireController extends BaseController
                $prenom = $distributeur->getPrenom();
            }
         }
+
+    
+
+        $from = $request->query->get('from', date('d/m/Y'));
+        $to = $request->query->get('to', date('d/m/Y'));
+
+        $ddi = \DateTime::createFromFormat('d/m/Y', $from);
+        $dfi = \DateTime::createFromFormat('d/m/Y', $to);
+        
+        $dd = $ddi->format('Y-m-d 00:00:00');
+        $df = $dfi->format('Y-m-d 23:59:59');
+
+        $data = array();
+        
+        $data['nbrereabonnementdirect'] = $this->nbreReabonnementDirect($dd, $df);
+        $data['nbreprestation'] = $this->nbrePrestation($dd, $df);
+
         return $this->render('FadcoBundle:Prestataire:main-page.html.twig', array(
             'from' => $from, 
             'to' => $to, 
             'type' => $type,
             'nom' => $nom,
-            'prenom' => $prenom
+            'prenom' => $prenom,
+            'data' => $data
         ));
+    }
+
+    public function nbreReabonnementDirect($dd, $df) 
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $nbre = 0;
+
+        $reabos = $em->getRepository('FadcoBundle:Reabonnement')->getNombre($dd, $df);
+
+        if($this->getUser()->getType() == "distributeur"){
+            foreach ($reabos as $value) {
+                if($value->getDistributeur() == $this->getUser()) $nbre++;
+            }
+        }else{
+            $nbre = count($reabos);
+        }
+
+        return $nbre;
+    }
+
+    public function nbrePrestation($dd, $df) 
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $nbre = 0;
+
+        $repairs = $em->getRepository('FadcoBundle:Repair')->getNombre($dd, $df);
+
+        if($this->getUser()->getType() == "distributeur"){
+            foreach ($repairs as $value) {
+                if($value->getDistributeur() == $this->getUser()) $nbre++;
+            }
+        }else{
+            $nbre = count($repairs);
+        }
+
+        return $nbre;
     }
 
     public function changeAction(){

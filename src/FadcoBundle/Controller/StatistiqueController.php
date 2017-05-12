@@ -19,6 +19,9 @@ class StatistiqueController extends Controller
         $startDate = \DateTime::createFromFormat('d/m/Y', $startDate);
         $endDate = \DateTime::createFromFormat('d/m/Y', $endDate);
 
+        $startDate = $startDate->format('Y-m-d 00:00:00');
+        $endDate = $endDate->format('Y-m-d 23:59:59');
+
         $requetesAbonne = $em->createQuery("SELECT COUNT(r.id) AS nbr, r.formule FROM FadcoBundle:Reabonnement r 
         WHERE r.date >= :startDate AND r.date <= :endDate GROUP BY r.formule");
         $requetesAbonne->setParameters(array('startDate' => $startDate,'endDate' => $endDate));
@@ -62,6 +65,9 @@ class StatistiqueController extends Controller
         $startDate = \DateTime::createFromFormat('d/m/Y', $startDate);
         $endDate = \DateTime::createFromFormat('d/m/Y', $endDate);
 
+        $startDate = $startDate->format('Y-m-d 00:00:00');
+        $endDate = $endDate->format('Y-m-d 23:59:59');
+
         $sql = "";
         $param = array();
 
@@ -81,10 +87,10 @@ class StatistiqueController extends Controller
 
         if($nom && $prenom)
         {
-            $sql = "SELECT SUM(r.montant) AS Total, d.nom FROM FadcoBundle:Reabonnement r 
-            LEFT JOIN r.distributeur d WHERE d.nom LIKE :nom AND d.prenom LIKE :prenom GROUP BY d.nom";
+            $sql = "SELECT SUM(r.montant) AS Total, d.prenom, d.date, d.nom FROM FadcoBundle:Reabonnement r 
+            LEFT JOIN r.distributeur d WHERE r.date >= :startDate AND r.date <= :endDate AND d.nom LIKE :nom AND d.prenom LIKE :prenom GROUP BY d.nom ";
 
-            $param = array('nom' => '%'.$nom.'%', 'prenom' => '%'.$prenom.'%');
+            $param = array('nom' => '%'.$nom.'%', 'prenom' => '%'.$prenom.'%', 'startDate' => $startDate, 'endDate' => $endDate);
 
             $byDistr = true;
         }
@@ -99,6 +105,8 @@ class StatistiqueController extends Controller
         {
             $resultsVenteTotal = null;
         }
+
+        //die(var_dump($resultsVenteTotal));
 
         return $this->render('FadcoBundle:Statistique:count.html.twig', array(
             'entities' => $resultsVenteTotal,
