@@ -2,7 +2,7 @@
 
     {% set startDate = startDate | date('Y-m-d') %}
     {% set endDate = endDate | date('Y-m-d') %}
-    <div style="display: inline-block;">
+    {#<div style="display: inline-block;">
         <form name="form_distributeur" method="post" action="{{ path('main_page_distributeur',{ 'type': type }) }}">
             <select name="form_distributeur[distributeur]" class="select2 form-control">
                 <option>Sélectionner un distributeur</option>
@@ -16,11 +16,11 @@
             </select>
             <button type="submit" class="btn btn-success btn-xs" style="height: 25px;"><i class="fa fa-search"></i></button>
         </form>
-        {#<div id="reportrange-1" style="display: inline; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; font-size: 0.8em; font-weight: normal;">        
+        <div id="reportrange-1" style="display: inline; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%; font-size: 0.8em; font-weight: normal;">        
             <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
             <span>{{ start }} - {{ end }}</span> <b class="caret"></b>
-        </div>#}
-    </div>
+        </div>
+    </div>#}
     {% if nom is defined and nom is null and nom is empty %}
         {% set nom = 'nom' %}
     {% endif %}
@@ -38,6 +38,7 @@
                     <th style="text-align: center;">Nom</th>
                     {% if byDate == true %}
                         <th style="text-align: center;">Prenom</th>
+                        <th style="text-align: center;">Opération</th>
                         {#<th style="text-align: center;">Abonne</th>
                         <th style="text-align: center;">Date</th>#}
                     {% endif %}
@@ -50,10 +51,11 @@
                         <td style="text-align: center;">{{ entity.nom }}</td>
                         {% if byDate == true %}
                         <td style="text-align: center;">{{ entity.prenom }}</td>
+                        <td style="text-align: center;">{% if entity.Total1 is defined %}Réabonnement{% elseif entity.Total2 is defined %}Complément{% endif %}</td>
                         {#<td style="text-align: center;">{{ entity.abonne }}</td>
                         <td style="text-align: center;">{{ entity.date|date('d/m/Y') }}</td>#}
                         {% endif %}
-                        <td style="text-align: center;">{{ entity.Total }}</td>
+                        <td style="text-align: center;">{% if entity.Total1 is defined %}{{ entity.Total1 }}{% elseif entity.Total2 is defined %}{{ entity.Total2 }}{% endif %}</td>
                     </tr>
                 {% endfor %}
             </tbody>

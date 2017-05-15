@@ -1,0 +1,174 @@
+{% extends "FadcoBundle:Default:menu.html.twig" %}
+
+{% block contentHeader %}{% endblock %}
+{% block title %}FADCO+ : compléments{% endblock %}
+{% block content%}
+    <h4>Liste des compléménts sur réabonnements directs</h4>
+
+    <section class="content">
+        
+        {% if app.user.type == "distributeur" %}
+            <div class="box box-primary">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div align="right">
+                            <a href="{{ path('fadco_espace_distributeur_reabo_complement_new') }}"><button type="button" class="btn btn-success">Effectuer un complément </button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:black;">
+                    <!-- Info boxes -->
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box-content" style="background-color:black;">
+                                <span><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:80px; heigth:5px;" alt="edgar"/></span>
+                                
+                                    <span style="color:green;" class="info-box-number">{{ app.user.account|number_format(0,'.',' ') }} F</span>
+                                    <span class="info-box-text" style="color:white;">({{ app.user.name }})</span>
+                                    {#<span class="info-box-text" style="color:white;">777777662({{ app.user.username }})</span>
+                                    <span class="info-box-text" style="color:white;">7878787812({{ app.user.username }})</span>#}
+                                
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </div>
+        {% endif %}
+
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body table-responsive">
+                <table id="lstdevis" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center;">#</th>
+                            <th style="text-align:center;">Abonné</th>
+                            <th style="text-align:center;">Offre</th>
+                            <th style="text-align:center;">Complément vers</th>
+                            <th style="text-align:center;">Montant</th>
+                            <th style="text-align:center;">Date complément</th>
+                            <th style="text-align:center;">Date échéance</th>
+                            {% if app.user.type == "admin" or app.user.type == "super_admin" %}
+                                <th style="text-align:center;">Distributeur</th>
+                                <th style="text-align:center;">Status</th>
+                            {% endif %}
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set c = 1 %}
+                    {% for complement in complements %}
+                        <tr>
+                            <td style="text-align:center;">{{ c }}</td>
+                            <td style="text-align:center;">
+                                {% if complement.reabo %}
+                                    {{ complement.reabo.abonne }}
+                                {% endif %}
+                            </td>
+                            <td style="text-align:center;">
+                                {% if complement.reabo %}
+                                    {{ complement.reabo.formule }}{% if complement.reabo.options %} / {{ complement.reabo.options }} {% endif%}
+                                {% endif %}
+                            </td>
+                            <td style="text-align:center;">
+                                {{ complement.formule }}{% if complement.options %} / {{ complement.options }}{% endif %}
+                            </td>
+                            <td style="text-align:center;">{{ complement.montant|number_format(0,'.',' ') }}</td>
+                            <td style="text-align:center;">{{ complement.date|date('d/m/Y') }}</td>
+                            <td style="text-align:center;">{% if complement.dateEcheance %}{{ complement.dateEcheance|date('d/m/Y') }}{% endif %}</td>
+                            {% if app.user.type == "admin" or app.user.type == "super_admin" %}
+                                <td style="text-align:center;">
+                                    {% if complement.distributeur %}
+                                        {{ complement.distributeur.name }}
+                                    {% endif %}
+                                </td>
+                                <td style="text-align:center;">
+                                    {% if complement.dateEcheance %}
+                                        <span class="btn btn-info btn-xs">Validé</span>
+                                    {% else %}
+                                        <span class="btn btn-danger btn-xs">En attente</span>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                            
+                                <td>
+                                    <div class="input-group btn">
+                                        <button type="button" class="btn btn-success btn-xs   dropdown-toggle pull-right" data-toggle="dropdown">
+                                            Actions  <span class="fa fa-caret-down"></span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <a href="{{ path('fadco_espace_distributeur_reabo_complement_show', {'id': complement.id}) }}">Afficher</a>
+                                            </li>                                                                    
+                                        </ul>
+                                    </div>
+                                </td>
+                            
+                        </tr>
+                        {% set c = c + 1 %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div> <!-- End div box-body -->
+        </div> <!-- End div box-primary -->
+
+        {% if app.user.type == "distributeur" %}
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div align="left">
+                        <a href="{{ path('fadco_espace_distributeur_reabo_complement_new') }}"><button type="button" class="btn btn-success">Effectuer un complément </button></a>
+                    </div>
+                </div>
+            </div> <!-- End div box-primary -->
+        {% endif %}
+
+    </section> 
+
+        <div id='popupViewModal' class='modal fade' role='dialog'>
+        <div class='modal-dialog'>
+            <div class='modal-content modal-lg'>
+                <div class='modal-header'>
+                    <button type='button' class='close'
+                            data-dismiss='modal'>&times;</button>
+                </div>
+                <div id='popupViewContentBox'></div>
+                <div class="modal-footer">
+                    <div class="input-group pull-right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="formModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div id = "formContentBox"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{asset('bundles/FadcoBundle//plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('bundles/FadcoBundle/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+
+    <script>
+        $(function () {});
+    </script>
+
+
+{% endblock %}

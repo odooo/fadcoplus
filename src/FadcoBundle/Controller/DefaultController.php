@@ -74,7 +74,7 @@ class DefaultController extends Controller
             return $this->render('FadcoBundle:Distributeur:index.html.twig', $data);
         }
 
-        if($this->getUser()->getType() == "admin"){
+        if($this->getUser()->getType() == "admin" or $this->getUser()->getType() == "super_admin"){
 
             $from = $request->query->get('from', date('d/m/Y'));
             $to = $request->query->get('to', date('d/m/Y'));

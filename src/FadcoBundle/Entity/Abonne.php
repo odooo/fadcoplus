@@ -178,4 +178,33 @@ class Abonne
     {
         return $this->date;
     }
+    /**
+     * @var string
+     */
+    private $numeroAbonne;
+
+
+    /**
+     * Set numeroAbonne
+     *
+     * @param string $numeroAbonne
+     *
+     * @return Abonne
+     */
+    public function setNumeroAbonne($numeroAbonne)
+    {
+        $this->numeroAbonne = $numeroAbonne;
+    
+        return $this;
+    }
+
+    /**
+     * Get numeroAbonne
+     *
+     * @return string
+     */
+    public function getNumeroAbonne()
+    {
+        return $this->numeroAbonne;
+    }
 }

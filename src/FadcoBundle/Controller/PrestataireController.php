@@ -38,14 +38,14 @@ class PrestataireController extends BaseController
 
     /**
      * Lists all prestataire entities.
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('FadcoBundle:Prestataire')->findBy(array(
-            'type' => 'distributeur'
+            'type' => array('distributeur', 'admin')
         ));
 
         return $this->render('FadcoBundle:Prestataire:index.html.twig', array(
@@ -79,7 +79,7 @@ class PrestataireController extends BaseController
 	
     /**
      * Lists all prestataire entities.
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
      */
 	public function voirAction($id)
     {
@@ -100,7 +100,7 @@ class PrestataireController extends BaseController
     
     /**
      * Lists all prestataire entities.
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
      */
     public function activeAction($id)
     {
@@ -121,7 +121,7 @@ class PrestataireController extends BaseController
 
     /**
      * Lists all prestataire entities.
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
      */
     public function desactiveAction($id)
     {
@@ -142,7 +142,7 @@ class PrestataireController extends BaseController
 
     /**
      * Lists all prestataire entities.
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
      */
     public function updateAction(Request $request, $id)
     {
@@ -268,7 +268,6 @@ class PrestataireController extends BaseController
                 'form'   => $form->createView(),
             ));
         }
-
     }
 
     /**
@@ -540,7 +539,7 @@ class PrestataireController extends BaseController
 
     /**
      * Lists all prestataire entities.
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
      */
     public function changeRigthAction(Request  $request,$option,$userId){
 
@@ -632,7 +631,7 @@ class PrestataireController extends BaseController
 
     /**
      * Lists all prestataire entities.
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
      */
     public function getPrestataireEnabledAction(){
         $em = $this->getDoctrine()->getManager();

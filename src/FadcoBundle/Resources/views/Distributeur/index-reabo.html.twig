@@ -54,15 +54,20 @@
                         <tr>
                             <th style="text-align:center;">#</th>
                             <th style="text-align:center;">Abonné</th>
+                            <th style="text-align:center;">N° Abonné</th>
                             <th style="text-align:center;">N° carte</th>
                             <th style="text-align:center;">N° mobile</th>
                             <th style="text-align:center;">Formule</th>
                             <th style="text-align:center;">Durée</th>
                             <th style="text-align:center;">Option</th>
                             <th style="text-align:center;">Montant</th>
-                            <th style="text-align:center;">Date</th>
-                            <th style="text-align:center;">Distributeur</th>
-                            {% if app.user.type == "distributeur" %}<th>Actions</th>{% endif %}
+                            <th style="text-align:center;">Date réabo.</th>
+                            <th style="text-align:center;">Date échéance</th>
+                            {% if app.user.type == "admin" or app.user.type == "super_admin" %}
+                                <th style="text-align:center;">Distributeur</th>
+                                <th style="text-align:center;">Status</th>
+                            {% endif %}
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,6 +76,7 @@
                         <tr>
                             <td style="text-align:center;">{{ c }}</td>
                             <td style="text-align:center;">{{ reabo.abonne }}</td>
+                            <td style="text-align:center;">{{ reabo.numeroAbonne }}</td>
                             <td style="text-align:center;">{{ reabo.numeroCarte }}</td>
                             <td style="text-align:center;">{{ reabo.contact }}</td>
                             <td style="text-align:center;">{{ reabo.formule }}</td>
@@ -78,8 +84,20 @@
                             <td style="text-align:center;">{{ reabo.options }}</td>
                             <td style="text-align:center;">{{ reabo.montant|number_format(0,'.',' ') }}</td>
                             <td style="text-align:center;">{{ reabo.date|date('d/m/Y') }}</td>
-                            <td>{% if reabo.distributeur %}{{ reabo.distributeur.name }}{% endif %}</td>
-                            {% if app.user.type == "distributeur" %}
+                            <td style="text-align:center;">{% if reabo.dateEcheance %}{{ reabo.dateEcheance|date('d/m/Y') }}{% endif %}</td>
+                            {% if app.user.type == "admin" or app.user.type == "super_admin" %}
+                                <td style="text-align:center;">{% if reabo.distributeur %}
+                                        {{ reabo.distributeur.name }}
+                                    {% endif %}
+                                </td>
+                                <td style="text-align:center;">{% if reabo.dateEcheance %}
+                                        <span class="btn btn-info btn-xs">Validé</span>
+                                    {% else %}
+                                        <span class="btn btn-danger btn-xs">En attente</span>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                            
                                 <td>
                                     <div class="input-group btn">
                                         <button type="button" class="btn btn-success btn-xs   dropdown-toggle pull-right" data-toggle="dropdown">
@@ -87,12 +105,18 @@
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li>
-                                                <a href="{{ path('fadco_espace_distributeur_reabo_renew', {'id': reabo.id}) }}">Renouveler cette offre</a>
-                                            </li>                                        
+                                                <a href="{{ path('fadco_espace_distributeur_reabo_show', {'id': reabo.id}) }}">Afficher</a>
+                                            </li> 
+                                            {% if app.user.type == "distributeur" %}
+                                                <li>
+                                                    <a href="{{ path('fadco_espace_distributeur_reabo_renew', {'id': reabo.id}) }}">Renouveler cette offre</a>
+                                                </li>
+                                            {% endif %}
+                                                                      
                                         </ul>
                                     </div>
                                 </td>
-                            {% endif %}
+                            
                         </tr>
                         {% set c = c + 1 %}
                     {% endfor %}

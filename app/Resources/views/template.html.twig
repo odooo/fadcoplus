@@ -45,11 +45,9 @@
         <header class="main-header">
             <a href="{{ path('fadco_home') }}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:50px;"
-                                         class="img-circle" alt="edgar"/></span>
+            <span class="logo-mini"><img src="{{ asset('bundles/FadcoBundle/fadcoplus1.jpg') }}" style="width:50px;" class="img-circle" alt="edgar"/></span>
                 <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><img src="{{ asset('bundles/FadcoBundle/fadcoplus.jpg') }}" style="width:70px;"
-                                       class="img-circle" alt="edgar"/>FADCO+</span>
+            <span class="logo-lg"><img src="{{ asset('bundles/FadcoBundle/fadcoplus1.jpg') }}" style="width:70px;" class="img-circle" alt="edgar"/>FADCO+</span>
             </a>
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -79,7 +77,7 @@
                                     {% block userImg %}
                                         {% if app.user %}
                                             <img src=" {% if app.user.photo is empty %} {{ asset('bundles/FadcoBundle/images/avatar.png') }} {% else %} {{ asset( app.user.WebPhoto ) }} {% endif %}"
-                                                 class="user-image" alt="User Image">
+                                                 class="user-image" alt="edgar">
                                         {% endif %}
                                     {% endblock %}
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
@@ -101,7 +99,7 @@
                                         {#% use  'dash.html.twig' with userImg as userImag2 %#}
                                         {% if app.user %}
                                             <img src="{% if app.user.photo is empty %} {{ asset('bundles/FadcoBundle/images/avatar.png') }} {% else %} {{ asset( app.user.WebPhoto ) }} {% endif %}"
-                                                 class="img-circle" alt="User Image">
+                                                 class="img-circle" alt="edgar">
                                         {% endif %}
 
                                         <p>

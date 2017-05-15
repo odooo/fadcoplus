@@ -27,6 +27,45 @@ class Reabonnement
      */
     private $montant;
 
+    /**
+     * @var string
+     */
+    private $numeroCarte;
+
+    /**
+     * @var string
+     */
+    private $contact;
+
+    /**
+     * @var \DateTime
+     */
+    private $date;
+
+    /**
+     * @var string
+     */
+    private $options;
+
+    /**
+     * @var string
+     */
+    private $abonne;
+
+    /**
+     * @var \FadcoBundle\Entity\Prestataire
+     */
+    private $distributeur;
+
+    /**
+     * @var \FadcoBundle\Entity\Prestataire
+     */
+    private $valideur;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateEcheance;
 
 
     public function __construct()
@@ -91,11 +130,6 @@ class Reabonnement
     {
         return $this->duree;
     }
-    /**
-     * @var string
-     */
-    private $options;
-
 
     /**
      * Set options
@@ -145,11 +179,6 @@ class Reabonnement
     {
         return $this->montant;
     }
-    /**
-     * @var string
-     */
-    private $abonne;
-
 
     /**
      * Set abonne
@@ -174,16 +203,6 @@ class Reabonnement
     {
         return $this->abonne;
     }
-    /**
-     * @var string
-     */
-    private $numeroCarte;
-
-    /**
-     * @var string
-     */
-    private $contact;
-
 
     /**
      * Set numeroCarte
@@ -232,16 +251,6 @@ class Reabonnement
     {
         return $this->contact;
     }
-    /**
-     * @var \DateTime
-     */
-    private $date;
-
-    /**
-     * @var \FadcoBundle\Entity\Prestataire
-     */
-    private $distributeur;
-
 
     /**
      * Set date
@@ -289,5 +298,82 @@ class Reabonnement
     public function getDistributeur()
     {
         return $this->distributeur;
+    }
+
+    /**
+     * Set valideur
+     *
+     * @param \FadcoBundle\Entity\Prestataire $valideur
+     *
+     * @return Reabonnement
+     */
+    public function setValideur(\FadcoBundle\Entity\Prestataire $valideur = null)
+    {
+        $this->valideur = $valideur;
+    
+        return $this;
+    }
+
+    /**
+     * Get valideur
+     *
+     * @return \FadcoBundle\Entity\Prestataire
+     */
+    public function getValideur()
+    {
+        return $this->valideur;
+    }
+
+    /**
+     * Set dateEcheance
+     *
+     * @param \DateTime $dateEcheance
+     *
+     * @return Reabonnement
+     */
+    public function setDateEcheance($dateEcheance)
+    {
+        $this->dateEcheance = $dateEcheance;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateEcheance
+     *
+     * @return \DateTime
+     */
+    public function getDateEcheance()
+    {
+        return $this->dateEcheance;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $dateValide;
+
+
+    /**
+     * Set dateValide
+     *
+     * @param \DateTime $dateValide
+     *
+     * @return Reabonnement
+     */
+    public function setDateValide($dateValide)
+    {
+        $this->dateValide = $dateValide;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateValide
+     *
+     * @return \DateTime
+     */
+    public function getDateValide()
+    {
+        return $this->dateValide;
     }
 }

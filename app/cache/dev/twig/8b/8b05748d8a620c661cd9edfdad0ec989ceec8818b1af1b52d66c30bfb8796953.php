@@ -21,20 +21,20 @@ class __TwigTemplate_a777bf08d8a7d7882c6bfd9e6a8c087f9f6988e43963bb0a490c9851d34
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e89c24dd42f5102b54d05ca159103480d7ec09ca7da28452cf3a04dd60e3092c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e89c24dd42f5102b54d05ca159103480d7ec09ca7da28452cf3a04dd60e3092c->enter($__internal_e89c24dd42f5102b54d05ca159103480d7ec09ca7da28452cf3a04dd60e3092c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@FOSUser/Security/login.html.twig"));
+        $__internal_849a87e2d3b91bce7f6a4fb4400f5b74c970277fe74a2ea6dfd431dca1bb8168 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_849a87e2d3b91bce7f6a4fb4400f5b74c970277fe74a2ea6dfd431dca1bb8168->enter($__internal_849a87e2d3b91bce7f6a4fb4400f5b74c970277fe74a2ea6dfd431dca1bb8168_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@FOSUser/Security/login.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_e89c24dd42f5102b54d05ca159103480d7ec09ca7da28452cf3a04dd60e3092c->leave($__internal_e89c24dd42f5102b54d05ca159103480d7ec09ca7da28452cf3a04dd60e3092c_prof);
+        $__internal_849a87e2d3b91bce7f6a4fb4400f5b74c970277fe74a2ea6dfd431dca1bb8168->leave($__internal_849a87e2d3b91bce7f6a4fb4400f5b74c970277fe74a2ea6dfd431dca1bb8168_prof);
 
     }
 
     // line 5
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_6cfa0d24be004d23e1753280c1bbff4bbda80bf19ca13ab82a871efddf73dc6f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_6cfa0d24be004d23e1753280c1bbff4bbda80bf19ca13ab82a871efddf73dc6f->enter($__internal_6cfa0d24be004d23e1753280c1bbff4bbda80bf19ca13ab82a871efddf73dc6f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_05b8e6b8b2ed5aff700829584263fe8e41b07d2e37003af3288371ea090215d0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_05b8e6b8b2ed5aff700829584263fe8e41b07d2e37003af3288371ea090215d0->enter($__internal_05b8e6b8b2ed5aff700829584263fe8e41b07d2e37003af3288371ea090215d0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 6
         echo "
@@ -50,6 +50,8 @@ class __TwigTemplate_a777bf08d8a7d7882c6bfd9e6a8c087f9f6988e43963bb0a490c9851d34
                 <center><img src=\"";
         // line 13
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/fadcoplus.jpg"), "html", null, true);
+        echo "\" alt=\"Avatar\"  class=\"img-circle\" width=\"150\" height=\"150\"/><img src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/canal.jpg"), "html", null, true);
         echo "\" alt=\"Avatar\"  class=\"img-circle\" width=\"150\" height=\"150\"/> </center>
                 <p class=\"login-box-msg\"><br/>CONNEXION</p>
 
@@ -142,7 +144,7 @@ class __TwigTemplate_a777bf08d8a7d7882c6bfd9e6a8c087f9f6988e43963bb0a490c9851d34
 
 ";
         
-        $__internal_6cfa0d24be004d23e1753280c1bbff4bbda80bf19ca13ab82a871efddf73dc6f->leave($__internal_6cfa0d24be004d23e1753280c1bbff4bbda80bf19ca13ab82a871efddf73dc6f_prof);
+        $__internal_05b8e6b8b2ed5aff700829584263fe8e41b07d2e37003af3288371ea090215d0->leave($__internal_05b8e6b8b2ed5aff700829584263fe8e41b07d2e37003af3288371ea090215d0_prof);
 
     }
 
@@ -158,7 +160,7 @@ class __TwigTemplate_a777bf08d8a7d7882c6bfd9e6a8c087f9f6988e43963bb0a490c9851d34
 
     public function getDebugInfo()
     {
-        return array (  130 => 68,  125 => 66,  120 => 64,  110 => 56,  79 => 26,  75 => 24,  69 => 21,  65 => 19,  63 => 18,  58 => 16,  52 => 13,  46 => 10,  40 => 6,  34 => 5,  11 => 1,);
+        return array (  132 => 68,  127 => 66,  122 => 64,  112 => 56,  81 => 26,  77 => 24,  71 => 21,  67 => 19,  65 => 18,  60 => 16,  52 => 13,  46 => 10,  40 => 6,  34 => 5,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -183,7 +185,7 @@ class __TwigTemplate_a777bf08d8a7d7882c6bfd9e6a8c087f9f6988e43963bb0a490c9851d34
                 <a href={{ path(\"fos_user_security_login\") }}><b>FADCO+</b></a>
             </div><!-- /.login-logo -->
             <div class=\"login-box-body\">
-                <center><img src=\"{{ asset('bundles/FadcoBundle/fadcoplus.jpg')}}\" alt=\"Avatar\"  class=\"img-circle\" width=\"150\" height=\"150\"/> </center>
+                <center><img src=\"{{ asset('bundles/FadcoBundle/fadcoplus.jpg')}}\" alt=\"Avatar\"  class=\"img-circle\" width=\"150\" height=\"150\"/><img src=\"{{ asset('bundles/FadcoBundle/canal.jpg')}}\" alt=\"Avatar\"  class=\"img-circle\" width=\"150\" height=\"150\"/> </center>
                 <p class=\"login-box-msg\"><br/>CONNEXION</p>
 
                 <form action=\"{{ path(\"fos_user_security_check\") }}\" method=\"post\">

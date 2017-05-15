@@ -190,6 +190,22 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
                 not_fadco_espace_distributeur_reabo_new:
 
+                // fadco_espace_distributeur_reabo_show
+                if (preg_match('#^/distributeur/(?P<id>[^/]++)/consulter\\-reabonnement$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_espace_distributeur_reabo_show')), array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::showReaboAction',));
+                }
+
+                // fadco_espace_distributeur_reabo_valider
+                if (preg_match('#^/distributeur/(?P<id>[^/]++)/valider\\-reabonnement$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fadco_espace_distributeur_reabo_valider;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_espace_distributeur_reabo_valider')), array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::validerReaboAction',));
+                }
+                not_fadco_espace_distributeur_reabo_valider:
+
                 // fadco_espace_distributeur_reabo_new_confirm
                 if ($pathinfo === '/distributeur/confirm-reabonnement') {
                     return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboConfirmAction',  '_route' => 'fadco_espace_distributeur_reabo_new_confirm',);
@@ -234,6 +250,48 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     not_fadco_espace_distributeur_repair_new_client:
 
                 }
+
+                // fadco_espace_distributeur_reabo_complement
+                if ($pathinfo === '/distributeur/liste-complements') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::indexReaboComplementAction',  '_route' => 'fadco_espace_distributeur_reabo_complement',);
+                }
+
+                // fadco_espace_distributeur_reabo_complement_new
+                if ($pathinfo === '/distributeur/nouveau-complement') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fadco_espace_distributeur_reabo_complement_new;
+                    }
+
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboComplementAction',  '_route' => 'fadco_espace_distributeur_reabo_complement_new',);
+                }
+                not_fadco_espace_distributeur_reabo_complement_new:
+
+                // fadco_espace_distributeur_reabo_complement_show
+                if (preg_match('#^/distributeur/(?P<id>[^/]++)/consulter\\-complement$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_espace_distributeur_reabo_complement_show')), array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::showReaboComplementAction',));
+                }
+
+                // fadco_espace_distributeur_reabo_ancien_reabo_infos
+                if ($pathinfo === '/distributeur/infos-ancien-reabo') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::ancienReaboAction',  '_route' => 'fadco_espace_distributeur_reabo_ancien_reabo_infos',);
+                }
+
+                // fadco_espace_distributeur_reabo_complement_new_confirm
+                if ($pathinfo === '/distributeur/confirm-complement') {
+                    return array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::newReaboComplementConfirmAction',  '_route' => 'fadco_espace_distributeur_reabo_complement_new_confirm',);
+                }
+
+                // fadco_espace_distributeur_reabo_complement_valider
+                if (preg_match('#^/distributeur/(?P<id>[^/]++)/valider\\-complement$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fadco_espace_distributeur_reabo_complement_valider;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fadco_espace_distributeur_reabo_complement_valider')), array (  '_controller' => 'FadcoBundle\\Controller\\DistributeurController::validerReaboComplementAction',));
+                }
+                not_fadco_espace_distributeur_reabo_complement_valider:
 
             }
 

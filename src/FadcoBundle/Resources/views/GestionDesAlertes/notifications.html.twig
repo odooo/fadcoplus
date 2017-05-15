@@ -17,7 +17,7 @@
                     <a class="alerte-lien" alerte-lu="{{ path('alertes_lu',{ 'id':entity.IdAlerte})}}" alerte-id="{{entity.IdAlerte}}" href="{{app.request.getBaseURL()~entity.LienAlerte }}">
                       <div class="alerte-image pull-left">
                         <!-- User Image -->
-                       <img style=" max-width: 100%; max-height: 100%;" src=" {% if entity.Prestataire  %} {% if entity.Prestataire.photo is empty %}{{ asset('bundles/GSPBundle/images/avatar.png') }} {% else %} {{asset( entity.Prestataire.WebPhoto )}} {% endif %}{% endif %}" class="user-image img-circle" alt="User Image">
+                       <img style=" max-width: 100%; max-height: 100%;" src=" {% if entity.Prestataire  %} {% if entity.Prestataire.photo is empty %}{{ asset('bundles/FadcoBundle/images/avatar.png') }} {% else %} {{asset( entity.Prestataire.WebPhoto )}} {% endif %}{% endif %}" class="user-image img-circle" alt="User Image">
                       </div>
                       <!-- Message title and timestamp -->
                       <h4 class="alerte-titre">

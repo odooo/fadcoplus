@@ -65,44 +65,65 @@
                                 <select name="fadcobundle_distributeur_new_reabo[abonnea]" id="fadcobundle_distributeur_new_reabo_abonnea" class="select2 form-control" style="width: 100%;">
                                     <option value="">--</option>
                                     {% for abonne in abonnes %}
-                                        <option value="{{ abonne.id }}">{{ abonne.name }}</option>
+                                        <option value="{{ abonne.id }}">{% if abonne.nom or abonne.prenom %}{{ abonne.name }}{% endif %} {% if abonne.numeroCarte %} -- {{ abonne.numeroCarte }}{% endif %} {% if abonne.numeroAbonne %} -- {{ abonne.numeroAbonne }}{% endif %}</option>
                                     {% endfor %}
                                 </select>
                             </div>
 
                             <span>&nbsp;</span>
+
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class=""></i>N° abonné : </label>
+                                <input value="" id="fadcobundle_distributeur_new_reabo_numAbonne" readonly class="form-control"/>
+                            </div>
+
+                            <span>&nbsp;</span>
         					
         			        <div class="input-group">
-                                <label class="input-group-addon"><i class=""></i>Numéro carte : </label>
+                                <label class="input-group-addon"><i class=""></i>N° carte : </label>
                                 <input maxlength="14" minlength="14"  value="" id="fadcobundle_distributeur_new_reabo_carte" data-url = "{{ path('fadco_espace_distributeur_reabo_ancien_abonne_infos') }}" readonly class="form-control"/>
                             </div>
 
                             <span>&nbsp;</span>
 
                             <div class="input-group">
-                                <label class="input-group-addon"><i class=""></i>Numéro téléphone : </label>
+                                <label class="input-group-addon"><i class=""></i>N° téléphone : </label>
                                 <input value="" id="fadcobundle_distributeur_new_reabo_contact" readonly class="form-control"/>
                             </div>
                         </div>
 
                         <div class="input-group" id="data" style="display:none">
                             <div class="input-group">
-                                <label class="input-group-addon"><i class=""></i>Abonné : </label>
-                                <input name="fadcobundle_distributeur_new_reabo[abonned]" class="form-control"/>
+                                <label class="input-group-addon"><i class=""></i>N° abonné : </label>
+                                <input name="fadcobundle_distributeur_new_reabo[numeroAbonne]" class="form-control"/>
                             </div>
 
                             <span>&nbsp;</span>
                             
                             <div class="input-group">
-                                <label class="input-group-addon"><i class=""></i>Numéro carte : </label>
+                                <label class="input-group-addon"><i class=""></i>N° carte : </label>
                                 <input maxlength="14" minlength="14" name="fadcobundle_distributeur_new_reabo[numeroCarte]" class="form-control"/>
+                            </div>
+
+                            <span>&nbsp;</span>
+                            
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class=""></i>Nom : </label>
+                                <input name="fadcobundle_distributeur_new_reabo[nom]" class="form-control"/>
+                            </div>
+
+                            <span>&nbsp;</span>
+                            
+                            <div class="input-group">
+                                <label class="input-group-addon"><i class=""></i>Prénom(s) : </label>
+                                <input name="fadcobundle_distributeur_new_reabo[prenom]" class="form-control"/>
                             </div>
 
                             <span>&nbsp;</span>
 
                             <div class="input-group">
-                                <label class="input-group-addon"><i class=""></i>Numéro téléphone<span style="color: red; margin-right: 2px;">*</span> : </label>
-                                <input maxlength="8" minlength="8" id="contact" name="fadcobundle_distributeur_new_reabo[contact]" class="form-control"/>
+                                <label class="input-group-addon"><i class=""></i>N° téléphone<span style="color: red; margin-right: 2px;">*</span> : </label>
+                                <input required maxlength="8" minlength="8" id="contact" name="fadcobundle_distributeur_new_reabo[contact]" class="form-control"/>
                             </div>
                         </div>
 
@@ -131,7 +152,7 @@
 
                             <div class="input-group">
                                 <label class="input-group-addon"><i class="control-label"></i>Durée : <span style="color: red; margin-right: 2px;"></span></label>
-                                <select name="fadcobundle_distributeur_new_reabo[duree]" class="select2 form-control" style="width: 100%;">
+                                <select required name="fadcobundle_distributeur_new_reabo[duree]" class="select2 form-control" style="width: 100%;">
                                     <option value="">--</option>
                                     <option value="1 mois">1 mois</option>
                                     <option value="3 mois">3 mois</option>
@@ -247,6 +268,7 @@
                         success: function(data, status){
                             $('#fadcobundle_distributeur_new_reabo_carte').val(data.numeroCarte);
                             $('#fadcobundle_distributeur_new_reabo_contact').val(data.contact);
+                            $('#fadcobundle_distributeur_new_reabo_numAbonne').val(data.numeroAbonne);
                         },
                         error: function(status){
                             console.log('erreur'); 

@@ -22,51 +22,51 @@ class __TwigTemplate_0613faf0a9985e9bb07ccc61a9f1b47d60f4a7acf3a3aa7e30904a6dd55
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0b58d3ea4792ec74d8479c14fa203b4326698939845a3c79645441327dacc2f2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_0b58d3ea4792ec74d8479c14fa203b4326698939845a3c79645441327dacc2f2->enter($__internal_0b58d3ea4792ec74d8479c14fa203b4326698939845a3c79645441327dacc2f2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Prestataire:main-page.html.twig"));
+        $__internal_2d054cdfb66101250099e6f4860927499a3173a1e73a4bb8fa4bb8ee8fcd11f0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_2d054cdfb66101250099e6f4860927499a3173a1e73a4bb8fa4bb8ee8fcd11f0->enter($__internal_2d054cdfb66101250099e6f4860927499a3173a1e73a4bb8fa4bb8ee8fcd11f0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Prestataire:main-page.html.twig"));
 
         // line 5
-        $context["__internal_5ef15ba1d047c0f634afe378bab3b3fb76eb3b11f41edb7be9782aa8580c6804"] = $this->loadTemplate("FadcoBundle:Distributeur:macros.html.twig", "FadcoBundle:Prestataire:main-page.html.twig", 5);
+        $context["__internal_f4d6c78f1b8052f7c38301792de1e283df4a3210c99c1db62a8148b2c6576c44"] = $this->loadTemplate("FadcoBundle:Distributeur:macros.html.twig", "FadcoBundle:Prestataire:main-page.html.twig", 5);
         // line 6
-        $context["__internal_1e8b77ff32361acef451ff1b11040d8dcd2a6a14e40bd6e9b1a50da8162457bd"] = $this->loadTemplate("FadcoBundle:Distributeur:macros.html.twig", "FadcoBundle:Prestataire:main-page.html.twig", 6);
+        $context["__internal_6a682384a447817cf8152996325d80cbf36cf319b649fefca519bb8858add142"] = $this->loadTemplate("FadcoBundle:Distributeur:macros.html.twig", "FadcoBundle:Prestataire:main-page.html.twig", 6);
         // line 7
-        $context["__internal_2d9f1a798bc406040604ad356a1f3a07051fea9b585c16041e3732a48f67aca9"] = $this->loadTemplate("FadcoBundle:Distributeur:macros.html.twig", "FadcoBundle:Prestataire:main-page.html.twig", 7);
+        $context["__internal_5cc53e6675bb026c2b148c101edcb3819b8970a5b04edc302ed0966c9079cc05"] = $this->loadTemplate("FadcoBundle:Distributeur:macros.html.twig", "FadcoBundle:Prestataire:main-page.html.twig", 7);
         // line 8
-        $context["__internal_a30a0d3999d161b568b472e7c95ff5cb471ae0083f3ab2d2c7a3daa7e1538b12"] = $this->loadTemplate("FadcoBundle:Distributeur:macros.html.twig", "FadcoBundle:Prestataire:main-page.html.twig", 8);
+        $context["__internal_9d22ece623713043267f59e76bca8b79ca78364cd2c0cb163ba7a50aad72fc0a"] = $this->loadTemplate("FadcoBundle:Distributeur:macros.html.twig", "FadcoBundle:Prestataire:main-page.html.twig", 8);
         // line 1
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_0b58d3ea4792ec74d8479c14fa203b4326698939845a3c79645441327dacc2f2->leave($__internal_0b58d3ea4792ec74d8479c14fa203b4326698939845a3c79645441327dacc2f2_prof);
+        $__internal_2d054cdfb66101250099e6f4860927499a3173a1e73a4bb8fa4bb8ee8fcd11f0->leave($__internal_2d054cdfb66101250099e6f4860927499a3173a1e73a4bb8fa4bb8ee8fcd11f0_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_b5fff87814b31b0c96caa1d1e55532253ce4b3d565446e10a80681b0e93d734d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b5fff87814b31b0c96caa1d1e55532253ce4b3d565446e10a80681b0e93d734d->enter($__internal_b5fff87814b31b0c96caa1d1e55532253ce4b3d565446e10a80681b0e93d734d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_608634b9b6acb9f3f5f0fee6e171a2e4a0a64879a1675e72c70742479bf5115e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_608634b9b6acb9f3f5f0fee6e171a2e4a0a64879a1675e72c70742479bf5115e->enter($__internal_608634b9b6acb9f3f5f0fee6e171a2e4a0a64879a1675e72c70742479bf5115e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "FADCO+ : admin";
         
-        $__internal_b5fff87814b31b0c96caa1d1e55532253ce4b3d565446e10a80681b0e93d734d->leave($__internal_b5fff87814b31b0c96caa1d1e55532253ce4b3d565446e10a80681b0e93d734d_prof);
+        $__internal_608634b9b6acb9f3f5f0fee6e171a2e4a0a64879a1675e72c70742479bf5115e->leave($__internal_608634b9b6acb9f3f5f0fee6e171a2e4a0a64879a1675e72c70742479bf5115e_prof);
 
     }
 
     // line 10
     public function block_content($context, array $blocks = array())
     {
-        $__internal_58d9bab0aaf0d0aebf0a344e6e751496f81ea0ea813fbeffd08351f3eae61a5b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_58d9bab0aaf0d0aebf0a344e6e751496f81ea0ea813fbeffd08351f3eae61a5b->enter($__internal_58d9bab0aaf0d0aebf0a344e6e751496f81ea0ea813fbeffd08351f3eae61a5b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_63321a9f5e55443e2b9f2415f7281b27ee18c723c6618a88c5dfcd55417ad915 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_63321a9f5e55443e2b9f2415f7281b27ee18c723c6618a88c5dfcd55417ad915->enter($__internal_63321a9f5e55443e2b9f2415f7281b27ee18c723c6618a88c5dfcd55417ad915_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 11
         echo "    <div class=\"row\">
         ";
         // line 12
-        echo $context["__internal_5ef15ba1d047c0f634afe378bab3b3fb76eb3b11f41edb7be9782aa8580c6804"]->getcountbox("Nombre de réabonnement direct", $this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "nbrereabonnementdirect", array()), "bg-green", "fa-home");
+        echo $context["__internal_f4d6c78f1b8052f7c38301792de1e283df4a3210c99c1db62a8148b2c6576c44"]->getcountbox("Nombre de réabonnement direct", $this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "nbrereabonnementdirect", array()), "bg-green", "fa-home");
         echo "
         ";
         // line 13
-        echo $context["__internal_5ef15ba1d047c0f634afe378bab3b3fb76eb3b11f41edb7be9782aa8580c6804"]->getcountbox("Nombre d'installation ou réparation", $this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "nbreprestation", array()), "bg-blue", "fa-home");
+        echo $context["__internal_f4d6c78f1b8052f7c38301792de1e283df4a3210c99c1db62a8148b2c6576c44"]->getcountbox("Nombre d'installation ou réparation", $this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "nbreprestation", array()), "bg-blue", "fa-home");
         echo "
     </div>
 
@@ -78,15 +78,15 @@ class __TwigTemplate_0613faf0a9985e9bb07ccc61a9f1b47d60f4a7acf3a3aa7e30904a6dd55
         // line 20
         if (array_key_exists("type", $context)) {
             // line 21
-            echo "                    ";
+            echo "                        ";
             if (((isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")) == "vente")) {
                 // line 22
-                echo "                        Total des ventes par période et par distributeur
-                    ";
+                echo "                            Total des ventes par période et par distributeur
+                        ";
             } else {
                 // line 24
-                echo "                        Nombre d'abonnés par formules activées (Access, Access+, Evasion, Evasion+, Tout canal)
-                    ";
+                echo "                            Nombre d'abonnés par formules activées (Access, Access+, Evasion, Evasion+, Tout canal)
+                        ";
             }
             // line 26
             echo "                    ";
@@ -105,19 +105,19 @@ class __TwigTemplate_0613faf0a9985e9bb07ccc61a9f1b47d60f4a7acf3a3aa7e30904a6dd55
         // line 36
         if (array_key_exists("type", $context)) {
             // line 37
-            echo "                ";
+            echo "                    ";
             if (((isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")) == "vente")) {
                 // line 38
-                echo "                    ";
+                echo "                        ";
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->renderFragment($this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->controller("FadcoBundle:Statistique:venteTotalByDistributeurAndPeriod", array("startDate" => (isset($context["from"]) ? $context["from"] : $this->getContext($context, "from")), "endDate" => (isset($context["to"]) ? $context["to"] : $this->getContext($context, "to")), "type" => (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")), "nom" => (isset($context["nom"]) ? $context["nom"] : $this->getContext($context, "nom")), "prenom" => (isset($context["prenom"]) ? $context["prenom"] : $this->getContext($context, "prenom")))));
                 echo "
-                ";
+                    ";
             } else {
                 // line 40
-                echo "                    ";
+                echo "                        ";
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->renderFragment($this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->controller("FadcoBundle:Statistique:nbrAbonneByFormule", array("startDate" => (isset($context["from"]) ? $context["from"] : $this->getContext($context, "from")), "endDate" => (isset($context["to"]) ? $context["to"] : $this->getContext($context, "to")))));
                 echo "                
-                ";
+                    ";
             }
             // line 42
             echo "                ";
@@ -132,7 +132,7 @@ class __TwigTemplate_0613faf0a9985e9bb07ccc61a9f1b47d60f4a7acf3a3aa7e30904a6dd55
         echo "\"></script>
 ";
         
-        $__internal_58d9bab0aaf0d0aebf0a344e6e751496f81ea0ea813fbeffd08351f3eae61a5b->leave($__internal_58d9bab0aaf0d0aebf0a344e6e751496f81ea0ea813fbeffd08351f3eae61a5b_prof);
+        $__internal_63321a9f5e55443e2b9f2415f7281b27ee18c723c6618a88c5dfcd55417ad915->leave($__internal_63321a9f5e55443e2b9f2415f7281b27ee18c723c6618a88c5dfcd55417ad915_prof);
 
     }
 
@@ -181,11 +181,11 @@ class __TwigTemplate_0613faf0a9985e9bb07ccc61a9f1b47d60f4a7acf3a3aa7e30904a6dd55
             <div class=\"box-header with-border\">
                 <h1 class=\"box-title\">
                     {% if type is defined %}
-                    {% if type == \"vente\" %}
-                        Total des ventes par période et par distributeur
-                    {% else %}
-                        Nombre d'abonnés par formules activées (Access, Access+, Evasion, Evasion+, Tout canal)
-                    {% endif %}
+                        {% if type == \"vente\" %}
+                            Total des ventes par période et par distributeur
+                        {% else %}
+                            Nombre d'abonnés par formules activées (Access, Access+, Evasion, Evasion+, Tout canal)
+                        {% endif %}
                     {% endif %}
                 </h1>
 
@@ -197,11 +197,11 @@ class __TwigTemplate_0613faf0a9985e9bb07ccc61a9f1b47d60f4a7acf3a3aa7e30904a6dd55
             </div>
             <div class=\"box-body\">
                 {% if type is defined %}
-                {% if type == \"vente\" %}
-                    {{ render(controller('FadcoBundle:Statistique:venteTotalByDistributeurAndPeriod', {'startDate': from, 'endDate': to, 'type': type, 'nom': nom, 'prenom': prenom })) }}
-                {% else %}
-                    {{ render(controller('FadcoBundle:Statistique:nbrAbonneByFormule', {'startDate': from, 'endDate': to })) }}                
-                {% endif %}
+                    {% if type == \"vente\" %}
+                        {{ render(controller('FadcoBundle:Statistique:venteTotalByDistributeurAndPeriod', {'startDate': from, 'endDate': to, 'type': type, 'nom': nom, 'prenom': prenom })) }}
+                    {% else %}
+                        {{ render(controller('FadcoBundle:Statistique:nbrAbonneByFormule', {'startDate': from, 'endDate': to })) }}                
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

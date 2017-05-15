@@ -9,13 +9,13 @@
 
 {% block sidebar %}
     <ul class="sidebar-menu">
-        {% if app.user.type == "admin" %}
+        {% if app.user.type == "super_admin" %}
 
             <li class="">&nbsp;</li>
             <li class="">&nbsp;</li>
             <li class="header">GESTION DES COMPTES</li>
-            <li><a href="{{ path('grh_prestataire') }}">Liste des distributeurs</a></li>
-            <li><a href="{{ path('grh_prestataire_new',{ 'id': null }) }}">Ajouter un distributeur</a></li>
+            <li><a href="{{ path('grh_prestataire') }}">Liste des comptes</a></li>
+            <li><a href="{{ path('grh_prestataire_new',{ 'id': null }) }}">Ajouter un compte</a></li>
             {#{% if is_granted("ROLE_SUPER_ADMIN") %}#}
                 {#<li><a href="{{ path('rigth') }}">Droits</a></li>#}
             {#{% endif %}#}
@@ -25,10 +25,11 @@
         <li class="">&nbsp;</li>
         <li class="">&nbsp;</li>
 
-        {% if app.user.type == "distributeur" or app.user.type == "admin" %}
+        {% if app.user.type == "distributeur" or app.user.type == "admin" or app.user.type == "super_admin" %}
             
             <li class="header">REABONNEMENTS</li>
             <li><a href="{{ path('fadco_espace_distributeur_reabo') }}"><i class=""></i>Réabonnement direct</a></li>
+            <li><a href="{{ path('fadco_espace_distributeur_reabo_complement') }}"><i class=""></i>Complément</a></li>
             <li class="header">PRESTATIONS</li>
             <li><a href="{{ path('fadco_espace_distributeur_repair') }}"><i class=""></i> <span>Installation ou réparation</span></a></li>
             {#<li class="treeview">
@@ -42,7 +43,7 @@
 
         {% endif %}
 
-        {% if app.user.type == "admin" %}
+        {% if app.user.type == "admin" or app.user.type == "super_admin" %}
 
             <li class="">&nbsp;</li>
             

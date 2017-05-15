@@ -1,4 +1,4 @@
-{% extends "GSPBundle:Default:menu.html.twig" %}
+{% extends "FadcoBundle:Default:menu.html.twig" %}
 
 {% block content %}        
   <div class="box box-primary">
@@ -22,7 +22,7 @@
                         <div class="col-md-2">
                            <div class="alerte-image pull-left">
                                   <!-- User Image -->
-                                 <img style=" width: 90px; height: 90px;" src=" {% if entity.Prestataire %}{% if  entity.Prestataire.photo is empty %} {{ asset('bundles/GSPBundle/images/avatar.png') }} {% else %} {{asset( entity.Prestataire.WebPhoto )}} {% endif %}{% endif %}" class="user-image img-circle" alt="User Image">
+                                 <img style=" width: 90px; height: 90px;" src=" {% if entity.Prestataire %}{% if  entity.Prestataire.photo is empty %} {{ asset('bundles/FadcoBundle/images/avatar.png') }} {% else %} {{asset( entity.Prestataire.WebPhoto )}} {% endif %}{% endif %}" class="user-image img-circle" alt="User Image">
                             </div>
                          </div>
                             

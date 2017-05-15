@@ -1,0 +1,60 @@
+{% block content %}
+  <div class="modal-body">
+      <h3 style="margin-left:30mm;">Valider pour activer le {% if reabo is defined %}reabo. direct{% else %}complément{% endif %}</h3><br/>
+      <h5 style="margin-left:30mm;">{% if reabo is defined %} Réabonnement pour : {{ reabo.duree }}{% else %}Complément de {{ complement.oldFormule }}/{{ complement.oldOptions }} vers {{  complement.formule }}/{{ complement.options }} {% endif %} </h5><br/>
+    <form method="post" action="{% if reabo is defined %}{{ path('fadco_espace_distributeur_reabo_valider', {'id': reabo.id }) }}{% else %}{{ path('fadco_espace_distributeur_reabo_complement_valider', {'id': complement.id }) }}{% endif %}" name="fadcobundle_valider_reabo" id="fadcobundle_valider_reabo">
+
+      <div class="input-group date">
+        <label class="input-group-addon"><i class="fa fa-edit"></i>Date d'échéance du réabo. </label>
+        <input type="text" required="required" class="form-control datepicker" name="fadcobundle_valider_reabo[dateEcheance]" />
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+
+      <div class="modal-footer">
+        <div class="input-group pull-right">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-success btn-do-transfer">Valider</button>
+        </div>     
+      </div>     
+    </form>
+  </div>
+{% endblock %}
+ 
+  <script>    
+
+      $(function () {
+          $('.datepicker').datepicker();
+      });
+
+      var $validerForm = $('#fadcobundle_valider_reabo').submit(function(e){
+        e.preventDefault();
+        $('#fadcobundle_valider_reabo .btn').button('loading');
+        $('#pleaseWaitDialog').modal('show');
+
+      $.ajax({
+
+          url: $validerForm.attr('action'),
+          type: $validerForm.attr('method'),
+          data: $validerForm.serialize(),
+
+          success: function (data) {
+            if(data == 'OK'){
+                  $('#pleaseWaitDialog').modal('hide');
+                  $("#formModal").modal('hide');
+                  setTimeout(function(){ window.location.reload(); }, 1);
+                }else{
+                  $('#pleaseWaitDialog').modal('hide');
+                  $("#formModal").modal('show');
+                  $("#formContentBox").empty().html("Erreur de validation, veuillez réessayer svp.");
+                }
+          },
+          error: function(data, status)
+          {
+              console.log(data);
+          }
+      });
+
+      });    
+  </script>

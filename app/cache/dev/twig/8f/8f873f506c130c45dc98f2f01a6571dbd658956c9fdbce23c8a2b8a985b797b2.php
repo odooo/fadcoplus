@@ -15,8 +15,8 @@ class __TwigTemplate_c2e45c4e2abd66014fc470955ec4d824c05c2b588f09951fa7295043181
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6a50b15271645f1b2968783300bea816201d3d2402c4af8a83ffb8f0eefdc018 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_6a50b15271645f1b2968783300bea816201d3d2402c4af8a83ffb8f0eefdc018->enter($__internal_6a50b15271645f1b2968783300bea816201d3d2402c4af8a83ffb8f0eefdc018_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:GestionDesAlertes:notifications.html.twig"));
+        $__internal_a49cc5aa887909509f62db59987561a2da80b44466b04ebc0f2980c527f1e952 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a49cc5aa887909509f62db59987561a2da80b44466b04ebc0f2980c527f1e952->enter($__internal_a49cc5aa887909509f62db59987561a2da80b44466b04ebc0f2980c527f1e952_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:GestionDesAlertes:notifications.html.twig"));
 
         // line 1
         echo "        
@@ -70,7 +70,7 @@ class __TwigTemplate_c2e45c4e2abd66014fc470955ec4d824c05c2b588f09951fa7295043181
                 if ($this->getAttribute($context["entity"], "Prestataire", array())) {
                     echo " ";
                     if (twig_test_empty($this->getAttribute($this->getAttribute($context["entity"], "Prestataire", array()), "photo", array()))) {
-                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/GSPBundle/images/avatar.png"), "html", null, true);
+                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/images/avatar.png"), "html", null, true);
                         echo " ";
                     } else {
                         echo " ";
@@ -144,7 +144,7 @@ class __TwigTemplate_c2e45c4e2abd66014fc470955ec4d824c05c2b588f09951fa7295043181
           <!-- /.messages-menu -->
     ";
         
-        $__internal_6a50b15271645f1b2968783300bea816201d3d2402c4af8a83ffb8f0eefdc018->leave($__internal_6a50b15271645f1b2968783300bea816201d3d2402c4af8a83ffb8f0eefdc018_prof);
+        $__internal_a49cc5aa887909509f62db59987561a2da80b44466b04ebc0f2980c527f1e952->leave($__internal_a49cc5aa887909509f62db59987561a2da80b44466b04ebc0f2980c527f1e952_prof);
 
     }
 
@@ -192,7 +192,7 @@ class __TwigTemplate_c2e45c4e2abd66014fc470955ec4d824c05c2b588f09951fa7295043181
                     <a class=\"alerte-lien\" alerte-lu=\"{{ path('alertes_lu',{ 'id':entity.IdAlerte})}}\" alerte-id=\"{{entity.IdAlerte}}\" href=\"{{app.request.getBaseURL()~entity.LienAlerte }}\">
                       <div class=\"alerte-image pull-left\">
                         <!-- User Image -->
-                       <img style=\" max-width: 100%; max-height: 100%;\" src=\" {% if entity.Prestataire  %} {% if entity.Prestataire.photo is empty %}{{ asset('bundles/GSPBundle/images/avatar.png') }} {% else %} {{asset( entity.Prestataire.WebPhoto )}} {% endif %}{% endif %}\" class=\"user-image img-circle\" alt=\"User Image\">
+                       <img style=\" max-width: 100%; max-height: 100%;\" src=\" {% if entity.Prestataire  %} {% if entity.Prestataire.photo is empty %}{{ asset('bundles/FadcoBundle/images/avatar.png') }} {% else %} {{asset( entity.Prestataire.WebPhoto )}} {% endif %}{% endif %}\" class=\"user-image img-circle\" alt=\"User Image\">
                       </div>
                       <!-- Message title and timestamp -->
                       <h4 class=\"alerte-titre\">

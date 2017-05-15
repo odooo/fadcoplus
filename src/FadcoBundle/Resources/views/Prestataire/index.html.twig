@@ -1,9 +1,11 @@
 {% extends "FadcoBundle:Default:menu.html.twig" %}
-{% block title %}Liste des distributeurs{% endblock %}
+{% block title %}Liste des comptes{% endblock %}
 {% block page_quick_actions %}
     <div>
         {#<a href="{{ path('grh_prestataire') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour"/></a> #}
-        <a href="{{ path('grh_prestataire_new', {'id': null }) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau distributeur"/></a>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <a href="{{ path('grh_prestataire_new', {'id': null }) }}"><input type="button" class="btn btn-info btn-xs"value="Ajouter un nouveau compte"/></a>
+        {% endif %}
         <a href="{{ path('export_excel_prestataire') }}"><input type="button" class="btn btn-primary btn-xs"value="Exporter en excel"/></a>
     </div>
 {% endblock %}
@@ -19,7 +21,7 @@
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h1 class="box-title">Liste des distributeurs </h1>
+                <h1 class="box-title">Liste des comptes </h1>
 
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse">
@@ -33,8 +35,10 @@
                     <thead>
                         <tr>
                             <th style="text-align: center;">N°</th>
-                            <th style="text-align: center;">Distributeur</th>
+                            <th style="text-align: center;">Identité</th>
+                            <th style="text-align: center;">Type</th>
                             <th style="text-align: center;">Compte</th>
+                            <th style="text-align: center;">Etat du compte</th>
                             <th style="text-align: center;">Actions</th>
                         </tr>
                     </thead>
@@ -43,7 +47,9 @@
                             <tr>
                                 <td style="text-align: center;"><a href="{{ path('grh_prestataire_voir', { 'id': entity.id }) }}">{{ loop.index }}</a></td>
                                 <td style="text-align: center;">{{ entity.name }}</td>
+                                <td style="text-align: center;">{{ entity.type }}</td>
                                 <td style="text-align: center;">{{ entity.account|number_format(0,'.',' ') }} f</td>
+                                <td style="text-align: center;">{% if entity.enabled == 0 %}<span class="btn btn-xs btn-danger">Compte suspendu</span>{% else %}<span class="btn btn-xs btn-info">Compte actif</span>{% endif %}</td>
                                 <td style="text-align: center;">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-success btn-xs dropdown-toggle"
@@ -52,10 +58,12 @@
                                             <li>
                                                 <a href="{{ path('grh_prestataire_voir', { 'id': entity.id }) }}">Afficher</a>
                                             </li>
-                                            {% if is_granted('ROLE_ADMIN') %}
-                                                <li>
-                                                    <a href="{{ path('crediter_compte_distributeur', { 'id': entity.id }) }}">Créditer ce compte</a>
-                                                </li>
+                                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                                {% if entity.type == 'distributeur' %}
+                                                    <li>
+                                                        <a href="{{ path('crediter_compte_distributeur', { 'id': entity.id }) }}">Créditer ce compte</a>
+                                                    </li>
+                                                {% endif %}
                                                 <li>
                                                     <a href="{{ path('grh_prestataire_new', { 'id': entity.id }) }}">Modifier</a>
                                                 </li>

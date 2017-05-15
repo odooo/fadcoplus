@@ -1,0 +1,129 @@
+{% extends "FadcoBundle:Default:menu.html.twig" %}
+{% block title %}Infos du réabo. {% endblock %}
+{% block page_quick_actions %}
+    <div>
+        <a href="{{ path('fadco_espace_distributeur_reabo') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour à la liste"/></a>
+        {% if app.user.type == "admin" or app.user.type == "super_admin" %}
+            {% if entity.dateEcheance is null %}
+                <a href="#" onclick="valideForm(this);" data-url="{{ path('fadco_espace_distributeur_reabo_valider',{'id': entity.id}) }}"><input type="button" class="btn btn-info btn-xs"value="Valider"/></a>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h1 class="box-title">Détails du réabonnement direct </h1>
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="table-responsive mailbox-messages">
+                        <table class="table table-bordered table-striped">
+                            <tbody>
+                                <tr>
+                                    <th style="text-align:center;">#</th>
+                                    <td style="text-align:center;">{{ entity.id }}</td>
+                                </tr>
+                                
+                                <tr>
+                                    <th style="text-align:center;">Abonné</th>
+                                    <td style="text-align:center;">{{ entity.abonne }}</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align:center;">N° carte</th>
+                                    <td style="text-align:center;">{{ entity.numeroCarte }}</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align:center;">N° mobile</th>
+                                    <td style="text-align:center;">{{ entity.contact }}</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align:center;">Formule</th>
+                                    <td style="text-align:center;">{{ entity.formule }}</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align:center;">Option</th>
+                                    <td style="text-align:center;">{{ entity.options }}</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align:center;">Durée</th>
+                                    <td style="text-align:center;">{{ entity.duree }}</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align:center;">Montant</th>
+                                    <td style="text-align:center;">{{ entity.montant|number_format(0,'.',' ') }} f</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align:center;">Date réabo.</th>
+                                    <td style="text-align:center;">{{ entity.date|date('d-m-Y H:s:i') }}</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align:center;">Date échéance</th>
+                                    <td style="text-align:center;">{% if entity.dateEcheance %}{{ entity.dateEcheance|date('d-m-Y H:s:i') }}{% endif %}</td>
+                                </tr>
+                                {% if app.user.type == "admin" or app.user.type == "super_admin" %}
+                                    <tr>
+                                        <th style="text-align:center;">Distributeur</th>
+                                        <td style="text-align:center;">{% if entity.distributeur %}{{ entity.distributeur.name }}{% endif %}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align:center;">Valideur</th>
+                                        <td style="text-align:center;">{% if entity.valideur %}{{ entity.valideur.name }}{% endif %}</td>
+                                    </tr>
+                                {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row" style="margin: auto;">
+                    <a href="{{ path('fadco_espace_distributeur_reabo') }}"><input type="button" class="btn btn-warning btn-xs"value="Retour à la liste"/></a>
+                    {% if app.user.type == "admin" or app.user.type == "super_admin" %}
+                        {% if entity.dateEcheance is null %}
+                            <a href="#" onclick="valideForm(this);" data-url="{{ path('fadco_espace_distributeur_reabo_valider',{'id': entity.id}) }}"><input type="button" class="btn btn-info btn-xs"value="Valider"/></a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+        </div>
+    </section>
+
+    <script src="{{ asset('bundles/FadcoBundle/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/style/jquery.accordDate.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/plugins/bootstrap-slider/last/bootstrap-slider.min.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/plugins/jQueryfiler/js/jquery.filer.min.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('bundles/FadcoBundle/plugins/datepicker/locales/bootstrap-datepicker.fr.js') }}"></script>
+
+    {{ include('FadcoBundle:Prestataire:popups.html.twig') }}
+
+    <script>
+
+        $(function () {
+            $('.datepicker').datepicker();
+        });
+
+        function valideForm($this) {
+            $('#pleaseWaitDialog').modal('show');
+            var url = $($this).data("url");
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (data) {
+                    $('#pleaseWaitDialog').modal('hide');
+                    $("#formContentBox").html(data);
+                    $("#formModal").modal('show');
+
+                }
+            });
+        }
+
+    </script>
+
+{% endblock %}
+
+

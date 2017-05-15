@@ -21,6 +21,10 @@ FadcoBundle\Entity\Abonne:
             type: string
             length: 255
             nullable: true
+        numeroAbonne:
+            type: string
+            length: 255
+            nullable: true
         contact:
             type: string
             length: 255

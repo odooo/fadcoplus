@@ -18,11 +18,11 @@
             <div class="box-header with-border">
                 <h1 class="box-title">
                     {% if type is defined %}
-                    {% if type == "vente" %}
-                        Total des ventes par période et par distributeur
-                    {% else %}
-                        Nombre d'abonnés par formules activées (Access, Access+, Evasion, Evasion+, Tout canal)
-                    {% endif %}
+                        {% if type == "vente" %}
+                            Total des ventes par période et par distributeur
+                        {% else %}
+                            Nombre d'abonnés par formules activées (Access, Access+, Evasion, Evasion+, Tout canal)
+                        {% endif %}
                     {% endif %}
                 </h1>
 
@@ -34,11 +34,11 @@
             </div>
             <div class="box-body">
                 {% if type is defined %}
-                {% if type == "vente" %}
-                    {{ render(controller('FadcoBundle:Statistique:venteTotalByDistributeurAndPeriod', {'startDate': from, 'endDate': to, 'type': type, 'nom': nom, 'prenom': prenom })) }}
-                {% else %}
-                    {{ render(controller('FadcoBundle:Statistique:nbrAbonneByFormule', {'startDate': from, 'endDate': to })) }}                
-                {% endif %}
+                    {% if type == "vente" %}
+                        {{ render(controller('FadcoBundle:Statistique:venteTotalByDistributeurAndPeriod', {'startDate': from, 'endDate': to, 'type': type, 'nom': nom, 'prenom': prenom })) }}
+                    {% else %}
+                        {{ render(controller('FadcoBundle:Statistique:nbrAbonneByFormule', {'startDate': from, 'endDate': to })) }}                
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

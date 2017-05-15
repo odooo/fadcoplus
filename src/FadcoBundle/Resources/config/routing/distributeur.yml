@@ -13,6 +13,15 @@ fadco_espace_distributeur_reabo_new:
     defaults: { _controller: FadcoBundle:Distributeur:newReabo }
     methods: [GET, POST]
 
+fadco_espace_distributeur_reabo_show:
+    path:     /{id}/consulter-reabonnement
+    defaults: { _controller: FadcoBundle:Distributeur:showReabo }
+
+fadco_espace_distributeur_reabo_valider:
+    path:     /{id}/valider-reabonnement
+    defaults: { _controller: FadcoBundle:Distributeur:validerReabo }
+    methods: [GET, POST]
+
 fadco_espace_distributeur_reabo_new_confirm:
     path:     /confirm-reabonnement
     defaults: { _controller: FadcoBundle:Distributeur:newReaboConfirm }
@@ -39,4 +48,31 @@ fadco_espace_distributeur_repair_new:
 fadco_espace_distributeur_repair_new_client:
     path:     /nouveau-client
     defaults: { _controller: FadcoBundle:Distributeur:newClient }
+    methods: [GET, POST]
+
+# complements
+fadco_espace_distributeur_reabo_complement:
+    path:     /liste-complements
+    defaults: { _controller: FadcoBundle:Distributeur:indexReaboComplement }
+
+fadco_espace_distributeur_reabo_complement_new:
+    path:     /nouveau-complement
+    defaults: { _controller: FadcoBundle:Distributeur:newReaboComplement }
+    methods: [GET, POST]
+
+fadco_espace_distributeur_reabo_complement_show:
+    path:     /{id}/consulter-complement
+    defaults: { _controller: FadcoBundle:Distributeur:showReaboComplement }
+
+fadco_espace_distributeur_reabo_ancien_reabo_infos:
+    path: /infos-ancien-reabo
+    defaults: {_controller: "FadcoBundle:Distributeur:ancienReabo"}
+
+fadco_espace_distributeur_reabo_complement_new_confirm:
+    path:     /confirm-complement
+    defaults: { _controller: FadcoBundle:Distributeur:newReaboComplementConfirm }
+
+fadco_espace_distributeur_reabo_complement_valider:
+    path:     /{id}/valider-complement
+    defaults: { _controller: FadcoBundle:Distributeur:validerReaboComplement }
     methods: [GET, POST]

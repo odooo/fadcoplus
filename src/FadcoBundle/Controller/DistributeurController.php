@@ -11,6 +11,7 @@ use FadcoBundle\Entity\Reabonnement;
 use FadcoBundle\Entity\Repair;
 use FadcoBundle\Entity\Abonne;
 use FadcoBundle\Entity\Alerte;
+use FadcoBundle\Entity\Complement;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class DistributeurController extends Controller
@@ -18,11 +19,11 @@ class DistributeurController extends Controller
 	// liste des réabonnement directs
     public function indexReaboAction()
     {
-    	$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
         if($this->getUser()->getType() == "distributeur"){
-    	   $reabos = $em->getRepository('FadcoBundle:Reabonnement')->findBy(
-    		  array('distributeur' => $this->getUser()), array('id' => 'desc'));
+           $reabos = $em->getRepository('FadcoBundle:Reabonnement')->findBy(
+              array('distributeur' => $this->getUser()), array('id' => 'desc'));
         }else{
             $reabos = $em->getRepository('FadcoBundle:Reabonnement')->findBy(
               array(), array('id' => 'desc'));
@@ -30,6 +31,55 @@ class DistributeurController extends Controller
 
         return $this->render('FadcoBundle:Distributeur:index-reabo.html.twig', array('reabos' => $reabos));
     }
+
+    // liste des compléments sur réabonnement directs
+    public function indexReaboComplementAction()
+    {
+    	$em = $this->getDoctrine()->getManager();
+
+        if($this->getUser()->getType() == "distributeur"){
+    	   $complements = $em->getRepository('FadcoBundle:Complement')->findBy(
+    		  array('distributeur' => $this->getUser()), array('id' => 'desc'));
+        }else{
+            $complements = $em->getRepository('FadcoBundle:Complement')->findBy(
+              array(), array('id' => 'desc'));
+        }
+
+        return $this->render('FadcoBundle:Distributeur:index-reabo-complement.html.twig', array('complements' => $complements));
+    }
+
+    // voir le reabo
+    public function showReaboAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FadcoBundle:Reabonnement')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Reabonnement entity.');
+        }
+
+        return $this->render('FadcoBundle:Distributeur:show-reabo.html.twig', array(
+            'entity'      => $entity
+        ));
+    }
+
+    // voir le complément
+    public function showReaboComplementAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FadcoBundle:Complement')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Complement entity.');
+        }
+
+        return $this->render('FadcoBundle:Distributeur:show-reabo-complement.html.twig', array(
+            'entity'      => $entity
+        ));
+    }
+
 
     // liste des installations et réparations
     public function indexRepairAction()
@@ -105,6 +155,140 @@ class DistributeurController extends Controller
 
     }
 
+    // nouveau complement
+    /**
+    * @Security("has_role('ROLE_DISTRIBUTEUR')")
+    */
+    public function newReaboComplementAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reabos = $em->getRepository('FadcoBundle:Reabonnement')->findAll();
+        $user = $this->getUser();
+
+        $form = $request->get('fadcobundle_distributeur_new_reabo_complement');
+
+        $session = $request->getSession();
+        $complementSession = array();
+        
+        if($request->getMethod() == 'POST'){
+
+            // recuperer le montant du réabo. direct
+            $formules = $em->getRepository('FadcoBundle:Formule')->findAll();
+
+            foreach ($formules as $value) {
+
+                //formule vers
+                if($form['options'] == ""){
+                    if($form['formule'] == $value->getLibelle()){
+                        $formule = $value;
+                    }
+                }else{
+                    if($form['formule'] == $value->getLibelle() and $form['options'] == $value->getOptions()){
+                        $formule = $value;
+                    }
+                }
+
+                // formule ancienne (choix nouveau)
+                if($form['optionsOld'] == ""){
+                    if($form['formuleOld'] == $value->getLibelle()){
+                        $formuleOld = $value;
+                    }
+                }else{
+                    if($form['formuleOld'] == $value->getLibelle() and $form['optionsOld'] == $value->getOptions()){
+                        $formuleOld = $value;
+                    }
+                }
+
+            }
+
+            if(!isset($formule)){
+                return $this->render('FadcoBundle:Distributeur:formule-reabo.html.twig');
+            }
+
+
+            if($request->get('choix') == 'ancien'){
+
+                $reabo = $em->getRepository('FadcoBundle:Reabonnement')->find($form['reabo']);
+
+                foreach ($formules as $value) {
+
+                    // formule ancienne (choix ancien)
+                    if($reabo->getOptions() == ""){
+                        if($reabo->getFormule() == $value->getLibelle()){
+                            $formuleOld = $value;
+                        }
+                    }else{
+                        if($reabo->getFormule() == $value->getLibelle() and $reabo->getOptions() == $value->getOptions()){
+                            $formuleOld = $value;
+                        }
+                    }
+                }
+
+                if( $formuleOld->getMontant() > $formule->getMontant()){
+                    return $this->render('FadcoBundle:Distributeur:migration-complement.html.twig');
+                }
+
+                if( ($formule->getMontant() - $formuleOld->getMontant()) > $user->getAccount()){
+                    return $this->render('FadcoBundle:Distributeur:compte-reabo-complement.html.twig', array('montant' => $formule->getMontant() - $formuleOld->getMontant() ));
+                }
+
+                $complementSession = array(
+                    'type'=>'ancien',
+                    'reabo'=>$form['reabo'],
+                    'formuleOld'=>$reabo->getFormule(),
+                    'optionsOld'=>$reabo->getOptions(),
+                    'formule' => $form['formule'],
+                    'options' => $form['options'],
+                    'montant' => $formule->getMontant(),
+                    'montantOld' => $formuleOld->getMontant()
+                );
+        
+            }else{
+
+                if(!isset($formuleOld)){
+                    return $this->render('FadcoBundle:Distributeur:formule-reabo.html.twig');
+                }
+
+                if( $formuleOld->getMontant() > $formule->getMontant()){
+                    return $this->render('FadcoBundle:Distributeur:migration-complement.html.twig');
+                }
+
+                if(!$this->isNumberCard($form['numeroCarte'])){
+                    return $this->render('FadcoBundle:Distributeur:number-reabo-complement.html.twig', array('numberCard' => $form['numeroCarte']));
+                }
+
+                if(!$this->isPhone($form['contact'])){
+                    return $this->render('FadcoBundle:Distributeur:number-reabo-complement.html.twig', array('contact' => $form['contact']));
+                }
+
+                if( ($formule->getMontant() - $formuleOld->getMontant()) > $user->getAccount()){
+                    return $this->render('FadcoBundle:Distributeur:compte-reabo-complement.html.twig', array('montant' => $formule->getMontant() - $formuleOld->getMontant() ));
+                }
+
+                $complementSession = array(
+                    'type'=>'nouveau',
+                    'reabo'=>null,
+                    'abonne'=>$form['nom'].' '.$form['prenom'],
+                    'contact'=>$form['contact'],
+                    'numeroAbonne'=>$form['numeroAbonne'],
+                    'numeroCarte'=>$form['numeroCarte'],
+                    'formuleOld'=>$form['formuleOld'],
+                    'optionsOld'=>$form['optionsOld'],
+                    'formule' => $form['formule'],
+                    'options' => $form['options'],
+                    'montant' => $formule->getMontant(),
+                    'montantOld' => $formuleOld->getMontant()
+                );
+            }
+
+
+            $session->set('resultats', $complementSession);
+            return $this->render('FadcoBundle:Distributeur:confirm-reabo-complement.html.twig', array('resultats' => $complementSession));
+        }
+
+        return $this->render('FadcoBundle:Distributeur:new-reabo-complement.html.twig', array('reabos' => $reabos));
+    }
+
     // nouveau réabonnement direct
     /**
     * @Security("has_role('ROLE_DISTRIBUTEUR')")
@@ -141,7 +325,12 @@ class DistributeurController extends Controller
                 return $this->render('FadcoBundle:Distributeur:formule-reabo.html.twig');
             }
 
-            if($formule->getMontant() > $user->getAccount()){
+            if($form['duree'] == '1 mois') $coef = 1;
+            if($form['duree'] == '3 mois') $coef = 3;
+            if($form['duree'] == '6 mois') $coef = 6;
+            if($form['duree'] == '12 mois') $coef = 12;
+
+            if($formule->getMontant()*$coef > $user->getAccount()){
                 return $this->render('FadcoBundle:Distributeur:compte-reabo.html.twig', array('montant' => $formule->getMontant() ));
             }
 
@@ -150,7 +339,8 @@ class DistributeurController extends Controller
     			$abonne = $em->getRepository('FadcoBundle:Abonne')->find($form['abonnea']);
 
     			$reaboSession = array(
-    				'abonne'=>$abonne->getName(),
+                    'abonne'=>$abonne->getNom().' '.$abonne->getPrenom(),
+    				'numeroAbonne'=>$abonne->getNumeroAbonne(),
     				'numeroCarte' => $abonne->getNumeroCarte(),
     				'contact' => $abonne->getContact(),
     				'formule' => $form['formule'],
@@ -170,7 +360,9 @@ class DistributeurController extends Controller
                 }
 
     			$reaboSession = array(
-    				'abonne'=>$form['abonned'],
+                    'nom'=>$form['nom'],
+                    'prenom'=>$form['prenom'],
+    				'numeroAbonne'=>$form['numeroAbonne'],
     				'numeroCarte'=>$form['numeroCarte'],
     				'contact'=>$form['contact'],
     				'formule' => $form['formule'],
@@ -238,6 +430,7 @@ class DistributeurController extends Controller
             $abonne->setNom($form['nom']);
             $abonne->setPrenom($form['prenom']);
             $abonne->setNumeroCarte($form['numeroCarte']);
+            $abonne->setNumeroAbonne($form['numeroAbonne']);
             $abonne->setContact($form['contact']);
             $abonne->setDate(new \DateTime());
 
@@ -253,6 +446,97 @@ class DistributeurController extends Controller
     }
 
     /**
+    * confirmation du complément
+    *
+    * @Security("has_role('ROLE_DISTRIBUTEUR')")
+    */
+    public function newReaboComplementConfirmAction(Request $request){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $session = $request->getSession();
+        $complementSession = $session->get('resultats');
+        $user = $this->getUser();
+
+        $complement = new Complement();
+
+        $complement->setDate(new \DateTime());
+        $complement->setDistributeur($user);
+
+        if($complementSession['reabo']){
+            $reabo = $em->getRepository('FadcoBundle:Reabonnement')->find($complementSession['reabo']);
+            $complement->setReabo($reabo);
+            $complement->setAbonne($reabo->getAbonne());
+            $complement->setNumeroAbonne($reabo->getNumeroAbonne());
+            $complement->setNumeroCarte($reabo->getNumeroCarte());
+            $complement->setContact($reabo->getContact());
+        }else{
+            $complement->setAbonne($complementSession['abonne']);
+            $complement->setNumeroAbonne($complementSession['numeroAbonne']);
+            $complement->setNumeroCarte($complementSession['numeroCarte']);
+            $complement->setContact($complementSession['contact']);
+        }
+
+        $complement->setOptions($complementSession['options']);
+        $complement->setFormule($complementSession['formule']);
+        $complement->setOldFormule($complementSession['formuleOld']);
+        $complement->setOldOptions($complementSession['optionsOld']);
+        $complement->setMontant($complementSession['montant'] - $complementSession['montantOld']);
+
+        $user->setAccount($user->getAccount() - ($complementSession['montant'] - $complementSession['montantOld']) );
+
+        $em->persist($complement);
+        $em->flush();
+
+        $admins = array();
+
+        $super = $em->getRepository('FadcoBundle:Prestataire')->findOneBy(array(
+            'type' => 'super_admin'
+        ));
+
+        $admins = $em->getRepository('FadcoBundle:Prestataire')->findBy(array(
+            'type' => 'admin'
+        ));
+
+        $Alerte = new Alerte();
+        $Alerte->setPrestataire($this->getUser());
+        $Alerte->setMessageAlerte(" a enregistré  un complément de ".$complementSession['formuleOld']."/".$complementSession['optionsOld']." vers ".$complementSession['formule']."/".$complementSession['options']);
+        $Alerte->setLienAlerte('/' . strrchr($this->get('router')->generate('fadco_espace_distributeur_reabo_complement_show', array('id'=> $complement->getId())), 'distributeur'));
+        $Alerte->setDestinataire($super);
+        $Alerte->setDateAlerte(new \Datetime());
+        $Alerte->setEtatAlerte('non lue');
+        $em->persist($Alerte);
+
+        foreach ($admins as $value) {
+            $Alerte = new Alerte();
+            $Alerte->setPrestataire($this->getUser());
+            $Alerte->setMessageAlerte(" a enregistré  un complément de ".$complementSession['formuleOld']."/".$complementSession['optionsOld']." vers ".$complementSession['formule']."/".$complementSession['options']);
+            $Alerte->setLienAlerte('/' . strrchr($this->get('router')->generate('fadco_espace_distributeur_reabo_complement_show', array('id'=> $complement->getId())), 'distributeur'));
+            $Alerte->setDestinataire($value);
+            $Alerte->setDateAlerte(new \Datetime());
+            $Alerte->setEtatAlerte('non lue');
+            $em->persist($Alerte);
+        }
+
+        $em->flush();
+
+        $from = "ayenadedg@gmail.com";
+        $to = "ayenadedg@gmail.com";
+        $subject = "Réabonnement";
+        $body = "Complément de ".$complementSession['formuleOld']."/".$complementSession['optionsOld']." vers ".$complementSession['formule']."/".$complementSession['options'];
+        $this->get('fadco.mailer')->sendMessage($from, $to, $subject, $body);
+
+        $complementSession = array();
+        $session->remove('resultats');
+
+        return $this->redirect($this->generateUrl('fadco_espace_distributeur_reabo_complement_show', array('id' => $complement->getId())));
+
+    }
+    
+
+    /**
+    *confrmation du réabonnement 
+    *
     * @Security("has_role('ROLE_DISTRIBUTEUR')")
     */
     public function newReaboConfirmAction(Request $request){
@@ -265,9 +549,32 @@ class DistributeurController extends Controller
 
         $reabo = new Reabonnement();
 
-        $reabo->setAbonne($reaboSession['abonne']);
+        if(isset($reaboSession['abonne'])){
+            $reabo->setAbonne($reaboSession['abonne']);
+        }else{
+            $reabo->setAbonne($reaboSession['nom'].' '.$reaboSession['prenom']);
+
+            $abonne = new Abonne();
+
+            $abonne->setNom($reaboSession['nom']);
+            $abonne->setPrenom($reaboSession['prenom']);
+            $abonne->setNumeroCarte($reaboSession['numeroCarte']);
+            $abonne->setNumeroAbonne($reaboSession['numeroAbonne']);
+            $abonne->setContact($reaboSession['contact']);
+            $abonne->setDate(new \DateTime());
+
+            $em->persist($abonne);
+
+        }
+
+        if($reaboSession['duree'] == '1 mois') $coef = 1;
+        if($reaboSession['duree'] == '3 mois') $coef = 3;
+        if($reaboSession['duree'] == '6 mois') $coef = 6;
+        if($reaboSession['duree'] == '12 mois') $coef = 12;
+
+        $reabo->setNumeroAbonne($reaboSession['numeroAbonne']);
         $reabo->setFormule($reaboSession['formule']);
-        $reabo->setMontant($reaboSession['montant']);
+        $reabo->setMontant($reaboSession['montant']*$coef);
         $reabo->setOptions($reaboSession['options']);
         $reabo->setDuree($reaboSession['duree']);
         $reabo->setContact($reaboSession['contact']);
@@ -279,20 +586,38 @@ class DistributeurController extends Controller
         $user->setAccount($user->getAccount() - $reaboSession['montant']);
 
         $em->persist($reabo);
+        $em->flush();
 
-		$admin = $em->getRepository('FadcoBundle:Prestataire')->findOneBy(array(
+        $admins = array();
+
+		$super = $em->getRepository('FadcoBundle:Prestataire')->findOneBy(array(
+            'type' => 'super_admin'
+        ));
+
+        $admins = $em->getRepository('FadcoBundle:Prestataire')->findBy(array(
 			'type' => 'admin'
 		));
 
 		$Alerte = new Alerte();
 		$Alerte->setPrestataire($this->getUser());
 		$Alerte->setMessageAlerte(" a enregistré l'abonné ".$reabo->getAbonne()." qui a souscrit à un réabonnement ".$reabo->getFormule()."/".$reabo->getDuree()."/".$reabo->getOptions());
-		$Alerte->setLienAlerte('/' . strrchr($this->get('router')->generate('fadco_espace_distributeur_reabo'), 'distributeur'));
-		$Alerte->setDestinataire($admin);
+        //$Alerte->setLienAlerte('/' . strrchr($this->get('router')->generate('fadco_espace_distributeur_reabo'), 'distributeur'));
+		$Alerte->setLienAlerte('/' . strrchr($this->get('router')->generate('fadco_espace_distributeur_reabo_show', array('id'=> $reabo->getId())), 'distributeur'));
+		$Alerte->setDestinataire($super);
 		$Alerte->setDateAlerte(new \Datetime());
 		$Alerte->setEtatAlerte('non lue');
-
 		$em->persist($Alerte);
+
+        foreach ($admins as $value) {
+            $Alerte = new Alerte();
+            $Alerte->setPrestataire($this->getUser());
+            $Alerte->setMessageAlerte(" a enregistré l'abonné ".$reabo->getAbonne()." qui a souscrit à un réabonnement ".$reabo->getFormule()."/".$reabo->getDuree()."/".$reabo->getOptions());
+            $Alerte->setLienAlerte('/' . strrchr($this->get('router')->generate('fadco_espace_distributeur_reabo_show', array('id'=> $reabo->getId())), 'distributeur'));
+            $Alerte->setDestinataire($value);
+            $Alerte->setDateAlerte(new \Datetime());
+            $Alerte->setEtatAlerte('non lue');
+            $em->persist($Alerte);
+        }
 
         $em->flush();
 
@@ -302,9 +627,10 @@ class DistributeurController extends Controller
 		$body = "L'abonné ".$reabo->getAbonne()." souscrit à un réabonnement ".$reabo->getFormule()."/".$reabo->getDuree()."/".$reabo->getOptions();
 		$this->get('fadco.mailer')->sendMessage($from, $to, $subject, $body);
 
-		$session->remove('resultats');
+        $reaboSession = array();
+        $session->remove('resultats');
 
-        return $this->redirect($this->generateUrl('fadco_espace_distributeur_reabo'));
+        return $this->redirect($this->generateUrl('fadco_espace_distributeur_reabo_show', array('id' => $reabo->getId())));
 
     }
 
@@ -321,7 +647,8 @@ class DistributeurController extends Controller
         $reaboSession = $session->get('resultats');
 
     	$reaboSession = array(
-			'abonne'=>$reabo->getAbonne(),
+            'abonne'=>$reabo->getAbonne(),
+            'numeroAbonne'=>$reabo->getNumeroAbonne(),
 			'numeroCarte'=>$reabo->getNumeroCarte(),
 			'contact'=>$reabo->getContact(),
 			'formule' => $reabo->getFormule(),
@@ -349,7 +676,8 @@ class DistributeurController extends Controller
         	$numeroCarte = null;
         }else{
         	$abonne = $em->getRepository('FadcoBundle:Abonne')->find($id);
-        	$numeroCarte = $abonne->getNumeroCarte();
+            $numeroCarte = $abonne->getNumeroCarte();
+        	$numeroAbonne = $abonne->getNumeroAbonne();
         	$contact = $abonne->getContact();
         }
 
@@ -358,10 +686,61 @@ class DistributeurController extends Controller
         $response = new JsonResponse( array(
             'id'=>$id,
             'numeroCarte'=>$numeroCarte, 
+            'numeroAbonne'=>$numeroAbonne, 
             'contact'=>$contact)
         );
 
         return $response;
         
+    }
+
+    public function validerReaboComplementAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $complement = $em->getRepository('FadcoBundle:Complement')->find($id);
+
+        if($request->getMethod() == 'POST'){
+
+            $form = $request->get('fadcobundle_valider_reabo');
+            $dateEcheance = date_create($form['dateEcheance']);
+            $complement->setDateEcheance($dateEcheance);
+            $complement->setValideur($this->getUser());
+            $complement->setDateValide(new \Datetime());
+            
+            $em->flush();
+
+            $retour = 'OK';
+            return new Response($retour);
+
+        }
+
+        return new Response($this->renderView('FadcoBundle:Distributeur:valider-reabo.html.twig', array(
+            'complement' => $complement
+        )));
+    }
+
+    public function validerReaboAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reabo = $em->getRepository('FadcoBundle:Reabonnement')->find($id);
+
+        if($request->getMethod() == 'POST'){
+
+            $form = $request->get('fadcobundle_valider_reabo');
+            $dateEcheance = date_create($form['dateEcheance']);
+            $reabo->setDateEcheance($dateEcheance);
+            $reabo->setValideur($this->getUser());
+            $reabo->setDateValide(new \Datetime());
+            
+            $em->flush();
+
+            $retour = 'OK';
+            return new Response($retour);
+
+        }
+
+        return new Response($this->renderView('FadcoBundle:Distributeur:valider-reabo.html.twig', array(
+            'reabo' => $reabo
+        )));
     }
 }

@@ -15,8 +15,8 @@ class __TwigTemplate_37fee1e118c0954e717a9a694be73b7d1de2a33a38a6538e86940116e94
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_34c509c1bd602c9cdef12dc4005455612328489f1946049034f4e598414e85f0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_34c509c1bd602c9cdef12dc4005455612328489f1946049034f4e598414e85f0->enter($__internal_34c509c1bd602c9cdef12dc4005455612328489f1946049034f4e598414e85f0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Prestataire:popups.html.twig"));
+        $__internal_ff80da1d1754b1fe4ded8e6e8bce9b4ab4b0e1fb990a9fbc0b7d43a2ad905b16 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ff80da1d1754b1fe4ded8e6e8bce9b4ab4b0e1fb990a9fbc0b7d43a2ad905b16->enter($__internal_ff80da1d1754b1fe4ded8e6e8bce9b4ab4b0e1fb990a9fbc0b7d43a2ad905b16_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Prestataire:popups.html.twig"));
 
         // line 2
         echo "<link rel=\"stylesheet\" href=\"";
@@ -37,33 +37,11 @@ class __TwigTemplate_37fee1e118c0954e717a9a694be73b7d1de2a33a38a6538e86940116e94
     </div>
 </div>
 
-<div id=\"detail-affectation\"  class=\"modal\" role=\"dialog\">
-    <div class=\"modal-dialog modal-lg\">
-        <!-- Modal content-->
-        <div class=\"modal-content\">
-            <div class=\"modal-body\">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id=\"formEcheancierModal\" class=\"modal fade\" role=\"dialog\" >
-    <div class=\"modal-dialog\">
-        <div class=\"modal-content modal-lg\">
-            <div class=\"modal-header\">
-                <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>
-            </div>
-            <div id = \"formEcheancierContentBox\"></div>
-        </div>
-    </div>
-</div>
-
 <div class=\"modal hide\" id=\"pleaseWaitDialog\" data-backdrop=\"static\" data-keyboard=\"false\">
     ";
-        // line 39
+        // line 17
         echo "    ";
-        // line 40
+        // line 18
         echo "    <div class=\"modal-body\" style=\"position:absolute;
                                     left: 50%;
                                     top: 50%;
@@ -77,22 +55,22 @@ class __TwigTemplate_37fee1e118c0954e717a9a694be73b7d1de2a33a38a6538e86940116e94
             <div class=\"bar\">
                 <i class=\"fa fa-circle-o-notch fa-spin fa-5x fa-fw\" style=\"color: #f5f5f5;\"></i>
                 ";
-        // line 53
+        // line 31
         echo "            </div>
         </div>
     </div>
 </div>
 <script src=\"";
-        // line 57
+        // line 35
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/plugins/datepicker/bootstrap-datepicker.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 58
+        // line 36
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/FadcoBundle/plugins/datepicker/locales/bootstrap-datepicker.fr.js"), "html", null, true);
         echo "\"></script>
 ";
         
-        $__internal_34c509c1bd602c9cdef12dc4005455612328489f1946049034f4e598414e85f0->leave($__internal_34c509c1bd602c9cdef12dc4005455612328489f1946049034f4e598414e85f0_prof);
+        $__internal_ff80da1d1754b1fe4ded8e6e8bce9b4ab4b0e1fb990a9fbc0b7d43a2ad905b16->leave($__internal_ff80da1d1754b1fe4ded8e6e8bce9b4ab4b0e1fb990a9fbc0b7d43a2ad905b16_prof);
 
     }
 
@@ -108,7 +86,7 @@ class __TwigTemplate_37fee1e118c0954e717a9a694be73b7d1de2a33a38a6538e86940116e94
 
     public function getDebugInfo()
     {
-        return array (  91 => 58,  87 => 57,  81 => 53,  67 => 40,  65 => 39,  27 => 3,  22 => 2,);
+        return array (  69 => 36,  65 => 35,  59 => 31,  45 => 18,  43 => 17,  27 => 3,  22 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -135,28 +113,6 @@ class __TwigTemplate_37fee1e118c0954e717a9a694be73b7d1de2a33a38a6538e86940116e94
     </div>
 </div>
 
-<div id=\"detail-affectation\"  class=\"modal\" role=\"dialog\">
-    <div class=\"modal-dialog modal-lg\">
-        <!-- Modal content-->
-        <div class=\"modal-content\">
-            <div class=\"modal-body\">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id=\"formEcheancierModal\" class=\"modal fade\" role=\"dialog\" >
-    <div class=\"modal-dialog\">
-        <div class=\"modal-content modal-lg\">
-            <div class=\"modal-header\">
-                <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>
-            </div>
-            <div id = \"formEcheancierContentBox\"></div>
-        </div>
-    </div>
-</div>
-
 <div class=\"modal hide\" id=\"pleaseWaitDialog\" data-backdrop=\"static\" data-keyboard=\"false\">
     {# Remplacer l'effet 'mode hide' par 'modal fade' pour voir le favicon d'attente#}
     {#<div class=\"modal-header\"><h1>Veillez patientez...</h1></div>#}
@@ -172,7 +128,7 @@ class __TwigTemplate_37fee1e118c0954e717a9a694be73b7d1de2a33a38a6538e86940116e94
         <div class=\"progress progress-striped active\" style=\"text-align: center; height: 100px; background-color: rgba(0, 0, 0, 0);\">
             <div class=\"bar\">
                 <i class=\"fa fa-circle-o-notch fa-spin fa-5x fa-fw\" style=\"color: #f5f5f5;\"></i>
-                {#<span class=\"sr-only\">Veillez patientez...</span>#}
+                {#<span class=\"sr-only\">Veillez patienter...</span>#}
             </div>
         </div>
     </div>

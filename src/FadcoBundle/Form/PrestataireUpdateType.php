@@ -32,11 +32,18 @@ class PrestataireUpdateType extends AbstractType
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Confirmer Password'),
             ))
-             ->add('type','hidden',[
+            /*->add('type','hidden',[
                 'attr' => [
                     'value' => 'distributeur'
                 ]
-            ])
+            ])*/
+             ->add('type','choice', array('choices' =>array(  'distributeur'=>'Distributeur',
+                    'admin'=>'Admin'
+                    ),
+                  'empty_value' => '--',
+                  'required' => true
+                )
+            )
         ;
     }
        

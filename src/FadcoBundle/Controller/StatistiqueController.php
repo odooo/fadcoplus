@@ -76,9 +76,11 @@ class StatistiqueController extends Controller
 
         if($startDate && $endDate)
         {
-            $sql = "SELECT SUM(r.montant) AS Total, r.abonne, d.nom, d.prenom, r.date FROM FadcoBundle:Reabonnement r 
-            LEFT JOIN r.distributeur d WHERE
-            r.date >= :startDate AND r.date <= :endDate GROUP BY r.date, r.abonne, d.nom, d.prenom";
+            $sql1 = "SELECT SUM(r.montant) AS Total1, r.abonne, d.nom, d.prenom, r.date FROM FadcoBundle:Reabonnement r 
+            LEFT JOIN r.distributeur d WHERE r.date >= :startDate AND r.date <= :endDate GROUP BY d.nom";
+            
+            $sql2 = "SELECT SUM(c.montant) AS Total2, c.abonne, d.nom, d.prenom, c.date FROM FadcoBundle:Complement c 
+            LEFT JOIN c.distributeur d WHERE c.date >= :startDate AND c.date <= :endDate GROUP BY d.nom";
 
             $param = array('startDate' => $startDate,'endDate' => $endDate);
 
@@ -87,19 +89,38 @@ class StatistiqueController extends Controller
 
         if($nom && $prenom)
         {
-            $sql = "SELECT SUM(r.montant) AS Total, d.prenom, d.date, d.nom FROM FadcoBundle:Reabonnement r 
+            $sql1 = "SELECT SUM(r.montant) AS Total1, d.prenom, r.date, d.nom FROM FadcoBundle:Reabonnement r 
             LEFT JOIN r.distributeur d WHERE r.date >= :startDate AND r.date <= :endDate AND d.nom LIKE :nom AND d.prenom LIKE :prenom GROUP BY d.nom ";
+            
+            $sql2 = "SELECT SUM(c.montant) AS Total2, d.prenom, c.date, d.nom FROM FadcoBundle:Complement c 
+            LEFT JOIN c.distributeur d WHERE c.date >= :startDate AND c.date <= :endDate AND d.nom LIKE :nom AND d.prenom LIKE :prenom GROUP BY d.nom ";
 
-            $param = array('nom' => '%'.$nom.'%', 'prenom' => '%'.$prenom.'%', 'startDate' => $startDate, 'endDate' => $endDate);
+            $param = array('startDate' => $startDate, 'endDate' => $endDate, 'nom' => '%'.$nom.'%', 'prenom' => '%'.$prenom.'%');
 
             $byDistr = true;
         }
 
-        if($sql != "")
+        if($sql1 != "")
         {
-            $requetesVenteTotal = $em->createQuery($sql);
-            $requetesVenteTotal->setParameters($param);
-            $resultsVenteTotal = $requetesVenteTotal->getResult();
+            $requetesVenteTotal1 = $em->createQuery($sql1);
+            $requetesVenteTotal2 = $em->createQuery($sql2);
+            $requetesVenteTotal1->setParameters($param);
+            $requetesVenteTotal2->setParameters($param);
+            $resultsVenteTotal1 = $requetesVenteTotal1->getResult();
+            $resultsVenteTotal2 = $requetesVenteTotal2->getResult();
+            
+            $resultsVenteTotal = array();
+            $i = 0;
+
+            foreach ($resultsVenteTotal1 as $value) {
+                $resultsVenteTotal[$i] = $value;
+                $i++;
+            }
+            foreach ($resultsVenteTotal2 as $value) {
+                $resultsVenteTotal[$i] = $value;
+                $i++;
+            }
+
         }
         else
         {

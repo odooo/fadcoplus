@@ -35,11 +35,18 @@
 
                             <h3 class="box-title">Confirmation du réabonnement direct</h3>
 
+                            {% if resultats.duree == '1 mois' %} {% set coef = 1 %} {% endif  %}
+                            {% if resultats.duree == '3 mois' %} {% set coef = 3 %} {% endif  %}
+                            {% if resultats.duree == '6 mois' %} {% set coef = 6 %} {% endif  %}
+                            {% if resultats.duree == '12 mois' %} {% set coef = 12 %} {% endif  %}
+
+                            {% set montant = resultats.montant * coef %}
+
                             <div class="modal-body">
                                 <span style="">
-                                   <h2><strong>{{ resultats.montant|number_format(0,'.',' ') }} F</strong></h2><br/> 
+                                   <h2><strong>{{ resultats.montant|number_format(0,'.',' ') }} * {{ resultats.duree }} = {{ montant|number_format(0,'.',' ') }} F</strong></h2><br/> 
                                    Réabonnement direct pour {{ resultats.numeroCarte }}.<br/>
-                                   {{ resultats.formule }}{% if resultats.duree %} / {{ resultats.duree }}{% endif %}{% if resultats.options %} / {{ resultats.options }}{% else %} / --{% endif %}
+                                   {{ resultats.formule }}{% if resultats.options %} / {{ resultats.options }}{% else %} / --{% endif %}{% if resultats.duree %} / {{ resultats.duree }}{% else %} / --{% endif %}
                                 </span>
                                 
                               </div>

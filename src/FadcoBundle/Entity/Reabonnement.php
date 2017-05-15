@@ -57,6 +57,17 @@ class Reabonnement
      */
     private $distributeur;
 
+    /**
+     * @var \FadcoBundle\Entity\Prestataire
+     */
+    private $valideur;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateEcheance;
+
+
     public function __construct()
     {
         $this->montant = 0;
@@ -287,5 +298,111 @@ class Reabonnement
     public function getDistributeur()
     {
         return $this->distributeur;
+    }
+
+    /**
+     * Set valideur
+     *
+     * @param \FadcoBundle\Entity\Prestataire $valideur
+     *
+     * @return Reabonnement
+     */
+    public function setValideur(\FadcoBundle\Entity\Prestataire $valideur = null)
+    {
+        $this->valideur = $valideur;
+    
+        return $this;
+    }
+
+    /**
+     * Get valideur
+     *
+     * @return \FadcoBundle\Entity\Prestataire
+     */
+    public function getValideur()
+    {
+        return $this->valideur;
+    }
+
+    /**
+     * Set dateEcheance
+     *
+     * @param \DateTime $dateEcheance
+     *
+     * @return Reabonnement
+     */
+    public function setDateEcheance($dateEcheance)
+    {
+        $this->dateEcheance = $dateEcheance;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateEcheance
+     *
+     * @return \DateTime
+     */
+    public function getDateEcheance()
+    {
+        return $this->dateEcheance;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $dateValide;
+
+
+    /**
+     * Set dateValide
+     *
+     * @param \DateTime $dateValide
+     *
+     * @return Reabonnement
+     */
+    public function setDateValide($dateValide)
+    {
+        $this->dateValide = $dateValide;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateValide
+     *
+     * @return \DateTime
+     */
+    public function getDateValide()
+    {
+        return $this->dateValide;
+    }
+    /**
+     * @var string
+     */
+    private $numeroAbonne;
+
+
+    /**
+     * Set numeroAbonne
+     *
+     * @param string $numeroAbonne
+     *
+     * @return Reabonnement
+     */
+    public function setNumeroAbonne($numeroAbonne)
+    {
+        $this->numeroAbonne = $numeroAbonne;
+    
+        return $this;
+    }
+
+    /**
+     * Get numeroAbonne
+     *
+     * @return string
+     */
+    public function getNumeroAbonne()
+    {
+        return $this->numeroAbonne;
     }
 }

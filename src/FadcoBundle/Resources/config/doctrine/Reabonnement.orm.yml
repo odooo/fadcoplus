@@ -16,6 +16,12 @@ FadcoBundle\Entity\Reabonnement:
             joinColumn:
                 name: distributeur_id
                 referencedColumnName: id
+        valideur:
+            targetEntity: Prestataire
+            nullable: true
+            joinColumn:
+                name: valideur_id
+                referencedColumnName: id
 
     fields:
         abonne:
@@ -23,6 +29,10 @@ FadcoBundle\Entity\Reabonnement:
             length: 255
             nullable: true
         numeroCarte:
+            type: string
+            length: 255
+            nullable: true
+        numeroAbonne:
             type: string
             length: 255
             nullable: true
@@ -48,4 +58,10 @@ FadcoBundle\Entity\Reabonnement:
                 default: 0
         date:
             type: datetime
+        dateEcheance:
+            type: datetime
+            nullable: true
+        dateValide:
+            type: datetime
+            nullable: true
     lifecycleCallbacks: {  }

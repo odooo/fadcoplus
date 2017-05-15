@@ -22,11 +22,18 @@ class PrestataireType extends AbstractType
             ->add('ville','text',array('label' => 'Ville ','required' => false))
             ->add('file',"file",array("required"=>false))
             ->add('contact','text',array('label' => 'Contact ','required' => false))
-            ->add('type','hidden',[
+            /*->add('type','hidden',[
                 'attr' => [
                     'value' => 'distributeur'
                 ]
-            ])
+            ])*/
+            ->add('type','choice', array('choices' =>array(  'distributeur'=>'Distributeur',
+                    'admin'=>'Admin'
+                    ),
+                  'empty_value' => '--',
+                  'required' => true
+                )
+            )
         ;
     }
     

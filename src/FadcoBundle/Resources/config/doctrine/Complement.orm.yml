@@ -1,0 +1,74 @@
+FadcoBundle\Entity\Complement:
+    type: entity
+    table: null
+    repositoryClass: FadcoBundle\Repository\ComplementRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        distributeur:
+            targetEntity: Prestataire
+            nullable: false
+            joinColumn:
+                name: distributeur_id
+                referencedColumnName: id
+        reabo:
+            targetEntity: Reabonnement
+            nullable: true
+            joinColumn:
+                name: reabo_id
+                referencedColumnName: id
+        valideur:
+            targetEntity: Prestataire
+            nullable: true
+            joinColumn:
+                name: valideur_id
+                referencedColumnName: id
+
+    fields:
+        montant:
+            type: float
+        formule:
+            type: string
+            length: 255
+        oldFormule:
+            type: string
+            length: 255
+            nullable: true
+        options:
+            type: string
+            length: 255
+            nullable: true
+        oldOptions:
+            type: string
+            length: 255
+            nullable: true
+        date:
+            type: datetime
+        dateEcheance:
+            type: datetime
+            nullable: true
+        dateValide:
+            type: datetime
+            nullable: true
+        abonne:
+            type: string
+            length: 255
+            nullable: true
+        contact:
+            type: string
+            length: 255
+            nullable: true
+        numeroCarte:
+            type: string
+            length: 255
+            nullable: true
+        numeroAbonne:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }

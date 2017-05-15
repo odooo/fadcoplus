@@ -23,43 +23,43 @@ class __TwigTemplate_087b0951710b9970d1589e2ec2ea5650cc4913902f35b4d4ad65a739b51
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_bef132e9de7a1014694387bbf29d95cf712bda40f861076c7d4c9efd18803b78 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_bef132e9de7a1014694387bbf29d95cf712bda40f861076c7d4c9efd18803b78->enter($__internal_bef132e9de7a1014694387bbf29d95cf712bda40f861076c7d4c9efd18803b78_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Distributeur:index-repair.html.twig"));
+        $__internal_62a3621fb7a258aa4bf2a90f189c29f5c64cfe5250bb55075fbff66fe3f52870 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_62a3621fb7a258aa4bf2a90f189c29f5c64cfe5250bb55075fbff66fe3f52870->enter($__internal_62a3621fb7a258aa4bf2a90f189c29f5c64cfe5250bb55075fbff66fe3f52870_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FadcoBundle:Distributeur:index-repair.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_bef132e9de7a1014694387bbf29d95cf712bda40f861076c7d4c9efd18803b78->leave($__internal_bef132e9de7a1014694387bbf29d95cf712bda40f861076c7d4c9efd18803b78_prof);
+        $__internal_62a3621fb7a258aa4bf2a90f189c29f5c64cfe5250bb55075fbff66fe3f52870->leave($__internal_62a3621fb7a258aa4bf2a90f189c29f5c64cfe5250bb55075fbff66fe3f52870_prof);
 
     }
 
     // line 3
     public function block_contentHeader($context, array $blocks = array())
     {
-        $__internal_95c3445b829365dd838359a7aed4b1f4f2842fc5f1c4d4cee372f4bcc900c41c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_95c3445b829365dd838359a7aed4b1f4f2842fc5f1c4d4cee372f4bcc900c41c->enter($__internal_95c3445b829365dd838359a7aed4b1f4f2842fc5f1c4d4cee372f4bcc900c41c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentHeader"));
+        $__internal_96ebc5a0ddb7868a20bd3df3fbe8b4e9797a94db5e76a5e992068271cdaf2cae = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_96ebc5a0ddb7868a20bd3df3fbe8b4e9797a94db5e76a5e992068271cdaf2cae->enter($__internal_96ebc5a0ddb7868a20bd3df3fbe8b4e9797a94db5e76a5e992068271cdaf2cae_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentHeader"));
 
         
-        $__internal_95c3445b829365dd838359a7aed4b1f4f2842fc5f1c4d4cee372f4bcc900c41c->leave($__internal_95c3445b829365dd838359a7aed4b1f4f2842fc5f1c4d4cee372f4bcc900c41c_prof);
+        $__internal_96ebc5a0ddb7868a20bd3df3fbe8b4e9797a94db5e76a5e992068271cdaf2cae->leave($__internal_96ebc5a0ddb7868a20bd3df3fbe8b4e9797a94db5e76a5e992068271cdaf2cae_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_9ee678859398fcaea53520d2560343618771b4f243a7bd0690bb7df29912a7be = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9ee678859398fcaea53520d2560343618771b4f243a7bd0690bb7df29912a7be->enter($__internal_9ee678859398fcaea53520d2560343618771b4f243a7bd0690bb7df29912a7be_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_8570dc3df31e342973c244f1f68919b0565375f03bdf81aacb8fb02ad8e1fc94 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8570dc3df31e342973c244f1f68919b0565375f03bdf81aacb8fb02ad8e1fc94->enter($__internal_8570dc3df31e342973c244f1f68919b0565375f03bdf81aacb8fb02ad8e1fc94_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "FADCO+ : Prestations";
         
-        $__internal_9ee678859398fcaea53520d2560343618771b4f243a7bd0690bb7df29912a7be->leave($__internal_9ee678859398fcaea53520d2560343618771b4f243a7bd0690bb7df29912a7be_prof);
+        $__internal_8570dc3df31e342973c244f1f68919b0565375f03bdf81aacb8fb02ad8e1fc94->leave($__internal_8570dc3df31e342973c244f1f68919b0565375f03bdf81aacb8fb02ad8e1fc94_prof);
 
     }
 
     // line 5
     public function block_content($context, array $blocks = array())
     {
-        $__internal_b9b899f82a8013a30770755eb04433c29ac7a6155750b1edb3a755c53f8604fb = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b9b899f82a8013a30770755eb04433c29ac7a6155750b1edb3a755c53f8604fb->enter($__internal_b9b899f82a8013a30770755eb04433c29ac7a6155750b1edb3a755c53f8604fb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_b3e008d0d334e28709102f869761d4ed23ebb79284c5a851b47f0ae68a51045a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b3e008d0d334e28709102f869761d4ed23ebb79284c5a851b47f0ae68a51045a->enter($__internal_b3e008d0d334e28709102f869761d4ed23ebb79284c5a851b47f0ae68a51045a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 6
         echo "    <h4>Liste des prestations</h4>
@@ -142,8 +142,13 @@ class __TwigTemplate_087b0951710b9970d1589e2ec2ea5650cc4913902f35b4d4ad65a739b51
                             <th style=\"text-align:center;\">Endroit propice</th>
                             <th style=\"text-align:center;\">Montant</th>
                             <th style=\"text-align:center;\">Date</th>
-                            <th style=\"text-align:center;\">Distributeur</th>
                             ";
+        // line 66
+        if (($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "type", array()) == "admin")) {
+            echo "<th style=\"text-align:center;\">Distributeur</th>";
+        }
+        // line 67
+        echo "                            ";
         // line 68
         echo "                        </tr>
                     </thead>
@@ -194,13 +199,17 @@ class __TwigTemplate_087b0951710b9970d1589e2ec2ea5650cc4913902f35b4d4ad65a739b51
             // line 82
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["repair"], "date", array()), "d/m/Y"), "html", null, true);
             echo "</td>
-                            <td style=\"text-align:center;\">";
-            // line 83
-            if ($this->getAttribute($context["repair"], "distributeur", array())) {
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["repair"], "distributeur", array()), "username", array()), "html", null, true);
-            }
-            echo "</td>
                             ";
+            // line 83
+            if (($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "type", array()) == "admin")) {
+                echo "<td style=\"text-align:center;\">";
+                if ($this->getAttribute($context["repair"], "distributeur", array())) {
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["repair"], "distributeur", array()), "username", array()), "html", null, true);
+                }
+                echo "</td>";
+            }
+            // line 84
+            echo "                            ";
             // line 96
             echo "                        </tr>
                         ";
@@ -287,7 +296,7 @@ class __TwigTemplate_087b0951710b9970d1589e2ec2ea5650cc4913902f35b4d4ad65a739b51
 
 ";
         
-        $__internal_b9b899f82a8013a30770755eb04433c29ac7a6155750b1edb3a755c53f8604fb->leave($__internal_b9b899f82a8013a30770755eb04433c29ac7a6155750b1edb3a755c53f8604fb_prof);
+        $__internal_b3e008d0d334e28709102f869761d4ed23ebb79284c5a851b47f0ae68a51045a->leave($__internal_b3e008d0d334e28709102f869761d4ed23ebb79284c5a851b47f0ae68a51045a_prof);
 
     }
 
@@ -303,7 +312,7 @@ class __TwigTemplate_087b0951710b9970d1589e2ec2ea5650cc4913902f35b4d4ad65a739b51
 
     public function getDebugInfo()
     {
-        return array (  280 => 147,  276 => 146,  243 => 115,  235 => 110,  230 => 108,  225 => 105,  223 => 104,  216 => 99,  210 => 98,  208 => 97,  205 => 96,  199 => 83,  195 => 82,  191 => 81,  187 => 80,  183 => 79,  179 => 78,  175 => 77,  171 => 76,  167 => 75,  163 => 74,  160 => 73,  155 => 72,  153 => 71,  148 => 68,  121 => 42,  109 => 32,  105 => 29,  101 => 28,  96 => 26,  84 => 17,  79 => 15,  73 => 11,  71 => 10,  65 => 6,  59 => 5,  47 => 4,  36 => 3,  11 => 1,);
+        return array (  289 => 147,  285 => 146,  252 => 115,  244 => 110,  239 => 108,  234 => 105,  232 => 104,  225 => 99,  219 => 98,  217 => 97,  214 => 96,  212 => 84,  204 => 83,  200 => 82,  196 => 81,  192 => 80,  188 => 79,  184 => 78,  180 => 77,  176 => 76,  172 => 75,  168 => 74,  165 => 73,  160 => 72,  158 => 71,  153 => 68,  151 => 67,  147 => 66,  121 => 42,  109 => 32,  105 => 29,  101 => 28,  96 => 26,  84 => 17,  79 => 15,  73 => 11,  71 => 10,  65 => 6,  59 => 5,  47 => 4,  36 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -381,7 +390,7 @@ class __TwigTemplate_087b0951710b9970d1589e2ec2ea5650cc4913902f35b4d4ad65a739b51
                             <th style=\"text-align:center;\">Endroit propice</th>
                             <th style=\"text-align:center;\">Montant</th>
                             <th style=\"text-align:center;\">Date</th>
-                            <th style=\"text-align:center;\">Distributeur</th>
+                            {% if app.user.type == \"admin\" %}<th style=\"text-align:center;\">Distributeur</th>{% endif %}
                             {#<th>Actions</th>#}
                         </tr>
                     </thead>
@@ -398,7 +407,7 @@ class __TwigTemplate_087b0951710b9970d1589e2ec2ea5650cc4913902f35b4d4ad65a739b51
                             <td style=\"text-align:center;\">{{ repair.endroit }}</td>
                             <td style=\"text-align:center;\">{{ repair.montant|number_format(0,'.',' ') }}</td>
                             <td style=\"text-align:center;\">{{ repair.date|date('d/m/Y') }}</td>
-                            <td style=\"text-align:center;\">{% if repair.distributeur %}{{ repair.distributeur.username }}{% endif %}</td>
+                            {% if app.user.type == \"admin\" %}<td style=\"text-align:center;\">{% if repair.distributeur %}{{ repair.distributeur.username }}{% endif %}</td>{% endif %}
                             {#<td>
                                 <div class=\"input-group btn\">
                                     <button type=\"button\" class=\"btn btn-success btn-xs   dropdown-toggle pull-right\" data-toggle=\"dropdown\">

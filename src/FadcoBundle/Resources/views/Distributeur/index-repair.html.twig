@@ -63,7 +63,7 @@
                             <th style="text-align:center;">Endroit propice</th>
                             <th style="text-align:center;">Montant</th>
                             <th style="text-align:center;">Date</th>
-                            <th style="text-align:center;">Distributeur</th>
+                            {% if app.user.type == "admin" %}<th style="text-align:center;">Distributeur</th>{% endif %}
                             {#<th>Actions</th>#}
                         </tr>
                     </thead>
@@ -80,7 +80,7 @@
                             <td style="text-align:center;">{{ repair.endroit }}</td>
                             <td style="text-align:center;">{{ repair.montant|number_format(0,'.',' ') }}</td>
                             <td style="text-align:center;">{{ repair.date|date('d/m/Y') }}</td>
-                            <td style="text-align:center;">{% if repair.distributeur %}{{ repair.distributeur.username }}{% endif %}</td>
+                            {% if app.user.type == "admin" %}<td style="text-align:center;">{% if repair.distributeur %}{{ repair.distributeur.username }}{% endif %}</td>{% endif %}
                             {#<td>
                                 <div class="input-group btn">
                                     <button type="button" class="btn btn-success btn-xs   dropdown-toggle pull-right" data-toggle="dropdown">
